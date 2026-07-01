@@ -1,0 +1,1007 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$metadata": {
+    "product": "直播助手 PC 端",
+    "generatedAt": "2026-06-29",
+    "sourceNodeFile": "/Users/peko/figma-node-13-8209.json",
+    "sourceNodeId": "13:8209",
+    "sourceStatus": "Color variables confirmed from screenshots; layout, component state, typography inferred from Figma node JSON."
+  },
+  "color": {
+    "color.primitive.purple.500": {
+      "$type": "color",
+      "$value": "#CB8FE9",
+      "base": "#CB8FE9",
+      "opacity": 1,
+      "figmaName": "primary/Main",
+      "usage": "Brand primary hue",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.white": {
+      "$type": "color",
+      "$value": "#FFFFFF",
+      "base": "#FFFFFF",
+      "opacity": 1,
+      "figmaName": "Text/WT",
+      "usage": "White base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.gray.400": {
+      "$type": "color",
+      "$value": "#B8ACBE",
+      "base": "#B8ACBE",
+      "opacity": 1,
+      "figmaName": "Text/Secondary text",
+      "usage": "Secondary gray-lavender base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.lavender.100": {
+      "$type": "color",
+      "$value": "#E0D8F1",
+      "base": "#E0D8F1",
+      "opacity": 1,
+      "figmaName": "Text/icon",
+      "usage": "Icon lavender base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.gray.500": {
+      "$type": "color",
+      "$value": "#ADAAAA",
+      "base": "#ADAAAA",
+      "opacity": 1,
+      "figmaName": "Text/Default text",
+      "usage": "Default input text base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.gray.200": {
+      "$type": "color",
+      "$value": "#DADEEA",
+      "base": "#DADEEA",
+      "opacity": 1,
+      "figmaName": "Text/輔助",
+      "usage": "Helper text base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.gray.700": {
+      "$type": "color",
+      "$value": "#757575",
+      "base": "#757575",
+      "opacity": 1,
+      "figmaName": "Text/x",
+      "usage": "Muted text base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.black.950": {
+      "$type": "color",
+      "$value": "#0B080D",
+      "base": "#0B080D",
+      "opacity": 1,
+      "figmaName": "background/Primary",
+      "usage": "Application base background",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.gray.600": {
+      "$type": "color",
+      "$value": "#8A8A8A",
+      "base": "#8A8A8A",
+      "opacity": 1,
+      "figmaName": "background/板塊",
+      "usage": "Panel overlay base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.surface.800": {
+      "$type": "color",
+      "$value": "#211C29",
+      "base": "#211C29",
+      "opacity": 1,
+      "figmaName": "background/Tertiary",
+      "usage": "Tertiary surface base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.purple.700": {
+      "$type": "color",
+      "$value": "#4B348D",
+      "base": "#4B348D",
+      "opacity": 1,
+      "figmaName": "background/scroll bar",
+      "usage": "Scrollbar purple base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.black.990": {
+      "$type": "color",
+      "$value": "#030303",
+      "base": "#030303",
+      "opacity": 1,
+      "figmaName": "background/Toast",
+      "usage": "Toast overlay base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.dialog.900": {
+      "$type": "color",
+      "$value": "#1B1721",
+      "base": "#1B1721",
+      "opacity": 1,
+      "figmaName": "彈窗/Background",
+      "usage": "Dialog base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.dialog.800": {
+      "$type": "color",
+      "$value": "#28252D",
+      "base": "#28252D",
+      "opacity": 1,
+      "figmaName": "彈窗/Top",
+      "usage": "Dialog top surface",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.purple.600": {
+      "$type": "color",
+      "$value": "#86539B",
+      "base": "#86539B",
+      "opacity": 1,
+      "figmaName": "彈窗/Label / Border/Button",
+      "usage": "Dialog label and button border",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.dialog.border": {
+      "$type": "color",
+      "$value": "#483C4E",
+      "base": "#483C4E",
+      "opacity": 1,
+      "figmaName": "彈窗/Border",
+      "usage": "Dialog border",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.purple.550": {
+      "$type": "color",
+      "$value": "#8F69CF",
+      "base": "#8F69CF",
+      "opacity": 1,
+      "figmaName": "Button/Button01",
+      "usage": "Subtle brand button base",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.button.700": {
+      "$type": "color",
+      "$value": "#3F3649",
+      "base": "#3F3649",
+      "opacity": 1,
+      "figmaName": "Button/Button03",
+      "usage": "Solid dark button",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.button.800": {
+      "$type": "color",
+      "$value": "#2C233B",
+      "base": "#2C233B",
+      "opacity": 1,
+      "figmaName": "Button/Button04",
+      "usage": "Pressed dark button",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.red.600": {
+      "$type": "color",
+      "$value": "#B5423A",
+      "base": "#B5423A",
+      "opacity": 1,
+      "figmaName": "Border/Warning",
+      "usage": "Warning border",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.primitive.input.800": {
+      "$type": "color",
+      "$value": "#312744",
+      "base": "#312744",
+      "opacity": 1,
+      "figmaName": "Input/input",
+      "usage": "Input background",
+      "status": "primitive",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.brand.primary": {
+      "$type": "color",
+      "$value": "#CB8FE9",
+      "base": "#CB8FE9",
+      "opacity": 1,
+      "figmaName": "primary/Main",
+      "usage": "Brand accents and important highlights",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.text.primary": {
+      "$type": "color",
+      "$value": "#FFFFFF",
+      "base": "#FFFFFF",
+      "opacity": 1,
+      "figmaName": "Text/WT",
+      "usage": "Primary text on dark surfaces",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.text.secondary": {
+      "$type": "color",
+      "$value": "#B8ACBE",
+      "base": "#B8ACBE",
+      "opacity": 1,
+      "figmaName": "Text/Secondary text",
+      "usage": "Secondary body text and labels",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.text.secondary.muted": {
+      "$type": "color",
+      "$value": "rgba(184, 172, 190, 0.50)",
+      "base": "#B8ACBE",
+      "opacity": 0.5,
+      "figmaName": "Text/Secondary text 50%",
+      "usage": "Muted secondary text",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.text.placeholder": {
+      "$type": "color",
+      "$value": "rgba(255, 255, 255, 0.60)",
+      "base": "#FFFFFF",
+      "opacity": 0.6,
+      "figmaName": "Text/WT60%",
+      "usage": "Input placeholder and temporary labels",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.icon.default": {
+      "$type": "color",
+      "$value": "#E0D8F1",
+      "base": "#E0D8F1",
+      "opacity": 1,
+      "figmaName": "Text/icon",
+      "usage": "Default icon color",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.icon.muted": {
+      "$type": "color",
+      "$value": "rgba(224, 216, 241, 0.50)",
+      "base": "#E0D8F1",
+      "opacity": 0.5,
+      "figmaName": "Text/icon 50%",
+      "usage": "Muted or off icon state",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.text.default": {
+      "$type": "color",
+      "$value": "#ADAAAA",
+      "base": "#ADAAAA",
+      "opacity": 1,
+      "figmaName": "Text/Default text",
+      "usage": "Default input value text",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.text.helper": {
+      "$type": "color",
+      "$value": "#DADEEA",
+      "base": "#DADEEA",
+      "opacity": 1,
+      "figmaName": "Text/輔助",
+      "usage": "Helper text",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.text.weak": {
+      "$type": "color",
+      "$value": "#757575",
+      "base": "#757575",
+      "opacity": 1,
+      "figmaName": "Text/x",
+      "usage": "Lowest-emphasis readable text",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.bg.canvas": {
+      "$type": "color",
+      "$value": "#0B080D",
+      "base": "#0B080D",
+      "opacity": 1,
+      "figmaName": "background/Primary",
+      "usage": "Application canvas background",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.surface.panel": {
+      "$type": "color",
+      "$value": "rgba(138, 138, 138, 0.10)",
+      "base": "#8A8A8A",
+      "opacity": 0.1,
+      "figmaName": "background/板塊",
+      "usage": "Default glass panel surface",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.surface.panel.hover": {
+      "$type": "color",
+      "$value": "rgba(138, 138, 138, 0.20)",
+      "base": "#8A8A8A",
+      "opacity": 0.2,
+      "figmaName": "background/板塊 Hover",
+      "usage": "Panel hover surface",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.surface.panel.active": {
+      "$type": "color",
+      "$value": "rgba(138, 138, 138, 0.05)",
+      "base": "#8A8A8A",
+      "opacity": 0.05,
+      "figmaName": "background/板塊 Active",
+      "usage": "Panel active/pressed surface",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.surface.tertiary": {
+      "$type": "color",
+      "$value": "#211C29",
+      "base": "#211C29",
+      "opacity": 1,
+      "figmaName": "background/Tertiary",
+      "usage": "Tertiary surface",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.surface.toast": {
+      "$type": "color",
+      "$value": "rgba(3, 3, 3, 0.80)",
+      "base": "#030303",
+      "opacity": 0.8,
+      "figmaName": "background/Toast",
+      "usage": "Toast background overlay",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.scrollbar.thumb": {
+      "$type": "color",
+      "$value": "rgba(75, 52, 141, 0.50)",
+      "base": "#4B348D",
+      "opacity": 0.5,
+      "figmaName": "background/scroll bar",
+      "usage": "Scrollbar thumb",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.dialog.background": {
+      "$type": "color",
+      "$value": "#1B1721",
+      "base": "#1B1721",
+      "opacity": 1,
+      "figmaName": "彈窗/Background",
+      "usage": "Dialog base surface",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.dialog.top": {
+      "$type": "color",
+      "$value": "#28252D",
+      "base": "#28252D",
+      "opacity": 1,
+      "figmaName": "彈窗/Top",
+      "usage": "Dialog header/top surface",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.dialog.label": {
+      "$type": "color",
+      "$value": "#86539B",
+      "base": "#86539B",
+      "opacity": 1,
+      "figmaName": "彈窗/Label",
+      "usage": "Dialog label accent",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.dialog.border": {
+      "$type": "color",
+      "$value": "#483C4E",
+      "base": "#483C4E",
+      "opacity": 1,
+      "figmaName": "彈窗/Border",
+      "usage": "Dialog frame border",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.action.brand.subtle": {
+      "$type": "color",
+      "$value": "rgba(143, 105, 207, 0.15)",
+      "base": "#8F69CF",
+      "opacity": 0.15,
+      "figmaName": "Button/Button01",
+      "usage": "Brand-tinted secondary action background",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.action.neutral.subtle": {
+      "$type": "color",
+      "$value": "rgba(184, 172, 190, 0.20)",
+      "base": "#B8ACBE",
+      "opacity": 0.2,
+      "figmaName": "Button/Button02",
+      "usage": "Neutral secondary action background",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.action.neutral.hover": {
+      "$type": "color",
+      "$value": "rgba(184, 172, 190, 0.15)",
+      "base": "#B8ACBE",
+      "opacity": 0.15,
+      "figmaName": "Button/Hover",
+      "usage": "Neutral hover overlay",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.action.dark.default": {
+      "$type": "color",
+      "$value": "#3F3649",
+      "base": "#3F3649",
+      "opacity": 1,
+      "figmaName": "Button/Button03",
+      "usage": "Dark solid button",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.action.dark.active": {
+      "$type": "color",
+      "$value": "#2C233B",
+      "base": "#2C233B",
+      "opacity": 1,
+      "figmaName": "Button/Button04",
+      "usage": "Dark active button",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.border.action": {
+      "$type": "color",
+      "$value": "#86539B",
+      "base": "#86539B",
+      "opacity": 1,
+      "figmaName": "Border/Button",
+      "usage": "Action border",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.border.subtle": {
+      "$type": "color",
+      "$value": "rgba(184, 172, 190, 0.10)",
+      "base": "#B8ACBE",
+      "opacity": 0.1,
+      "figmaName": "Border/Card",
+      "usage": "Card and panel border",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.border.inverse.subtle": {
+      "$type": "color",
+      "$value": "rgba(255, 255, 255, 0.10)",
+      "base": "#FFFFFF",
+      "opacity": 0.1,
+      "figmaName": "Border/WT10%",
+      "usage": "Hairline border on dark surfaces",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.border.warning": {
+      "$type": "color",
+      "$value": "#B5423A",
+      "base": "#B5423A",
+      "opacity": 1,
+      "figmaName": "Border/Warning",
+      "usage": "Warning/error border",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.border.dropdown": {
+      "$type": "color",
+      "$value": "rgba(203, 143, 233, 0.50)",
+      "base": "#CB8FE9",
+      "opacity": 0.5,
+      "figmaName": "Border/Drop-down menu",
+      "usage": "Dropdown focus/active border",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    },
+    "color.input.background": {
+      "$type": "color",
+      "$value": "#312744",
+      "base": "#312744",
+      "opacity": 1,
+      "figmaName": "Input/input",
+      "usage": "Input field background",
+      "status": "approved",
+      "source": "confirmed-from-screenshot"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "tc": {
+        "$type": "fontFamily",
+        "$value": "PingFang HK",
+        "usage": "繁體中文"
+      },
+      "sc": {
+        "$type": "fontFamily",
+        "$value": "PingFang SC",
+        "usage": "簡體中文"
+      },
+      "latin": {
+        "$type": "fontFamily",
+        "$value": "Inter",
+        "usage": "英文、數字、代碼"
+      }
+    },
+    "fontWeight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700
+      }
+    },
+    "scale": {
+      "typography.label.md": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 600,
+          "fontSize": "14px",
+          "lineHeight": "15px"
+        },
+        "usage": "Primary labels; avoid long body copy",
+        "source": "confirmed-from-node"
+      },
+      "typography.label.sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 600,
+          "fontSize": "12px",
+          "lineHeight": "15px"
+        },
+        "usage": "Compact labels",
+        "source": "confirmed-from-node"
+      },
+      "typography.label.list": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 600,
+          "fontSize": "14px",
+          "lineHeight": "19.6px"
+        },
+        "usage": "List labels",
+        "source": "confirmed-from-node"
+      },
+      "typography.body.lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 400,
+          "fontSize": "16px",
+          "lineHeight": "22.4px"
+        },
+        "usage": "Large body or form text",
+        "source": "confirmed-from-node"
+      },
+      "typography.body.md": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 400,
+          "fontSize": "14px",
+          "lineHeight": "19.6px"
+        },
+        "usage": "Default body text",
+        "source": "confirmed-from-node"
+      },
+      "typography.body.md.medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 500,
+          "fontSize": "14px",
+          "lineHeight": "19.6px"
+        },
+        "usage": "Medium emphasis body",
+        "source": "confirmed-from-node"
+      },
+      "typography.body.sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 400,
+          "fontSize": "12px",
+          "lineHeight": "16.8px"
+        },
+        "usage": "Secondary labels and compact content",
+        "source": "confirmed-from-node"
+      },
+      "typography.body.sm.medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 500,
+          "fontSize": "12px",
+          "lineHeight": "16.8px"
+        },
+        "usage": "Compact medium labels",
+        "source": "confirmed-from-node"
+      },
+      "typography.caption": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 400,
+          "fontSize": "10px",
+          "lineHeight": "14px"
+        },
+        "usage": "Meta text; not for primary actions",
+        "source": "confirmed-from-node"
+      },
+      "typography.micro": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang HK",
+          "fontWeight": 400,
+          "fontSize": "8px",
+          "lineHeight": "11.2px"
+        },
+        "usage": "Badges only; needs review for accessibility",
+        "source": "confirmed-from-node"
+      },
+      "typography.sc.heading": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang SC",
+          "fontWeight": 600,
+          "fontSize": "16px",
+          "lineHeight": "22.4px"
+        },
+        "usage": "Simplified Chinese headings",
+        "source": "confirmed-from-node"
+      },
+      "typography.sc.label.sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "PingFang SC",
+          "fontWeight": 600,
+          "fontSize": "12px",
+          "lineHeight": "16.8px"
+        },
+        "usage": "Simplified Chinese compact label",
+        "source": "confirmed-from-node"
+      },
+      "typography.en.micro": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter",
+          "fontWeight": 600,
+          "fontSize": "10px",
+          "lineHeight": "15px"
+        },
+        "usage": "English/numeric micro labels",
+        "source": "confirmed-from-node"
+      },
+      "typography.en.body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter",
+          "fontWeight": 400,
+          "fontSize": "14px",
+          "lineHeight": "16.94px"
+        },
+        "usage": "English/numeric body",
+        "source": "confirmed-from-node"
+      }
+    }
+  },
+  "spacing": {
+    "space.2": {
+      "$type": "dimension",
+      "$value": "2px",
+      "usage": "Tiny inner gap, icon/text tight pairing",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "space.4": {
+      "$type": "dimension",
+      "$value": "4px",
+      "usage": "Compact padding and tag gap",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "space.6": {
+      "$type": "dimension",
+      "$value": "6px",
+      "usage": "Small component padding",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "space.8": {
+      "$type": "dimension",
+      "$value": "8px",
+      "usage": "Default component padding/gap",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "space.12": {
+      "$type": "dimension",
+      "$value": "12px",
+      "usage": "Medium padding/gap",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "space.16": {
+      "$type": "dimension",
+      "$value": "16px",
+      "usage": "Large inline padding",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "space.20": {
+      "$type": "dimension",
+      "$value": "20px",
+      "usage": "Section or large component gap",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "space.raw.1": {
+      "$type": "dimension",
+      "$value": "1px",
+      "usage": "Switch internal inset only",
+      "status": "raw-exception",
+      "source": "confirmed-from-node"
+    },
+    "space.raw.3": {
+      "$type": "dimension",
+      "$value": "3px",
+      "usage": "Icon/vector optical adjustment only",
+      "status": "raw-exception",
+      "source": "confirmed-from-node"
+    },
+    "space.raw.7": {
+      "$type": "dimension",
+      "$value": "7px",
+      "usage": "Audio bar vertical padding from Figma; do not reuse globally",
+      "status": "raw-exception",
+      "source": "confirmed-from-node"
+    },
+    "space.raw.10": {
+      "$type": "dimension",
+      "$value": "10px",
+      "usage": "Input horizontal padding; consider component token",
+      "status": "needs-review",
+      "source": "confirmed-from-node"
+    }
+  },
+  "radius": {
+    "radius.xs": {
+      "$type": "dimension",
+      "$value": "2px",
+      "usage": "Small icon chip or accent",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "radius.sm": {
+      "$type": "dimension",
+      "$value": "4px",
+      "usage": "Small icon block",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "radius.md": {
+      "$type": "dimension",
+      "$value": "5px",
+      "usage": "Legacy small button; consider migrating to radius.lg",
+      "status": "needs-review",
+      "source": "confirmed-from-node"
+    },
+    "radius.lg": {
+      "$type": "dimension",
+      "$value": "8px",
+      "usage": "Default controls, input, cards",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "radius.xl": {
+      "$type": "dimension",
+      "$value": "12px",
+      "usage": "Large controls, sidebar panels, popups",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "radius.2xl": {
+      "$type": "dimension",
+      "$value": "20px",
+      "usage": "Floating surfaces",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "radius.pill": {
+      "$type": "dimension",
+      "$value": "999px",
+      "usage": "Badges, switches, pill tags",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "radius.circle": {
+      "$type": "dimension",
+      "$value": "9999px",
+      "usage": "Avatar/circle end caps",
+      "status": "approved",
+      "source": "confirmed-from-node"
+    },
+    "radius.raw.40": {
+      "$type": "dimension",
+      "$value": "40px",
+      "usage": "Image status play button only",
+      "status": "raw-exception",
+      "source": "confirmed-from-node"
+    }
+  },
+  "shadow": {
+    "shadow.button.glow": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "8px",
+        "blur": "20px",
+        "spread": "0px",
+        "color": "rgba(57, 13, 100, 0.25)"
+      },
+      "usage": "Primary button elevation",
+      "source": "confirmed-from-node"
+    },
+    "shadow.overlay": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "20px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.5)"
+      },
+      "usage": "Overlay surfaces",
+      "source": "confirmed-from-node"
+    },
+    "shadow.toolbar": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "25px",
+        "blur": "50px",
+        "spread": "-12px",
+        "color": "rgba(0, 0, 0, 0.25)"
+      },
+      "usage": "Floating toolbar",
+      "source": "confirmed-from-node"
+    },
+    "shadow.bar": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "3px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.5)"
+      },
+      "usage": "Thin bar elevation",
+      "source": "confirmed-from-node"
+    },
+    "shadow.popup.dark": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "10px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.4)"
+      },
+      "usage": "Popup shadow",
+      "source": "confirmed-from-node"
+    }
+  },
+  "blur": {
+    "blur.panel": {
+      "$type": "dimension",
+      "$value": "8px",
+      "usage": "Glass panel blur",
+      "source": "confirmed-from-node"
+    },
+    "blur.video": {
+      "$type": "dimension",
+      "$value": "20px",
+      "usage": "Video background blur",
+      "source": "confirmed-from-node"
+    },
+    "blur.raw.4": {
+      "$type": "dimension",
+      "$value": "4px",
+      "usage": "直播信息 component current raw backdrop blur; review whether to promote",
+      "status": "raw-exception",
+      "source": "confirmed-from-node"
+    }
+  },
+  "gradient": {
+    "gradient.action.primary": {
+      "$type": "gradient",
+      "$css": "linear-gradient(180deg, #754585 0%, #4B348D 100%)",
+      "usage": "Primary buttons and active CTAs",
+      "source": "confirmed-from-node"
+    },
+    "gradient.live.default": {
+      "$type": "gradient",
+      "$css": "linear-gradient(180deg, #493252 0%, #352956 100%)",
+      "usage": "Live type tag default",
+      "source": "confirmed-from-node"
+    },
+    "gradient.live.hover": {
+      "$type": "gradient",
+      "$css": "linear-gradient(180deg, #513C5B 0%, #3F345E 100%)",
+      "usage": "Live type tag hover",
+      "source": "confirmed-from-node"
+    },
+    "gradient.live.active": {
+      "$type": "gradient",
+      "$css": "linear-gradient(180deg, #3A2842 0%, #2A2145 100%)",
+      "usage": "Live type tag active",
+      "source": "confirmed-from-node"
+    },
+    "gradient.input.focus.border": {
+      "$type": "gradient",
+      "$css": "linear-gradient(180deg, rgba(143,105,207,0.54) 0%, #8F69CF 100%)",
+      "usage": "Input focus stroke",
+      "source": "confirmed-from-node"
+    },
+    "gradient.image.overlay": {
+      "$type": "gradient",
+      "$css": "linear-gradient(180deg, rgba(19,22,32,0.5) 0%, rgba(19,22,32,0) 100%)",
+      "usage": "Image cover overlay",
+      "source": "confirmed-from-node"
+    },
+    "gradient.icon.special": {
+      "$type": "gradient",
+      "$css": "linear-gradient(90deg, #E180EF 0%, #677AEE 42%, #7BE6F0 100%)",
+      "usage": "Special icons only",
+      "source": "confirmed-from-node"
+    }
+  },
+  "rawExceptions": []
+}

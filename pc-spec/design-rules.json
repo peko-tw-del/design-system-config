@@ -1,0 +1,3771 @@
+{
+  "$metadata": {
+    "product": "直播助手 PC 端",
+    "generatedAt": "2026-06-29",
+    "goal": "Rules for automated design review against Figma node data."
+  },
+  "globalRules": [
+    {
+      "id": "token.color.no-unregistered-color",
+      "property": "fills/strokes",
+      "severity": "warning",
+      "message": "Use approved semantic color tokens. Unregistered colors require needs-review or raw-exception status.",
+      "autofixSuggestion": "Map to the closest semantic token by usage, not only by visual similarity."
+    },
+    {
+      "id": "token.opacity.keep-base-and-alpha",
+      "property": "color",
+      "severity": "warning",
+      "message": "Transparent variables must preserve base color and opacity separately.",
+      "autofixSuggestion": "Represent as base + opacity + css rgba."
+    },
+    {
+      "id": "layout.spacing.use-approved-scale",
+      "property": "padding/itemSpacing",
+      "severity": "warning",
+      "message": "Use approved spacing scale: 2, 4, 6, 8, 12, 16, 20. Values 1, 3, 7, 9, 10 are component exceptions.",
+      "autofixSuggestion": "Promote only repeated cross-component values after review."
+    },
+    {
+      "id": "shape.radius.use-approved-scale",
+      "property": "cornerRadius",
+      "severity": "warning",
+      "message": "Use approved radius scale: 2, 4, 5, 8, 12, 20, 999, 9999.",
+      "autofixSuggestion": "Default controls should use radius.lg 8px unless component spec says otherwise."
+    },
+    {
+      "id": "type.micro.accessibility-review",
+      "property": "fontSize",
+      "severity": "warning",
+      "message": "8px text is allowed only for non-critical badges and needs accessibility review.",
+      "autofixSuggestion": "Prefer typography.caption 10px for readable meta text."
+    },
+    {
+      "id": "state.interactive-required",
+      "property": "component states",
+      "severity": "error",
+      "message": "Interactive components must define default, hover, active/pressed, disabled when applicable.",
+      "autofixSuggestion": "Add missing variant states before handoff."
+    },
+    {
+      "id": "state.focus-required-for-dev",
+      "property": "focus",
+      "severity": "error",
+      "message": "Keyboard-focusable controls need a documented focus-visible style, even if Figma currently lacks one.",
+      "autofixSuggestion": "Use gradient.input.focus.border or define color.border.focus."
+    }
+  ],
+  "componentRules": [
+    {
+      "id": "13:8212.13:8213.size",
+      "component": "Primary Button - Large",
+      "variant": "Type=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Large / Type=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8212.13:8213.radius",
+      "component": "Primary Button - Large",
+      "variant": "Type=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8212.13:8215.size",
+      "component": "Primary Button - Large",
+      "variant": "Type=Hover",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Large / Type=Hover should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8212.13:8215.radius",
+      "component": "Primary Button - Large",
+      "variant": "Type=Hover",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8212.13:8217.size",
+      "component": "Primary Button - Large",
+      "variant": "Type=Active",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Large / Type=Active should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8212.13:8217.radius",
+      "component": "Primary Button - Large",
+      "variant": "Type=Active",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8212.13:8219.size",
+      "component": "Primary Button - Large",
+      "variant": "Type=Disabled",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Large / Type=Disabled should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8222.13:8223.size",
+      "component": "Secondary Button - Large",
+      "variant": "Type=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Secondary Button - Large / Type=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8222.13:8223.radius",
+      "component": "Secondary Button - Large",
+      "variant": "Type=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8222.13:8225.size",
+      "component": "Secondary Button - Large",
+      "variant": "Type=Active",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Secondary Button - Large / Type=Active should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8222.13:8225.radius",
+      "component": "Secondary Button - Large",
+      "variant": "Type=Active",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8222.13:8227.size",
+      "component": "Secondary Button - Large",
+      "variant": "Type=Hover",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Secondary Button - Large / Type=Hover should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8222.13:8227.radius",
+      "component": "Secondary Button - Large",
+      "variant": "Type=Hover",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8222.13:8229.size",
+      "component": "Secondary Button - Large",
+      "variant": "Type=Disabled",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Secondary Button - Large / Type=Disabled should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8231.13:8232.size",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "88px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Medium / 狀態=default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8231.13:8232.radius",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8231.13:8234.size",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=Hover",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "88px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Medium / 狀態=Hover should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8231.13:8234.radius",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=Hover",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8231.13:8236.size",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=Clicked",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "88px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Medium / 狀態=Clicked should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8231.13:8236.radius",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=Clicked",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8231.13:8238.size",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=Disabled",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "88px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Medium / 狀態=Disabled should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8231.13:8238.radius",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=Disabled",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8231.13:8240.size",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=结束直播",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "88px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Medium / 狀態=结束直播 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8231.13:8240.radius",
+      "component": "Primary Button - Medium",
+      "variant": "狀態=结束直播",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8242.13:8243.size",
+      "component": "Button - Small",
+      "variant": "Property 1=def",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "48px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Button - Small / Property 1=def should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8242.13:8243.radius",
+      "component": "Button - Small",
+      "variant": "Property 1=def",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8242.13:8245.size",
+      "component": "Button - Small",
+      "variant": "Property 1=hov",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "48px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Button - Small / Property 1=hov should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8242.13:8245.radius",
+      "component": "Button - Small",
+      "variant": "Property 1=hov",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8242.13:8247.size",
+      "component": "Button - Small",
+      "variant": "Property 1=active",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "48px",
+        "height": "31px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Button - Small / Property 1=active should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8242.13:8247.radius",
+      "component": "Button - Small",
+      "variant": "Property 1=active",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8254.13:8255.size",
+      "component": "登入按鈕 BTN",
+      "variant": "Property 1=手机号登录",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "218px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "登入按鈕 BTN / Property 1=手机号登录 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8254.13:8255.radius",
+      "component": "登入按鈕 BTN",
+      "variant": "Property 1=手机号登录",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8254.13:8260.size",
+      "component": "登入按鈕 BTN",
+      "variant": "Property 1=扫码登录",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "218px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "登入按鈕 BTN / Property 1=扫码登录 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8254.13:8260.radius",
+      "component": "登入按鈕 BTN",
+      "variant": "Property 1=扫码登录",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8269.13:8270.size",
+      "component": "Game BTN",
+      "variant": "狀態=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "128px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Game BTN / 狀態=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8269.13:8270.radius",
+      "component": "Game BTN",
+      "variant": "狀態=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8269.13:8276.size",
+      "component": "Game BTN",
+      "variant": "狀態=Hover",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "128px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Game BTN / 狀態=Hover should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8269.13:8276.radius",
+      "component": "Game BTN",
+      "variant": "狀態=Hover",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8269.13:8280.size",
+      "component": "Game BTN",
+      "variant": "狀態=Clicked",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "128px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Game BTN / 狀態=Clicked should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8269.13:8280.radius",
+      "component": "Game BTN",
+      "variant": "狀態=Clicked",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8269.13:8284.size",
+      "component": "Game BTN",
+      "variant": "狀態=Selected",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "128px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Game BTN / 狀態=Selected should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8269.13:8284.radius",
+      "component": "Game BTN",
+      "variant": "狀態=Selected",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8288.13:8289.size",
+      "component": "Switch BTN",
+      "variant": "開關=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "100px",
+        "height": "42px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Switch BTN / 開關=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8288.13:8289.radius",
+      "component": "Switch BTN",
+      "variant": "開關=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8288.13:8295.size",
+      "component": "Switch BTN",
+      "variant": "開關=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "100px",
+        "height": "42px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Switch BTN / 開關=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8288.13:8295.radius",
+      "component": "Switch BTN",
+      "variant": "開關=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8301.13:8302.size",
+      "component": "button / 主播任務",
+      "variant": "Property 1=未完成",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "60px",
+        "height": "25px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "button / 主播任務 / Property 1=未完成 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8301.13:8302.radius",
+      "component": "button / 主播任務",
+      "variant": "Property 1=未完成",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8301.13:8304.size",
+      "component": "button / 主播任務",
+      "variant": "Property 1=已完成",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "60px",
+        "height": "25px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "button / 主播任務 / Property 1=已完成 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8301.13:8304.radius",
+      "component": "button / 主播任務",
+      "variant": "Property 1=已完成",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8306.13:8307.size",
+      "component": "Switch",
+      "variant": "Property 1=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "34px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Switch / Property 1=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8306.13:8307.radius",
+      "component": "Switch",
+      "variant": "Property 1=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "100px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8306.13:8309.size",
+      "component": "Switch",
+      "variant": "Property 1=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "34px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Switch / Property 1=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8306.13:8309.radius",
+      "component": "Switch",
+      "variant": "Property 1=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "100px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8311.13:8312.size",
+      "component": "card_btn",
+      "variant": "Property 1=佩戴",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "48px",
+        "height": "17px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "card_btn / Property 1=佩戴 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8311.13:8312.radius",
+      "component": "card_btn",
+      "variant": "Property 1=佩戴",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8311.13:8314.size",
+      "component": "card_btn",
+      "variant": "Property 1=取下",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "48px",
+        "height": "17px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "card_btn / Property 1=取下 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8311.13:8314.radius",
+      "component": "card_btn",
+      "variant": "Property 1=取下",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8316.13:8317.size",
+      "component": "Radio BTN",
+      "variant": "開關=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "14px",
+        "height": "14px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Radio BTN / 開關=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8316.13:8320.size",
+      "component": "Radio BTN",
+      "variant": "開關=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "14px",
+        "height": "14px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Radio BTN / 開關=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8316.13:8320.radius",
+      "component": "Radio BTN",
+      "variant": "開關=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "100px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8322.13:8323.size",
+      "component": "直播類型 - 地点 Button",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "91px",
+        "height": "28px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播類型 - 地点 Button / State=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8322.13:8323.radius",
+      "component": "直播類型 - 地点 Button",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8322.13:8326.size",
+      "component": "直播類型 - 地点 Button",
+      "variant": "State=Hover",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "91px",
+        "height": "28px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播類型 - 地点 Button / State=Hover should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8322.13:8326.radius",
+      "component": "直播類型 - 地点 Button",
+      "variant": "State=Hover",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8322.13:8329.size",
+      "component": "直播類型 - 地点 Button",
+      "variant": "State=Clicked",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "91px",
+        "height": "28px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播類型 - 地点 Button / State=Clicked should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8322.13:8329.radius",
+      "component": "直播類型 - 地点 Button",
+      "variant": "State=Clicked",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8332.13:8333.size",
+      "component": "直播類型 - 演艺类型 BTN",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "66px",
+        "height": "28px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播類型 - 演艺类型 BTN / State=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8332.13:8333.radius",
+      "component": "直播類型 - 演艺类型 BTN",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8332.13:8336.size",
+      "component": "直播類型 - 演艺类型 BTN",
+      "variant": "State=Hover",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "66px",
+        "height": "28px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播類型 - 演艺类型 BTN / State=Hover should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8332.13:8336.radius",
+      "component": "直播類型 - 演艺类型 BTN",
+      "variant": "State=Hover",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8332.13:8339.size",
+      "component": "直播類型 - 演艺类型 BTN",
+      "variant": "State=Clicked",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "66px",
+        "height": "28px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播類型 - 演艺类型 BTN / State=Clicked should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8332.13:8339.radius",
+      "component": "直播類型 - 演艺类型 BTN",
+      "variant": "State=Clicked",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8351.13:8352.size",
+      "component": "添加素材 BTN",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "添加素材 BTN / State=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8351.13:8352.radius",
+      "component": "添加素材 BTN",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8351.13:8355.size",
+      "component": "添加素材 BTN",
+      "variant": "State=Hover",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "添加素材 BTN / State=Hover should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8351.13:8355.radius",
+      "component": "添加素材 BTN",
+      "variant": "State=Hover",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8351.13:8358.size",
+      "component": "添加素材 BTN",
+      "variant": "State=Clicked",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "添加素材 BTN / State=Clicked should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8351.13:8358.radius",
+      "component": "添加素材 BTN",
+      "variant": "State=Clicked",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8381.13:8382.size",
+      "component": "麥克風bar",
+      "variant": "Property 1=0%",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "141px",
+        "height": "34px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "麥克風bar / Property 1=0% should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8381.13:8390.size",
+      "component": "麥克風bar",
+      "variant": "Property 1=50%",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "141px",
+        "height": "34px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "麥克風bar / Property 1=50% should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8398.13:8399.size",
+      "component": "音量bar",
+      "variant": "Property 1=0%",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "141px",
+        "height": "34px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "音量bar / Property 1=0% should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8398.13:8407.size",
+      "component": "音量bar",
+      "variant": "Property 1=100%",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "141px",
+        "height": "34px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "音量bar / Property 1=100% should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8894.size",
+      "component": "常態資訊 Input",
+      "variant": "State=Default, 類型=文字",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "171px",
+        "height": "33px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "常態資訊 Input / State=Default, 類型=文字 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8894.radius",
+      "component": "常態資訊 Input",
+      "variant": "State=Default, 類型=文字",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8893.13:8897.size",
+      "component": "常態資訊 Input",
+      "variant": "State=Active, 類型=文字",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "171px",
+        "height": "33px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "常態資訊 Input / State=Active, 類型=文字 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8897.radius",
+      "component": "常態資訊 Input",
+      "variant": "State=Active, 類型=文字",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8893.13:8900.size",
+      "component": "常態資訊 Input",
+      "variant": "State=Fill, 類型=文字",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "171px",
+        "height": "33px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "常態資訊 Input / State=Fill, 類型=文字 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8900.radius",
+      "component": "常態資訊 Input",
+      "variant": "State=Fill, 類型=文字",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8893.13:8903.size",
+      "component": "常態資訊 Input",
+      "variant": "State=Disabled, 類型=文字",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "171px",
+        "height": "33px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "常態資訊 Input / State=Disabled, 類型=文字 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8903.radius",
+      "component": "常態資訊 Input",
+      "variant": "State=Disabled, 類型=文字",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8893.13:8906.size",
+      "component": "常態資訊 Input",
+      "variant": "State=Error, 類型=文字",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "171px",
+        "height": "49px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "常態資訊 Input / State=Error, 類型=文字 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8913.size",
+      "component": "常態資訊 Input",
+      "variant": "State=Fill, 類型=下拉式",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "171px",
+        "height": "33px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "常態資訊 Input / State=Fill, 類型=下拉式 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8913.radius",
+      "component": "常態資訊 Input",
+      "variant": "State=Fill, 類型=下拉式",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8893.13:8918.size",
+      "component": "常態資訊 Input",
+      "variant": "State=Fill, 類型=下拉式-日期",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "171px",
+        "height": "33px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "常態資訊 Input / State=Fill, 類型=下拉式-日期 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8893.13:8918.radius",
+      "component": "常態資訊 Input",
+      "variant": "State=Fill, 類型=下拉式-日期",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8927.13:8928.size",
+      "component": "主播回覆用 Input",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "278px",
+        "height": "41px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "主播回覆用 Input / State=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8927.13:8928.radius",
+      "component": "主播回覆用 Input",
+      "variant": "State=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8927.13:8938.size",
+      "component": "主播回覆用 Input",
+      "variant": "State=Active",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "278px",
+        "height": "41px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "主播回覆用 Input / State=Active should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8927.13:8938.radius",
+      "component": "主播回覆用 Input",
+      "variant": "State=Active",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8952.13:8953.size",
+      "component": "豎橫 Tab",
+      "variant": "竖屏=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "104px",
+        "height": "40px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "豎橫 Tab / 竖屏=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8952.13:8953.radius",
+      "component": "豎橫 Tab",
+      "variant": "竖屏=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8952.13:8958.size",
+      "component": "豎橫 Tab",
+      "variant": "竖屏=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "104px",
+        "height": "40px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "豎橫 Tab / 竖屏=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8952.13:8958.radius",
+      "component": "豎橫 Tab",
+      "variant": "竖屏=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:8963.13:8964.size",
+      "component": "個人展館",
+      "variant": "類型=f",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "80px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "個人展館 / 類型=f should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8963.13:8968.size",
+      "component": "個人展館",
+      "variant": "類型=d",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "80px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "個人展館 / 類型=d should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8971.13:8972.size",
+      "component": "tab",
+      "variant": "Property 1=在线用户selected",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "134px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "tab / Property 1=在线用户selected should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8971.13:8975.size",
+      "component": "tab",
+      "variant": "Property 1=在线贵族selected",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "134px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "tab / Property 1=在线贵族selected should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8971.13:8978.size",
+      "component": "tab",
+      "variant": "Property 1=在线贵族(0)",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "134px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "tab / Property 1=在线贵族(0) should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:8971.13:8980.size",
+      "component": "tab",
+      "variant": "Property 1=在线用户(0)",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "134px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "tab / Property 1=在线用户(0) should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9395.13:9396.size",
+      "component": "直播画面管理",
+      "variant": "有無資訊=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "277px",
+        "height": "234px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播画面管理 / 有無資訊=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9395.13:9396.radius",
+      "component": "直播画面管理",
+      "variant": "有無資訊=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9395.13:9402.size",
+      "component": "直播画面管理",
+      "variant": "有無資訊=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "277px",
+        "height": "234px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播画面管理 / 有無資訊=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9395.13:9402.radius",
+      "component": "直播画面管理",
+      "variant": "有無資訊=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9412.13:9413.size",
+      "component": "photo",
+      "variant": "上传封面=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "80px",
+        "height": "80px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "photo / 上传封面=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9412.13:9413.radius",
+      "component": "photo",
+      "variant": "上传封面=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9412.13:9418.size",
+      "component": "photo",
+      "variant": "上传封面=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "80px",
+        "height": "80px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "photo / 上传封面=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9412.13:9418.radius",
+      "component": "photo",
+      "variant": "上传封面=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9443.13:9444.size",
+      "component": "心愿单",
+      "variant": "Property 1=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "心愿单 / Property 1=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9443.13:9448.size",
+      "component": "心愿单",
+      "variant": "Property 1=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "心愿单 / Property 1=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9458.13:9459.size",
+      "component": "欲望之轮",
+      "variant": "Property 1=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "欲望之轮 / Property 1=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9458.13:9463.size",
+      "component": "欲望之轮",
+      "variant": "Property 1=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "欲望之轮 / Property 1=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9474.13:9475.size",
+      "component": "跳蛋",
+      "variant": "狀態=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "跳蛋 / 狀態=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9474.13:9478.size",
+      "component": "跳蛋",
+      "variant": "狀態=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "跳蛋 / 狀態=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9622.13:9623.size",
+      "component": "收费设置",
+      "variant": "Property 1=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "收费设置 / Property 1=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9622.13:9627.size",
+      "component": "收费设置",
+      "variant": "Property 1=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "45px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "收费设置 / Property 1=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9642.13:9643.size",
+      "component": "直播信息",
+      "variant": "标题=Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "277px",
+        "height": "126px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播信息 / 标题=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9642.13:9643.radius",
+      "component": "直播信息",
+      "variant": "标题=Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9642.13:9661.size",
+      "component": "直播信息",
+      "variant": "标题=Typing",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "277px",
+        "height": "126px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播信息 / 标题=Typing should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9642.13:9661.radius",
+      "component": "直播信息",
+      "variant": "标题=Typing",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9642.13:9677.size",
+      "component": "直播信息",
+      "variant": "标题=Fill",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "277px",
+        "height": "126px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "直播信息 / 标题=Fill should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9642.13:9677.radius",
+      "component": "直播信息",
+      "variant": "标题=Fill",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9711.13:9712.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=游戏设置",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=游戏设置 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9721.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=收费设置",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=收费设置 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9733.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=欲望之轮",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=欲望之轮 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9737.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=心愿单",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=心愿单 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9741.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=跳蛋设置",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=跳蛋设置 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9747.size",
+      "component": "icon",
+      "variant": "分类=我的, 功能=主播任务",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=我的, 功能=主播任务 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9752.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=本场收益",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=本场收益 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9760.size",
+      "component": "icon",
+      "variant": "分类=我的, 功能=个人展馆",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=我的, 功能=个人展馆 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9765.size",
+      "component": "icon",
+      "variant": "分类=我的, 功能=我的装扮",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=我的, 功能=我的装扮 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9771.size",
+      "component": "icon",
+      "variant": "分类=我的, 功能=粉丝团",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=我的, 功能=粉丝团 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9775.size",
+      "component": "icon",
+      "variant": "分类=我的, 功能=守护",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=我的, 功能=守护 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9779.size",
+      "component": "icon",
+      "variant": "分类=我的, 功能=排行榜",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=我的, 功能=排行榜 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9784.size",
+      "component": "icon",
+      "variant": "分类=我的, 功能=收支明细",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=我的, 功能=收支明细 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9790.size",
+      "component": "icon",
+      "variant": "分类=直播信息, 功能=地点",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播信息, 功能=地点 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9794.size",
+      "component": "icon",
+      "variant": "分类=直播信息, 功能=星星",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播信息, 功能=星星 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9796.size",
+      "component": "icon",
+      "variant": "分类=直播信息, 功能=编辑",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播信息, 功能=编辑 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9800.size",
+      "component": "icon",
+      "variant": "分类=直播信息, 功能=新增",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播信息, 功能=新增 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9804.size",
+      "component": "icon",
+      "variant": "分类=用户, 功能=铃铛",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=用户, 功能=铃铛 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9806.size",
+      "component": "icon",
+      "variant": "分类=用户, 功能=设定",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=用户, 功能=设定 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9808.size",
+      "component": "icon",
+      "variant": "分类=互动聊天, 功能=设定",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=互动聊天, 功能=设定 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9808.radius",
+      "component": "icon",
+      "variant": "分类=互动聊天, 功能=设定",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "10px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:9711.13:9811.size",
+      "component": "icon",
+      "variant": "分类=音量, 功能=输入",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=音量, 功能=输入 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9814.size",
+      "component": "icon",
+      "variant": "分类=音量, 功能=输入x",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=音量, 功能=输入x should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9820.size",
+      "component": "icon",
+      "variant": "分类=音量, 功能=输出",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=音量, 功能=输出 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9822.size",
+      "component": "icon",
+      "variant": "分类=音量, 功能=输出x",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=音量, 功能=输出x should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9828.size",
+      "component": "icon",
+      "variant": "分类=互动聊天, 功能=表情",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "12px",
+        "height": "12px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=互动聊天, 功能=表情 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9830.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=清晰度",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=清晰度 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9834.size",
+      "component": "icon",
+      "variant": "分类=其他, 功能=专属客服",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=其他, 功能=专属客服 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9838.size",
+      "component": "icon",
+      "variant": "分类=其他, 功能=直播活动",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=其他, 功能=直播活动 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9842.size",
+      "component": "icon",
+      "variant": "分类=其他, 功能=推广赚钱",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=其他, 功能=推广赚钱 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9846.size",
+      "component": "icon",
+      "variant": "分类=其他, 功能=收益提现",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=其他, 功能=收益提现 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9851.size",
+      "component": "icon",
+      "variant": "分类=其他, 功能=支付密码",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=其他, 功能=支付密码 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9853.size",
+      "component": "icon",
+      "variant": "分类=素材, 功能=更多",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "17px",
+        "height": "17px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=素材, 功能=更多 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9858.size",
+      "component": "icon",
+      "variant": "分类=其他, 功能=成功設置支付密碼",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=其他, 功能=成功設置支付密碼 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9860.size",
+      "component": "icon",
+      "variant": "分类=other, 功能=arrow",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "12px",
+        "height": "12px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=other, 功能=arrow should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9862.size",
+      "component": "icon",
+      "variant": "分类=直播工具, 功能=游戏投注",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "26px",
+        "height": "26px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=直播工具, 功能=游戏投注 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9879.size",
+      "component": "icon",
+      "variant": "分类=專屬客服, 功能=下載",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=專屬客服, 功能=下載 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9882.size",
+      "component": "icon",
+      "variant": "分类=專屬客服, 功能=音量2",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=專屬客服, 功能=音量2 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9884.size",
+      "component": "icon",
+      "variant": "分类=專屬客服, 功能=暫停",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=專屬客服, 功能=暫停 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9711.13:9886.size",
+      "component": "icon",
+      "variant": "分类=專屬客服, 功能=播放",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "icon / 分类=專屬客服, 功能=播放 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9889.size",
+      "component": "素材icon",
+      "variant": "类型=电脑摄像头",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=电脑摄像头 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9896.size",
+      "component": "素材icon",
+      "variant": "类型=七星百家乐",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=七星百家乐 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9899.size",
+      "component": "素材icon",
+      "variant": "类型=七星体育",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=七星体育 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9901.size",
+      "component": "素材icon",
+      "variant": "类型=多屏助手",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=多屏助手 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9905.size",
+      "component": "素材icon",
+      "variant": "类型=图片",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=图片 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9910.size",
+      "component": "素材icon",
+      "variant": "类型=视频",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=视频 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9917.size",
+      "component": "素材icon",
+      "variant": "类型=窗口",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=窗口 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9924.size",
+      "component": "素材icon",
+      "variant": "类型=截屏",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=截屏 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9935.size",
+      "component": "素材icon",
+      "variant": "类型=文字",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=文字 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9888.13:9940.size",
+      "component": "素材icon",
+      "variant": "类型=萤幕",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "素材icon / 类型=萤幕 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9946.13:9947.size",
+      "component": "开播信息_icon",
+      "variant": "Property 1=游戏",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "开播信息_icon / Property 1=游戏 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9946.13:9958.size",
+      "component": "开播信息_icon",
+      "variant": "Property 1=星秀",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "开播信息_icon / Property 1=星秀 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9946.13:9961.size",
+      "component": "开播信息_icon",
+      "variant": "Property 1=颜值",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "开播信息_icon / Property 1=颜值 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9946.13:9966.size",
+      "component": "开播信息_icon",
+      "variant": "Property 1=女神",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "开播信息_icon / Property 1=女神 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9946.13:9970.size",
+      "component": "开播信息_icon",
+      "variant": "Property 1=交友",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "开播信息_icon / Property 1=交友 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9946.13:9976.size",
+      "component": "开播信息_icon",
+      "variant": "Property 1=音乐",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "开播信息_icon / Property 1=音乐 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9946.13:9982.size",
+      "component": "开播信息_icon",
+      "variant": "Property 1=舞蹈",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "20px",
+        "height": "20px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "开播信息_icon / Property 1=舞蹈 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9993.13:9994.size",
+      "component": "eye",
+      "variant": "顯示=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "17px",
+        "height": "17px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "eye / 顯示=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:9993.13:9998.size",
+      "component": "eye",
+      "variant": "顯示=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "17px",
+        "height": "17px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "eye / 顯示=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10520.size",
+      "component": "上传的素材",
+      "variant": "状态=电脑摄像头, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=电脑摄像头, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10520.radius",
+      "component": "上传的素材",
+      "variant": "状态=电脑摄像头, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10525.size",
+      "component": "上传的素材",
+      "variant": "状态=电脑摄像头, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=电脑摄像头, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10525.radius",
+      "component": "上传的素材",
+      "variant": "状态=电脑摄像头, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10530.size",
+      "component": "上传的素材",
+      "variant": "状态=手机設攝像頭, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=手机設攝像頭, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10530.radius",
+      "component": "上传的素材",
+      "variant": "状态=手机設攝像頭, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10535.size",
+      "component": "上传的素材",
+      "variant": "状态=手机录屏, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=手机录屏, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10535.radius",
+      "component": "上传的素材",
+      "variant": "状态=手机录屏, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10540.size",
+      "component": "上传的素材",
+      "variant": "状态=七星百家乐, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=七星百家乐, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10540.radius",
+      "component": "上传的素材",
+      "variant": "状态=七星百家乐, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10545.size",
+      "component": "上传的素材",
+      "variant": "状态=七星百家乐, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=七星百家乐, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10545.radius",
+      "component": "上传的素材",
+      "variant": "状态=七星百家乐, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10550.size",
+      "component": "上传的素材",
+      "variant": "状态=影片, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=影片, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10550.radius",
+      "component": "上传的素材",
+      "variant": "状态=影片, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10555.size",
+      "component": "上传的素材",
+      "variant": "状态=影片, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=影片, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10555.radius",
+      "component": "上传的素材",
+      "variant": "状态=影片, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10560.size",
+      "component": "上传的素材",
+      "variant": "状态=七星体育, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=七星体育, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10560.radius",
+      "component": "上传的素材",
+      "variant": "状态=七星体育, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10565.size",
+      "component": "上传的素材",
+      "variant": "状态=七星体育, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=七星体育, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10565.radius",
+      "component": "上传的素材",
+      "variant": "状态=七星体育, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10570.size",
+      "component": "上传的素材",
+      "variant": "状态=视窗, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=视窗, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10570.radius",
+      "component": "上传的素材",
+      "variant": "状态=视窗, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10575.size",
+      "component": "上传的素材",
+      "variant": "状态=视窗, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=视窗, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10575.radius",
+      "component": "上传的素材",
+      "variant": "状态=视窗, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10580.size",
+      "component": "上传的素材",
+      "variant": "状态=文字, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=文字, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10580.radius",
+      "component": "上传的素材",
+      "variant": "状态=文字, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10585.size",
+      "component": "上传的素材",
+      "variant": "状态=文字, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=文字, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10585.radius",
+      "component": "上传的素材",
+      "variant": "状态=文字, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10590.size",
+      "component": "上传的素材",
+      "variant": "状态=圖片, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=圖片, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10590.radius",
+      "component": "上传的素材",
+      "variant": "状态=圖片, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10595.size",
+      "component": "上传的素材",
+      "variant": "状态=圖片, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=圖片, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10595.radius",
+      "component": "上传的素材",
+      "variant": "状态=圖片, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10600.size",
+      "component": "上传的素材",
+      "variant": "状态=手機录屏, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=手機录屏, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10600.radius",
+      "component": "上传的素材",
+      "variant": "状态=手機录屏, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10605.size",
+      "component": "上传的素材",
+      "variant": "状态=手機录屏, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=手機录屏, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10605.radius",
+      "component": "上传的素材",
+      "variant": "状态=手機录屏, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10610.size",
+      "component": "上传的素材",
+      "variant": "状态=萤幕, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=萤幕, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10610.radius",
+      "component": "上传的素材",
+      "variant": "状态=萤幕, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10615.size",
+      "component": "上传的素材",
+      "variant": "状态=萤幕, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=萤幕, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10615.radius",
+      "component": "上传的素材",
+      "variant": "状态=萤幕, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10620.size",
+      "component": "上传的素材",
+      "variant": "状态=截屏, 選取=on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=截屏, 選取=on should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10620.radius",
+      "component": "上传的素材",
+      "variant": "状态=截屏, 選取=on",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10519.13:10625.size",
+      "component": "上传的素材",
+      "variant": "状态=截屏, 選取=off",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "259px",
+        "height": "36px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "上传的素材 / 状态=截屏, 選取=off should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10519.13:10625.radius",
+      "component": "上传的素材",
+      "variant": "状态=截屏, 選取=off",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10631.13:10632.size",
+      "component": "传影片",
+      "variant": "Property 1=客服",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "236px",
+        "height": "136px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "传影片 / Property 1=客服 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10631.13:10639.size",
+      "component": "传影片",
+      "variant": "Property 1=用户",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "236px",
+        "height": "136px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "传影片 / Property 1=用户 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10631.13:10645.size",
+      "component": "传影片",
+      "variant": "Property 1=客服 2",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "136px",
+        "height": "236px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "传影片 / Property 1=客服 2 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10631.13:10651.size",
+      "component": "传影片",
+      "variant": "Property 1=用户 2",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "136px",
+        "height": "236px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "传影片 / Property 1=用户 2 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10660.size",
+      "component": "客服tag",
+      "variant": "Property 1=影片时间",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "51px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=影片时间 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10660.radius",
+      "component": "客服tag",
+      "variant": "Property 1=影片时间",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10659.13:10666.size",
+      "component": "客服tag",
+      "variant": "Property 1=处理中",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "87px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=处理中 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10666.radius",
+      "component": "客服tag",
+      "variant": "Property 1=处理中",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10659.13:10670.size",
+      "component": "客服tag",
+      "variant": "Property 1=档案大小",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "81px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=档案大小 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10670.radius",
+      "component": "客服tag",
+      "variant": "Property 1=档案大小",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10659.13:10674.size",
+      "component": "客服tag",
+      "variant": "Property 1=上传失败",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "66px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=上传失败 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10674.radius",
+      "component": "客服tag",
+      "variant": "Property 1=上传失败",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10659.13:10686.size",
+      "component": "客服tag",
+      "variant": "Property 1=等待中",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=等待中 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10686.radius",
+      "component": "客服tag",
+      "variant": "Property 1=等待中",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10659.13:10690.size",
+      "component": "客服tag",
+      "variant": "Property 1=发送中",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=发送中 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10690.radius",
+      "component": "客服tag",
+      "variant": "Property 1=发送中",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10659.13:10694.size",
+      "component": "客服tag",
+      "variant": "Property 1=初始化",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "50px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=初始化 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10694.radius",
+      "component": "客服tag",
+      "variant": "Property 1=初始化",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10659.13:10698.size",
+      "component": "客服tag",
+      "variant": "Property 1=上传时间",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "56px",
+        "height": "18px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "客服tag / Property 1=上传时间 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10659.13:10698.radius",
+      "component": "客服tag",
+      "variant": "Property 1=上传时间",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "999px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "13:10703.13:10704.size",
+      "component": "影像状态",
+      "variant": "Property 1=上传",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "30px",
+        "height": "30px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "影像状态 / Property 1=上传 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10703.13:10708.size",
+      "component": "影像状态",
+      "variant": "Property 1=读取",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "30px",
+        "height": "30px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "影像状态 / Property 1=读取 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10703.13:10710.size",
+      "component": "影像状态",
+      "variant": "Property 1=播放",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "30px",
+        "height": "30px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "影像状态 / Property 1=播放 should keep its documented base size unless product layout intentionally overrides it.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "13:10703.13:10710.radius",
+      "component": "影像状态",
+      "variant": "Property 1=播放",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "40px",
+      "expectedToken": null,
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Corner radius should match component spec.",
+      "autofixSuggestion": "Use the mapped radius token."
+    }
+  ]
+}

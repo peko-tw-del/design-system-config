@@ -1,0 +1,4725 @@
+{
+  "$metadata": {
+    "product": "直播助手 PC 端",
+    "generatedAt": "2026-06-29",
+    "sourceNode": "13:8209",
+    "componentSetCount": 36
+  },
+  "componentSpecTemplate": [
+    "purpose",
+    "anatomy",
+    "variants",
+    "states",
+    "layout",
+    "typography",
+    "color",
+    "interaction",
+    "accessibility",
+    "tokenMapping",
+    "rawExceptions",
+    "aiCheckRules"
+  ],
+  "componentSets": [
+    {
+      "name": "Primary Button - Large",
+      "nodeId": "13:8212",
+      "sourcePath": "直播助手PC端_UI kit / Button / Primary Button - Large",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "Type": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Default",
+            "Active",
+            "Disabled",
+            "Hover"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Type",
+          "default": "Default",
+          "options": [
+            "Default",
+            "Active",
+            "Disabled",
+            "Hover"
+          ]
+        }
+      ],
+      "variantCount": 4,
+      "variants": [
+        {
+          "name": "Type=Default",
+          "nodeId": "13:8213",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        },
+        {
+          "name": "Type=Hover",
+          "nodeId": "13:8215",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        },
+        {
+          "name": "Type=Active",
+          "nodeId": "13:8217",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        },
+        {
+          "name": "Type=Disabled",
+          "nodeId": "13:8219",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "350px"
+        ],
+        "heights": [
+          "48px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.body.lg"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "Secondary Button - Large",
+      "nodeId": "13:8222",
+      "sourcePath": "直播助手PC端_UI kit / Button / Secondary Button - Large",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "Type": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Disabled",
+            "Default",
+            "Hover",
+            "Active"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Type",
+          "default": "Default",
+          "options": [
+            "Disabled",
+            "Default",
+            "Hover",
+            "Active"
+          ]
+        }
+      ],
+      "variantCount": 4,
+      "variants": [
+        {
+          "name": "Type=Default",
+          "nodeId": "13:8223",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        },
+        {
+          "name": "Type=Active",
+          "nodeId": "13:8225",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        },
+        {
+          "name": "Type=Hover",
+          "nodeId": "13:8227",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        },
+        {
+          "name": "Type=Disabled",
+          "nodeId": "13:8229",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "350px"
+        ],
+        "heights": [
+          "48px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.body.lg"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "Primary Button - Medium",
+      "nodeId": "13:8231",
+      "sourcePath": "直播助手PC端_UI kit / Button / Primary Button - Medium",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "狀態": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "Clicked",
+            "Disabled",
+            "Hover",
+            "default",
+            "结束直播"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "狀態",
+          "default": "default",
+          "options": [
+            "Clicked",
+            "Disabled",
+            "Hover",
+            "default",
+            "结束直播"
+          ]
+        }
+      ],
+      "variantCount": 5,
+      "variants": [
+        {
+          "name": "狀態=default",
+          "nodeId": "13:8232",
+          "size": {
+            "width": "88px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "16px",
+            "paddingRight": "16px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "狀態=Hover",
+          "nodeId": "13:8234",
+          "size": {
+            "width": "88px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "16px",
+            "paddingRight": "16px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "狀態=Clicked",
+          "nodeId": "13:8236",
+          "size": {
+            "width": "88px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "16px",
+            "paddingRight": "16px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "狀態=Disabled",
+          "nodeId": "13:8238",
+          "size": {
+            "width": "88px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "16px",
+            "paddingRight": "16px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "狀態=结束直播",
+          "nodeId": "13:8240",
+          "size": {
+            "width": "88px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "16px",
+            "paddingRight": "16px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "88px"
+        ],
+        "heights": [
+          "31px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.label.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "Button - Small",
+      "nodeId": "13:8242",
+      "sourcePath": "直播助手PC端_UI kit / Button / Button - Small",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "def",
+          "variantOptions": [
+            "def",
+            "hov",
+            "active"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "def",
+          "options": [
+            "def",
+            "hov",
+            "active"
+          ]
+        }
+      ],
+      "variantCount": 3,
+      "variants": [
+        {
+          "name": "Property 1=def",
+          "nodeId": "13:8243",
+          "size": {
+            "width": "48px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "Property 1=hov",
+          "nodeId": "13:8245",
+          "size": {
+            "width": "48px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "Property 1=active",
+          "nodeId": "13:8247",
+          "size": {
+            "width": "48px",
+            "height": "31px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "10px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "48px"
+        ],
+        "heights": [
+          "31px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.label.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "登入按鈕 BTN",
+      "nodeId": "13:8254",
+      "sourcePath": "直播助手PC端_UI kit / Button / 登入按鈕 BTN",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "手机号登录",
+          "variantOptions": [
+            "手机号登录",
+            "扫码登录"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "手机号登录",
+          "options": [
+            "手机号登录",
+            "扫码登录"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=手机号登录",
+          "nodeId": "13:8255",
+          "size": {
+            "width": "218px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "4px",
+            "paddingRight": "4px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "4px"
+          }
+        },
+        {
+          "name": "Property 1=扫码登录",
+          "nodeId": "13:8260",
+          "size": {
+            "width": "218px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "4px",
+            "paddingRight": "4px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "4px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "218px"
+        ],
+        "heights": [
+          "36px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "Game BTN",
+      "nodeId": "13:8269",
+      "sourcePath": "直播助手PC端_UI kit / Button / Game BTN",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "狀態": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Clicked",
+            "Default",
+            "Hover",
+            "Selected"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "狀態",
+          "default": "Default",
+          "options": [
+            "Clicked",
+            "Default",
+            "Hover",
+            "Selected"
+          ]
+        }
+      ],
+      "variantCount": 4,
+      "variants": [
+        {
+          "name": "狀態=Default",
+          "nodeId": "13:8270",
+          "size": {
+            "width": "128px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "狀態=Hover",
+          "nodeId": "13:8276",
+          "size": {
+            "width": "128px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "狀態=Clicked",
+          "nodeId": "13:8280",
+          "size": {
+            "width": "128px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "狀態=Selected",
+          "nodeId": "13:8284",
+          "size": {
+            "width": "128px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "128px"
+        ],
+        "heights": [
+          "36px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "Switch BTN",
+      "nodeId": "13:8288",
+      "sourcePath": "直播助手PC端_UI kit / Button / Switch BTN",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "開關": {
+          "type": "VARIANT",
+          "defaultValue": "on",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "開關",
+          "default": "on",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "開關=on",
+          "nodeId": "13:8289",
+          "size": {
+            "width": "100px",
+            "height": "42px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "6px",
+            "paddingBottom": "6px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "開關=off",
+          "nodeId": "13:8295",
+          "size": {
+            "width": "100px",
+            "height": "42px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "6px",
+            "paddingBottom": "6px",
+            "itemSpacing": "10px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "100px"
+        ],
+        "heights": [
+          "42px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "button / 主播任務",
+      "nodeId": "13:8301",
+      "sourcePath": "直播助手PC端_UI kit / Button / button / 主播任務",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "未完成",
+          "variantOptions": [
+            "已完成",
+            "未完成"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "未完成",
+          "options": [
+            "已完成",
+            "未完成"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=未完成",
+          "nodeId": "13:8302",
+          "size": {
+            "width": "60px",
+            "height": "25px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "Property 1=已完成",
+          "nodeId": "13:8304",
+          "size": {
+            "width": "60px",
+            "height": "25px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "10px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "60px"
+        ],
+        "heights": [
+          "25px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.label.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "Switch",
+      "nodeId": "13:8306",
+      "sourcePath": "直播助手PC端_UI kit / Button / Switch",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "track",
+        "thumb",
+        "label"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "on",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "on",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=on",
+          "nodeId": "13:8307",
+          "size": {
+            "width": "34px",
+            "height": "18px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "100px",
+          "spacing": {
+            "paddingLeft": "1px",
+            "paddingRight": "1px",
+            "paddingTop": "1px",
+            "paddingBottom": "1px"
+          }
+        },
+        {
+          "name": "Property 1=off",
+          "nodeId": "13:8309",
+          "size": {
+            "width": "34px",
+            "height": "18px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "100px",
+          "spacing": {
+            "paddingLeft": "1px",
+            "paddingRight": "1px",
+            "paddingTop": "1px",
+            "paddingBottom": "1px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "34px"
+        ],
+        "heights": [
+          "18px"
+        ],
+        "radii": [
+          "100px"
+        ],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "card_btn",
+      "nodeId": "13:8311",
+      "sourcePath": "直播助手PC端_UI kit / Button / card_btn",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "佩戴",
+          "variantOptions": [
+            "取下",
+            "佩戴"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "佩戴",
+          "options": [
+            "取下",
+            "佩戴"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=佩戴",
+          "nodeId": "13:8312",
+          "size": {
+            "width": "48px",
+            "height": "17px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        },
+        {
+          "name": "Property 1=取下",
+          "nodeId": "13:8314",
+          "size": {
+            "width": "48px",
+            "height": "17px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "48px"
+        ],
+        "heights": [
+          "17px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "Radio BTN",
+      "nodeId": "13:8316",
+      "sourcePath": "直播助手PC端_UI kit / Button / Radio BTN",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "開關": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "開關",
+          "default": "off",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "開關=on",
+          "nodeId": "13:8317",
+          "size": {
+            "width": "14px",
+            "height": "14px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "開關=off",
+          "nodeId": "13:8320",
+          "size": {
+            "width": "14px",
+            "height": "14px"
+          },
+          "layoutMode": null,
+          "radius": "100px",
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "14px"
+        ],
+        "heights": [
+          "14px"
+        ],
+        "radii": [
+          "100px"
+        ],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "直播類型 - 地点 Button",
+      "nodeId": "13:8322",
+      "sourcePath": "直播助手PC端_UI kit / Button / 直播類型 - 地点 Button",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "State": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Clicked"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "State",
+          "default": "Default",
+          "options": [
+            "Default",
+            "Hover",
+            "Clicked"
+          ]
+        }
+      ],
+      "variantCount": 3,
+      "variants": [
+        {
+          "name": "State=Default",
+          "nodeId": "13:8323",
+          "size": {
+            "width": "91px",
+            "height": "28px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Hover",
+          "nodeId": "13:8326",
+          "size": {
+            "width": "91px",
+            "height": "28px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Clicked",
+          "nodeId": "13:8329",
+          "size": {
+            "width": "91px",
+            "height": "28px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "91px"
+        ],
+        "heights": [
+          "28px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "直播類型 - 演艺类型 BTN",
+      "nodeId": "13:8332",
+      "sourcePath": "直播助手PC端_UI kit / Button / 直播類型 - 演艺类型 BTN",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "State": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Clicked"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "State",
+          "default": "Default",
+          "options": [
+            "Default",
+            "Hover",
+            "Clicked"
+          ]
+        }
+      ],
+      "variantCount": 3,
+      "variants": [
+        {
+          "name": "State=Default",
+          "nodeId": "13:8333",
+          "size": {
+            "width": "66px",
+            "height": "28px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Hover",
+          "nodeId": "13:8336",
+          "size": {
+            "width": "66px",
+            "height": "28px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Clicked",
+          "nodeId": "13:8339",
+          "size": {
+            "width": "66px",
+            "height": "28px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "66px"
+        ],
+        "heights": [
+          "28px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "添加素材 BTN",
+      "nodeId": "13:8351",
+      "sourcePath": "直播助手PC端_UI kit / Button / 添加素材 BTN",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "label",
+        "optionalIcon"
+      ],
+      "variantProperties": {
+        "State": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Clicked"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "State",
+          "default": "Default",
+          "options": [
+            "Default",
+            "Hover",
+            "Clicked"
+          ]
+        }
+      ],
+      "variantCount": 3,
+      "variants": [
+        {
+          "name": "State=Default",
+          "nodeId": "13:8352",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "State=Hover",
+          "nodeId": "13:8355",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "State=Clicked",
+          "nodeId": "13:8358",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "259px"
+        ],
+        "heights": [
+          "36px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "麥克風bar",
+      "nodeId": "13:8381",
+      "sourcePath": "直播助手PC端_UI kit / 共用 / 麥克風bar",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "0%",
+          "variantOptions": [
+            "0%",
+            "50%"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "0%",
+          "options": [
+            "0%",
+            "50%"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=0%",
+          "nodeId": "13:8382",
+          "size": {
+            "width": "141px",
+            "height": "34px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {
+            "paddingTop": "7px",
+            "paddingBottom": "7px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "Property 1=50%",
+          "nodeId": "13:8390",
+          "size": {
+            "width": "141px",
+            "height": "34px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {
+            "paddingTop": "7px",
+            "paddingBottom": "7px",
+            "itemSpacing": "8px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "141px"
+        ],
+        "heights": [
+          "34px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.en.micro"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "音量bar",
+      "nodeId": "13:8398",
+      "sourcePath": "直播助手PC端_UI kit / 共用 / 音量bar",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "0%",
+          "variantOptions": [
+            "0%",
+            "100%"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "0%",
+          "options": [
+            "0%",
+            "100%"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=0%",
+          "nodeId": "13:8399",
+          "size": {
+            "width": "141px",
+            "height": "34px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {
+            "paddingTop": "7px",
+            "paddingBottom": "7px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "Property 1=100%",
+          "nodeId": "13:8407",
+          "size": {
+            "width": "141px",
+            "height": "34px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {
+            "paddingTop": "7px",
+            "paddingBottom": "7px",
+            "itemSpacing": "8px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "141px"
+        ],
+        "heights": [
+          "34px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.en.micro"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "常態資訊 Input",
+      "nodeId": "13:8893",
+      "sourcePath": "直播助手PC端_UI kit / Input / 常態資訊 Input",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "field",
+        "placeholder",
+        "value",
+        "helperText",
+        "suffixIcon"
+      ],
+      "variantProperties": {
+        "字數限制#2081:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "State": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Default",
+            "Active",
+            "Fill",
+            "Disabled",
+            "Error"
+          ]
+        },
+        "類型": {
+          "type": "VARIANT",
+          "defaultValue": "文字",
+          "variantOptions": [
+            "文字",
+            "下拉式",
+            "下拉式-日期"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "State",
+          "default": "Default",
+          "options": [
+            "Default",
+            "Active",
+            "Fill",
+            "Disabled",
+            "Error"
+          ]
+        },
+        {
+          "property": "類型",
+          "default": "文字",
+          "options": [
+            "文字",
+            "下拉式",
+            "下拉式-日期"
+          ]
+        }
+      ],
+      "variantCount": 7,
+      "variants": [
+        {
+          "name": "State=Default, 類型=文字",
+          "nodeId": "13:8894",
+          "size": {
+            "width": "171px",
+            "height": "33px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "10px",
+            "paddingRight": "10px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "6px"
+          }
+        },
+        {
+          "name": "State=Active, 類型=文字",
+          "nodeId": "13:8897",
+          "size": {
+            "width": "171px",
+            "height": "33px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "10px",
+            "paddingRight": "10px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px"
+          }
+        },
+        {
+          "name": "State=Fill, 類型=文字",
+          "nodeId": "13:8900",
+          "size": {
+            "width": "171px",
+            "height": "33px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "10px",
+            "paddingRight": "10px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Disabled, 類型=文字",
+          "nodeId": "13:8903",
+          "size": {
+            "width": "171px",
+            "height": "33px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "10px",
+            "paddingRight": "10px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Error, 類型=文字",
+          "nodeId": "13:8906",
+          "size": {
+            "width": "171px",
+            "height": "49px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Fill, 類型=下拉式",
+          "nodeId": "13:8913",
+          "size": {
+            "width": "171px",
+            "height": "33px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "10px",
+            "paddingRight": "10px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "State=Fill, 類型=下拉式-日期",
+          "nodeId": "13:8918",
+          "size": {
+            "width": "171px",
+            "height": "33px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "10px",
+            "paddingRight": "10px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "171px"
+        ],
+        "heights": [
+          "33px",
+          "49px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "主播回覆用 Input",
+      "nodeId": "13:8927",
+      "sourcePath": "直播助手PC端_UI kit / Input / 主播回覆用 Input",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "field",
+        "placeholder",
+        "value",
+        "helperText",
+        "suffixIcon"
+      ],
+      "variantProperties": {
+        "State": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Active",
+            "Default"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "State",
+          "default": "Default",
+          "options": [
+            "Active",
+            "Default"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "State=Default",
+          "nodeId": "13:8928",
+          "size": {
+            "width": "278px",
+            "height": "41px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        },
+        {
+          "name": "State=Active",
+          "nodeId": "13:8938",
+          "size": {
+            "width": "278px",
+            "height": "41px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "278px"
+        ],
+        "heights": [
+          "41px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.label.sm",
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "豎橫 Tab",
+      "nodeId": "13:8952",
+      "sourcePath": "直播助手PC端_UI kit / Tab / 豎橫 Tab",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "tabContainer",
+        "tabItem",
+        "activeIndicator",
+        "label"
+      ],
+      "variantProperties": {
+        "竖屏": {
+          "type": "VARIANT",
+          "defaultValue": "on",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "竖屏",
+          "default": "on",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "竖屏=on",
+          "nodeId": "13:8953",
+          "size": {
+            "width": "104px",
+            "height": "40px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "6px",
+            "paddingBottom": "6px",
+            "itemSpacing": "4px"
+          }
+        },
+        {
+          "name": "竖屏=off",
+          "nodeId": "13:8958",
+          "size": {
+            "width": "104px",
+            "height": "40px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "6px",
+            "paddingBottom": "6px",
+            "itemSpacing": "4px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "104px"
+        ],
+        "heights": [
+          "40px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "個人展館",
+      "nodeId": "13:8963",
+      "sourcePath": "直播助手PC端_UI kit / Tab / 個人展館",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "類型": {
+          "type": "VARIANT",
+          "defaultValue": "f",
+          "variantOptions": [
+            "d",
+            "f"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "類型",
+          "default": "f",
+          "options": [
+            "d",
+            "f"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "類型=f",
+          "nodeId": "13:8964",
+          "size": {
+            "width": "80px",
+            "height": "26px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "類型=d",
+          "nodeId": "13:8968",
+          "size": {
+            "width": "80px",
+            "height": "26px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "80px"
+        ],
+        "heights": [
+          "26px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "tab",
+      "nodeId": "13:8971",
+      "sourcePath": "直播助手PC端_UI kit / Tab / tab",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "tabContainer",
+        "tabItem",
+        "activeIndicator",
+        "label"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "在线用户selected",
+          "variantOptions": [
+            "在线贵族(0)",
+            "在线用户(0)",
+            "在线用户selected",
+            "在线贵族selected"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "在线用户selected",
+          "options": [
+            "在线贵族(0)",
+            "在线用户(0)",
+            "在线用户selected",
+            "在线贵族selected"
+          ]
+        }
+      ],
+      "variantCount": 4,
+      "variants": [
+        {
+          "name": "Property 1=在线用户selected",
+          "nodeId": "13:8972",
+          "size": {
+            "width": "134px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=在线贵族selected",
+          "nodeId": "13:8975",
+          "size": {
+            "width": "134px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=在线贵族(0)",
+          "nodeId": "13:8978",
+          "size": {
+            "width": "134px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=在线用户(0)",
+          "nodeId": "13:8980",
+          "size": {
+            "width": "134px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "134px"
+        ],
+        "heights": [
+          "26px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.label.md",
+          "typography.body.md"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "直播画面管理",
+      "nodeId": "13:9395",
+      "sourcePath": "直播助手PC端_UI kit / sidebar / 直播画面管理",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "mediaPreview",
+        "materialSlots",
+        "statusInfo"
+      ],
+      "variantProperties": {
+        "素材1#1821:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "素材2#1821:3": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "素材3#1821:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "有無資訊": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "有無資訊",
+          "default": "off",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "有無資訊=off",
+          "nodeId": "13:9396",
+          "size": {
+            "width": "277px",
+            "height": "234px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "12px"
+          }
+        },
+        {
+          "name": "有無資訊=on",
+          "nodeId": "13:9402",
+          "size": {
+            "width": "277px",
+            "height": "234px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "12px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "277px"
+        ],
+        "heights": [
+          "234px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.body.md",
+          "typography.en.body"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "photo",
+      "nodeId": "13:9412",
+      "sourcePath": "直播助手PC端_UI kit / sidebar / photo",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "上传封面": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "上传封面",
+          "default": "off",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "上传封面=off",
+          "nodeId": "13:9413",
+          "size": {
+            "width": "80px",
+            "height": "80px"
+          },
+          "layoutMode": null,
+          "radius": "8px",
+          "spacing": {}
+        },
+        {
+          "name": "上传封面=on",
+          "nodeId": "13:9418",
+          "size": {
+            "width": "80px",
+            "height": "80px"
+          },
+          "layoutMode": null,
+          "radius": "8px",
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "80px"
+        ],
+        "heights": [
+          "80px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.sm",
+          "typography.caption"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "心愿单",
+      "nodeId": "13:9443",
+      "sourcePath": "直播助手PC端_UI kit / sidebar / 心愿单",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "off",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=off",
+          "nodeId": "13:9444",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "Property 1=on",
+          "nodeId": "13:9448",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "50px"
+        ],
+        "heights": [
+          "45px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "欲望之轮",
+      "nodeId": "13:9458",
+      "sourcePath": "直播助手PC端_UI kit / sidebar / 欲望之轮",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "off",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=off",
+          "nodeId": "13:9459",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "Property 1=on",
+          "nodeId": "13:9463",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "50px"
+        ],
+        "heights": [
+          "45px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "跳蛋",
+      "nodeId": "13:9474",
+      "sourcePath": "直播助手PC端_UI kit / sidebar / 跳蛋",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "狀態": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "狀態",
+          "default": "off",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "狀態=off",
+          "nodeId": "13:9475",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "狀態=on",
+          "nodeId": "13:9478",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "50px"
+        ],
+        "heights": [
+          "45px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "收费设置",
+      "nodeId": "13:9622",
+      "sourcePath": "直播助手PC端_UI kit / sidebar / 收费设置",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "on",
+            "off"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "off",
+          "options": [
+            "on",
+            "off"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Property 1=off",
+          "nodeId": "13:9623",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "Property 1=on",
+          "nodeId": "13:9627",
+          "size": {
+            "width": "50px",
+            "height": "45px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "itemSpacing": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "50px"
+        ],
+        "heights": [
+          "45px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "直播信息",
+      "nodeId": "13:9642",
+      "sourcePath": "直播助手PC端_UI kit / sidebar / 直播信息",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "coverUpload",
+        "titleField",
+        "editOrSaveAction",
+        "tagRow",
+        "liveTypeTag"
+      ],
+      "variantProperties": {
+        "标题": {
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "variantOptions": [
+            "Default",
+            "Typing",
+            "Fill"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "标题",
+          "default": "Default",
+          "options": [
+            "Default",
+            "Typing",
+            "Fill"
+          ]
+        }
+      ],
+      "variantCount": 3,
+      "variants": [
+        {
+          "name": "标题=Default",
+          "nodeId": "13:9643",
+          "size": {
+            "width": "277px",
+            "height": "126px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "标题=Typing",
+          "nodeId": "13:9661",
+          "size": {
+            "width": "277px",
+            "height": "126px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "标题=Fill",
+          "nodeId": "13:9677",
+          "size": {
+            "width": "277px",
+            "height": "126px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "277px"
+        ],
+        "heights": [
+          "126px"
+        ],
+        "radii": [
+          "12px"
+        ],
+        "commonTypography": [
+          "typography.body.md",
+          "typography.body.sm",
+          "typography.label.sm"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "icon",
+      "nodeId": "13:9711",
+      "sourcePath": "直播助手PC端_UI kit / icon / icon",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "vector",
+        "boundingBox"
+      ],
+      "variantProperties": {
+        "分类": {
+          "type": "VARIANT",
+          "defaultValue": "直播工具",
+          "variantOptions": [
+            "互动聊天",
+            "我的",
+            "用户",
+            "直播信息",
+            "直播工具",
+            "音量",
+            "其他",
+            "素材",
+            "other",
+            "專屬客服"
+          ]
+        },
+        "功能": {
+          "type": "VARIANT",
+          "defaultValue": "游戏设置",
+          "variantOptions": [
+            "个人展馆",
+            "主播任务",
+            "守护",
+            "心愿单",
+            "我的装扮",
+            "排行榜",
+            "收支明细",
+            "收费设置",
+            "星星",
+            "本场收益",
+            "欲望之轮",
+            "游戏设置",
+            "粉丝团",
+            "编辑",
+            "表情",
+            "设定",
+            "跳蛋设置",
+            "输入",
+            "输出",
+            "铃铛",
+            "新增",
+            "清晰度",
+            "专属客服",
+            "推广赚钱",
+            "收益提现",
+            "支付密码",
+            "直播活动",
+            "更多",
+            "成功設置支付密碼",
+            "arrow",
+            "游戏投注",
+            "暫停",
+            "音量2",
+            "下載",
+            "播放",
+            "输出x",
+            "输入x",
+            "地点"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "分类",
+          "default": "直播工具",
+          "options": [
+            "互动聊天",
+            "我的",
+            "用户",
+            "直播信息",
+            "直播工具",
+            "音量",
+            "其他",
+            "素材",
+            "other",
+            "專屬客服"
+          ]
+        },
+        {
+          "property": "功能",
+          "default": "游戏设置",
+          "options": [
+            "个人展馆",
+            "主播任务",
+            "守护",
+            "心愿单",
+            "我的装扮",
+            "排行榜",
+            "收支明细",
+            "收费设置",
+            "星星",
+            "本场收益",
+            "欲望之轮",
+            "游戏设置",
+            "粉丝团",
+            "编辑",
+            "表情",
+            "设定",
+            "跳蛋设置",
+            "输入",
+            "输出",
+            "铃铛",
+            "新增",
+            "清晰度",
+            "专属客服",
+            "推广赚钱",
+            "收益提现",
+            "支付密码",
+            "直播活动",
+            "更多",
+            "成功設置支付密碼",
+            "arrow",
+            "游戏投注",
+            "暫停",
+            "音量2",
+            "下載",
+            "播放",
+            "输出x",
+            "输入x",
+            "地点"
+          ]
+        }
+      ],
+      "variantCount": 39,
+      "variants": [
+        {
+          "name": "分类=直播工具, 功能=游戏设置",
+          "nodeId": "13:9712",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播工具, 功能=收费设置",
+          "nodeId": "13:9721",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播工具, 功能=欲望之轮",
+          "nodeId": "13:9733",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播工具, 功能=心愿单",
+          "nodeId": "13:9737",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播工具, 功能=跳蛋设置",
+          "nodeId": "13:9741",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=我的, 功能=主播任务",
+          "nodeId": "13:9747",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播工具, 功能=本场收益",
+          "nodeId": "13:9752",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=我的, 功能=个人展馆",
+          "nodeId": "13:9760",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=我的, 功能=我的装扮",
+          "nodeId": "13:9765",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=我的, 功能=粉丝团",
+          "nodeId": "13:9771",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=我的, 功能=守护",
+          "nodeId": "13:9775",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=我的, 功能=排行榜",
+          "nodeId": "13:9779",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=我的, 功能=收支明细",
+          "nodeId": "13:9784",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播信息, 功能=地点",
+          "nodeId": "13:9790",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播信息, 功能=星星",
+          "nodeId": "13:9794",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播信息, 功能=编辑",
+          "nodeId": "13:9796",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播信息, 功能=新增",
+          "nodeId": "13:9800",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=用户, 功能=铃铛",
+          "nodeId": "13:9804",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=用户, 功能=设定",
+          "nodeId": "13:9806",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=互动聊天, 功能=设定",
+          "nodeId": "13:9808",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "10px",
+          "spacing": {
+            "paddingLeft": "3px",
+            "paddingRight": "2px",
+            "paddingTop": "3px",
+            "paddingBottom": "2px",
+            "itemSpacing": "10px"
+          }
+        },
+        {
+          "name": "分类=音量, 功能=输入",
+          "nodeId": "13:9811",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=音量, 功能=输入x",
+          "nodeId": "13:9814",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=音量, 功能=输出",
+          "nodeId": "13:9820",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=音量, 功能=输出x",
+          "nodeId": "13:9822",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=互动聊天, 功能=表情",
+          "nodeId": "13:9828",
+          "size": {
+            "width": "12px",
+            "height": "12px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播工具, 功能=清晰度",
+          "nodeId": "13:9830",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=其他, 功能=专属客服",
+          "nodeId": "13:9834",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=其他, 功能=直播活动",
+          "nodeId": "13:9838",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=其他, 功能=推广赚钱",
+          "nodeId": "13:9842",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=其他, 功能=收益提现",
+          "nodeId": "13:9846",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=其他, 功能=支付密码",
+          "nodeId": "13:9851",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=素材, 功能=更多",
+          "nodeId": "13:9853",
+          "size": {
+            "width": "17px",
+            "height": "17px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=其他, 功能=成功設置支付密碼",
+          "nodeId": "13:9858",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=other, 功能=arrow",
+          "nodeId": "13:9860",
+          "size": {
+            "width": "12px",
+            "height": "12px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=直播工具, 功能=游戏投注",
+          "nodeId": "13:9862",
+          "size": {
+            "width": "26px",
+            "height": "26px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=專屬客服, 功能=下載",
+          "nodeId": "13:9879",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=專屬客服, 功能=音量2",
+          "nodeId": "13:9882",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=專屬客服, 功能=暫停",
+          "nodeId": "13:9884",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "分类=專屬客服, 功能=播放",
+          "nodeId": "13:9886",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "12px",
+          "17px",
+          "20px",
+          "26px"
+        ],
+        "heights": [
+          "12px",
+          "17px",
+          "20px",
+          "26px"
+        ],
+        "radii": [
+          "10px"
+        ],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "素材icon",
+      "nodeId": "13:9888",
+      "sourcePath": "直播助手PC端_UI kit / icon / 素材icon",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "vector",
+        "boundingBox"
+      ],
+      "variantProperties": {
+        "类型": {
+          "type": "VARIANT",
+          "defaultValue": "电脑摄像头",
+          "variantOptions": [
+            "文字",
+            "截屏",
+            "窗口",
+            "视频",
+            "图片",
+            "多屏助手",
+            "七星体育",
+            "七星百家乐",
+            "电脑摄像头",
+            "萤幕"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "类型",
+          "default": "电脑摄像头",
+          "options": [
+            "文字",
+            "截屏",
+            "窗口",
+            "视频",
+            "图片",
+            "多屏助手",
+            "七星体育",
+            "七星百家乐",
+            "电脑摄像头",
+            "萤幕"
+          ]
+        }
+      ],
+      "variantCount": 10,
+      "variants": [
+        {
+          "name": "类型=电脑摄像头",
+          "nodeId": "13:9889",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=七星百家乐",
+          "nodeId": "13:9896",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=七星体育",
+          "nodeId": "13:9899",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=多屏助手",
+          "nodeId": "13:9901",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=图片",
+          "nodeId": "13:9905",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=视频",
+          "nodeId": "13:9910",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=窗口",
+          "nodeId": "13:9917",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=截屏",
+          "nodeId": "13:9924",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=文字",
+          "nodeId": "13:9935",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "类型=萤幕",
+          "nodeId": "13:9940",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "20px"
+        ],
+        "heights": [
+          "20px"
+        ],
+        "radii": [],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "开播信息_icon",
+      "nodeId": "13:9946",
+      "sourcePath": "直播助手PC端_UI kit / icon / 开播信息_icon",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "vector",
+        "boundingBox"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "游戏",
+          "variantOptions": [
+            "游戏",
+            "女神",
+            "颜值",
+            "音乐",
+            "舞蹈",
+            "星秀",
+            "交友"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "游戏",
+          "options": [
+            "游戏",
+            "女神",
+            "颜值",
+            "音乐",
+            "舞蹈",
+            "星秀",
+            "交友"
+          ]
+        }
+      ],
+      "variantCount": 7,
+      "variants": [
+        {
+          "name": "Property 1=游戏",
+          "nodeId": "13:9947",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=星秀",
+          "nodeId": "13:9958",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=颜值",
+          "nodeId": "13:9961",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=女神",
+          "nodeId": "13:9966",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=交友",
+          "nodeId": "13:9970",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=音乐",
+          "nodeId": "13:9976",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=舞蹈",
+          "nodeId": "13:9982",
+          "size": {
+            "width": "20px",
+            "height": "20px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "20px"
+        ],
+        "heights": [
+          "20px"
+        ],
+        "radii": [],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "eye",
+      "nodeId": "13:9993",
+      "sourcePath": "直播助手PC端_UI kit / icon / eye",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "顯示": {
+          "type": "VARIANT",
+          "defaultValue": "on",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "顯示",
+          "default": "on",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "顯示=on",
+          "nodeId": "13:9994",
+          "size": {
+            "width": "17px",
+            "height": "17px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "顯示=off",
+          "nodeId": "13:9998",
+          "size": {
+            "width": "17px",
+            "height": "17px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "17px"
+        ],
+        "heights": [
+          "17px"
+        ],
+        "radii": [],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "上传的素材",
+      "nodeId": "13:10519",
+      "sourcePath": "直播助手PC端_UI kit / other / 上传的素材",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "状态": {
+          "type": "VARIANT",
+          "defaultValue": "七星百家乐",
+          "variantOptions": [
+            "电脑摄像头",
+            "七星百家乐",
+            "手机录屏",
+            "影片",
+            "七星体育",
+            "视窗",
+            "文字",
+            "圖片",
+            "手机設攝像頭",
+            "手機录屏",
+            "萤幕",
+            "截屏"
+          ]
+        },
+        "選取": {
+          "type": "VARIANT",
+          "defaultValue": "off",
+          "variantOptions": [
+            "on",
+            "off"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "状态",
+          "default": "七星百家乐",
+          "options": [
+            "电脑摄像头",
+            "七星百家乐",
+            "手机录屏",
+            "影片",
+            "七星体育",
+            "视窗",
+            "文字",
+            "圖片",
+            "手机設攝像頭",
+            "手機录屏",
+            "萤幕",
+            "截屏"
+          ]
+        },
+        {
+          "property": "選取",
+          "default": "off",
+          "options": [
+            "on",
+            "off"
+          ]
+        }
+      ],
+      "variantCount": 22,
+      "variants": [
+        {
+          "name": "状态=电脑摄像头, 選取=on",
+          "nodeId": "13:10520",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=电脑摄像头, 選取=off",
+          "nodeId": "13:10525",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=手机設攝像頭, 選取=on",
+          "nodeId": "13:10530",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=手机录屏, 選取=off",
+          "nodeId": "13:10535",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=七星百家乐, 選取=on",
+          "nodeId": "13:10540",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=七星百家乐, 選取=off",
+          "nodeId": "13:10545",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=影片, 選取=on",
+          "nodeId": "13:10550",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=影片, 選取=off",
+          "nodeId": "13:10555",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=七星体育, 選取=on",
+          "nodeId": "13:10560",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=七星体育, 選取=off",
+          "nodeId": "13:10565",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=视窗, 選取=on",
+          "nodeId": "13:10570",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=视窗, 選取=off",
+          "nodeId": "13:10575",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=文字, 選取=on",
+          "nodeId": "13:10580",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=文字, 選取=off",
+          "nodeId": "13:10585",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=圖片, 選取=on",
+          "nodeId": "13:10590",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=圖片, 選取=off",
+          "nodeId": "13:10595",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=手機录屏, 選取=on",
+          "nodeId": "13:10600",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=手機录屏, 選取=off",
+          "nodeId": "13:10605",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=萤幕, 選取=on",
+          "nodeId": "13:10610",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=萤幕, 選取=off",
+          "nodeId": "13:10615",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=截屏, 選取=on",
+          "nodeId": "13:10620",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        },
+        {
+          "name": "状态=截屏, 選取=off",
+          "nodeId": "13:10625",
+          "size": {
+            "width": "259px",
+            "height": "36px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingLeft": "8px",
+            "paddingRight": "8px",
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "8px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "259px"
+        ],
+        "heights": [
+          "36px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.en.body"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": "radius.lg"
+      },
+      "source": "confirmed-from-node",
+      "status": "draft-approved"
+    },
+    {
+      "name": "传影片",
+      "nodeId": "13:10631",
+      "sourcePath": "直播助手PC端_UI kit / other / 传影片",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "客服",
+          "variantOptions": [
+            "客服",
+            "用户",
+            "客服 2",
+            "用户 2"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "客服",
+          "options": [
+            "客服",
+            "用户",
+            "客服 2",
+            "用户 2"
+          ]
+        }
+      ],
+      "variantCount": 4,
+      "variants": [
+        {
+          "name": "Property 1=客服",
+          "nodeId": "13:10632",
+          "size": {
+            "width": "236px",
+            "height": "136px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "paddingLeft": "4px",
+            "paddingRight": "4px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "6px"
+          }
+        },
+        {
+          "name": "Property 1=用户",
+          "nodeId": "13:10639",
+          "size": {
+            "width": "236px",
+            "height": "136px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "paddingLeft": "4px",
+            "paddingRight": "4px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "6px"
+          }
+        },
+        {
+          "name": "Property 1=客服 2",
+          "nodeId": "13:10645",
+          "size": {
+            "width": "136px",
+            "height": "236px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "paddingLeft": "4px",
+            "paddingRight": "4px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "6px"
+          }
+        },
+        {
+          "name": "Property 1=用户 2",
+          "nodeId": "13:10651",
+          "size": {
+            "width": "136px",
+            "height": "236px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": null,
+          "spacing": {
+            "paddingLeft": "4px",
+            "paddingRight": "4px",
+            "paddingTop": "4px",
+            "paddingBottom": "4px",
+            "itemSpacing": "6px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "136px",
+          "236px"
+        ],
+        "heights": [
+          "136px",
+          "236px"
+        ],
+        "radii": [],
+        "commonTypography": [
+          "typography.caption"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "客服tag",
+      "nodeId": "13:10659",
+      "sourcePath": "直播助手PC端_UI kit / other / 客服tag",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "初始化",
+          "variantOptions": [
+            "影片时间",
+            "初始化",
+            "处理中",
+            "档案大小",
+            "上传失败",
+            "等待中",
+            "发送中",
+            "上传时间"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "初始化",
+          "options": [
+            "影片时间",
+            "初始化",
+            "处理中",
+            "档案大小",
+            "上传失败",
+            "等待中",
+            "发送中",
+            "上传时间"
+          ]
+        }
+      ],
+      "variantCount": 8,
+      "variants": [
+        {
+          "name": "Property 1=影片时间",
+          "nodeId": "13:10660",
+          "size": {
+            "width": "51px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "Property 1=处理中",
+          "nodeId": "13:10666",
+          "size": {
+            "width": "87px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        },
+        {
+          "name": "Property 1=档案大小",
+          "nodeId": "13:10670",
+          "size": {
+            "width": "81px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        },
+        {
+          "name": "Property 1=上传失败",
+          "nodeId": "13:10674",
+          "size": {
+            "width": "66px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px",
+            "itemSpacing": "2px"
+          }
+        },
+        {
+          "name": "Property 1=等待中",
+          "nodeId": "13:10686",
+          "size": {
+            "width": "50px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        },
+        {
+          "name": "Property 1=发送中",
+          "nodeId": "13:10690",
+          "size": {
+            "width": "50px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        },
+        {
+          "name": "Property 1=初始化",
+          "nodeId": "13:10694",
+          "size": {
+            "width": "50px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        },
+        {
+          "name": "Property 1=上传时间",
+          "nodeId": "13:10698",
+          "size": {
+            "width": "56px",
+            "height": "18px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "999px",
+          "spacing": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "2px",
+            "paddingBottom": "2px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "50px",
+          "51px",
+          "56px",
+          "66px",
+          "81px",
+          "87px"
+        ],
+        "heights": [
+          "18px"
+        ],
+        "radii": [
+          "999px"
+        ],
+        "commonTypography": [
+          "typography.caption"
+        ]
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    },
+    {
+      "name": "影像状态",
+      "nodeId": "13:10703",
+      "sourcePath": "直播助手PC端_UI kit / other / 影像状态",
+      "purpose": "UI kit component set extracted from Figma node JSON. Review purpose naming with design owner before publishing externally.",
+      "anatomy": [
+        "container",
+        "content"
+      ],
+      "variantProperties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "defaultValue": "播放",
+          "variantOptions": [
+            "上传",
+            "播放",
+            "读取"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Property 1",
+          "default": "播放",
+          "options": [
+            "上传",
+            "播放",
+            "读取"
+          ]
+        }
+      ],
+      "variantCount": 3,
+      "variants": [
+        {
+          "name": "Property 1=上传",
+          "nodeId": "13:10704",
+          "size": {
+            "width": "30px",
+            "height": "30px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=读取",
+          "nodeId": "13:10708",
+          "size": {
+            "width": "30px",
+            "height": "30px"
+          },
+          "layoutMode": null,
+          "radius": null,
+          "spacing": {}
+        },
+        {
+          "name": "Property 1=播放",
+          "nodeId": "13:10710",
+          "size": {
+            "width": "30px",
+            "height": "30px"
+          },
+          "layoutMode": null,
+          "radius": "40px",
+          "spacing": {}
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "30px"
+        ],
+        "heights": [
+          "30px"
+        ],
+        "radii": [
+          "40px"
+        ],
+        "commonTypography": []
+      },
+      "tokenMapping": {
+        "defaultText": "color.text.primary",
+        "secondaryText": "color.text.secondary",
+        "panelSurface": "color.surface.panel",
+        "subtleBorder": "color.border.subtle",
+        "defaultRadius": null
+      },
+      "source": "confirmed-from-node",
+      "status": "needs-design-review"
+    }
+  ]
+}
