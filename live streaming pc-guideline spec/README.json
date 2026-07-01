@@ -1,0 +1,12 @@
+{
+  "generated": [
+    "design-tokens.normalized.json",
+    "design-components.json",
+    "design-rules.json",
+    "DESIGN.md",
+    "visual-guideline.html"
+  ],
+  "componentSetCount": 36,
+  "nodeCount": 2020,
+  "rulesCount": 266
+}
