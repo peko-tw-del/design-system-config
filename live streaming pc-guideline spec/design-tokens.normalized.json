@@ -1001,7 +1001,24 @@
       "$css": "linear-gradient(90deg, #E180EF 0%, #677AEE 42%, #7BE6F0 100%)",
       "usage": "Special icons only",
       "source": "confirmed-from-node"
+    },
+    "gradient.card.hover.subtle": {
+      "$type": "gradient",
+      "$css": "linear-gradient(138.445deg, rgba(117, 69, 133, 0.35) 6.202%, rgba(75, 52, 141, 0.35) 92.615%)",
+      "usage": "Material-option card hover overlay (添加素材選項卡)",
+      "note": "Base colors #754585 / #4B348D match gradient.action.primary exactly, but at 35% opacity and a non-standard 138.445deg angle instead of the usual 180deg. Currently written as a literal value in Figma, not bound to a variable — treat as draft, needs design-owner confirmation before promoting to a stable token name.",
+      "status": "needs-review",
+      "source": "confirmed-from-node-2026-07-02"
     }
   },
-  "rawExceptions": []
+  "rawExceptions": [
+    {
+      "figmaName": "Brand/hover",
+      "context": "添加素材選項卡 (node 64:333111 subtree)",
+      "issue": "Variable resolves to an empty value via get_variable_defs — either unset or a broken alias. Not present anywhere in this token set under any figmaName.",
+      "action": "Do not guess a value. Ask Peko to click the bound layer in Figma and report the resolved Fill value directly.",
+      "status": "broken-reference-needs-fix",
+      "dateFound": "2026-07-02"
+    }
+  ]
 }
