@@ -2,7 +2,9 @@
   "$metadata": {
     "product": "直播助手 PC 端",
     "generatedAt": "2026-06-29",
-    "goal": "Rules for automated design review against Figma node data."
+    "goal": "Rules for automated design review against Figma node data.",
+    "rulesCount": 283,
+    "lastUpdated": "2026-07-02"
   },
   "globalRules": [
     {
@@ -30,8 +32,8 @@
       "id": "shape.radius.use-approved-scale",
       "property": "cornerRadius",
       "severity": "warning",
-      "message": "Use approved radius scale: 2, 4, 5, 8, 12, 20, 999, 9999.",
-      "autofixSuggestion": "Default controls should use radius.lg 8px unless component spec says otherwise."
+      "message": "Use approved radius scale: 2, 4, 5, 8, 12, 16, 20, 999, 9999. 16px 於 2026-07-02 經 Peko 確認新增。",
+      "autofixSuggestion": "Default controls should use radius.lg 8px; radius.xl2 16px is approved for cases like Default/文字, unless component spec says otherwise."
     },
     {
       "id": "type.micro.accessibility-review",
@@ -60,6 +62,13 @@
       "severity": "error",
       "message": "Keyboard-focusable controls need a documented focus-visible style, even if Figma currently lacks one.",
       "autofixSuggestion": "Use gradient.input.focus.border or define color.border.focus."
+    },
+    {
+      "id": "token.variable.no-broken-reference",
+      "property": "any bound variable",
+      "severity": "error",
+      "message": "A bound variable must resolve to a real value. Confirmed broken/unresolved bindings so far: Brand/hover, Brand/Disable, Brand/Brand(active) (all resolve empty across 3+ components), 板块线框 (resolves to a malformed string \",\"). This is now a recurring pattern, not an isolated incident.",
+      "autofixSuggestion": "Design owner should audit the 'Brand/*' state-color variable group in Figma directly — likely an unpublished or deleted library reference. Do not let AI/automation guess replacement values."
     }
   ],
   "componentRules": [
@@ -712,7 +721,7 @@
     {
       "id": "13:8301.13:8302.size",
       "component": "button / 主播任務",
-      "variant": "Property 1=未完成",
+      "variant": "type=Disabled1（原 Property 1=未完成，2026-07-02 改名）",
       "part": "container",
       "property": "size",
       "expectedValue": {
@@ -727,7 +736,7 @@
     {
       "id": "13:8301.13:8302.radius",
       "component": "button / 主播任務",
-      "variant": "Property 1=未完成",
+      "variant": "type=Disabled1（原 Property 1=未完成，2026-07-02 改名）",
       "part": "container",
       "property": "cornerRadius",
       "expectedValue": "8px",
@@ -740,7 +749,7 @@
     {
       "id": "13:8301.13:8304.size",
       "component": "button / 主播任務",
-      "variant": "Property 1=已完成",
+      "variant": "type=Disabled2（原 Property 1=已完成，2026-07-02 改名）",
       "part": "container",
       "property": "size",
       "expectedValue": {
@@ -755,7 +764,7 @@
     {
       "id": "13:8301.13:8304.radius",
       "component": "button / 主播任務",
-      "variant": "Property 1=已完成",
+      "variant": "type=Disabled2（原 Property 1=已完成，2026-07-02 改名）",
       "part": "container",
       "property": "cornerRadius",
       "expectedValue": "8px",
@@ -1101,7 +1110,9 @@
       "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
       "severity": "warning",
       "message": "添加素材 BTN / State=Default should keep its documented base size unless product layout intentionally overrides it.",
-      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior.",
+      "deprecated": true,
+      "deprecationNote": "元件已於 2026-07-02 被「添加素材 - 選項卡」取代，此規則暫停生效，保留供追溯。"
     },
     {
       "id": "13:8351.13:8352.radius",
@@ -1114,7 +1125,9 @@
       "tolerance": "0px",
       "severity": "warning",
       "message": "Corner radius should match component spec.",
-      "autofixSuggestion": "Use the mapped radius token."
+      "autofixSuggestion": "Use the mapped radius token.",
+      "deprecated": true,
+      "deprecationNote": "元件已於 2026-07-02 被「添加素材 - 選項卡」取代，此規則暫停生效，保留供追溯。"
     },
     {
       "id": "13:8351.13:8355.size",
@@ -1129,7 +1142,9 @@
       "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
       "severity": "warning",
       "message": "添加素材 BTN / State=Hover should keep its documented base size unless product layout intentionally overrides it.",
-      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior.",
+      "deprecated": true,
+      "deprecationNote": "元件已於 2026-07-02 被「添加素材 - 選項卡」取代，此規則暫停生效，保留供追溯。"
     },
     {
       "id": "13:8351.13:8355.radius",
@@ -1142,7 +1157,9 @@
       "tolerance": "0px",
       "severity": "warning",
       "message": "Corner radius should match component spec.",
-      "autofixSuggestion": "Use the mapped radius token."
+      "autofixSuggestion": "Use the mapped radius token.",
+      "deprecated": true,
+      "deprecationNote": "元件已於 2026-07-02 被「添加素材 - 選項卡」取代，此規則暫停生效，保留供追溯。"
     },
     {
       "id": "13:8351.13:8358.size",
@@ -1157,7 +1174,9 @@
       "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
       "severity": "warning",
       "message": "添加素材 BTN / State=Clicked should keep its documented base size unless product layout intentionally overrides it.",
-      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior.",
+      "deprecated": true,
+      "deprecationNote": "元件已於 2026-07-02 被「添加素材 - 選項卡」取代，此規則暫停生效，保留供追溯。"
     },
     {
       "id": "13:8351.13:8358.radius",
@@ -1170,7 +1189,9 @@
       "tolerance": "0px",
       "severity": "warning",
       "message": "Corner radius should match component spec.",
-      "autofixSuggestion": "Use the mapped radius token."
+      "autofixSuggestion": "Use the mapped radius token.",
+      "deprecated": true,
+      "deprecationNote": "元件已於 2026-07-02 被「添加素材 - 選項卡」取代，此規則暫停生效，保留供追溯。"
     },
     {
       "id": "13:8381.13:8382.size",
@@ -1423,11 +1444,11 @@
       "property": "size",
       "expectedValue": {
         "width": "278px",
-        "height": "41px"
+        "height": "42px"
       },
       "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
       "severity": "warning",
-      "message": "主播回覆用 Input / State=Default should keep its documented base size unless product layout intentionally overrides it.",
+      "message": "主播回覆用 Input / State=Default should keep its documented base size unless product layout intentionally overrides it.（2026-07-02 修正：高度由 41px 更新為 42px，與一般 Input 對齊）",
       "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
     },
     {
@@ -1451,11 +1472,11 @@
       "property": "size",
       "expectedValue": {
         "width": "278px",
-        "height": "41px"
+        "height": "42px"
       },
       "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
       "severity": "warning",
-      "message": "主播回覆用 Input / State=Active should keep its documented base size unless product layout intentionally overrides it.",
+      "message": "主播回覆用 Input / State=Active should keep its documented base size unless product layout intentionally overrides it.（2026-07-02 修正：高度由 41px 更新為 42px，與一般 Input 對齊）",
       "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
     },
     {
@@ -3773,6 +3794,204 @@
       "severity": "warning",
       "message": "Corner radius should match component spec.",
       "autofixSuggestion": "Use the mapped radius token."
+    },
+    {
+      "id": "64:333111.card.size",
+      "component": "添加素材 - 選項卡",
+      "variant": "全部 8 個选项 variant",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "169px",
+        "height": "55px"
+      },
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "卡片外框應統一 169x55px，若某 variant 因 auto-layout hug 導致實際渲染高度跑掉，視為元件構建問題。",
+      "autofixSuggestion": "統一各 variant 的 sizing mode（fixed height），不要讓不同內容類型各自用不同的 hug/fixed 設定。"
+    },
+    {
+      "id": "64:333111.card.radius",
+      "component": "添加素材 - 選項卡",
+      "variant": "全部",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "圓角應對應 radius.lg token。",
+      "autofixSuggestion": "確認圖層有綁 radius.lg 而非寫死 8px。"
+    },
+    {
+      "id": "64:333111.card.hover-background-token",
+      "component": "添加素材 - 選項卡",
+      "variant": "Hover=on",
+      "part": "container",
+      "property": "fill",
+      "expectedToken": "gradient.card.hover.subtle",
+      "severity": "error",
+      "message": "Hover 狀態背景目前是字面漸層值（linear-gradient(138.445deg, rgba(117,69,133,0.35), rgba(75,52,141,0.35))），沒有綁定任何 variable/token，違反兩層 token 架構原則（元件不可直接寫死顏色值）。",
+      "autofixSuggestion": "將此漸層正式收錄為 gradient.card.hover.subtle 並在 Figma 綁定，或確認是否應改用既有 gradient.action.primary 並統一角度為 180deg。"
+    },
+    {
+      "id": "64:333111.card.brand-hover-unresolved",
+      "component": "添加素材 - 選項卡",
+      "variant": "不確定（get_variable_defs 掃到但未知綁在哪個圖層）",
+      "part": "unknown",
+      "property": "fill/color",
+      "expectedValue": "unresolved — needs manual confirmation, not a guessable value",
+      "severity": "error",
+      "message": "變數 Brand/hover 在此節點子樹被引用但解析為空值，可能是未設定或壞掉的 alias。",
+      "autofixSuggestion": "請 Peko 在 Figma 內點選對應圖層，回報實際 Fill 顏色，再決定要不要收進 token。"
+    },
+    {
+      "id": "64:333111.card.missing-states",
+      "component": "添加素材 - 選項卡",
+      "variant": "全部",
+      "part": "container",
+      "property": "interactionStates",
+      "expectedValue": [
+        "default",
+        "hover",
+        "active",
+        "focus",
+        "disabled"
+      ],
+      "actualValue": [
+        "default",
+        "hover"
+      ],
+      "severity": "error",
+      "message": "互動元件僅定義 hover on/off，缺少 active/focus/disabled 狀態，依 DESIGN.md 規則第7條應標記為 error。",
+      "autofixSuggestion": "補上 active（選中/點擊中）與 focus-visible（鍵盤操作）狀態，disabled 視業務邏輯決定是否需要。"
+    },
+    {
+      "id": "64:333111.legacy-instance-naming",
+      "component": "添加素材 - 選項卡",
+      "variant": "N/A（既有頁面實例）",
+      "part": "instance",
+      "property": "naming",
+      "severity": "warning",
+      "message": "popup 頁面（如 64:332912、64:332916、64:332924 等節點）目前仍在用未語意化命名的 Component 310/311/312 承載這組卡片內容，尚未替換成新的「添加素材」master symbol 實例。",
+      "autofixSuggestion": "把這些 Component 310/311/312 實例換成新版「添加素材 - 選項卡」的正式 instance，屬於主元件更新後頁面沒同步替換的典型狀況，跟先前『發起PK』標籤亂用是同一類系統性問題。"
+    },
+    {
+      "id": "74:333670.browsertop.size",
+      "component": "Browser Top",
+      "variant": "全部 4 個 variant",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "1200px",
+        "height": "40px"
+      },
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Browser Top 容器應維持 1200x40px。master canonical node id 待與 Peko 確認（目前引用的是 07/01 annotation 頁節點）。",
+      "autofixSuggestion": "確認實際 UI kit 主頁面上的正式 master component node id 後更新此規則。"
+    },
+    {
+      "id": "74:333670.browsertop.background-token",
+      "component": "Browser Top",
+      "variant": "全部",
+      "part": "container",
+      "property": "fill",
+      "expectedToken": "color.bg.browserTop",
+      "severity": "warning",
+      "message": "背景應綁定 color.bg.browserTop (#36373C)，而非字面值。",
+      "autofixSuggestion": "確認 Figma 圖層是否已綁 background/Browser Top 變數。"
+    },
+    {
+      "id": "74:333174.menupopup.size",
+      "component": "Menu / 双击编辑弹窗",
+      "variant": "Default",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "165px",
+        "height": "36px"
+      },
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "雙擊編輯彈窗容器應維持 165x36px。",
+      "autofixSuggestion": "確認 master component 尺寸未被個別 instance 覆寫。"
+    },
+    {
+      "id": "74:333174.menupopup.radius",
+      "component": "Menu / 双击编辑弹窗",
+      "variant": "Default",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "圓角應對應 radius.lg token。",
+      "autofixSuggestion": "確認圖層有綁 radius.lg 而非寫死 8px。"
+    },
+    {
+      "id": "74:333692.dropdownfamily.radius",
+      "component": "下拉选单 (Dropdown Family, 不含日期)",
+      "variant": "全部 7 組",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "下拉選單容器圓角應為 8px。",
+      "autofixSuggestion": "確認各下拉選單圖層有綁 radius.lg。"
+    },
+    {
+      "id": "74:333692.dropdownfamily.background-token",
+      "component": "下拉选单 (Dropdown Family, 不含日期)",
+      "variant": "全部",
+      "part": "container",
+      "property": "fill",
+      "expectedToken": "color.dialog.background",
+      "severity": "warning",
+      "message": "背景應綁定 color.dialog.background（彈窗/Background #1b1721）。",
+      "autofixSuggestion": "確認變數綁定，此 token 目前確認可正常解析，非壞掉的變數。"
+    },
+    {
+      "id": "74:333717.calendar.size",
+      "component": "日曆 (Calendar / 原「下拉选单_日期」)",
+      "variant": "Hover=off/on",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "300px",
+        "height": "249px"
+      },
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "日曆容器應維持 300x249px。",
+      "autofixSuggestion": "確認 instance 尺寸未被覆寫。"
+    },
+    {
+      "id": "74:333717.calendar.radius",
+      "component": "日曆 (Calendar / 原「下拉选单_日期」)",
+      "variant": "全部",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "8px",
+      "expectedToken": "radius.lg",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "圓角應為 8px。",
+      "autofixSuggestion": "確認綁 radius.lg。"
+    },
+    {
+      "id": "74:333717.calendar.font-family",
+      "component": "日曆 (Calendar / 原「下拉选单_日期」)",
+      "variant": "monthLabel",
+      "part": "monthLabel",
+      "property": "fontFamily",
+      "expectedValue": "需 Peko 確認：目前用 Noto Sans SC，不在既有三種字體家族（PingFang HK/SC, Inter）內",
+      "severity": "error",
+      "message": "月份標籤使用了未收錄的字體家族 Noto Sans SC。",
+      "autofixSuggestion": "確認是否要正式收錄 Noto Sans SC，或改用既有 PingFang SC。"
     }
   ]
 }

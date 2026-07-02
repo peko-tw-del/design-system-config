@@ -4779,7 +4779,7 @@
     },
     {
       "name": "添加素材 - 選項卡",
-      "nodeId": "64:333111 (今日在 popup 頁面觀察到的 symbol 集合根節點，非原始 UI kit 頁 13:8xxx 系列，需與 Peko 確認正式 master component 的 canonical node id)",
+      "nodeId": "64:333111",
       "sourcePath": "popup / 添加素材 (page 內 symbol 實例，master 定義位置待確認)",
       "purpose": "取代舊版單一「添加素材 BTN」，改為卡片式選項讓使用者選擇要加入的素材類型（遊戲視訊源／裝置／檔案）。",
       "anatomy": [
@@ -4857,7 +4857,7 @@
       },
       "tokenMapping": {
         "containerBackgroundDefault": "color.surface.panel",
-        "containerBackgroundHover": "gradient.card.hover.subtle (draft，見 design-tokens_normalized.json，未在 Figma 綁 variable，目前是字面值)",
+        "containerBackgroundHover": "gradient.card.hover.subtle (draft，見 design-tokens.normalized.json，未在 Figma 綁 variable，目前是字面值)",
         "labelText": "color.text.primary",
         "descriptionText": "color.text.secondary.muted",
         "unresolvedVariable": "Brand/hover — 空值，需 Peko 到 Figma 點選對應圖層確認"
@@ -4872,7 +4872,8 @@
         "hover 背景漸層目前是字面值，未綁 token/variable，違反兩層 token 架構原則",
         "缺少 active/disabled/focus 狀態定義（僅有 hover on/off），依 DESIGN.md 第8節規則第7條，互動元件缺狀態應標記 error",
         "master component 的 canonical node id 待確認（今天讀到的是 page 上的 symbol 實例，非原始 UI kit 13:8xxx 頁面節點）"
-      ]
+      ],
+      "nodeIdNote": "今日在 popup 頁面觀察到的 symbol 集合根節點，非原始 UI kit 頁 13:8xxx 系列，需與 Peko 確認正式 master component 的 canonical node id。"
     },
     {
       "name": "Browser Top",
@@ -5032,7 +5033,7 @@
     },
     {
       "name": "下拉选单 (Dropdown Family, 不含日期)",
-      "nodeId": "64:333497 一節的 7 組（登入/視頻源/情感/職業/性別/直播地点/來源）",
+      "nodeId": "64:333497",
       "sourcePath": "dropdown State（該區塊在本次「07/01」更新之前就已存在於檔案中）",
       "purpose": "各表單欄位對應的下拉選單清單。",
       "anatomy": [
@@ -5089,11 +5090,21 @@
       },
       "correction": "上一版這裡誤寫成「先前完全沒收錄，這次新增 Hover 狀態」——這是不準確的說法，已更正。Hover=on/off 這組狀態，在本次「07/01 組件修改項目」更新之前，這份對話一開始掃描 node 64:333497 時就已經存在，不是這次新增的。這次是我自己先前沒有把它寫進 design-components.json（我的紀錄缺口，不是 Figma 新功能），現在補上。07/01 這批更新裡實際上改了什麼（例如 active 狀態），目前沒有確認到具體證據，如果 Peko 知道具體差異，麻煩直接說，我不會用猜的方式填。",
       "source": "confirmed-from-node（結構於對話開始時已讀取，非本次新讀取）",
-      "status": "needs-review"
+      "status": "needs-review",
+      "nodeIdNote": "此為家族容器（dropdown State section）的 node id，非單一元件。7 個成員個別 node id 見 memberNodeIds。",
+      "memberNodeIds": {
+        "下拉选单_登入": "64:333498",
+        "下拉选单_視頻源": "64:333557",
+        "下拉选单_情感": "64:333615",
+        "下拉选单_職業": "64:333638",
+        "下拉选单_性別": "64:333671",
+        "下拉选单_直播地点": "64:333682",
+        "下拉选单_來源": "64:333739"
+      }
     },
     {
       "name": "日曆 (Calendar / 原「下拉选单_日期」)",
-      "nodeId": "74:333717（即 64:333497 節點下「下拉选单_日期」的同一顆元件，Figma 內部圖層命名為「日历」）",
+      "nodeId": "64:333752",
       "sourcePath": "dropdown State / 下拉选单_日期 → 內部圖層名稱「日历」",
       "purpose": "月曆式日期選擇器，含月份切換、星期標頭、日期網格。",
       "anatomy": [
@@ -5162,7 +5173,8 @@
         "Noto Sans SC 是新出現的字體家族，需確認是否要正式收進 typography.fontFamily，還是屬於例外"
       ],
       "source": "confirmed-from-node-2026-07-02",
-      "status": "needs-review"
+      "status": "needs-review",
+      "nodeIdNote": "即先前記錄的「下拉选单_日期」，與本次 07/01 更新中的 74:333717 為同一顆元件的不同 instance，Figma 內部圖層命名為「日历」。"
     }
   ]
 }

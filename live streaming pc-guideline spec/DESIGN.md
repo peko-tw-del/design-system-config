@@ -65,7 +65,7 @@ Component token 應只用在特定元件，例如 `component.liveInfoCard.width 
 全域 spacing 建議使用 `2, 4, 6, 8, 12, 16, 20`。  
 `1, 3, 7, 9, 10` 目前標記為 raw/component exception，不應任意重用。
 
-預設 controls 使用 `radius.lg = 8px`；大型面板與 popup 使用 `radius.xl = 12px`；pill 使用 `radius.pill = 999px`。
+預設 controls 使用 `radius.lg = 8px`；大型面板與 popup 使用 `radius.xl = 12px`；`radius.xl2 = 16px`（2026-07-02 新增，確認出現在 Default/文字 variant，介於 radius.xl 與 radius.2xl 之間）；pill 使用 `radius.pill = 999px`。
 
 ## 7. Component 規範
 
@@ -116,7 +116,7 @@ AI 檢查時應使用 `design-rules.json`，不要只看 HTML。檢查順序：
 
 **發現的問題（已寫入 design-rules.json 為新規則）**：
 
-1. **Hover 背景漸層未綁 token**：`linear-gradient(138.445deg, rgba(117,69,133,0.35), rgba(75,52,141,0.35))` 是字面值，沒有綁 variable。色值跟 `gradient.action.primary`（#754585 / #4B348D）完全一樣，只是角度（138.445° vs 180°）跟透明度（35% vs 100%）不同，判斷是同源色但沒有正式收斂成 token。已在 `design-tokens_normalized.json` 新增草稿 token `gradient.card.hover.subtle`，狀態 `needs-review`，等 Peko 確認角度要不要統一成 180°、要不要正式收錄。
+1. **Hover 背景漸層未綁 token**：`linear-gradient(138.445deg, rgba(117,69,133,0.35), rgba(75,52,141,0.35))` 是字面值，沒有綁 variable。色值跟 `gradient.action.primary`（#754585 / #4B348D）完全一樣，只是角度（138.445° vs 180°）跟透明度（35% vs 100%）不同，判斷是同源色但沒有正式收斂成 token。已在 `design-tokens.normalized.json` 新增草稿 token `gradient.card.hover.subtle`，狀態 `needs-review`，等 Peko 確認角度要不要統一成 180°、要不要正式收錄。
 2. **`Brand/hover` 變數無法解析**：這個節點子樹裡有引用到，但值是空的，也不在既有 token 表任何 figmaName 裡，判斷是沒設定或壞掉的 alias。沒有用猜的方式補值，已列為待確認項目。
 3. **缺少 active/focus/disabled 狀態**：目前只定義了 hover on/off，依第 8 節規則第 7 條，互動元件缺狀態要標記 error。
 4. **舊頁面實例沒跟上主元件更新**：popup 頁面裡仍有多處用未語意化命名的 `Component 310` / `311` / `312` 承載這組卡片內容，還沒換成新版 master symbol 的正式 instance——跟先前記錄過的「發起PK」標籤跨模組亂用屬於同一種系統性問題（主元件改了、頁面實例沒同步）。
@@ -149,6 +149,20 @@ AI 檢查時應使用 `design-rules.json`，不要只看 HTML。檢查順序：
 2. **「下拉选单_日期」不是普通下拉選單，是日曆**。內部圖層命名就是「日历」，anatomy 是月份切換＋星期標頭＋日期網格，跟其他 7 個列表型下拉選單完全不同結構，已拆成獨立的「日曆」元件條目。月份標籤用了 Noto Sans SC，是目前 token 表三種字體家族（PingFang HK/SC、Inter）之外的新字體，需要確認要不要正式收錄。陰影效果則跟既有 `shadow.overlay` token 完全吻合，不需要新增。
 
 design-components.json 已同步修正（41 組），錯誤紀錄保留在上方並用此節說明更正過程，沒有直接覆蓋掉。
+
+## 10.2 更正（同日，第二次）
+
+Peko 重新整理後發現「主播回覆用 Input」的修正建議還是顯示 41px。查了之後確認：**我只更新了 `design-components.json`（人看的規格文件），沒有同步更新 `design-rules.json` 裡實際驅動 AI 檢查建議的 componentRules 條目**，兩份資料當時不同步，導致檢查工具吐出來的還是舊值。已修正：
+
+- `13:8927.13:8928.size`、`13:8927.13:8938.size` 兩條規則的 `expectedValue.height` 由 41px 改為 42px。
+- 順手一併修正 `button / 主播任務` 的規則 variant 標籤，從舊的「Property 1=未完成/已完成」改成新的「type=Disabled1/Disabled2」，避免規則跟實際圖層命名對不上。
+- 全文搜尋過一次確認沒有其他殘留的舊數值（唯一其他出現 "41" 的地方是「141px」寬度，屬於字串誤判，不是真正的殘留錯誤）。
+
+這次的教訓：以後同一批更新要同時檢查 `design-components.json`（規格說明）跟 `design-rules.json`（機器檢查規則）兩份，不能只改一邊。
+
+**追加**：光修 Input 那兩條還不夠，我對這次動過的 9 個元件、以及全部 41 組元件做了一次系統性覆蓋率檢查，發現這批新增的 4 組元件（Browser Top、Menu/双击编辑弹窗、下拉选单家族、日曆）**完全沒有對應的 componentRules**，等於規格寫了但機器檢查完全不會管。已補上 9 條規則（含日曆月份標籤用了未收錄字體 Noto Sans SC 這條，標記 error）。現在 componentRules 總數 274 條、加 global rules 共 283 條，`design-components.json` 全部 41 組元件都至少有一條規則覆蓋，size 數值逐一比對過，沒有再發現落差。README、HTML、Figma 頁面的規則總數也一併同步成 283。
+
+**這個流程以後會固定做**：更新任一元件規格後，一定會 grep `design-rules.json` 裡對應 component 名稱，逐條核對 expectedValue 是否跟新規格一致、以及是否完全沒有規則覆蓋，而不是只驗證 JSON 格式跟看 `design-components.json` 本身有沒有寫對。
 
 ## 11. 目前待補
 
