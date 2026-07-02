@@ -4,9 +4,11 @@
     "design-components.json",
     "design-rules.json",
     "DESIGN.md",
-    "visual-guideline.html"
+    "visual-guideline.html",
+    "visual-guideline-update-2026-07-02.html"
   ],
-  "componentSetCount": 36,
+  "componentSetCount": 41,
   "nodeCount": 2020,
-  "rulesCount": 266
+  "rulesCount": 274,
+  "lastUpdated": "2026-07-02"
 }

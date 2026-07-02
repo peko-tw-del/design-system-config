@@ -108,7 +108,49 @@ AI 檢查時應使用 `design-rules.json`，不要只看 HTML。檢查順序：
 6. 若是 raw exception，確認是否只出現在允許的 component part。
 7. 若互動元件缺少 focus / disabled / hover / active 狀態，標記為 error。
 
-## 9. 目前待補
+## 9. 2026-07-02 更新記錄
+
+來源：Figma node `64:333111`（popup 頁面內「添加素材」symbol 集合）。
+
+**新增元件**：「添加素材 - 選項卡」，取代舊版「添加素材 BTN」（單一按鈕，259x36，Default/Hover/Clicked 三態）。新版改為 8 種內容 × hover on/off 的卡片式選項（169x55px，圓角 8px），對應 Figma 命名 `选项=X, Hover=on/off`，命名品質比舊版乾淨。舊版規格保留於 `design-components.json` 中並標記 `deprecated-superseded-2026-07-02`，未直接刪除，正式下架前需 Peko 確認舊版是否還有畫面在用。
+
+**發現的問題（已寫入 design-rules.json 為新規則）**：
+
+1. **Hover 背景漸層未綁 token**：`linear-gradient(138.445deg, rgba(117,69,133,0.35), rgba(75,52,141,0.35))` 是字面值，沒有綁 variable。色值跟 `gradient.action.primary`（#754585 / #4B348D）完全一樣，只是角度（138.445° vs 180°）跟透明度（35% vs 100%）不同，判斷是同源色但沒有正式收斂成 token。已在 `design-tokens_normalized.json` 新增草稿 token `gradient.card.hover.subtle`，狀態 `needs-review`，等 Peko 確認角度要不要統一成 180°、要不要正式收錄。
+2. **`Brand/hover` 變數無法解析**：這個節點子樹裡有引用到，但值是空的，也不在既有 token 表任何 figmaName 裡，判斷是沒設定或壞掉的 alias。沒有用猜的方式補值，已列為待確認項目。
+3. **缺少 active/focus/disabled 狀態**：目前只定義了 hover on/off，依第 8 節規則第 7 條，互動元件缺狀態要標記 error。
+4. **舊頁面實例沒跟上主元件更新**：popup 頁面裡仍有多處用未語意化命名的 `Component 310` / `311` / `312` 承載這組卡片內容，還沒換成新版 master symbol 的正式 instance——跟先前記錄過的「發起PK」標籤跨模組亂用屬於同一種系統性問題（主元件改了、頁面實例沒同步）。
+
+## 10. 2026-07-02（下午）批次更新 — 來源 node 74:333669「07/01 組件修改項目」
+
+這批不是單一元件，是五個各自獨立的更新，其中「上传的素材」跟稍早記錄的「添加素材 - 選項卡」**不是同一個東西、也不是重複**——前者是「已上傳素材列表項目」，後者是「選擇要加入哪種素材的選項卡」，兩個是同一個素材流程裡前後不同階段的元件。
+
+**新增元件（design-components.json 新增 3 組，共 40 組）：**
+- **Browser Top**：應用程式視窗頂列（Windows / Mac 兩樣式），新增 `background/Browser Top` (#36373C) 色彩 token；帳號選單新增「檢查更新」選項。
+- **Menu / 双击编辑弹窗**：「上传的素材」列表項目雙擊後的音量調整彈窗，內含麥克風bar與百分比數值。
+- **下拉选单 (Dropdown Family)**：8 組下拉選單（登入區碼／視頻源／情感／職業／性別／直播地點／來源／日期），先前完全沒收錄，這次補上，新增 Hover 狀態。
+
+**更新既有元件：**
+- **button / 主播任務**：variant 屬性從無語意的「Property 1」改成「type」，狀態從已完成/未完成兩態擴充為 Disabled1/Disabled2/Default/Hover/Clicked 五態——這正好回應了本文件最初就記錄的待補事項「Property 1 這類 variant 命名需要改成語意命名」。
+- **主播回覆用 Input**：高度 41px → 42px，跟一般 Input 對齊。
+- **上传的素材**：選中列新增字面漸層背景，未收斂成 token。
+
+**發現的系統性問題（比單一元件層級更重要）**：
+
+`Brand/hover`、`Brand/Disable`、`Brand/Brand(active)` 三個變數，在 button/主播任務 跟 上传的素材 兩個不相關的元件裡都被引用，但透過 `get_variable_defs` 讀出來全部是空值。加上另外發現的 `板块线框` 變數本身回傳畸形字串 `","`——這已經不是單一元件的個案，是 Figma 檔案裡「Brand/*」這一整組狀態色變數本身壞掉或未發布的跡象，建議 Peko 直接在 Figma 裡稽核這組變數，而不是逐一元件修。已把這條寫成新的 global rule `token.variable.no-broken-reference`。
+
+另外，三個不相關元件（添加素材選項卡 hover、button/主播任務 disabled、上传的素材選中列）各自獨立寫出了「品牌紫漸層在 35% opacity」但用了三種不同角度（138.445°／131.384°／159.263°），代表這是一個真實存在、被多處重複發明的視覺模式，值得正式收斂成一顆 token 並統一角度，而不是繼续讓各元件各寫各的。
+
+## 10.1 更正（同日）
+
+上面第 10 節裡「下拉选单 Dropdown Family」的描述有兩個錯誤，Peko 指出後已修正：
+
+1. **「新增 Hover 狀態」是錯的**。Hover=on/off 這組狀態，在這次「07/01 組件修改項目」出現之前，這份對話一開始掃描 node 64:333497 時就已經存在。是我自己先前沒把它寫進 design-components.json，不是 Figma 新增的功能。07/01 這批到底改了什麼，目前沒有確切證據（annotation 提到「有 active 和 Hover」，但我只驗證到 hover，沒驗證到 active 差異在哪），需要 Peko 補充。
+2. **「下拉选单_日期」不是普通下拉選單，是日曆**。內部圖層命名就是「日历」，anatomy 是月份切換＋星期標頭＋日期網格，跟其他 7 個列表型下拉選單完全不同結構，已拆成獨立的「日曆」元件條目。月份標籤用了 Noto Sans SC，是目前 token 表三種字體家族（PingFang HK/SC、Inter）之外的新字體，需要確認要不要正式收錄。陰影效果則跟既有 `shadow.overlay` token 完全吻合，不需要新增。
+
+design-components.json 已同步修正（41 組），錯誤紀錄保留在上方並用此節說明更正過程，沒有直接覆蓋掉。
+
+## 11. 目前待補
 
 - 需要用含 `file_variables:read` scope 的 Figma token 補抓 variables JSON。
 - `Button01 / Button02 / Button03 / Button04` 需要設計 owner 確認正式用途。

@@ -3,7 +3,22 @@
     "product": "直播助手 PC 端",
     "generatedAt": "2026-06-29",
     "sourceNode": "13:8209",
-    "componentSetCount": 36
+    "componentSetCount": 41,
+    "lastUpdated": "2026-07-02",
+    "changeLog": [
+      {
+        "date": "2026-07-02",
+        "change": "新增「添加素材 - 選項卡」（取代「添加素材 BTN」，狀態 needs-review），並標記舊版為 deprecated-superseded。"
+      },
+      {
+        "date": "2026-07-02",
+        "change": "07/01 批次更新：新增 Browser Top、Menu/双击编辑弹窗、下拉选单家族三組新元件；更新 button/主播任務（重新命名variant屬性）、主播回覆用Input（高度）、上传的素材（新增雙擊音量彈窗）。"
+      },
+      {
+        "date": "2026-07-02",
+        "change": "修正：先前誤將「下拉选单 Dropdown Family」寫成新元件且聲稱新增 Hover 狀態，實際上該狀態在對話一開始就已存在（我的紀錄缺口，非 Figma 新功能）。並把「下拉选单_日期」拆分為獨立的「日曆」元件（anatomy 完全不同）。"
+      }
+    ]
   },
   "componentSpecTemplate": [
     "purpose",
@@ -828,60 +843,77 @@
         "optionalIcon"
       ],
       "variantProperties": {
-        "Property 1": {
+        "type": {
           "type": "VARIANT",
-          "defaultValue": "未完成",
+          "defaultValue": "Disabled1",
           "variantOptions": [
-            "已完成",
-            "未完成"
+            "Disabled1",
+            "Disabled2",
+            "Default",
+            "Clicked",
+            "Hover"
           ]
         }
       },
       "states": [
         {
-          "property": "Property 1",
-          "default": "未完成",
+          "property": "type",
+          "default": "Disabled1",
           "options": [
-            "已完成",
-            "未完成"
+            "Disabled1",
+            "Disabled2",
+            "Default",
+            "Clicked",
+            "Hover"
           ]
         }
       ],
-      "variantCount": 2,
+      "variantCount": 5,
       "variants": [
         {
-          "name": "Property 1=未完成",
-          "nodeId": "13:8302",
+          "name": "type=Disabled1 (未完成)",
           "size": {
             "width": "60px",
             "height": "25px"
           },
-          "layoutMode": "HORIZONTAL",
           "radius": "8px",
-          "spacing": {
-            "paddingLeft": "12px",
-            "paddingRight": "12px",
-            "paddingTop": "4px",
-            "paddingBottom": "4px",
-            "itemSpacing": "10px"
-          }
+          "note": "文字用 color.text.secondary，背景 linear-gradient(131.384deg, rgba(117,69,133,.35), rgba(75,52,141,.35)) —— 字面值未綁 token，跟 gradient.card.hover.subtle 同一種底色不同角度/場景。"
         },
         {
-          "name": "Property 1=已完成",
-          "nodeId": "13:8304",
+          "name": "type=Disabled2 (已完成)",
           "size": {
             "width": "60px",
             "height": "25px"
           },
-          "layoutMode": "HORIZONTAL",
           "radius": "8px",
-          "spacing": {
-            "paddingLeft": "12px",
-            "paddingRight": "12px",
-            "paddingTop": "4px",
-            "paddingBottom": "4px",
-            "itemSpacing": "10px"
-          }
+          "note": "文字用 color.text.secondary.muted，背景同上但 opacity 0.2。"
+        },
+        {
+          "name": "type=Default (待领取)",
+          "size": {
+            "width": "60px",
+            "height": "25px"
+          },
+          "radius": "8px",
+          "note": "背景 linear-gradient(90deg, #754585, #4B348D 98.429%)，接近 gradient.action.primary 但角度 90deg、終點 98.429% 而非 100%。"
+        },
+        {
+          "name": "type=Hover (待领取)",
+          "size": {
+            "width": "60px",
+            "height": "25px"
+          },
+          "radius": "8px",
+          "note": "在 Default 背景上疊加 linear-gradient(90deg, rgba(255,255,255,.1)) 白色疊層；引用 Brand/hover 但該變數解析為空值。"
+        },
+        {
+          "name": "type=Clicked (待领取)",
+          "size": {
+            "width": "60px",
+            "height": "25px"
+          },
+          "radius": "8px",
+          "note": "在 Default 背景上疊加 linear-gradient(90deg, rgba(0,0,0,.2)) 黑色疊層；引用 Brand/Brand(active) 但該變數解析為空值。"
         }
       ],
       "layoutSummary": {
@@ -906,7 +938,18 @@
         "defaultRadius": "radius.lg"
       },
       "source": "confirmed-from-node",
-      "status": "needs-design-review"
+      "status": "needs-review",
+      "changeLog": [
+        {
+          "date": "2026-07-02",
+          "change": "Variant 屬性從無語意的「Property 1」（已完成/未完成）改為「type」，新增 Default/Hover/Clicked 三態，呼應 DESIGN.md 第10節待補事項「Property 1 這類 variant 命名需要改成語意命名」。"
+        }
+      ],
+      "reviewBlockers": [
+        "Hover 狀態引用 Brand/hover 解析為空值",
+        "Clicked 狀態引用 Brand/Brand(active) 解析為空值",
+        "Disabled1/Disabled2 背景是字面漸層值，未綁 token"
+      ]
     },
     {
       "name": "Switch",
@@ -1487,7 +1530,8 @@
         "defaultRadius": "radius.lg"
       },
       "source": "confirmed-from-node",
-      "status": "draft-approved"
+      "status": "deprecated-superseded-2026-07-02",
+      "deprecationNote": "產品畫面已改用卡片式選項元件（見「添加素材 - 選項卡」），此單一按鈕版本（259x36, Default/Hover/Clicked）在目前 Figma 檔案的實際頁面中已找不到對應用法。保留此紀錄供追溯，正式移除前請 Peko 確認舊版是否還有畫面在用。"
     },
     {
       "name": "麥克風bar",
@@ -1900,7 +1944,7 @@
           "nodeId": "13:8928",
           "size": {
             "width": "278px",
-            "height": "41px"
+            "height": "42px"
           },
           "layoutMode": "VERTICAL",
           "radius": "12px",
@@ -1916,7 +1960,7 @@
           "nodeId": "13:8938",
           "size": {
             "width": "278px",
-            "height": "41px"
+            "height": "42px"
           },
           "layoutMode": "VERTICAL",
           "radius": "12px",
@@ -1933,7 +1977,7 @@
           "278px"
         ],
         "heights": [
-          "41px"
+          "42px"
         ],
         "radii": [
           "12px"
@@ -1951,7 +1995,13 @@
         "defaultRadius": null
       },
       "source": "confirmed-from-node",
-      "status": "draft-approved"
+      "status": "draft-approved",
+      "changeLog": [
+        {
+          "date": "2026-07-02",
+          "change": "高度從 41px 改為 42px，與一般 Input 對齊一致。"
+        }
+      ]
     },
     {
       "name": "豎橫 Tab",
@@ -4299,7 +4349,13 @@
         "defaultRadius": "radius.lg"
       },
       "source": "confirmed-from-node",
-      "status": "draft-approved"
+      "status": "draft-approved",
+      "changeLog": [
+        {
+          "date": "2026-07-02",
+          "change": "新增「帶有聲音的視頻源」的雙擊編輯彈窗（Menu/双击编辑弹窗），內含麥克風bar音量條與百分比數值；選中列背景新增 linear-gradient(159.263deg, rgba(117,69,133,.35), rgba(75,52,141,.35)) 字面值，同引用 Brand/Brand(active) 解析為空值；另引用 板块线框 變數本身值為畸形字串。"
+        }
+      ]
     },
     {
       "name": "传影片",
@@ -4720,6 +4776,393 @@
       },
       "source": "confirmed-from-node",
       "status": "needs-design-review"
+    },
+    {
+      "name": "添加素材 - 選項卡",
+      "nodeId": "64:333111 (今日在 popup 頁面觀察到的 symbol 集合根節點，非原始 UI kit 頁 13:8xxx 系列，需與 Peko 確認正式 master component 的 canonical node id)",
+      "sourcePath": "popup / 添加素材 (page 內 symbol 實例，master 定義位置待確認)",
+      "purpose": "取代舊版單一「添加素材 BTN」，改為卡片式選項讓使用者選擇要加入的素材類型（遊戲視訊源／裝置／檔案）。",
+      "anatomy": [
+        "container",
+        "icon",
+        "label",
+        "description"
+      ],
+      "variantProperties": {
+        "选项": {
+          "type": "VARIANT",
+          "defaultValue": "七星百家乐",
+          "variantOptions": [
+            "七星百家乐",
+            "七星体育",
+            "手机摄像头",
+            "图片",
+            "视频",
+            "文字",
+            "窗口",
+            "截屏"
+          ]
+        },
+        "Hover": {
+          "type": "BOOLEAN",
+          "defaultValue": "off",
+          "variantOptions": [
+            "off",
+            "on"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "Hover",
+          "default": "off",
+          "options": [
+            "off",
+            "on"
+          ]
+        }
+      ],
+      "variantCount": 16,
+      "variants": [
+        {
+          "name": "选项=七星百家乐 / 手机摄像头 / 图片 / 视频 / 文字 / 窗口 / 截屏（8 個內容各 2 個 hover 狀態）",
+          "size": {
+            "width": "169px",
+            "height": "55px"
+          },
+          "layoutMode": "VERTICAL",
+          "radius": "8px",
+          "spacing": {
+            "paddingTop": "8px",
+            "paddingBottom": "8px",
+            "itemSpacing": "4px"
+          },
+          "note": "外框 bounding box 8 種內容一致為 169x55px，但目前 Tailwind 產出的條件式 class（部分 variant 用 h-[55px]、部分只有 py-[8px] 靠內容撐開）不統一，代表各 variant 的 auto-layout sizing mode 設定不一致，屬於元件構建衛生問題，非設計規格差異，建議統一為固定 height + hug 一致設定。"
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "169px"
+        ],
+        "heights": [
+          "55px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.sm (12px label)",
+          "typography.caption (11px description)"
+        ]
+      },
+      "tokenMapping": {
+        "containerBackgroundDefault": "color.surface.panel",
+        "containerBackgroundHover": "gradient.card.hover.subtle (draft，見 design-tokens_normalized.json，未在 Figma 綁 variable，目前是字面值)",
+        "labelText": "color.text.primary",
+        "descriptionText": "color.text.secondary.muted",
+        "unresolvedVariable": "Brand/hover — 空值，需 Peko 到 Figma 點選對應圖層確認"
+      },
+      "rawExceptions": [
+        "Hover 漸層角度 138.445deg，與 gradient.action.primary 慣用的 180deg 不一致，屬同色不同角度的變體，建議與設計 owner 確認是否要統一角度或正式收錄為獨立 token。"
+      ],
+      "source": "confirmed-from-node-2026-07-02",
+      "status": "needs-review",
+      "reviewBlockers": [
+        "Brand/hover 變數空值未解析",
+        "hover 背景漸層目前是字面值，未綁 token/variable，違反兩層 token 架構原則",
+        "缺少 active/disabled/focus 狀態定義（僅有 hover on/off），依 DESIGN.md 第8節規則第7條，互動元件缺狀態應標記 error",
+        "master component 的 canonical node id 待確認（今天讀到的是 page 上的 symbol 實例，非原始 UI kit 13:8xxx 頁面節點）"
+      ]
+    },
+    {
+      "name": "Browser Top",
+      "nodeId": "74:333670",
+      "sourcePath": "07/01 組件修改項目 / Browser Top",
+      "purpose": "應用程式視窗頂部列（Windows 與 Mac 兩種樣式），含使用者資訊、通知、設定、版本號與帳號選單。",
+      "anatomy": [
+        "container",
+        "logo",
+        "versionLabel",
+        "userInfo",
+        "notification",
+        "settings",
+        "windowControls",
+        "accountMenu"
+      ],
+      "variantProperties": {
+        "propValue1": {
+          "type": "VARIANT",
+          "defaultValue": "未登入",
+          "variantOptions": [
+            "未登入",
+            "Default"
+          ]
+        },
+        "showMenu": {
+          "type": "BOOLEAN",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "showMenu",
+          "default": "false",
+          "options": [
+            "false",
+            "true"
+          ]
+        }
+      ],
+      "variantCount": 4,
+      "variants": [
+        {
+          "name": "Windows / 未登入",
+          "size": {
+            "width": "1200px",
+            "height": "40px"
+          }
+        },
+        {
+          "name": "Windows / Default",
+          "size": {
+            "width": "1200px",
+            "height": "40px"
+          }
+        },
+        {
+          "name": "Mac / 未登入",
+          "size": {
+            "width": "1200px",
+            "height": "40px"
+          }
+        },
+        {
+          "name": "Mac / Default",
+          "size": {
+            "width": "1200px",
+            "height": "40px"
+          }
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "1200px"
+        ],
+        "heights": [
+          "40px"
+        ],
+        "radii": [
+          "-"
+        ],
+        "commonTypography": [
+          "typography.body.md",
+          "typography.label.sm"
+        ]
+      },
+      "tokenMapping": {
+        "background": "color.bg.browserTop (新增 background/Browser Top)",
+        "versionLabel": "color.brand.primary",
+        "logoText": "color.text.default",
+        "accountMenuBackground": "color.dialog.background (background/primary #0b080d) — 沿用既有 token 命名但實際綁定名稱不同，需與 Peko 確認是否同一顆變數",
+        "accountMenuBorder": "0.5px solid white，字面值未綁 token"
+      },
+      "note": "帳號選單新增「檢查更新」選項（0702 更新）；先前只有 我的资料/设备管理/退出登录 三項。",
+      "source": "confirmed-from-node-2026-07-01",
+      "status": "needs-review",
+      "reviewBlockers": [
+        "帳號選單邊框（0.5px white）未綁 token",
+        "與既有 background/primary 命名的關係需 Peko 確認"
+      ]
+    },
+    {
+      "name": "Menu / 双击编辑弹窗",
+      "nodeId": "74:333174",
+      "sourcePath": "07/01 組件修改項目 / 上传的素材 / Menu 双击编辑弹窗",
+      "purpose": "帶聲音的視頻素材列表項目，雙擊後彈出的音量調整彈窗，內含麥克風bar與百分比數值。",
+      "anatomy": [
+        "container",
+        "icon",
+        "麥克風bar",
+        "percentageLabel"
+      ],
+      "variantProperties": {},
+      "states": [],
+      "variantCount": 1,
+      "variants": [
+        {
+          "name": "Default",
+          "size": {
+            "width": "165px",
+            "height": "36px"
+          },
+          "radius": "8px"
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "165px"
+        ],
+        "heights": [
+          "36px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.en.micro (10px, Inter Semi Bold)"
+        ]
+      },
+      "tokenMapping": {
+        "background": "color.dialog.background (background/primary #0b080d)",
+        "border": "0.5px solid white，字面值未綁 token",
+        "barTrack": "color.scrollbar.thumb (background/scroll-bar)",
+        "barFill": "gradient.action.primary 的漸層但角度 90deg（非既有 180deg）",
+        "percentageText": "color.text.default"
+      },
+      "source": "confirmed-from-node-2026-07-01",
+      "status": "needs-review",
+      "reviewBlockers": [
+        "彈窗邊框未綁 token",
+        "音量條漸層角度與既有 gradient.action.primary 不一致"
+      ]
+    },
+    {
+      "name": "下拉选单 (Dropdown Family, 不含日期)",
+      "nodeId": "64:333497 一節的 7 組（登入/視頻源/情感/職業/性別/直播地点/來源）",
+      "sourcePath": "dropdown State（該區塊在本次「07/01」更新之前就已存在於檔案中）",
+      "purpose": "各表單欄位對應的下拉選單清單。",
+      "anatomy": [
+        "container",
+        "optionRow",
+        "scrollIndicator"
+      ],
+      "variantProperties": {
+        "hover": {
+          "type": "BOOLEAN",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "hover",
+          "default": "false",
+          "options": [
+            "false",
+            "true"
+          ]
+        }
+      ],
+      "variantCount": 14,
+      "variants": [
+        {
+          "name": "7 個下拉選單 x hover on/off",
+          "note": "各下拉選單尺寸不同，詳見個別 node"
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "132px-626px"
+        ],
+        "heights": [
+          "66px-207px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.sm"
+        ]
+      },
+      "tokenMapping": {
+        "background": "color.dialog.background (彈窗/Background #1b1721)",
+        "border": "color.border.dropdown (Border/Drop-down menu)",
+        "selectedRowBackground": "color.input.background (Input/input #312744)",
+        "scrollbar": "color.scrollbar.thumb"
+      },
+      "correction": "上一版這裡誤寫成「先前完全沒收錄，這次新增 Hover 狀態」——這是不準確的說法，已更正。Hover=on/off 這組狀態，在本次「07/01 組件修改項目」更新之前，這份對話一開始掃描 node 64:333497 時就已經存在，不是這次新增的。這次是我自己先前沒有把它寫進 design-components.json（我的紀錄缺口，不是 Figma 新功能），現在補上。07/01 這批更新裡實際上改了什麼（例如 active 狀態），目前沒有確認到具體證據，如果 Peko 知道具體差異，麻煩直接說，我不會用猜的方式填。",
+      "source": "confirmed-from-node（結構於對話開始時已讀取，非本次新讀取）",
+      "status": "needs-review"
+    },
+    {
+      "name": "日曆 (Calendar / 原「下拉选单_日期」)",
+      "nodeId": "74:333717（即 64:333497 節點下「下拉选单_日期」的同一顆元件，Figma 內部圖層命名為「日历」）",
+      "sourcePath": "dropdown State / 下拉选单_日期 → 內部圖層名稱「日历」",
+      "purpose": "月曆式日期選擇器，含月份切換、星期標頭、日期網格。",
+      "anatomy": [
+        "container",
+        "monthNav (prev/next arrow)",
+        "monthLabel",
+        "weekdayHeader",
+        "dateGrid",
+        "selectedDateMarker"
+      ],
+      "variantProperties": {
+        "hover": {
+          "type": "BOOLEAN",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      },
+      "states": [
+        {
+          "property": "hover",
+          "default": "false",
+          "options": [
+            "false",
+            "true"
+          ]
+        }
+      ],
+      "variantCount": 2,
+      "variants": [
+        {
+          "name": "Hover=off/on",
+          "size": {
+            "width": "300px",
+            "height": "249px"
+          },
+          "radius": "8px"
+        }
+      ],
+      "layoutSummary": {
+        "widths": [
+          "300px"
+        ],
+        "heights": [
+          "249px"
+        ],
+        "radii": [
+          "8px"
+        ],
+        "commonTypography": [
+          "typography.body.md (weekday/date)",
+          "Noto Sans SC 14px (month label，新字體家族，非既有 PingFang HK/SC/Inter 三種之一)"
+        ]
+      },
+      "tokenMapping": {
+        "background": "color.dialog.background (彈窗/Background #1b1721)",
+        "border": "color.border.dropdown",
+        "weekdayText": "color.text.secondary",
+        "dateText": "color.text.primary",
+        "shadow": "shadow.overlay —— 完全吻合既有 token（offset 0/0, blur 20px, rgba(0,0,0,0.5)），不需新增陰影 token"
+      },
+      "correction": "這原本被我誤歸類進「下拉选单 Dropdown Family」一起講，但它的 anatomy（月曆網格、月份切換）跟其他 7 個列表型下拉選單完全不同，是獨立元件，已拆開為單獨條目。",
+      "reviewBlockers": [
+        "Noto Sans SC 是新出現的字體家族，需確認是否要正式收進 typography.fontFamily，還是屬於例外"
+      ],
+      "source": "confirmed-from-node-2026-07-02",
+      "status": "needs-review"
     }
   ]
 }
