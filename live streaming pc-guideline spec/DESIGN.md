@@ -103,9 +103,10 @@ AI 檢查時應使用 `design-rules.json`，不要只看 HTML。檢查順序：
 1. 先判斷 node 是否屬於已登錄 component。
 2. 比對 component variant/state 是否存在。
 3. 比對 size、padding、gap、radius、typography、fill、stroke。
-4. 若值不在 token 中，標記為 `warning` 或 `error`。
-5. 若是 raw exception，確認是否只出現在允許的 component part。
-6. 若互動元件缺少 focus / disabled / hover / active 狀態，標記為 error。
+4. size、padding、gap、radius 不應出現小數像素；超過 0.01px 浮點容差時標記為 `warning`，icon/vector 內部細節除外。
+5. 若值不在 token 中，標記為 `warning` 或 `error`。
+6. 若是 raw exception，確認是否只出現在允許的 component part。
+7. 若互動元件缺少 focus / disabled / hover / active 狀態，標記為 error。
 
 ## 9. 目前待補
 

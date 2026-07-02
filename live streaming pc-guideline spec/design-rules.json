@@ -41,6 +41,13 @@
       "autofixSuggestion": "Prefer typography.caption 10px for readable meta text."
     },
     {
+      "id": "layout.dimension.no-fractional-pixels",
+      "property": "width/height/padding/itemSpacing/cornerRadius",
+      "severity": "warning",
+      "message": "Use whole-pixel values for frame/component dimensions, spacing, padding, and radius. Fractional pixels usually indicate accidental resizing or misalignment.",
+      "autofixSuggestion": "Round to the nearest intended integer token or documented component value. Ignore vector/icon internals unless they affect layout containers."
+    },
+    {
       "id": "state.interactive-required",
       "property": "component states",
       "severity": "error",
