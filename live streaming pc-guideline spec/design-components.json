@@ -4,7 +4,7 @@
     "generatedAt": "2026-06-29",
     "sourceNode": "13:8209",
     "componentSetCount": 41,
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-03",
     "changeLog": [
       {
         "date": "2026-07-02",
@@ -17,6 +17,14 @@
       {
         "date": "2026-07-02",
         "change": "修正：先前誤將「下拉选单 Dropdown Family」寫成新元件且聲稱新增 Hover 狀態，實際上該狀態在對話一開始就已存在（我的紀錄缺口，非 Figma 新功能）。並把「下拉选单_日期」拆分為獨立的「日曆」元件（anatomy 完全不同）。"
+      },
+      {
+        "date": "2026-07-03",
+        "change": "重新讀取 Figma node 84:346183（完整 UI kit）與 84:349799（07/01 組件修改項目），確認既有規範方向一致；新增 FIGMA_NODE_84_AUDIT.md 作為最新 node 對照與 raw exception 摘要。"
+      },
+      {
+        "date": "2026-07-03",
+        "change": "完成 Claude 原 pc spec 與 Figma node 84 的綜合比對，新增 PC_SPEC_SYNTHESIZED.md；並將 Primary Button - Large 的 Type=loading 從 node 84 補入 canonical component states。"
       }
     ]
   },
@@ -53,7 +61,8 @@
             "Default",
             "Active",
             "Disabled",
-            "Hover"
+            "Hover",
+            "loading"
           ]
         }
       },
@@ -65,11 +74,12 @@
             "Default",
             "Active",
             "Disabled",
-            "Hover"
+            "Hover",
+            "loading"
           ]
         }
       ],
-      "variantCount": 4,
+      "variantCount": 5,
       "variants": [
         {
           "name": "Type=Default",
@@ -123,6 +133,21 @@
           "layoutMode": "HORIZONTAL",
           "radius": null,
           "spacing": {}
+        },
+        {
+          "name": "Type=loading",
+          "nodeId": "84:346196",
+          "size": {
+            "width": "350px",
+            "height": "48px"
+          },
+          "layoutMode": "HORIZONTAL",
+          "radius": "12px",
+          "spacing": {
+            "paddingTop": "12px",
+            "paddingBottom": "12px"
+          },
+          "note": "Claude 舊版 13:* 規格未收錄此 state；2026-07-03 由 Figma node 84:346186 補齊。內容為 loading indicator，容器仍維持 Primary Button Large 尺寸與品牌漸層。"
         }
       ],
       "layoutSummary": {

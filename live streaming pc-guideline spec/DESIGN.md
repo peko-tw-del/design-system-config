@@ -2,7 +2,7 @@
 
 產出日期：2026-06-29  
 來源：Figma node JSON `13:8209`、Variables 截圖、既有 Claude 報告  
-狀態：第一版正式規範草案，可給 dev 參考，也可作為 AI 設計稿檢查規則基礎。
+狀態：第一版正式規範草案，可給 dev 參考，也可作為 AI 設計稿檢查規則基礎。2026-07-03 已重新讀取 Figma node `84:346183` 與 `84:349799` 校正。
 
 ## 1. 規範結論
 
@@ -13,6 +13,8 @@
 - `design-tokens.normalized.json`：token source of truth，含 primitive / semantic / raw exception。
 - `design-components.json`：component anatomy、variants、states、layout summary。
 - `design-rules.json`：AI 自動掃描設計稿時使用的規則。
+- `PC_SPEC_SYNTHESIZED.md`：Claude 原 pc spec 與 Figma node 84 綜合比對後的 canonical 判定版。
+- `FIGMA_NODE_84_AUDIT.md`：Figma node 84 快速稽核摘要。
 - `visual-guideline.html`：給團隊看的視覺化文件。
 
 ## 3. Token 分層
@@ -164,10 +166,64 @@ Peko 重新整理後發現「主播回覆用 Input」的修正建議還是顯示
 
 **這個流程以後會固定做**：更新任一元件規格後，一定會 grep `design-rules.json` 裡對應 component 名稱，逐條核對 expectedValue 是否跟新規格一致、以及是否完全沒有規則覆蓋，而不是只驗證 JSON 格式跟看 `design-components.json` 本身有沒有寫對。
 
+## 10.3 2026-07-03 重新讀取 Figma node 84 校正
+
+來源：
+
+- 完整 UI kit：Figma node `84:346183`，名稱 `直播助手PC端_UI kit`
+- 最新修改區：Figma node `84:349799`，名稱 `07/01 組件修改項目`
+
+這次讀到的 `84:*` 節點與既有規範內容高度一致，但它是目前連結中實際可追溯的最新版來源；因此後續檢查應優先把 `84:*` 當作最新 Figma 來源，舊的 `13:*` / `64:*` / `74:*` 紀錄保留為歷史對照。
+
+**已確認的正式 token：**
+
+| Token | Figma variable | 值 | 用途 |
+|---|---|---|---|
+| `color.text.primary` | `Text/WT` | `#FFFFFF` | 深色背景主要文字 |
+| `color.text.secondary` | `Text/Secondary text` | `#B8ACBE` | 次要文字 |
+| `color.text.secondaryMuted` | `Text/Secondary text 50%` | `#B8ACBE80` | disabled / placeholder 弱文字 |
+| `color.text.default` | `Text/Default text` | `#ADAAAA` | Browser Top 標題、一般預設文字 |
+| `color.text.icon` | `Text/icon` | `#E0D8F1` | icon / 輔助符號 |
+| `color.brand.primary` | `primary/Main` | `#CB8FE9` | 品牌主色、focus border、版本號 |
+| `color.bg.primary` | `background/Primary` | `#0B080D` | App / menu 深底 |
+| `color.bg.browserTop` | `background/ Browser Top` | `#36373C` | Windows / Mac Browser Top 背景 |
+| `color.surface.panel` | `background/板塊` | `#8A8A8A1A` | 面板弱背景 |
+| `color.surface.panelHover` | `background/板塊 Hover` | `#8A8A8A33` | 面板 hover |
+| `color.input.background` | `Input/input` | `#312744` | 輸入框與選單選項背景 |
+| `color.dialog.background` | `彈窗/Background` | `#1B1721` | Dropdown / popup 背景 |
+| `color.border.dropdown` | `Border/Drop-down menu` | `#CB8FE980` | Dropdown 外框 |
+| `shadow.overlay` | `彈窗shadow` | `0 0 20px #00000080` | popup / overlay |
+
+**仍屬 raw exception 或 broken reference：**
+
+- `Brand/hover`、`Brand/Disable`、`Brand/Brand(active)`：在 node `84:346183` 與 `84:349799` 仍解析為空值，不能當正式 token 使用。
+- `板块线框`：仍解析為畸形字串 `","`，應視為 Figma variable 資料壞掉。
+- 品牌紫漸層的 raw 角度仍不一致：Primary Button 使用 90deg；主播任務 disabled 使用 131.384deg；上传的素材 selected 使用 159.263deg；添加素材 hover 使用 138.445deg。這些色值同源於 `#754585 → #4B348D`，但目前不是同一顆正式 token。
+- Browser Top 帳號 Menu 邊框是 `0.5px white`，還沒綁正式 border token。
+
+**元件校正：**
+
+- `Primary Button - Large`：node `84:346186`，尺寸 `350x48`，radius `12`，狀態 `Default / Hover / Active / Disabled / loading`。Claude 舊版少列 `loading`，已於 2026-07-03 補入 `design-components.json` 與 `design-rules.json`。
+- `button / 主播任務`：node `84:349806` 確認五態 `Disabled1 / Disabled2 / Default / Clicked / Hover`，尺寸 `60x25`，radius `8`，padding `12x4`，label 用 `12/M12`。機器檢查規則不可再顯示舊的 `Property 1=未完成/已完成`。
+- `主播回覆用 Input`：node `84:349813` 確認尺寸 `278x42`，radius `12`，padding `12`，border `0.5px background/scroll bar`，狀態 `Default / Active`。
+- `常態資訊 Input`：node `84:346527`，一般文字型為 `171x33`、radius `8`；含按鈕型為 `350x42`；狀態 `Default / Active / Fill / Disabled / Error`；Error border 使用 `輔助色/PK150-直播间弹窗选取框 #DA3C69`。
+- `Shared_tab`：node `84:346605`，尺寸 `80x26`，selected 使用 `14/M14` 白字與 `24x4` 品牌漸層底線；unselected 使用 `14/R14` 與 `Text/Secondary text 50%`。
+- `下拉选单_性別`：node `84:347414`，容器 `171x66`，背景 `彈窗/Background`，border `Border/Drop-down menu`，radius `8`，padding `8`，選項高 `25`、radius `6/7`。這次仍只驗證到 hover on/off；annotation 提到 active，但目前讀到的 node 沒有提供 active variant。
+- `上传的素材`：node `84:349819`，尺寸 `259x36`，padding `8`，gap `8`，selected 背景使用 raw 品牌紫 35% 漸層；帶聲音素材會出現 `169x36` 音量彈窗，slider track `4px`、knob `12px`、value label `10px Inter Semi Bold`。
+- `Browser Top`：node `84:349800`，Windows / Mac 皆為 `1200x40`，背景 `#36373C`，logo `25x25`，版本號 `12/R12` 品牌主色，Menu 內容含 `我的资料 / 设备管理 / 檢查更新 / 退出登录`。
+
+**後續作為畫面檢查背景時的優先順序：**
+
+1. 先讀 `design-rules.json` 做機器判定。
+2. 若 node id 或狀態與 `13:*` 歷史規則衝突，以本節 `84:*` 校正紀錄為準。
+3. 值有 token 時用正式 token；沒有 token 但本節列為 raw exception 時只允許出現在指定元件。
+4. `Brand/*` 空值與 `板块线框` 畸形值一律報 error，不做近似替換。
+5. 互動元件若缺 hover / active / disabled / focus-visible，仍按第 8 節規則標記。
+
 ## 11. 目前待補
 
-- 需要用含 `file_variables:read` scope 的 Figma token 補抓 variables JSON。
+- 需要用含 `file_variables:read` scope 的 Figma token 補抓完整 variables JSON，特別是 `Brand/*` 這組壞掉的狀態變數。
 - `Button01 / Button02 / Button03 / Button04` 需要設計 owner 確認正式用途。
-- `Property 1` 這類 variant 命名需要改成語意命名，例如 `state`、`type`、`selected`。
+- `Property 1` 這類 variant 命名需要改成語意命名，例如 `state`、`type`、`selected`；`button / 主播任務` 已完成，其他元件仍需逐一收斂。
 - Focus-visible 規則尚未完整出現在 Figma，需要補入元件規範。
 - 8px micro text 需要 accessibility review。

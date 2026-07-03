@@ -4,11 +4,13 @@
     "design-components.json",
     "design-rules.json",
     "DESIGN.md",
+    "PC_SPEC_SYNTHESIZED.md",
+    "FIGMA_NODE_84_AUDIT.md",
     "visual-guideline.html",
     "visual-guideline-update-2026-07-02.html"
   ],
   "componentSetCount": 41,
   "nodeCount": 2020,
-  "rulesCount": 283,
-  "lastUpdated": "2026-07-02"
+  "rulesCount": 285,
+  "lastUpdated": "2026-07-03"
 }

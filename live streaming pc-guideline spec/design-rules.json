@@ -3,8 +3,8 @@
     "product": "直播助手 PC 端",
     "generatedAt": "2026-06-29",
     "goal": "Rules for automated design review against Figma node data.",
-    "rulesCount": 283,
-    "lastUpdated": "2026-07-02"
+    "rulesCount": 285,
+    "lastUpdated": "2026-07-03"
   },
   "globalRules": [
     {
@@ -170,6 +170,34 @@
       "severity": "warning",
       "message": "Primary Button - Large / Type=Disabled should keep its documented base size unless product layout intentionally overrides it.",
       "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "84:346186.84:346196.size",
+      "component": "Primary Button - Large",
+      "variant": "Type=loading",
+      "part": "container",
+      "property": "size",
+      "expectedValue": {
+        "width": "350px",
+        "height": "48px"
+      },
+      "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
+      "severity": "warning",
+      "message": "Primary Button - Large / Type=loading should keep the same 350x48px container as other large primary button states.",
+      "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
+    },
+    {
+      "id": "84:346186.84:346196.radius",
+      "component": "Primary Button - Large",
+      "variant": "Type=loading",
+      "part": "container",
+      "property": "cornerRadius",
+      "expectedValue": "12px",
+      "expectedToken": "radius.xl",
+      "tolerance": "0px",
+      "severity": "warning",
+      "message": "Primary Button - Large / Type=loading corner radius should match other large primary button states.",
+      "autofixSuggestion": "Use radius.xl."
     },
     {
       "id": "13:8222.13:8223.size",
@@ -721,7 +749,7 @@
     {
       "id": "13:8301.13:8302.size",
       "component": "button / 主播任務",
-      "variant": "type=Disabled1（原 Property 1=未完成，2026-07-02 改名）",
+      "variant": "type=Disabled1",
       "part": "container",
       "property": "size",
       "expectedValue": {
@@ -730,13 +758,13 @@
       },
       "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
       "severity": "warning",
-      "message": "button / 主播任務 / Property 1=未完成 should keep its documented base size unless product layout intentionally overrides it.",
+      "message": "button / 主播任務 / type=Disabled1（未完成）should keep its documented base size unless product layout intentionally overrides it.",
       "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
     },
     {
       "id": "13:8301.13:8302.radius",
       "component": "button / 主播任務",
-      "variant": "type=Disabled1（原 Property 1=未完成，2026-07-02 改名）",
+      "variant": "type=Disabled1",
       "part": "container",
       "property": "cornerRadius",
       "expectedValue": "8px",
@@ -749,7 +777,7 @@
     {
       "id": "13:8301.13:8304.size",
       "component": "button / 主播任務",
-      "variant": "type=Disabled2（原 Property 1=已完成，2026-07-02 改名）",
+      "variant": "type=Disabled2",
       "part": "container",
       "property": "size",
       "expectedValue": {
@@ -758,13 +786,13 @@
       },
       "tolerance": "0px for exact UI-kit component; 1px allowed for exported raster comparisons",
       "severity": "warning",
-      "message": "button / 主播任務 / Property 1=已完成 should keep its documented base size unless product layout intentionally overrides it.",
+      "message": "button / 主播任務 / type=Disabled2（已完成）should keep its documented base size unless product layout intentionally overrides it.",
       "autofixSuggestion": "Reset component instance dimensions or document the override as responsive behavior."
     },
     {
       "id": "13:8301.13:8304.radius",
       "component": "button / 主播任務",
-      "variant": "type=Disabled2（原 Property 1=已完成，2026-07-02 改名）",
+      "variant": "type=Disabled2",
       "part": "container",
       "property": "cornerRadius",
       "expectedValue": "8px",
