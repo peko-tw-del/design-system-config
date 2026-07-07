@@ -1,0 +1,45 @@
+{
+  "generated": [
+    "design-tokens.normalized.json",
+    "design-components.json",
+    "design-rules.json",
+    "DESIGN.md",
+    "SPORTS_SPEC_SYNTHESIZED.md",
+    "FIGMA_NODE_AUDIT.md"
+  ],
+  "product": "七星體育",
+  "specId": "qixing-sports",
+  "version": "0.2.1-draft",
+  "lastUpdated": "2026-07-07",
+  "source": {
+    "figmaFileKey": "ZOHnVejsbiI7BbU8YIsm0j",
+    "foundationNode": "8089:13855",
+    "componentAndScreenNode": "6863:293089",
+    "claudePackage": "/Users/peko/Downloads/files.zip"
+  },
+  "pluginUse": {
+    "rulepackFolder": "sports-spec",
+    "intendedConsumer": "揪錯貓 design police plugin",
+    "statusLevels": [
+      "error",
+      "warning",
+      "info"
+    ]
+  },
+  "summary": {
+    "componentSetCount": "from design-components.json inventory",
+    "rulesCount": "from design-rules.json global + naming + component",
+    "hardDecisions": [
+      "中文字與一般介面文案使用 PingFang HK",
+      "數字類文字使用 DIN Alternate Bold",
+      "賠率 / 盈虧 live-data 色彩與 status 色彩分開管理",
+      "未登記色票與硬寫顏色需被揪錯貓標記"
+    ],
+    "stillDraft": [
+      "賠率字級 13px / 14px 需 owner 裁決",
+      "15px 可贏標籤需併入尺度或正式保留",
+      "CTA 漸層與背景漸層需補正式 variables",
+      "賽事卡與部分注單狀態仍需元件化與補狀態"
+    ]
+  }
+}
