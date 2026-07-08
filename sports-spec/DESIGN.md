@@ -1,136 +1,229 @@
-# 七星體育 設計規範 v0.2 (draft)
+# 直播助手 PC 端 Design System 規範
 
-> 依據元件庫交付模板(00 Cover / 01 Foundations / 02 Components / 03 Patterns / 04 Screens / 05 Dev Notes)結構編寫。
-> 資料來源:Figma `ZOHnVejsbiI7BbU8YIsm0j` 六個元件 section(component / icon / Navigation Bar / 赛事状态 / 页面状态 / Thumb)結構盤點 + 8 個關鍵元件/卡片 CSS 實值抽樣,右側設計稿(首頁、投注介面、注單、通知中心)作為使用場景對照。
-> 標記「未驗證」者一律需回 Figma 確認後才能定案,不得直接沿用。
+產出日期：2026-06-29  
+來源：Figma node JSON `13:8209`、Variables 截圖、既有 Claude 報告  
+狀態：第一版正式規範草案，可給 dev 參考，也可作為 AI 設計稿檢查規則基礎。2026-07-03 已重新讀取 Figma node `84:346183` 與 `84:349799` 校正。
 
----
+## 1. 規範結論
 
-## 01 Foundations
+這份設計系統已具備可落地的基礎：色彩變數、主要元件、variants、typography、spacing、radius 都能從 Figma node 取得。現在最重要的是把 Figma 原始命名轉成穩定的 semantic token，並把每個 component 的狀態矩陣與檢查規則機器化。
 
-### 1.1 色彩架構
+## 2. Source Of Truth
 
-採兩層架構。primitive 層存原始色值,semantic 層定義語意角色,元件只允許引用 semantic 層變數,禁止直接寫 hex。同色值不同語意者各自獨立命名,合併只發生在 alias 層。
+- `design-tokens.normalized.json`：token source of truth，含 primitive / semantic / raw exception。
+- `design-components.json`：component anatomy、variants、states、layout summary。
+- `design-rules.json`：AI 自動掃描設計稿時使用的規則。
+- `PC_SPEC_SYNTHESIZED.md`：Claude 原 pc spec 與 Figma node 84 綜合比對後的 canonical 判定版。
+- `FIGMA_NODE_84_AUDIT.md`：Figma node 84 快速稽核摘要。
+- `visual-guideline.html`：給團隊看的視覺化文件。
 
-#### 語意角色總表
+## 3. Token 分層
 
-| 角色 | Token | 值 | 用途 | 限制 |
-|---|---|---|---|---|
-| 品牌 | color/brand/primary | #45A6FF | tab 指示、可點擊強調 | |
-| 系統錯誤 | color/status/error | #FF6954 | 表單錯誤、失敗提示 | 禁用於賠率與盈虧 |
-| 系統成功 | color/status/success | #62D643 | 操作完成提示 | 禁用於賠率與盈虧 |
-| 賠率漲 | color/odds/up | #FF6954 | 賠率上漲(紅漲) | live-data,獨立族 |
-| 賠率跌 | color/odds/down | #62D643 | 賠率下跌(綠跌) | live-data,獨立族 |
-| 賠率預設 | color/odds/none | #45A6FF | 賠率無變動 | live-data,獨立族 |
-| 賠率鎖盤 | color/odds/locked | 未驗證 | 盤口鎖定 icon | live-data,需取值 |
-| 盈虧贏 | color/result/win | #FF6954 | 結算贏(紅贏) | live-data,獨立族 |
-| 盈虧輸 | color/result/loss | #62D643 | 結算輸(綠輸) | live-data,獨立族 |
-| 盈虧平 | color/result/draw | #45A6FF | 平/走盤 | live-data,獨立族 |
-| 主文字 | color/text/primary | #FFFFFF | 主要文字 | |
-| 次文字 | color/text/secondary | #61819E | 次要文字、未選 tab | |
-| 提示文字 | color/text/hint | rgba(97,129,158,.45) | 佔位提示 | |
-| 半透明輔助 | color/text/inverse-50 | rgba(255,255,255,.5) | 深底輔助文字 | |
-| 輸入底 | color/input/bg | rgba(0,0,0,.15) | 輸入框底 | |
-| 輸入框線 | color/input/border | #61819E | 輸入框預設邊框 | 與 text/secondary 同值但獨立 |
-| 輸入錯誤 | color/input/border-error | #FF6954 | 錯誤邊框+訊息 | alias 至 status/error |
-| 分隔線 | color/border/divider | rgba(97,129,158,.45) | 分隔線 | 與 text/hint 同值但獨立 |
-| 卡片底 | color/surface/card | #212E39 | 賽事卡、清單卡 | 現況寫死 |
-| 選項底 | color/surface/option | rgba(255,255,255,.03) | 盤口選項 | 現況寫死 |
-| 膠囊底 | color/surface/badge | rgba(0,0,0,.2) | 計數膠囊 | 現況寫死 |
-| 弱化文字 | color/text/tertiary | #506D87 | 計數(+56) | 現況寫死 |
-| 選項標籤 | color/text/option-label | #7497B7 | 主/客/和、讓球數 | 現況寫死 |
-| CTA 漸層起 | color/cta/primary-gradient-start | rgba(41,115,184,.9) | 投注按鈕 | 現況寫死,必須綁定 |
-| CTA 漸層迄 | color/cta/primary-gradient-end | #2B73B5 | 投注按鈕 | 現況寫死,必須綁定 |
-| 按鈕禁用 | color/cta/disabled-bg | rgba(47,64,78,.8) | 禁用底 | |
+### Primitive Token
 
-#### 中式紅綠雙軌鐵律
+Primitive token 保存原始色值、字體、尺寸，例如 `color.primitive.purple.500 = #CB8FE9`。它不應直接被一般畫面使用，除非是在建立 semantic token。
 
-賠率方向色(紅漲綠跌)與系統回饋色(紅錯綠對)語意方向相反。odds、result 兩族與 status 族即使色值相同,永遠獨立命名、獨立管理、掛 live-data tag。任何「看起來一樣就合併」的提案一律駁回,理由見 05 Dev Notes 問題清單第 1、2 條。
+### Semantic Token
 
-### 1.2 字體
+Semantic token 是工程與 AI 檢查主要使用的層級，例如：
 
-| 用途 | 字體 | 規格 |
+| Semantic token | Figma variable | 用途 |
 |---|---|---|
-| 介面文字 | PingFang HK | 中文、英文介面文案與一般標籤文字;Regular / Semibold 兩檔 |
-| 所有數字 | DIN Alternate Bold | 賠率、比分、金額、限額、時間、百分比、計數、統計一律使用,禁止數字用 PingFang |
+| `color.text.primary` | Text/WT | 深色背景上的主要文字 |
+| `color.text.secondary` | Text/Secondary text | 次要文字 |
+| `color.surface.panel` | background/板塊 | 玻璃面板背景 |
+| `color.border.subtle` | Border/Card | 卡片與面板細邊 |
+| `color.action.brand.subtle` | Button/Button01 | 品牌弱底色操作 |
+| `color.input.background` | Input/input | 輸入框背景 |
 
-字級尺度:10(錯誤訊息)/ 12(標籤)/ 13(卡內賠率、時間、注單狀態,檔內有 13/R13-iOS26 樣式)/ 14(賠率元件、輸入、tab)/ 16(金額、按鈕)。兩個待裁決:15px(可贏標籤)一處待併入;賠率數字同時存在 13 與 14 兩種字級(賽事卡 vs OddsValue 元件),必須擇一。現況同一張賽事卡內 PingFang HK 與 SC 混用;依 2026-07-07 owner 決策,SC 視為需修正,統一為 PingFang HK。
+### Component Token
 
-行高:賠率 20px,按鈕文字 22px。
+Component token 應只用在特定元件，例如 `component.liveInfoCard.width = 277px`、`component.liveInfoCard.cover.size = 80px`。這些不應升級成全域 spacing token。
 
-### 1.3 圓角
+## 4. 色彩規則
 
-| Token | 值 | 用途 |
-|---|---|---|
-| radius/input | 6px | 輸入框 |
-| radius/tab | 12px | tab 容器 |
-| radius/pill | 500px | 膠囊按鈕 |
-| radius/indicator | 100px | tab 底線指示條 |
-| radius/card | 4px | 賽事卡、盤口選項 |
-| radius/badge | 100px | 計數膠囊 |
+透明色必須拆成 base color 與 opacity。  
+例如 `background/板塊` 不只記成 `rgba(138,138,138,0.10)`，而是：
 
-SlideBetButton Disabled 態現況為 40px,違反 pill 規則,需統一為 500px(規則 C-001)。
+```json
+{ "base": "#8A8A8A", "opacity": 0.1, "css": "rgba(138, 138, 138, 0.10)" }
+```
 
-### 1.4 間距與尺寸
+這樣 AI 才能判斷 Figma 的 `#8A8A8A 10%` 和 CSS 的 `rgba(138,138,138,.1)` 是同一個 token。
 
-輸入框 327x36,padding 12/10。按鈕高 42,padding 左8 右16 上下10。tab 高 40。滑塊 28。tab 指示條 22x3。icon 尺度 12 / 16 / 20 / 24;國旗現況 17px 為孤立尺寸,建議併入 16(待裁決)。
+## 5. Typography 規則
 
----
+預設中文使用 PingFang HK，簡中使用 PingFang SC，英文數字使用 Inter。
 
-## 02 Components(已抽樣 5 個,規格詳見 design-components.json)
+| Token | 用途 |
+|---|---|
+| `typography.body.md` | 預設內容文字 |
+| `typography.body.sm` | 次要標籤、小型列表內容 |
+| `typography.caption` | meta 資訊 |
+| `typography.micro` | 僅限非關鍵 badge，需 accessibility review |
 
-| 元件 | 狀態 | 關鍵規格 | 觸發條件 |
+## 6. Spacing 與 Radius 規則
+
+全域 spacing 建議使用 `2, 4, 6, 8, 12, 16, 20`。  
+`1, 3, 7, 9, 10` 目前標記為 raw/component exception，不應任意重用。
+
+預設 controls 使用 `radius.lg = 8px`；大型面板與 popup 使用 `radius.xl = 12px`；`radius.xl2 = 16px`（2026-07-02 新增，確認出現在 Default/文字 variant，介於 radius.xl 與 radius.2xl 之間）；pill 使用 `radius.pill = 999px`。
+
+## 7. Component 規範
+
+本次從 Figma node 解析出 36 組 Component Set。每個元件都已在 `design-components.json` 中包含：
+
+- node id
+- variant properties
+- states
+- variants
+- base size
+- radius
+- spacing
+- common typography
+- token mapping
+- status
+
+重要元件包含：
+
+- Primary Button - Large
+- Secondary Button - Large
+- Primary Button - Medium
+- 常態資訊 Input
+- 主播回覆用 Input
+- 直播信息
+- 直播画面管理
+- 直播類型 Button
+- Switch / Radio
+- Icon system
+- 上传的素材
+
+## 8. AI 檢查規則
+
+AI 檢查時應使用 `design-rules.json`，不要只看 HTML。檢查順序：
+
+1. 先判斷 node 是否屬於已登錄 component。
+2. 比對 component variant/state 是否存在。
+3. 比對 size、padding、gap、radius、typography、fill、stroke。
+4. size、padding、gap、radius 不應出現小數像素；超過 0.01px 浮點容差時標記為 `warning`，icon/vector 內部細節除外。
+5. 若值不在 token 中，標記為 `warning` 或 `error`。
+6. 若是 raw exception，確認是否只出現在允許的 component part。
+7. 若互動元件缺少 focus / disabled / hover / active 狀態，標記為 error。
+
+## 9. 2026-07-02 更新記錄
+
+來源：Figma node `64:333111`（popup 頁面內「添加素材」symbol 集合）。
+
+**新增元件**：「添加素材 - 選項卡」，取代舊版「添加素材 BTN」（單一按鈕，259x36，Default/Hover/Clicked 三態）。新版改為 8 種內容 × hover on/off 的卡片式選項（169x55px，圓角 8px），對應 Figma 命名 `选项=X, Hover=on/off`，命名品質比舊版乾淨。舊版規格保留於 `design-components.json` 中並標記 `deprecated-superseded-2026-07-02`，未直接刪除，正式下架前需 Peko 確認舊版是否還有畫面在用。
+
+**發現的問題（已寫入 design-rules.json 為新規則）**：
+
+1. **Hover 背景漸層未綁 token**：`linear-gradient(138.445deg, rgba(117,69,133,0.35), rgba(75,52,141,0.35))` 是字面值，沒有綁 variable。色值跟 `gradient.action.primary`（#754585 / #4B348D）完全一樣，只是角度（138.445° vs 180°）跟透明度（35% vs 100%）不同，判斷是同源色但沒有正式收斂成 token。已在 `design-tokens.normalized.json` 新增草稿 token `gradient.card.hover.subtle`，狀態 `needs-review`，等 Peko 確認角度要不要統一成 180°、要不要正式收錄。
+2. **`Brand/hover` 變數無法解析**：這個節點子樹裡有引用到，但值是空的，也不在既有 token 表任何 figmaName 裡，判斷是沒設定或壞掉的 alias。沒有用猜的方式補值，已列為待確認項目。
+3. **缺少 active/focus/disabled 狀態**：目前只定義了 hover on/off，依第 8 節規則第 7 條，互動元件缺狀態要標記 error。
+4. **舊頁面實例沒跟上主元件更新**：popup 頁面裡仍有多處用未語意化命名的 `Component 310` / `311` / `312` 承載這組卡片內容，還沒換成新版 master symbol 的正式 instance——跟先前記錄過的「發起PK」標籤跨模組亂用屬於同一種系統性問題（主元件改了、頁面實例沒同步）。
+
+## 10. 2026-07-02（下午）批次更新 — 來源 node 74:333669「07/01 組件修改項目」
+
+這批不是單一元件，是五個各自獨立的更新，其中「上传的素材」跟稍早記錄的「添加素材 - 選項卡」**不是同一個東西、也不是重複**——前者是「已上傳素材列表項目」，後者是「選擇要加入哪種素材的選項卡」，兩個是同一個素材流程裡前後不同階段的元件。
+
+**新增元件（design-components.json 新增 3 組，共 40 組）：**
+- **Browser Top**：應用程式視窗頂列（Windows / Mac 兩樣式），新增 `background/Browser Top` (#36373C) 色彩 token；帳號選單新增「檢查更新」選項。
+- **Menu / 双击编辑弹窗**：「上传的素材」列表項目雙擊後的音量調整彈窗，內含麥克風bar與百分比數值。
+- **下拉选单 (Dropdown Family)**：8 組下拉選單（登入區碼／視頻源／情感／職業／性別／直播地點／來源／日期），先前完全沒收錄，這次補上，新增 Hover 狀態。
+
+**更新既有元件：**
+- **button / 主播任務**：variant 屬性從無語意的「Property 1」改成「type」，狀態從已完成/未完成兩態擴充為 Disabled1/Disabled2/Default/Hover/Clicked 五態——這正好回應了本文件最初就記錄的待補事項「Property 1 這類 variant 命名需要改成語意命名」。
+- **主播回覆用 Input**：高度 41px → 42px，跟一般 Input 對齊。
+- **上传的素材**：選中列新增字面漸層背景，未收斂成 token。
+
+**發現的系統性問題（比單一元件層級更重要）**：
+
+`Brand/hover`、`Brand/Disable`、`Brand/Brand(active)` 三個變數，在 button/主播任務 跟 上传的素材 兩個不相關的元件裡都被引用，但透過 `get_variable_defs` 讀出來全部是空值。加上另外發現的 `板块线框` 變數本身回傳畸形字串 `","`——這已經不是單一元件的個案，是 Figma 檔案裡「Brand/*」這一整組狀態色變數本身壞掉或未發布的跡象，建議 Peko 直接在 Figma 裡稽核這組變數，而不是逐一元件修。已把這條寫成新的 global rule `token.variable.no-broken-reference`。
+
+另外，三個不相關元件（添加素材選項卡 hover、button/主播任務 disabled、上传的素材選中列）各自獨立寫出了「品牌紫漸層在 35% opacity」但用了三種不同角度（138.445°／131.384°／159.263°），代表這是一個真實存在、被多處重複發明的視覺模式，值得正式收斂成一顆 token 並統一角度，而不是繼续讓各元件各寫各的。
+
+## 10.1 更正（同日）
+
+上面第 10 節裡「下拉选单 Dropdown Family」的描述有兩個錯誤，Peko 指出後已修正：
+
+1. **「新增 Hover 狀態」是錯的**。Hover=on/off 這組狀態，在這次「07/01 組件修改項目」出現之前，這份對話一開始掃描 node 64:333497 時就已經存在。是我自己先前沒把它寫進 design-components.json，不是 Figma 新增的功能。07/01 這批到底改了什麼，目前沒有確切證據（annotation 提到「有 active 和 Hover」，但我只驗證到 hover，沒驗證到 active 差異在哪），需要 Peko 補充。
+2. **「下拉选单_日期」不是普通下拉選單，是日曆**。內部圖層命名就是「日历」，anatomy 是月份切換＋星期標頭＋日期網格，跟其他 7 個列表型下拉選單完全不同結構，已拆成獨立的「日曆」元件條目。月份標籤用了 Noto Sans SC，是目前 token 表三種字體家族（PingFang HK/SC、Inter）之外的新字體，需要確認要不要正式收錄。陰影效果則跟既有 `shadow.overlay` token 完全吻合，不需要新增。
+
+design-components.json 已同步修正（41 組），錯誤紀錄保留在上方並用此節說明更正過程，沒有直接覆蓋掉。
+
+## 10.2 更正（同日，第二次）
+
+Peko 重新整理後發現「主播回覆用 Input」的修正建議還是顯示 41px。查了之後確認：**我只更新了 `design-components.json`（人看的規格文件），沒有同步更新 `design-rules.json` 裡實際驅動 AI 檢查建議的 componentRules 條目**，兩份資料當時不同步，導致檢查工具吐出來的還是舊值。已修正：
+
+- `13:8927.13:8928.size`、`13:8927.13:8938.size` 兩條規則的 `expectedValue.height` 由 41px 改為 42px。
+- 順手一併修正 `button / 主播任務` 的規則 variant 標籤，從舊的「Property 1=未完成/已完成」改成新的「type=Disabled1/Disabled2」，避免規則跟實際圖層命名對不上。
+- 全文搜尋過一次確認沒有其他殘留的舊數值（唯一其他出現 "41" 的地方是「141px」寬度，屬於字串誤判，不是真正的殘留錯誤）。
+
+這次的教訓：以後同一批更新要同時檢查 `design-components.json`（規格說明）跟 `design-rules.json`（機器檢查規則）兩份，不能只改一邊。
+
+**追加**：光修 Input 那兩條還不夠，我對這次動過的 9 個元件、以及全部 41 組元件做了一次系統性覆蓋率檢查，發現這批新增的 4 組元件（Browser Top、Menu/双击编辑弹窗、下拉选单家族、日曆）**完全沒有對應的 componentRules**，等於規格寫了但機器檢查完全不會管。已補上 9 條規則（含日曆月份標籤用了未收錄字體 Noto Sans SC 這條，標記 error）。現在 componentRules 總數 274 條、加 global rules 共 283 條，`design-components.json` 全部 41 組元件都至少有一條規則覆蓋，size 數值逐一比對過，沒有再發現落差。README、HTML、Figma 頁面的規則總數也一併同步成 283。
+
+**這個流程以後會固定做**：更新任一元件規格後，一定會 grep `design-rules.json` 裡對應 component 名稱，逐條核對 expectedValue 是否跟新規格一致、以及是否完全沒有規則覆蓋，而不是只驗證 JSON 格式跟看 `design-components.json` 本身有沒有寫對。
+
+## 10.3 2026-07-03 重新讀取 Figma node 84 校正
+
+來源：
+
+- 完整 UI kit：Figma node `84:346183`，名稱 `直播助手PC端_UI kit`
+- 最新修改區：Figma node `84:349799`，名稱 `07/01 組件修改項目`
+
+這次讀到的 `84:*` 節點與既有規範內容高度一致，但它是目前連結中實際可追溯的最新版來源；因此後續檢查應優先把 `84:*` 當作最新 Figma 來源，舊的 `13:*` / `64:*` / `74:*` 紀錄保留為歷史對照。
+
+**已確認的正式 token：**
+
+| Token | Figma variable | 值 | 用途 |
 |---|---|---|---|
-| OddsValue | None / Up / Down / locked | DIN 14px;Up 紅 Down 綠 None 藍 | 即時賠率變動方向 |
-| 已结算注单总计状态 | 贏 / 輸 / 平 | 標籤 PingFang 12 灰藍;金額 DIN 16 | 注單結算結果 |
-| BetAmountInput | Empty / Filled / Error | 6px 圓角,錯誤紅框+上方 10px 訊息 | 低於 2.00 或高於 30,000 觸發 Error |
-| SlideBetButton | Default / Dragging / Success / Disabled | 42px 膠囊,漸層藍;禁用深灰 | 拖曳中 / 投注成功 / 未選注或封盤 |
-| tab_btn | default / Focus | 選中白字+3px 藍指示條 | 分類切換 |
-| 賽事卡 | 未開賽~點球大戰 8 態 | 4px 卡,#212E39 底,盤口欄 58px | 賽況即時切換 |
-| 注单状态 | 投注成功/处理中/已结算/走盘 | PingFang 13px,藍/灰藍二分 | 注單生命週期 |
+| `color.text.primary` | `Text/WT` | `#FFFFFF` | 深色背景主要文字 |
+| `color.text.secondary` | `Text/Secondary text` | `#B8ACBE` | 次要文字 |
+| `color.text.secondaryMuted` | `Text/Secondary text 50%` | `#B8ACBE80` | disabled / placeholder 弱文字 |
+| `color.text.default` | `Text/Default text` | `#ADAAAA` | Browser Top 標題、一般預設文字 |
+| `color.text.icon` | `Text/icon` | `#E0D8F1` | icon / 輔助符號 |
+| `color.brand.primary` | `primary/Main` | `#CB8FE9` | 品牌主色、focus border、版本號 |
+| `color.bg.primary` | `background/Primary` | `#0B080D` | App / menu 深底 |
+| `color.bg.browserTop` | `background/ Browser Top` | `#36373C` | Windows / Mac Browser Top 背景 |
+| `color.surface.panel` | `background/板塊` | `#8A8A8A1A` | 面板弱背景 |
+| `color.surface.panelHover` | `background/板塊 Hover` | `#8A8A8A33` | 面板 hover |
+| `color.input.background` | `Input/input` | `#312744` | 輸入框與選單選項背景 |
+| `color.dialog.background` | `彈窗/Background` | `#1B1721` | Dropdown / popup 背景 |
+| `color.border.dropdown` | `Border/Drop-down menu` | `#CB8FE980` | Dropdown 外框 |
+| `shadow.overlay` | `彈窗shadow` | `0 0 20px #00000080` | popup / overlay |
 
-其餘 40+ 元件僅完成結構盤點(清單見 design-components.json inventory),規格待逐一補齊。**特別注意:賽事卡雖有 8 種狀態,現況是普通 frame 不是 component,規則 G-008 要求元件化後才能進 02 章定案。**
+**仍屬 raw exception 或 broken reference：**
 
-### 互動狀態完整性要求
+- `Brand/hover`、`Brand/Disable`、`Brand/Brand(active)`：在 node `84:346183` 與 `84:349799` 仍解析為空值，不能當正式 token 使用。
+- `板块线框`：仍解析為畸形字串 `","`，應視為 Figma variable 資料壞掉。
+- 品牌紫漸層的 raw 角度仍不一致：Primary Button 使用 90deg；主播任務 disabled 使用 131.384deg；上传的素材 selected 使用 159.263deg；添加素材 hover 使用 138.445deg。這些色值同源於 `#754585 → #4B348D`，但目前不是同一顆正式 token。
+- Browser Top 帳號 Menu 邊框是 `0.5px white`，還沒綁正式 border token。
 
-可互動元件至少定義 default / focus(selected) / disabled 三態。現況多數元件缺 disabled,遇停盤封盤場景會臨時湊色(規則 C-006)。
+**元件校正：**
 
----
+- `Primary Button - Large`：node `84:346186`，尺寸 `350x48`，radius `12`，狀態 `Default / Hover / Active / Disabled / loading`。Claude 舊版少列 `loading`，已於 2026-07-03 補入 `design-components.json` 與 `design-rules.json`。
+- `button / 主播任務`：node `84:349806` 確認五態 `Disabled1 / Disabled2 / Default / Clicked / Hover`，尺寸 `60x25`，radius `8`，padding `12x4`，label 用 `12/M12`。機器檢查規則不可再顯示舊的 `Property 1=未完成/已完成`。
+- `主播回覆用 Input`：node `84:349813` 確認尺寸 `278x42`，radius `12`，padding `12`，border `0.5px background/scroll bar`，狀態 `Default / Active`。
+- `常態資訊 Input`：node `84:346527`，一般文字型為 `171x33`、radius `8`；含按鈕型為 `350x42`；狀態 `Default / Active / Fill / Disabled / Error`；Error border 使用 `輔助色/PK150-直播间弹窗选取框 #DA3C69`。
+- `Shared_tab`：node `84:346605`，尺寸 `80x26`，selected 使用 `14/M14` 白字與 `24x4` 品牌漸層底線；unselected 使用 `14/R14` 與 `Text/Secondary text 50%`。
+- `下拉选单_性別`：node `84:347414`，容器 `171x66`，背景 `彈窗/Background`，border `Border/Drop-down menu`，radius `8`，padding `8`，選項高 `25`、radius `6/7`。這次仍只驗證到 hover on/off；annotation 提到 active，但目前讀到的 node 沒有提供 active variant。
+- `上传的素材`：node `84:349819`，尺寸 `259x36`，padding `8`，gap `8`，selected 背景使用 raw 品牌紫 35% 漸層；帶聲音素材會出現 `169x36` 音量彈窗，slider track `4px`、knob `12px`、value label `10px Inter Semi Bold`。
+- `Browser Top`：node `84:349800`，Windows / Mac 皆為 `1200x40`，背景 `#36373C`，logo `25x25`，版本號 `12/R12` 品牌主色，Menu 內容含 `我的资料 / 设备管理 / 檢查更新 / 退出登录`。
 
-## 03 Patterns(待建)
+**後續作為畫面檢查背景時的優先順序：**
 
-投注流程(選注 → 金額輸入 → 滑動確認 → 成功回饋)、注單篩選、賽況即時更新三個核心 pattern 待元件規格補齊後編寫。
+1. 先讀 `design-rules.json` 做機器判定。
+2. 若 node id 或狀態與 `13:*` 歷史規則衝突，以本節 `84:*` 校正紀錄為準。
+3. 值有 token 時用正式 token；沒有 token 但本節列為 raw exception 時只允許出現在指定元件。
+4. `Brand/*` 空值與 `板块线框` 畸形值一律報 error，不做近似替換。
+5. 互動元件若缺 hover / active / disabled / focus-visible，仍按第 8 節規則標記。
 
----
+## 11. 目前待補
 
-## 04 Screens(待建)
-
-依 token 系統既有進度,賠率表、投注單、注單紀錄、錢包餘額畫面已有 token 對應,結果頁與剩餘畫面待補。
-
----
-
-## 05 Dev Notes:現況問題清單
-
-依嚴重度排序,修正前規範不得定案:
-
-1. **同一紅色 #FF6954 扛三種語意**:status/error(輸入錯誤)、status/error(賠率上漲)、辅助色/error(贏錢金額)。三個變數無 alias 關係,改任何一個都可能連動其他兩處。綠色 #62D643 同病。
-2. **語意反轉命名**:「贏」綁在名為 error 的變數上、「輸」綁在 success 上。中式紅贏綠輸慣例硬套西式 error=紅 命名的結果,新人接手必誤用。
-3. **中英雙套平行變數**:status/* 與 辅助色/* 同值雙包,分別被不同元件引用,已是實際存在的壞重複。
-4. **投注 CTA 漸層整組寫死**:rgba(41,115,184,.9) → #2B73B5 未綁任何變數,主要行動按鈕是全檔案最沒保護的顏色。
-5. **SlideBetButton 圓角不一致**:Disabled 40px,其餘狀態 500px。
-6. **Variant 屬性名至少 9 種並存**:State、Property 1、play、赛况、数值、已讀、分类、Tab State、Search State,含大量 Property 1 佔位名。
-7. **元件命名四種格式混用**:Icon/Pin、icon 16px、Icon_12px、icon / 搜索。
-8. **同名元件集重複**:tab_btn 兩組(variant 值還一組 Focus 一組 focus)、amount 兩組。
-9. **繁簡混用**:同一 Navigation Bar 元件集內「標題＋返回」(繁)與「筛选」(簡)並存。
-10. **語意錯置的元件分類**:「国旗」集混入兵工厂、曼城、巴黎圣日尔曼、布蘭特福德等俱樂部隊徽;「icon / 搜索」實際內容為聯賽 icon。
-11. **賽事卡整卡零變數且非元件**:首頁最高頻元素,8 種狀態全是散裝 frame,#212E39 / #45A6FF / #7497B7 / #506D87 / rgba(255,255,255,.03) 全部寫死,內部圖層全為 Frame 159788xxxx 佔位名。
-12. **藍色也有雙包**:#45A6FF 同時存在 brand/primary 與 main/b80 兩個變數,注單狀態綁後者、tab 綁前者。
-13. **賠率字級雙標**:OddsValue 元件 14px,賽事卡內賠率 13px,同一種資料兩種字級。
-14. **字體家族混用**:同一張賽事卡內 PingFang HK 與 PingFang SC 並存;已決議統一 PingFang HK,SC 視為違規。
-15. **非整數行高**:盤口欄標題行高 16.5px。
-
----
-
-## 覆蓋範圍聲明
-
-本版規範的色彩、字體、圓角、間距值,來自 8 個元件/卡片的 CSS 實值讀取(OddsValue、已结算注单总计状态、BetAmountInput、SlideBetButton、tab_btn、賽事卡未開賽態、注单状态、页面状态 Empty),已驗證。賽事卡僅讀未開賽一態,其餘七態未驗證。其餘元件僅結構盤點,規格欄位為空,不得視為已定案。odds/locked 色值、btn_bet 系列的 focus 色、赛况系列的狀態色等均未讀取,禁止引用本文件宣稱其值。
+- 需要用含 `file_variables:read` scope 的 Figma token 補抓完整 variables JSON，特別是 `Brand/*` 這組壞掉的狀態變數。
+- `Button01 / Button02 / Button03 / Button04` 需要設計 owner 確認正式用途。
+- `Property 1` 這類 variant 命名需要改成語意命名，例如 `state`、`type`、`selected`；`button / 主播任務` 已完成，其他元件仍需逐一收斂。
+- Focus-visible 規則尚未完整出現在 Figma，需要補入元件規範。
+- 8px micro text 需要 accessibility review。
