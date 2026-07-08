@@ -1,1065 +1,449 @@
 {
-  "$schema": "https://tr.designtokens.org/format/",
-  "$metadata": {
-    "product": "直播助手 PC 端",
-    "generatedAt": "2026-06-29",
-    "sourceNodeFile": "/Users/peko/figma-node-13-8209.json",
-    "sourceNodeId": "13:8209",
-    "sourceStatus": "Color variables confirmed from screenshots; layout, component state, typography inferred from Figma node JSON."
+  "$meta": {
+    "product": "七星體育",
+    "version": "0.3.1-solid-color-enforcement",
+    "generatedAt": "2026-07-08",
+    "source": "Figma ZOHnVejsbiI7BbU8YIsm0j — node 8177:12795 (01 Basic_Color_色彩规范), Figma Variables color collection (17 colors), captured 2026-07-08",
+    "coverage": "新版 01 Basic_Color_色彩规范完整 17 個 color variables: Main/Secondary/Text/Background。依 Variables API 實值更新;表格文字與色票不一致者以 Variables 實值為準。紫色 #7C4DFF 與粉色 #E8557D 已隨新版定案移除。",
+    "architecture": "兩層:primitive(對齊 Figma Variables 原始色)→ semantic(產品語意層)。元件檢查以已登記 primitive 色為準;語意使用仍需透過 semantic 命名與規則約束。",
+    "opacityPolicy": "sports mode: only 100% solid fill/stroke/layer opacity is allowed; transparent colors and rgba are violations even when base color exists."
   },
-  "color": {
-    "color.primitive.purple.500": {
-      "$type": "color",
-      "$value": "#CB8FE9",
-      "base": "#CB8FE9",
-      "opacity": 1,
-      "figmaName": "primary/Main",
-      "usage": "Brand primary hue",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+  "primitive": {
+    "color": {
+      "main/b80": {
+        "value": "#45A6FF",
+        "figmaVariable": "Main/B80",
+        "usage": "主色"
+      },
+      "main/b60": {
+        "value": "#2D8CE5",
+        "figmaVariable": "Main/B60=投注按钮",
+        "usage": "投注按钮"
+      },
+      "main/b50": {
+        "value": "#3C8BD4",
+        "figmaVariable": "Main/B50=Pressed",
+        "usage": "主色按钮点击态"
+      },
+      "secondary/error": {
+        "value": "#FF6954",
+        "figmaVariable": "Secondary/Error",
+        "usage": "输入框错误(边框与提示文字)、赔率上升、盈亏「赢」金额"
+      },
+      "secondary/success": {
+        "value": "#62D643",
+        "figmaVariable": "Secondary/Success",
+        "usage": "投注成功提示文字、赔率下降、盈亏「输」金额"
+      },
+      "secondary/score": {
+        "value": "#FFB83D",
+        "figmaVariable": "Secondary/score",
+        "usage": "比分数字、钱包馀额、预计派彩金额(高亮数字)"
+      },
+      "text/t70-badge": {
+        "value": "#506D87",
+        "figmaVariable": "Text/T70=Badge",
+        "usage": "盘口数、Icon"
+      },
+      "text/t60": {
+        "value": "#61819E",
+        "figmaVariable": "Text/T60",
+        "usage": "文字主色",
+        "note": "新版表格文字欄誤列 #506D87;依 Variables API / 色票實值 #61819E"
+      },
+      "text/t50-label": {
+        "value": "#7497B7",
+        "figmaVariable": "Text/T50=Label",
+        "usage": "盘口选项标签(主 / 客 / 和、让球数)",
+        "note": "新版表格文字欄誤列 #506D87;依 Variables API / 色票實值 #7497B7"
+      },
+      "text/t30-assist": {
+        "value": "#96C5F2",
+        "figmaVariable": "Text/T30=辅助字",
+        "usage": "投注按钮辅助字(可赢金额)"
+      },
+      "text/wt": {
+        "value": "#FFFFFF",
+        "figmaVariable": "Text/WT",
+        "usage": "选中 tab、队伍名、标题"
+      },
+      "background/b100": {
+        "value": "#17212A",
+        "figmaVariable": "Background/B100",
+        "usage": "最深底色、盘口数膠囊底、底赔率选中后的数值(选中底变亮,文字转深)"
+      },
+      "background/b80": {
+        "value": "#1E2935",
+        "figmaVariable": "Background/B80=Input,弹窗Bg",
+        "usage": "Input、键盘、弹窗Bg"
+      },
+      "background/b70-card": {
+        "value": "#212E39",
+        "figmaVariable": "Background/B70=Card",
+        "usage": "AppBar(顶部导览列背景)、Card"
+      },
+      "background/b60": {
+        "value": "#28343F",
+        "figmaVariable": "Background/B60",
+        "usage": "注单内卡片Bg、scroll bar"
+      },
+      "background/b50-disabled-bet": {
+        "value": "#2A3A47",
+        "figmaVariable": "Background/B50=Disable下注按鈕",
+        "usage": "Disable下注按钮"
+      },
+      "background/b20": {
+        "value": "#384C5E",
+        "figmaVariable": "Background/B20",
+        "usage": "分隔线、投注金額選項、按钮disable、选中、提示词"
+      }
+    }
+  },
+  "semantic": {
+    "color/brand": {
+      "primary": {
+        "aliasOf": "primitive.color.main/b80",
+        "usage": "品牌主色:tab 選中指示、可點擊強調、賠率無變動"
+      },
+      "pressed": {
+        "aliasOf": "primitive.color.main/b50",
+        "usage": "主色按鈕點擊態"
+      }
     },
-    "color.primitive.white": {
-      "$type": "color",
-      "$value": "#FFFFFF",
-      "base": "#FFFFFF",
-      "opacity": 1,
-      "figmaName": "Text/WT",
-      "usage": "White base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+    "color/status": {
+      "error": {
+        "aliasOf": "primitive.color.secondary/error",
+        "usage": "系統錯誤:表單錯誤、失敗提示。新版 Variables 也承載赔率上升與盈虧贏,plugin 仍需以情境規則避免誤用",
+        "scope": "system-feedback"
+      },
+      "success": {
+        "aliasOf": "primitive.color.secondary/success",
+        "usage": "系統成功:操作完成提示。新版 Variables 也承載赔率下降與盈虧輸,plugin 仍需以情境規則避免誤用",
+        "scope": "system-feedback"
+      },
+      "score": {
+        "aliasOf": "primitive.color.secondary/score",
+        "usage": "比分数字、钱包馀额、预计派彩金额高亮"
+      }
     },
-    "color.primitive.gray.400": {
-      "$type": "color",
-      "$value": "#B8ACBE",
-      "base": "#B8ACBE",
-      "opacity": 1,
-      "figmaName": "Text/Secondary text",
-      "usage": "Secondary gray-lavender base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+    "color/odds": {
+      "up": {
+        "aliasOf": "primitive.color.secondary/error",
+        "figmaVariable": "Secondary/Error",
+        "usage": "賠率上漲(中式慣例紅漲)",
+        "tags": [
+          "live-data"
+        ]
+      },
+      "down": {
+        "aliasOf": "primitive.color.secondary/success",
+        "figmaVariable": "Secondary/Success",
+        "usage": "賠率下跌(中式慣例綠跌)",
+        "tags": [
+          "live-data"
+        ]
+      },
+      "none": {
+        "aliasOf": "primitive.color.main/b80",
+        "figmaVariable": "Main/B80",
+        "usage": "賠率無變動預設值",
+        "tags": [
+          "live-data"
+        ]
+      },
+      "selectedValue": {
+        "aliasOf": "primitive.color.background/b100",
+        "figmaVariable": "Background/B100",
+        "usage": "底赔率选中后的数值(选中底变亮,文字转深)",
+        "tags": [
+          "live-data"
+        ]
+      },
+      "locked": {
+        "value": "unverified",
+        "usage": "盤口鎖定 icon 色未在新版 Basic_Color 表中獨立定義,需回元件確認",
+        "tags": [
+          "live-data"
+        ]
+      }
     },
-    "color.primitive.lavender.100": {
-      "$type": "color",
-      "$value": "#E0D8F1",
-      "base": "#E0D8F1",
-      "opacity": 1,
-      "figmaName": "Text/icon",
-      "usage": "Icon lavender base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+    "color/result": {
+      "win": {
+        "aliasOf": "primitive.color.secondary/error",
+        "figmaVariable": "Secondary/Error",
+        "usage": "盈虧:贏(中式慣例紅贏)",
+        "tags": [
+          "live-data"
+        ]
+      },
+      "loss": {
+        "aliasOf": "primitive.color.secondary/success",
+        "figmaVariable": "Secondary/Success",
+        "usage": "盈虧:輸(中式慣例綠輸)",
+        "tags": [
+          "live-data"
+        ]
+      },
+      "draw": {
+        "aliasOf": "primitive.color.main/b80",
+        "figmaVariable": "Main/B80",
+        "usage": "盈虧:平/走盤",
+        "tags": [
+          "live-data"
+        ]
+      }
     },
-    "color.primitive.gray.500": {
-      "$type": "color",
-      "$value": "#ADAAAA",
-      "base": "#ADAAAA",
-      "opacity": 1,
-      "figmaName": "Text/Default text",
-      "usage": "Default input text base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+    "color/text": {
+      "primary": {
+        "aliasOf": "primitive.color.text/t60",
+        "figmaVariable": "Text/T60",
+        "usage": "一般文字主色"
+      },
+      "inverse": {
+        "aliasOf": "primitive.color.text/wt",
+        "figmaVariable": "Text/WT",
+        "usage": "白字:選中 tab、隊伍名、標題"
+      },
+      "label": {
+        "aliasOf": "primitive.color.text/t50-label",
+        "figmaVariable": "Text/T50=Label",
+        "usage": "盤口選項標籤 主/客/和/讓球數"
+      },
+      "badge": {
+        "aliasOf": "primitive.color.text/t70-badge",
+        "figmaVariable": "Text/T70=Badge",
+        "usage": "盘口数、Icon"
+      },
+      "assist": {
+        "aliasOf": "primitive.color.text/t30-assist",
+        "figmaVariable": "Text/T30=辅助字",
+        "usage": "投注按鈕輔助字(可赢金额)"
+      }
     },
-    "color.primitive.gray.200": {
-      "$type": "color",
-      "$value": "#DADEEA",
-      "base": "#DADEEA",
-      "opacity": 1,
-      "figmaName": "Text/輔助",
-      "usage": "Helper text base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+    "color/input": {
+      "bg": {
+        "aliasOf": "primitive.color.background/b80",
+        "figmaVariable": "Background/B80=Input,弹窗Bg",
+        "usage": "Input、鍵盤、彈窗底"
+      },
+      "border": {
+        "aliasOf": "primitive.color.background/b20",
+        "figmaVariable": "Background/B20",
+        "usage": "輸入框線/提示詞類弱背景線色"
+      },
+      "borderError": {
+        "aliasOf": "semantic.color/status.error",
+        "figmaVariable": "Secondary/Error",
+        "usage": "輸入框錯誤邊框+錯誤訊息文字"
+      }
     },
-    "color.primitive.gray.700": {
-      "$type": "color",
-      "$value": "#757575",
-      "base": "#757575",
-      "opacity": 1,
-      "figmaName": "Text/x",
-      "usage": "Muted text base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+    "color/border": {
+      "divider": {
+        "aliasOf": "primitive.color.background/b20",
+        "figmaVariable": "Background/B20",
+        "usage": "分隔線"
+      }
     },
-    "color.primitive.black.950": {
-      "$type": "color",
-      "$value": "#0B080D",
-      "base": "#0B080D",
-      "opacity": 1,
-      "figmaName": "background/Primary",
-      "usage": "Application base background",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
+    "color/cta": {
+      "primary": {
+        "aliasOf": "primitive.color.main/b60",
+        "figmaVariable": "Main/B60=投注按钮",
+        "usage": "投注按鈕主色"
+      },
+      "pressed": {
+        "aliasOf": "primitive.color.main/b50",
+        "figmaVariable": "Main/B50=Pressed",
+        "usage": "投注/主色按鈕點擊態"
+      },
+      "disabledBg": {
+        "aliasOf": "primitive.color.background/b50-disabled-bet",
+        "figmaVariable": "Background/B50=Disable下注按鈕",
+        "usage": "Disable 下注按鈕底"
+      },
+      "assistText": {
+        "aliasOf": "primitive.color.text/t30-assist",
+        "figmaVariable": "Text/T30=辅助字",
+        "usage": "投注按鈕輔助字"
+      }
     },
-    "color.primitive.gray.600": {
-      "$type": "color",
-      "$value": "#8A8A8A",
-      "base": "#8A8A8A",
-      "opacity": 1,
-      "figmaName": "background/板塊",
-      "usage": "Panel overlay base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.surface.800": {
-      "$type": "color",
-      "$value": "#211C29",
-      "base": "#211C29",
-      "opacity": 1,
-      "figmaName": "background/Tertiary",
-      "usage": "Tertiary surface base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.purple.700": {
-      "$type": "color",
-      "$value": "#4B348D",
-      "base": "#4B348D",
-      "opacity": 1,
-      "figmaName": "background/scroll bar",
-      "usage": "Scrollbar purple base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.black.990": {
-      "$type": "color",
-      "$value": "#030303",
-      "base": "#030303",
-      "opacity": 1,
-      "figmaName": "background/Toast",
-      "usage": "Toast overlay base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.dialog.900": {
-      "$type": "color",
-      "$value": "#1B1721",
-      "base": "#1B1721",
-      "opacity": 1,
-      "figmaName": "彈窗/Background",
-      "usage": "Dialog base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.dialog.800": {
-      "$type": "color",
-      "$value": "#28252D",
-      "base": "#28252D",
-      "opacity": 1,
-      "figmaName": "彈窗/Top",
-      "usage": "Dialog top surface",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.purple.600": {
-      "$type": "color",
-      "$value": "#86539B",
-      "base": "#86539B",
-      "opacity": 1,
-      "figmaName": "彈窗/Label / Border/Button",
-      "usage": "Dialog label and button border",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.dialog.border": {
-      "$type": "color",
-      "$value": "#483C4E",
-      "base": "#483C4E",
-      "opacity": 1,
-      "figmaName": "彈窗/Border",
-      "usage": "Dialog border",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.purple.550": {
-      "$type": "color",
-      "$value": "#8F69CF",
-      "base": "#8F69CF",
-      "opacity": 1,
-      "figmaName": "Button/Button01",
-      "usage": "Subtle brand button base",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.button.700": {
-      "$type": "color",
-      "$value": "#3F3649",
-      "base": "#3F3649",
-      "opacity": 1,
-      "figmaName": "Button/Button03",
-      "usage": "Solid dark button",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.button.800": {
-      "$type": "color",
-      "$value": "#2C233B",
-      "base": "#2C233B",
-      "opacity": 1,
-      "figmaName": "Button/Button04",
-      "usage": "Pressed dark button",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.red.600": {
-      "$type": "color",
-      "$value": "#B5423A",
-      "base": "#B5423A",
-      "opacity": 1,
-      "figmaName": "Border/Warning",
-      "usage": "Warning border",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.primitive.input.800": {
-      "$type": "color",
-      "$value": "#312744",
-      "base": "#312744",
-      "opacity": 1,
-      "figmaName": "Input/input",
-      "usage": "Input background",
-      "status": "primitive",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.brand.primary": {
-      "$type": "color",
-      "$value": "#CB8FE9",
-      "base": "#CB8FE9",
-      "opacity": 1,
-      "figmaName": "primary/Main",
-      "usage": "Brand accents and important highlights",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.text.primary": {
-      "$type": "color",
-      "$value": "#FFFFFF",
-      "base": "#FFFFFF",
-      "opacity": 1,
-      "figmaName": "Text/WT",
-      "usage": "Primary text on dark surfaces",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.text.secondary": {
-      "$type": "color",
-      "$value": "#B8ACBE",
-      "base": "#B8ACBE",
-      "opacity": 1,
-      "figmaName": "Text/Secondary text",
-      "usage": "Secondary body text and labels",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.text.secondary.muted": {
-      "$type": "color",
-      "$value": "rgba(184, 172, 190, 0.50)",
-      "base": "#B8ACBE",
-      "opacity": 0.5,
-      "figmaName": "Text/Secondary text 50%",
-      "usage": "Muted secondary text",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.text.placeholder": {
-      "$type": "color",
-      "$value": "rgba(255, 255, 255, 0.60)",
-      "base": "#FFFFFF",
-      "opacity": 0.6,
-      "figmaName": "Text/WT60%",
-      "usage": "Input placeholder and temporary labels",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.icon.default": {
-      "$type": "color",
-      "$value": "#E0D8F1",
-      "base": "#E0D8F1",
-      "opacity": 1,
-      "figmaName": "Text/icon",
-      "usage": "Default icon color",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.icon.muted": {
-      "$type": "color",
-      "$value": "rgba(224, 216, 241, 0.50)",
-      "base": "#E0D8F1",
-      "opacity": 0.5,
-      "figmaName": "Text/icon 50%",
-      "usage": "Muted or off icon state",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.text.default": {
-      "$type": "color",
-      "$value": "#ADAAAA",
-      "base": "#ADAAAA",
-      "opacity": 1,
-      "figmaName": "Text/Default text",
-      "usage": "Default input value text",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.text.helper": {
-      "$type": "color",
-      "$value": "#DADEEA",
-      "base": "#DADEEA",
-      "opacity": 1,
-      "figmaName": "Text/輔助",
-      "usage": "Helper text",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.text.weak": {
-      "$type": "color",
-      "$value": "#757575",
-      "base": "#757575",
-      "opacity": 1,
-      "figmaName": "Text/x",
-      "usage": "Lowest-emphasis readable text",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.bg.canvas": {
-      "$type": "color",
-      "$value": "#0B080D",
-      "base": "#0B080D",
-      "opacity": 1,
-      "figmaName": "background/Primary",
-      "usage": "Application canvas background",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.surface.panel": {
-      "$type": "color",
-      "$value": "rgba(138, 138, 138, 0.10)",
-      "base": "#8A8A8A",
-      "opacity": 0.1,
-      "figmaName": "background/板塊",
-      "usage": "Default glass panel surface",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.surface.panel.hover": {
-      "$type": "color",
-      "$value": "rgba(138, 138, 138, 0.20)",
-      "base": "#8A8A8A",
-      "opacity": 0.2,
-      "figmaName": "background/板塊 Hover",
-      "usage": "Panel hover surface",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.surface.panel.active": {
-      "$type": "color",
-      "$value": "rgba(138, 138, 138, 0.05)",
-      "base": "#8A8A8A",
-      "opacity": 0.05,
-      "figmaName": "background/板塊 Active",
-      "usage": "Panel active/pressed surface",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.surface.tertiary": {
-      "$type": "color",
-      "$value": "#211C29",
-      "base": "#211C29",
-      "opacity": 1,
-      "figmaName": "background/Tertiary",
-      "usage": "Tertiary surface",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.surface.toast": {
-      "$type": "color",
-      "$value": "rgba(3, 3, 3, 0.80)",
-      "base": "#030303",
-      "opacity": 0.8,
-      "figmaName": "background/Toast",
-      "usage": "Toast background overlay",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.scrollbar.thumb": {
-      "$type": "color",
-      "$value": "rgba(75, 52, 141, 0.50)",
-      "base": "#4B348D",
-      "opacity": 0.5,
-      "figmaName": "background/scroll bar",
-      "usage": "Scrollbar thumb",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.dialog.background": {
-      "$type": "color",
-      "$value": "#1B1721",
-      "base": "#1B1721",
-      "opacity": 1,
-      "figmaName": "彈窗/Background",
-      "usage": "Dialog base surface",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.dialog.top": {
-      "$type": "color",
-      "$value": "#28252D",
-      "base": "#28252D",
-      "opacity": 1,
-      "figmaName": "彈窗/Top",
-      "usage": "Dialog header/top surface",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.dialog.label": {
-      "$type": "color",
-      "$value": "#86539B",
-      "base": "#86539B",
-      "opacity": 1,
-      "figmaName": "彈窗/Label",
-      "usage": "Dialog label accent",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.dialog.border": {
-      "$type": "color",
-      "$value": "#483C4E",
-      "base": "#483C4E",
-      "opacity": 1,
-      "figmaName": "彈窗/Border",
-      "usage": "Dialog frame border",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.action.brand.subtle": {
-      "$type": "color",
-      "$value": "rgba(143, 105, 207, 0.15)",
-      "base": "#8F69CF",
-      "opacity": 0.15,
-      "figmaName": "Button/Button01",
-      "usage": "Brand-tinted secondary action background",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.action.neutral.subtle": {
-      "$type": "color",
-      "$value": "rgba(184, 172, 190, 0.20)",
-      "base": "#B8ACBE",
-      "opacity": 0.2,
-      "figmaName": "Button/Button02",
-      "usage": "Neutral secondary action background",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.action.neutral.hover": {
-      "$type": "color",
-      "$value": "rgba(184, 172, 190, 0.15)",
-      "base": "#B8ACBE",
-      "opacity": 0.15,
-      "figmaName": "Button/Hover",
-      "usage": "Neutral hover overlay",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.action.dark.default": {
-      "$type": "color",
-      "$value": "#3F3649",
-      "base": "#3F3649",
-      "opacity": 1,
-      "figmaName": "Button/Button03",
-      "usage": "Dark solid button",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.action.dark.active": {
-      "$type": "color",
-      "$value": "#2C233B",
-      "base": "#2C233B",
-      "opacity": 1,
-      "figmaName": "Button/Button04",
-      "usage": "Dark active button",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.border.action": {
-      "$type": "color",
-      "$value": "#86539B",
-      "base": "#86539B",
-      "opacity": 1,
-      "figmaName": "Border/Button",
-      "usage": "Action border",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.border.subtle": {
-      "$type": "color",
-      "$value": "rgba(184, 172, 190, 0.10)",
-      "base": "#B8ACBE",
-      "opacity": 0.1,
-      "figmaName": "Border/Card",
-      "usage": "Card and panel border",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.border.inverse.subtle": {
-      "$type": "color",
-      "$value": "rgba(255, 255, 255, 0.10)",
-      "base": "#FFFFFF",
-      "opacity": 0.1,
-      "figmaName": "Border/WT10%",
-      "usage": "Hairline border on dark surfaces",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.border.warning": {
-      "$type": "color",
-      "$value": "#B5423A",
-      "base": "#B5423A",
-      "opacity": 1,
-      "figmaName": "Border/Warning",
-      "usage": "Warning/error border",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.border.dropdown": {
-      "$type": "color",
-      "$value": "rgba(203, 143, 233, 0.50)",
-      "base": "#CB8FE9",
-      "opacity": 0.5,
-      "figmaName": "Border/Drop-down menu",
-      "usage": "Dropdown focus/active border",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.input.background": {
-      "$type": "color",
-      "$value": "#312744",
-      "base": "#312744",
-      "opacity": 1,
-      "figmaName": "Input/input",
-      "usage": "Input field background",
-      "status": "approved",
-      "source": "confirmed-from-screenshot"
-    },
-    "color.bg.browserTop": {
-      "$type": "color",
-      "$value": "#36373C",
-      "base": "#36373C",
-      "opacity": 1,
-      "figmaName": "background/Browser Top",
-      "usage": "Browser Top (window titlebar) background, Windows and Mac variants",
-      "status": "approved",
-      "source": "confirmed-from-node-2026-07-01"
+    "color/surface": {
+      "appBarCard": {
+        "aliasOf": "primitive.color.background/b70-card",
+        "figmaVariable": "Background/B70=Card",
+        "usage": "AppBar 背景、Card"
+      },
+      "innerCard": {
+        "aliasOf": "primitive.color.background/b60",
+        "figmaVariable": "Background/B60",
+        "usage": "注單內卡片、scroll bar"
+      },
+      "deepest": {
+        "aliasOf": "primitive.color.background/b100",
+        "figmaVariable": "Background/B100",
+        "usage": "最深底色、盘口数膠囊底"
+      },
+      "inputPopup": {
+        "aliasOf": "primitive.color.background/b80",
+        "figmaVariable": "Background/B80=Input,弹窗Bg",
+        "usage": "Input、鍵盤、彈窗"
+      },
+      "control": {
+        "aliasOf": "primitive.color.background/b20",
+        "figmaVariable": "Background/B20",
+        "usage": "投注金額選項、按鈕 disable、選中、提示詞"
+      }
     }
   },
   "typography": {
-    "fontFamily": {
-      "tc": {
-        "$type": "fontFamily",
-        "$value": "PingFang HK",
-        "usage": "繁體中文"
+    "font-family": {
+      "cjk": {
+        "value": "PingFang HK",
+        "usage": "中文、英文介面文案與一般標籤文字。Regular / Semibold 兩檔",
+        "status": "final",
+        "note": "設計 owner 2026-07-07 確認:文字統一 PingFang HK。現況 PingFang SC 視為需修正。"
       },
-      "sc": {
-        "$type": "fontFamily",
-        "$value": "PingFang SC",
-        "usage": "簡體中文"
-      },
-      "latin": {
-        "$type": "fontFamily",
-        "$value": "Inter",
-        "usage": "英文、數字、代碼"
+      "numeric": {
+        "value": "DIN Alternate Bold",
+        "usage": "所有數字:賠率、比分、金額、限額、時間、百分比、計數、統計。禁止數字使用 PingFang",
+        "status": "final"
       }
     },
-    "fontWeight": {
-      "regular": {
-        "$type": "fontWeight",
-        "$value": 400
+    "font-size": {
+      "caption": {
+        "value": "10px",
+        "usage": "錯誤訊息、極小標註"
       },
-      "medium": {
-        "$type": "fontWeight",
-        "$value": 500
+      "label": {
+        "value": "12px",
+        "usage": "欄位標籤、盈虧標題、限額標籤"
       },
-      "semibold": {
-        "$type": "fontWeight",
-        "$value": 600
+      "body": {
+        "value": "14px",
+        "usage": "賠率數字、輸入內容、tab 文字"
       },
-      "bold": {
-        "$type": "fontWeight",
-        "$value": 700
+      "body-lg": {
+        "value": "15px",
+        "usage": "可贏標籤(僅見一處,建議併入 14 或 16,需設計裁決)",
+        "status": "flagged"
+      },
+      "emphasis": {
+        "value": "16px",
+        "usage": "金額、按鈕文字、盈虧數字"
+      },
+      "body-sm": {
+        "value": "13px",
+        "usage": "賽事卡時間、卡內賠率、注單狀態標籤(檔內存在文字樣式 13/R13-iOS26)",
+        "status": "flagged",
+        "note": "與 OddsValue 元件的 14px 賠率衝突,同為賠率數字兩種字級,需設計裁決統一"
       }
     },
-    "scale": {
-      "typography.label.md": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 600,
-          "fontSize": "14px",
-          "lineHeight": "15px"
-        },
-        "usage": "Primary labels; avoid long body copy",
-        "source": "confirmed-from-node"
+    "line-height": {
+      "odds": {
+        "value": "20px",
+        "usage": "賠率數字"
       },
-      "typography.label.sm": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 600,
-          "fontSize": "12px",
-          "lineHeight": "15px"
-        },
-        "usage": "Compact labels",
-        "source": "confirmed-from-node"
+      "button": {
+        "value": "22px",
+        "usage": "按鈕文字"
       },
-      "typography.label.list": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 600,
-          "fontSize": "14px",
-          "lineHeight": "19.6px"
-        },
-        "usage": "List labels",
-        "source": "confirmed-from-node"
-      },
-      "typography.body.lg": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 400,
-          "fontSize": "16px",
-          "lineHeight": "22.4px"
-        },
-        "usage": "Large body or form text",
-        "source": "confirmed-from-node"
-      },
-      "typography.body.md": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 400,
-          "fontSize": "14px",
-          "lineHeight": "19.6px"
-        },
-        "usage": "Default body text",
-        "source": "confirmed-from-node"
-      },
-      "typography.body.md.medium": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 500,
-          "fontSize": "14px",
-          "lineHeight": "19.6px"
-        },
-        "usage": "Medium emphasis body",
-        "source": "confirmed-from-node"
-      },
-      "typography.body.sm": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 400,
-          "fontSize": "12px",
-          "lineHeight": "16.8px"
-        },
-        "usage": "Secondary labels and compact content",
-        "source": "confirmed-from-node"
-      },
-      "typography.body.sm.medium": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 500,
-          "fontSize": "12px",
-          "lineHeight": "16.8px"
-        },
-        "usage": "Compact medium labels",
-        "source": "confirmed-from-node"
-      },
-      "typography.caption": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 400,
-          "fontSize": "10px",
-          "lineHeight": "14px"
-        },
-        "usage": "Meta text; not for primary actions",
-        "source": "confirmed-from-node"
-      },
-      "typography.micro": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang HK",
-          "fontWeight": 400,
-          "fontSize": "8px",
-          "lineHeight": "11.2px"
-        },
-        "usage": "Badges only; needs review for accessibility",
-        "source": "confirmed-from-node"
-      },
-      "typography.sc.heading": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang SC",
-          "fontWeight": 600,
-          "fontSize": "16px",
-          "lineHeight": "22.4px"
-        },
-        "usage": "Simplified Chinese headings",
-        "source": "confirmed-from-node"
-      },
-      "typography.sc.label.sm": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "PingFang SC",
-          "fontWeight": 600,
-          "fontSize": "12px",
-          "lineHeight": "16.8px"
-        },
-        "usage": "Simplified Chinese compact label",
-        "source": "confirmed-from-node"
-      },
-      "typography.en.micro": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "Inter",
-          "fontWeight": 600,
-          "fontSize": "10px",
-          "lineHeight": "15px"
-        },
-        "usage": "English/numeric micro labels",
-        "source": "confirmed-from-node"
-      },
-      "typography.en.body": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "Inter",
-          "fontWeight": 400,
-          "fontSize": "14px",
-          "lineHeight": "16.94px"
-        },
-        "usage": "English/numeric body",
-        "source": "confirmed-from-node"
+      "market-label": {
+        "value": "16.5px",
+        "usage": "盤口欄標題,非整數行高,建議併整",
+        "status": "flagged"
       }
-    }
-  },
-  "spacing": {
-    "space.2": {
-      "$type": "dimension",
-      "$value": "2px",
-      "usage": "Tiny inner gap, icon/text tight pairing",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "space.4": {
-      "$type": "dimension",
-      "$value": "4px",
-      "usage": "Compact padding and tag gap",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "space.6": {
-      "$type": "dimension",
-      "$value": "6px",
-      "usage": "Small component padding",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "space.8": {
-      "$type": "dimension",
-      "$value": "8px",
-      "usage": "Default component padding/gap",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "space.12": {
-      "$type": "dimension",
-      "$value": "12px",
-      "usage": "Medium padding/gap",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "space.16": {
-      "$type": "dimension",
-      "$value": "16px",
-      "usage": "Large inline padding",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "space.20": {
-      "$type": "dimension",
-      "$value": "20px",
-      "usage": "Section or large component gap",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "space.raw.1": {
-      "$type": "dimension",
-      "$value": "1px",
-      "usage": "Switch internal inset only",
-      "status": "raw-exception",
-      "source": "confirmed-from-node"
-    },
-    "space.raw.3": {
-      "$type": "dimension",
-      "$value": "3px",
-      "usage": "Icon/vector optical adjustment only",
-      "status": "raw-exception",
-      "source": "confirmed-from-node"
-    },
-    "space.raw.7": {
-      "$type": "dimension",
-      "$value": "7px",
-      "usage": "Audio bar vertical padding from Figma; do not reuse globally",
-      "status": "raw-exception",
-      "source": "confirmed-from-node"
-    },
-    "space.raw.10": {
-      "$type": "dimension",
-      "$value": "10px",
-      "usage": "Input horizontal padding; consider component token",
-      "status": "needs-review",
-      "source": "confirmed-from-node"
     }
   },
   "radius": {
-    "radius.xs": {
-      "$type": "dimension",
-      "$value": "2px",
-      "usage": "Small icon chip or accent",
-      "status": "approved",
-      "source": "confirmed-from-node"
+    "input": {
+      "value": "6px",
+      "usage": "輸入框"
     },
-    "radius.sm": {
-      "$type": "dimension",
-      "$value": "4px",
-      "usage": "Small icon block",
-      "status": "approved",
-      "source": "confirmed-from-node"
+    "tab": {
+      "value": "12px",
+      "usage": "tab 容器"
     },
-    "radius.md": {
-      "$type": "dimension",
-      "$value": "5px",
-      "usage": "Legacy small button; consider migrating to radius.lg",
-      "status": "needs-review",
-      "source": "confirmed-from-node"
+    "pill": {
+      "value": "500px",
+      "usage": "膠囊按鈕(SlideBetButton)。現況 disabled 態為 40px,不一致,需統一為 500px",
+      "status": "flagged"
     },
-    "radius.lg": {
-      "$type": "dimension",
-      "$value": "8px",
-      "usage": "Default controls, input, cards",
-      "status": "approved",
-      "source": "confirmed-from-node"
+    "indicator": {
+      "value": "100px",
+      "usage": "tab 底線指示條"
     },
-    "radius.xl": {
-      "$type": "dimension",
-      "$value": "12px",
-      "usage": "Large controls, sidebar panels, popups",
-      "status": "approved",
-      "source": "confirmed-from-node"
+    "card": {
+      "value": "4px",
+      "usage": "賽事卡、盤口選項"
     },
-    "radius.2xl": {
-      "$type": "dimension",
-      "$value": "20px",
-      "usage": "Floating surfaces",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "radius.pill": {
-      "$type": "dimension",
-      "$value": "999px",
-      "usage": "Badges, switches, pill tags",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "radius.circle": {
-      "$type": "dimension",
-      "$value": "9999px",
-      "usage": "Avatar/circle end caps",
-      "status": "approved",
-      "source": "confirmed-from-node"
-    },
-    "radius.raw.40": {
-      "$type": "dimension",
-      "$value": "40px",
-      "usage": "Image status play button only",
-      "status": "raw-exception",
-      "source": "confirmed-from-node"
-    },
-    "radius.xl2": {
-      "$type": "dimension",
-      "$value": "16px",
-      "usage": "確認出現在 Default/文字 這個 variant，介於 radius.xl(12px) 與 radius.2xl(20px) 之間，2026-07-02 經 Peko 確認後正式收進核可尺度。",
-      "status": "approved",
-      "source": "confirmed-by-peko-2026-07-02"
+    "badge": {
+      "value": "100px",
+      "usage": "計數膠囊"
     }
   },
-  "shadow": {
-    "shadow.button.glow": {
-      "$type": "shadow",
-      "$value": {
-        "offsetX": "0px",
-        "offsetY": "8px",
-        "blur": "20px",
-        "spread": "0px",
-        "color": "rgba(57, 13, 100, 0.25)"
-      },
-      "usage": "Primary button elevation",
-      "source": "confirmed-from-node"
+  "spacing": {
+    "input-padding-x": {
+      "value": "12px"
     },
-    "shadow.overlay": {
-      "$type": "shadow",
-      "$value": {
-        "offsetX": "0px",
-        "offsetY": "0px",
-        "blur": "20px",
-        "spread": "0px",
-        "color": "rgba(0, 0, 0, 0.5)"
-      },
-      "usage": "Overlay surfaces",
-      "source": "confirmed-from-node"
+    "input-padding-y": {
+      "value": "10px"
     },
-    "shadow.toolbar": {
-      "$type": "shadow",
-      "$value": {
-        "offsetX": "0px",
-        "offsetY": "25px",
-        "blur": "50px",
-        "spread": "-12px",
-        "color": "rgba(0, 0, 0, 0.25)"
-      },
-      "usage": "Floating toolbar",
-      "source": "confirmed-from-node"
+    "button-padding-left": {
+      "value": "8px"
     },
-    "shadow.bar": {
-      "$type": "shadow",
-      "$value": {
-        "offsetX": "0px",
-        "offsetY": "1px",
-        "blur": "3px",
-        "spread": "0px",
-        "color": "rgba(0, 0, 0, 0.5)"
-      },
-      "usage": "Thin bar elevation",
-      "source": "confirmed-from-node"
+    "button-padding-right": {
+      "value": "16px"
     },
-    "shadow.popup.dark": {
-      "$type": "shadow",
-      "$value": {
-        "offsetX": "0px",
-        "offsetY": "0px",
-        "blur": "10px",
-        "spread": "0px",
-        "color": "rgba(0, 0, 0, 0.4)"
-      },
-      "usage": "Popup shadow",
-      "source": "confirmed-from-node"
+    "button-padding-y": {
+      "value": "10px"
+    },
+    "section-padding": {
+      "value": "16px",
+      "note": "元件展示框常見內距,非 UI 值"
+    },
+    "card-padding": {
+      "value": "8px",
+      "usage": "賽事卡內距"
+    },
+    "card-gap": {
+      "value": "20px",
+      "usage": "賽事卡 資訊區↔盤口區"
+    },
+    "option-gap": {
+      "value": "3px",
+      "usage": "盤口選項垂直間隔"
     }
   },
-  "blur": {
-    "blur.panel": {
-      "$type": "dimension",
-      "$value": "8px",
-      "usage": "Glass panel blur",
-      "source": "confirmed-from-node"
+  "size": {
+    "input-height": {
+      "value": "36px"
     },
-    "blur.video": {
-      "$type": "dimension",
-      "$value": "20px",
-      "usage": "Video background blur",
-      "source": "confirmed-from-node"
+    "button-height": {
+      "value": "42px"
     },
-    "blur.raw.4": {
-      "$type": "dimension",
-      "$value": "4px",
-      "usage": "直播信息 component current raw backdrop blur; review whether to promote",
-      "status": "raw-exception",
-      "source": "confirmed-from-node"
+    "tab-height": {
+      "value": "40px"
+    },
+    "slider-knob": {
+      "value": "28px"
+    },
+    "tab-indicator": {
+      "value": "22x3px"
+    },
+    "icon-lg": {
+      "value": "24px"
+    },
+    "icon-md": {
+      "value": "20px"
+    },
+    "icon-sm": {
+      "value": "16px"
+    },
+    "icon-xs": {
+      "value": "12px"
+    },
+    "market-column": {
+      "value": "58px",
+      "usage": "盤口欄寬"
     }
-  },
-  "gradient": {
-    "gradient.action.primary": {
-      "$type": "gradient",
-      "$css": "linear-gradient(180deg, #754585 0%, #4B348D 100%)",
-      "usage": "Primary buttons and active CTAs",
-      "source": "confirmed-from-node"
-    },
-    "gradient.live.default": {
-      "$type": "gradient",
-      "$css": "linear-gradient(180deg, #493252 0%, #352956 100%)",
-      "usage": "Live type tag default",
-      "source": "confirmed-from-node"
-    },
-    "gradient.live.hover": {
-      "$type": "gradient",
-      "$css": "linear-gradient(180deg, #513C5B 0%, #3F345E 100%)",
-      "usage": "Live type tag hover",
-      "source": "confirmed-from-node"
-    },
-    "gradient.live.active": {
-      "$type": "gradient",
-      "$css": "linear-gradient(180deg, #3A2842 0%, #2A2145 100%)",
-      "usage": "Live type tag active",
-      "source": "confirmed-from-node"
-    },
-    "gradient.input.focus.border": {
-      "$type": "gradient",
-      "$css": "linear-gradient(180deg, rgba(143,105,207,0.54) 0%, #8F69CF 100%)",
-      "usage": "Input focus stroke",
-      "source": "confirmed-from-node"
-    },
-    "gradient.image.overlay": {
-      "$type": "gradient",
-      "$css": "linear-gradient(180deg, rgba(19,22,32,0.5) 0%, rgba(19,22,32,0) 100%)",
-      "usage": "Image cover overlay",
-      "source": "confirmed-from-node"
-    },
-    "gradient.icon.special": {
-      "$type": "gradient",
-      "$css": "linear-gradient(90deg, #E180EF 0%, #677AEE 42%, #7BE6F0 100%)",
-      "usage": "Special icons only",
-      "source": "confirmed-from-node"
-    },
-    "gradient.card.hover.subtle": {
-      "$type": "gradient",
-      "$css": "linear-gradient(138.445deg, rgba(117, 69, 133, 0.35) 6.202%, rgba(75, 52, 141, 0.35) 92.615%)",
-      "usage": "Material-option card hover overlay (添加素材選項卡)",
-      "note": "Base colors #754585 / #4B348D match gradient.action.primary exactly, but at 35% opacity and a non-standard 138.445deg angle instead of the usual 180deg. Currently written as a literal value in Figma, not bound to a variable — treat as draft, needs design-owner confirmation before promoting to a stable token name.",
-      "status": "needs-review",
-      "source": "confirmed-from-node-2026-07-02"
-    }
-  },
-  "rawExceptions": [
-    {
-      "figmaName": "Brand/hover",
-      "context": "添加素材選項卡 (node 64:333111 subtree)",
-      "issue": "Variable resolves to an empty value via get_variable_defs — either unset or a broken alias. Not present anywhere in this token set under any figmaName.",
-      "action": "Do not guess a value. Ask Peko to click the bound layer in Figma and report the resolved Fill value directly.",
-      "status": "broken-reference-needs-fix",
-      "dateFound": "2026-07-02"
-    },
-    {
-      "figmaName": "Brand/Disable",
-      "context": "button / 主播任務 (node 74:333676), Disabled1/Disabled2 states",
-      "issue": "Referenced by the component but resolves to an empty value via get_variable_defs — same failure pattern as Brand/hover found previously.",
-      "action": "Do not guess a value. Ask Peko to click the bound layer in Figma and report the resolved Fill value directly.",
-      "status": "broken-reference-needs-fix",
-      "dateFound": "2026-07-02"
-    },
-    {
-      "figmaName": "Brand/Brand(active)",
-      "context": "button / 主播任務 (node 74:333676) Clicked state; 上传的素材 (node 74:333689) selected row",
-      "issue": "Referenced across at least two different components but resolves to an empty value both times.",
-      "action": "Same as Brand/hover and Brand/Disable — needs manual confirmation in Figma, not a guessed value.",
-      "status": "broken-reference-needs-fix",
-      "dateFound": "2026-07-02"
-    },
-    {
-      "figmaName": "板块线框",
-      "context": "上传的素材 (node 74:333689 subtree)",
-      "issue": "get_variable_defs returned the literal string \",\" as the value — the variable itself appears malformed/corrupted, not just unset.",
-      "action": "Flag to Peko as a data-integrity issue in the variable itself, not just a missing binding.",
-      "status": "broken-reference-needs-fix",
-      "dateFound": "2026-07-02"
-    }
-  ]
+  }
 }

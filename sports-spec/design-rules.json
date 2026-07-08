@@ -1,7 +1,7 @@
 {
   "$meta": {
     "product": "七星體育",
-    "version": "0.3.3-topbar-naming",
+    "version": "0.3.4-ignore-flags",
     "generatedAt": "2026-07-08",
     "levels": {
       "error": "違反必須修正",
@@ -1102,5 +1102,19 @@
       "tolerance": "±1px",
       "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
     }
-  ]
+  ],
+  "ignore": {
+    "componentSets": [
+      "国旗"
+    ],
+    "scope": "instance-and-subtree",
+    "appliesTo": "all-rules",
+    "rule": "国旗/隊徽類 icon 一律不審查:命中的 component set 之 INSTANCE 及其整棵子樹跳過所有規則(色彩/圓角/間距/命名皆不報)",
+    "rationale": "国旗 為外部圖像資產(國旗、俱樂部徽),色彩與形狀由圖像本身決定,不套 17 色白名單或圓角尺度;逐面報未註冊色只會製造雜訊。比對主元件 set 名(非圖層名)精準命中",
+    "candidatesNotYetIgnored": [
+      "赛事",
+      "icon / 搜索"
+    ],
+    "candidatesNote": "赛事(賽事 logo)與 icon / 搜索 為同類外部圖像 logo;如需一併忽略,加入 componentSets 即可"
+  }
 }
