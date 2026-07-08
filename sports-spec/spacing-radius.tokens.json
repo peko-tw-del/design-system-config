@@ -170,21 +170,6 @@
         "suggested": "999px",
         "token": "radius/full",
         "reason": "SlideBetButton Disabled 應統一綁 radius/full"
-      },
-      "100": {
-        "suggested": "999px",
-        "token": "radius/full",
-        "reason": "藥丸圓角寫法需統一綁 radius/full"
-      },
-      "437.5": {
-        "suggested": "999px",
-        "token": "radius/full",
-        "reason": "藥丸圓角寫法需統一綁 radius/full"
-      },
-      "500": {
-        "suggested": "999px",
-        "token": "radius/full",
-        "reason": "藥丸圓角寫法需統一綁 radius/full"
       }
     }
   },
@@ -193,11 +178,11 @@
       "primaryAxisAlignItems=SPACE_BETWEEN 的 itemSpacing",
       "Component Set 外框 cornerRadius=5",
       "VECTOR / BOOLEAN_OPERATION / LINE 的小數 radius",
-      "未列入 migrationSuggestions 的 radius >= min(width,height)/2 視覺 full round"
+      "radius >= min(width,height)/2 的視覺 full round(含 100/437.5/500 這類超大手打值)"
     ],
     "warningWithSuggestion": [
       "spacing 1/3/5/9/11/15",
-      "radius 2/40/100/437.5/500"
+      "radius 2/40"
     ],
     "strictForSports": true
   }
