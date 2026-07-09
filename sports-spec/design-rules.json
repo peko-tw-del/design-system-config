@@ -136,7 +136,7 @@
     {
       "id": "N-006",
       "level": "warning",
-      "rule": "頂部標題列(375寬×96高,篩選態133;狀態列+返回/標題)為同一畫面單元,必須統一為 Navigation Bar component 之變體實例;禁止各畫面散裝 frame 且命名為 Menu",
+      "rule": "頂部標題列(375寬×96高,篩選態130;狀態列+返回/標題)為同一畫面單元,必須統一為 Navigation Bar component 之變體實例;禁止各畫面散裝 frame 且命名為 Menu",
       "rationale": "現況頂列同物異名:多數畫面用 Navigation Bar 元件,但 首页/我的(4)、通知中心_读取信件2(2)、注单_已取消(1) 共 7 處為獨立 frame 且命名 Menu,非元件實例。同物異名使靠名稱聚合的統計失真,且改導航列需逐畫面手改。建議收斂為 Navigation Bar 元件變體(如 State=標題＋返回),名稱不再用 Menu",
       "suggestion": "將 7 個 Menu 頂列 frame 替換為 Navigation Bar 對應變體實例;過渡期至少統一命名為 Navigation Bar"
     }
@@ -202,7 +202,7 @@
       "id": "C-009",
       "level": "error",
       "component": "Navigation Bar",
-      "rule": "導覽列主底色使用 Background/B70;標題 PingFang HK Medium 15px 白;Search/Filter 型高度 133,一般標題型 96,無標題型 62",
+      "rule": "導覽列主底色使用 Background/B70;標題 PingFang HK Medium 15px 白;Search/Filter 型高度 130,一般標題型 96,無標題型 62",
       "rationale": "Navigation Bar section 已更新多狀態規格,需與畫面引用一致。"
     },
     {
@@ -371,7 +371,7 @@
       "property": "size",
       "expectedValue": {
         "width": "375px",
-        "height": "133px"
+        "height": "130px"
       },
       "tolerance": "±1px",
       "rationale": "02 導航 Navigation 元件庫尺寸規格"
@@ -399,7 +399,7 @@
       "property": "size",
       "expectedValue": {
         "width": "375px",
-        "height": "133px"
+        "height": "130px"
       },
       "tolerance": "±1px",
       "rationale": "02 導航 Navigation 元件庫尺寸規格"

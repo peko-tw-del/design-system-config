@@ -663,7 +663,7 @@
     "Navigation Bar": {
       "nodeId": "7894:255365",
       "chapter": "02 導航 Navigation",
-      "frame": "375px wide; 96px default / 133px search-filter / 62px no-title",
+      "frame": "375px wide; 96px default / 130px search-filter / 62px no-title",
       "background": "#212E39 (Background/B70=AppBar/Card)",
       "typography": "title PingFang HK Medium 15px #FFFFFF; action PingFang HK Regular 14px Main/B80; status bar SF Pro Display 15px"
     },
@@ -943,7 +943,7 @@
           "name": "State=搜索",
           "size": {
             "width": "375px",
-            "height": "133px"
+            "height": "130px"
           },
           "radius": "0px",
           "spacing": {
@@ -973,7 +973,7 @@
           "name": "State=筛选",
           "size": {
             "width": "375px",
-            "height": "133px"
+            "height": "130px"
           },
           "radius": "0px",
           "spacing": {
