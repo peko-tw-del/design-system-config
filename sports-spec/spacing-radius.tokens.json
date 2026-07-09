@@ -1,66 +1,54 @@
 {
   "$meta": {
     "product": "七星體育",
-    "version": "1.0.0-draft",
-    "generatedAt": "2026-07-08",
-    "source": "Figma ZOHnVejsbiI7BbU8YIsm0j — PC reference node 8042:10247, sports component/screen section 6863:293089, Claude candidate node 8182:12795",
+    "version": "1.1.0-foundation-refresh",
+    "generatedAt": "2026-07-09",
+    "source": "Figma ZOHnVejsbiI7BbU8YIsm0j — node 8359:14643 / foundation spacing 8491:23790, radius 8491:23827",
     "nonDestructive": true,
-    "note": "新開檔案,不覆蓋 design-tokens.normalized.json。build 時只對 sports bundled fallback 做 sidecar merge,讓 plugin 可讀 sports 專屬 spacing/radius。"
+    "note": "新版 foundation 尺度。PC 32/48 不納入體育移動端; spacing/safe-bottom 34px 僅限 iOS Home Indicator paddingBottom。"
   },
   "spacing": {
-    "2": {
-      "$value": "2px",
-      "status": "approved",
-      "code": "var(--sp-2)",
-      "usage": "緊湊圖文間距: BetOption、Team Info、Score、微型 icon/text 組合"
-    },
     "4": {
       "$value": "4px",
       "status": "approved",
       "code": "var(--sp-4)",
-      "usage": "元件內小間距: MarketTabs、Title group、局部內容群組"
+      "usage": "元件內小間距、賠率框、MarketGroup、卡片、輸入框、內容群組間距"
     },
     "6": {
       "$value": "6px",
       "status": "approved",
       "code": "var(--sp-6)",
-      "usage": "體育專屬內容群組間距與小型 padding: Section Header、賽況、內容標籤"
+      "usage": "投注頁面卡片內間距"
     },
     "8": {
       "$value": "8px",
       "status": "approved",
       "code": "var(--sp-8)",
-      "usage": "區塊內間距與卡片內距: Header、Seek bar、通知卡片、注單卡片"
+      "usage": "區塊內間距、按鈕狀態、漂字"
     },
     "10": {
       "$value": "10px",
       "status": "approved",
       "code": "var(--sp-10)",
-      "usage": "體育專屬元件內距: Keypad、Checkbox、SlideBetButton、btn_bet"
+      "usage": "Keypad、Checkbox、SlideBetButton"
     },
     "12": {
       "$value": "12px",
       "status": "approved",
       "code": "var(--sp-12)",
-      "usage": "主容器間距與左右安全邊距: Bet Item、Market、Game Info、375 寬畫面 12px gutter"
+      "usage": "主容器間距"
     },
     "16": {
       "$value": "16px",
       "status": "approved",
       "code": "var(--sp-16)",
-      "usage": "卡片與段落間距: Controls、注單、玩法區塊、Header 左右 padding"
+      "usage": "卡片與段落、Popup"
     },
     "20": {
       "$value": "20px",
       "status": "approved",
       "code": "var(--sp-20)",
-      "usage": "大區塊間距: 賽事狀態群組、資訊區到盤口區"
-    },
-    "24": {
-      "$value": "24px",
-      "status": "approved",
-      "code": "var(--sp-24)",
-      "usage": "頁面級留白與 popup 內距"
+      "usage": "大區塊間距"
     },
     "34-safe-bottom": {
       "$value": "34px",
@@ -71,55 +59,40 @@
     }
   },
   "radius": {
-    "none": {
-      "$value": "0px",
-      "status": "approved",
-      "code": "var(--r-none)"
-    },
     "xs": {
       "$value": "4px",
       "status": "approved",
       "code": "var(--r-xs)",
-      "usage": "最高頻功能圓角: 賠率框 BetOption、MarketGroup、賽事卡、注單卡片"
+      "usage": "賠率框、MarketGroup、卡片"
     },
     "sm": {
       "$value": "8px",
       "status": "approved",
       "code": "var(--r-sm)",
-      "usage": "按鈕狀態、漂字、較強互動容器"
-    },
-    "md": {
-      "$value": "12px",
-      "status": "approved",
-      "code": "var(--r-md)",
-      "usage": "Tabs、tab_btn、Focus 態"
+      "usage": "按鈕狀態、漂字"
     },
     "lg": {
       "$value": "16px",
       "status": "approved",
       "code": "var(--r-lg)",
-      "usage": "Popup 彈窗"
-    },
-    "xl": {
-      "$value": "20px",
-      "status": "approved",
-      "code": "var(--r-xl)",
-      "usage": "底部菜单上緣、Seek track"
+      "usage": "Popup"
     },
     "full": {
       "$value": "999px",
       "status": "approved",
       "code": "var(--r-full)",
-      "usage": "藥丸與圓形: Indicator、SlideBetButton、國旗裁切、switch"
+      "usage": "藥丸與圓形"
     }
   },
   "pendingReview": {
     "spacing": {
-      "fractional": "2.25/2.75px 多為文字垂直置中微調,不建 token"
+      "2": "新版 foundation 未列 spacing/2,舊版緊湊圖文間距需回 4px 或改元件結構",
+      "24": "新版 foundation 未列 spacing/24,頁面級留白需回 20px 或 16px"
     },
     "radius": {
-      "6": "BetAmountInput Empty/Filled/Error 三態皆為 6px;與全域 4px 衝突,需決定是否作為 input 專用 token",
-      "fractional": "0.465/0.5/13.5px 多為 vector、圖片裁切或小圖形縮放產物,不建 token"
+      "6": "新版 foundation 未列 radius/6。BetAmountInput 仍需設計決定改 radius/4 或新增 input 專用 token",
+      "12": "新版 foundation 未列 radius/12。Tabs / tab_btn / Focus 態需回 8px、16px 或 full",
+      "20": "新版 foundation 未列 radius/20。底部容器上緣需回 16px 或 full"
     },
     "fractional": {
       "2.25/2.75": "amount 內容上下 padding,多為文字垂直置中微調",
@@ -130,41 +103,66 @@
   "migrationSuggestions": {
     "spacing": {
       "1": {
-        "suggested": "2px",
-        "token": "spacing/2",
-        "reason": "btn_bet 賠率數字組全變體的極小距離,不建 token"
+        "suggested": "4px",
+        "token": "spacing/4",
+        "reason": "新版 foundation 最小正式間距為 4px"
+      },
+      "2": {
+        "suggested": "4px",
+        "token": "spacing/4",
+        "reason": "新版 foundation 未列 spacing/2"
       },
       "3": {
         "suggested": "4px",
         "token": "spacing/4",
-        "reason": "注单玩法(play) 與赛事状态家族垂直堆疊已定案回 4px"
+        "reason": "新版 foundation 最小正式間距為 4px"
       },
       "5": {
         "suggested": "6px",
         "token": "spacing/6",
-        "reason": "注单卡內部群組手調值,已定案回 6px"
+        "reason": "新版 foundation 使用 6px 承接投注頁面卡片內距"
       },
       "9": {
         "suggested": "8px",
         "token": "spacing/8",
-        "reason": "非 SPACE_BETWEEN 的 Section Header/top 手調值建議回 8px"
+        "reason": "非 SPACE_BETWEEN 的手調值建議回 8px"
       },
       "11": {
         "suggested": "12px",
         "token": "spacing/12",
-        "reason": "赛事状态全部时段變體手調值,已定案回 12px"
+        "reason": "主容器間距回 12px"
       },
       "15": {
         "suggested": "16px",
         "token": "spacing/16",
-        "reason": "Checkbox 家族手調值,已定案回 16px"
+        "reason": "卡片與段落間距回 16px"
+      },
+      "24": {
+        "suggested": "20px",
+        "token": "spacing/20",
+        "reason": "新版 foundation 未列 24px,大區塊間距回 20px"
       }
     },
     "radius": {
       "2": {
         "suggested": "4px",
         "token": "radius/xs",
-        "reason": "赛事状态單一節點手調值,已定案回 4px"
+        "reason": "新版 foundation 最小正式圓角為 4px"
+      },
+      "6": {
+        "suggested": "4px",
+        "token": "radius/xs",
+        "reason": "新版 foundation 未列 radius/6"
+      },
+      "12": {
+        "suggested": "8px",
+        "token": "radius/sm",
+        "reason": "新版 foundation 未列 radius/12"
+      },
+      "20": {
+        "suggested": "16px",
+        "token": "radius/lg",
+        "reason": "新版 foundation 未列 radius/20"
       },
       "40": {
         "suggested": "999px",
@@ -178,11 +176,12 @@
       "primaryAxisAlignItems=SPACE_BETWEEN 的 itemSpacing",
       "Component Set 外框 cornerRadius=5",
       "VECTOR / BOOLEAN_OPERATION / LINE 的小數 radius",
-      "radius >= min(width,height)/2 的視覺 full round(含 100/437.5/500 這類超大手打值)"
+      "radius >= min(width,height)/2 的視覺 full round(含 100/437.5/500 這類超大手打值)",
+      "國旗、隊徽、聯賽 logo、icon / 搜索、iOS 原生 keyboard / Home Indicator 素材整棵子樹"
     ],
     "warningWithSuggestion": [
-      "spacing 1/3/5/9/11/15",
-      "radius 2/40"
+      "spacing 1/2/3/5/9/11/15/24",
+      "radius 2/6/12/20/40"
     ],
     "strictForSports": true
   }

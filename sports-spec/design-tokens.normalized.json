@@ -1,10 +1,10 @@
 {
   "$meta": {
     "product": "七星體育",
-    "version": "0.3.1-solid-color-enforcement",
-    "generatedAt": "2026-07-08",
-    "source": "Figma ZOHnVejsbiI7BbU8YIsm0j — node 8177:12795 (01 Basic_Color_色彩规范), Figma Variables color collection (17 colors), captured 2026-07-08",
-    "coverage": "新版 01 Basic_Color_色彩规范完整 17 個 color variables: Main/Secondary/Text/Background。依 Variables API 實值更新;表格文字與色票不一致者以 Variables 實值為準。紫色 #7C4DFF 與粉色 #E8557D 已隨新版定案移除。",
+    "version": "0.4.0-foundation-refresh",
+    "generatedAt": "2026-07-09",
+    "source": "Figma ZOHnVejsbiI7BbU8YIsm0j — node 8359:14643 / foundation 8446:24820, captured 2026-07-09",
+    "coverage": "新版 foundation 色彩共 18 個 Variables: Main/Secondary/Text/Background。新增 Background/Black #000000 用於陰影、遮罩。依 Figma Variables / foundation 實值更新;紫色 #7C4DFF 與粉色 #E8557D 不屬七星體育合規色。",
     "architecture": "兩層:primitive(對齊 Figma Variables 原始色)→ semantic(產品語意層)。元件檢查以已登記 primitive 色為準;語意使用仍需透過 semantic 命名與規則約束。",
     "opacityPolicy": "sports mode: only 100% solid fill/stroke/layer opacity is allowed; transparent colors and rgba are violations even when base color exists."
   },
@@ -66,6 +66,11 @@
         "value": "#FFFFFF",
         "figmaVariable": "Text/WT",
         "usage": "选中 tab、队伍名、标题"
+      },
+      "background/black": {
+        "value": "#000000",
+        "figmaVariable": "Background/Black",
+        "usage": "阴影、遮罩"
       },
       "background/b100": {
         "value": "#17212A",
@@ -282,6 +287,11 @@
         "figmaVariable": "Background/B100",
         "usage": "最深底色、盘口数膠囊底"
       },
+      "black": {
+        "aliasOf": "primitive.color.background/black",
+        "figmaVariable": "Background/Black",
+        "usage": "陰影、遮罩"
+      },
       "inputPopup": {
         "aliasOf": "primitive.color.background/b80",
         "figmaVariable": "Background/B80=Input,弹窗Bg",
@@ -298,9 +308,9 @@
     "font-family": {
       "cjk": {
         "value": "PingFang HK",
-        "usage": "中文、英文介面文案與一般標籤文字。Regular / Semibold 兩檔",
+        "usage": "中文、英文介面文案與一般標籤文字。Regular / Medium 兩檔",
         "status": "final",
-        "note": "設計 owner 2026-07-07 確認:文字統一 PingFang HK。現況 PingFang SC 視為需修正。"
+        "note": "新版 foundation 文字樣式皆為 PingFang HK Regular / Medium。現況 PingFang SC、Roboto、Noto 視為需修正或清除。"
       },
       "numeric": {
         "value": "DIN Alternate Bold",
@@ -308,49 +318,168 @@
         "status": "final"
       }
     },
-    "font-size": {
-      "caption": {
-        "value": "10px",
-        "usage": "錯誤訊息、極小標註"
+    "text-style": {
+      "Text/16/M16-iOS26": {
+        "family": "PingFang HK",
+        "style": "Medium",
+        "fontSize": "16px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Popup title、confirm button、market option title、league title、slide bet button text"
       },
-      "label": {
-        "value": "12px",
-        "usage": "欄位標籤、盈虧標題、限額標籤"
+      "Text/16/R16-iOS26": {
+        "family": "PingFang HK",
+        "style": "Regular",
+        "fontSize": "16px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Search/filter segmented tabs"
       },
-      "body": {
-        "value": "14px",
-        "usage": "賠率數字、輸入內容、tab 文字"
+      "Text/14/M14-iOS26": {
+        "family": "PingFang HK",
+        "style": "Medium",
+        "fontSize": "14px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Unsettled/settled segmented tabs、select all、My list item"
       },
-      "body-lg": {
-        "value": "15px",
-        "usage": "可贏標籤(僅見一處,建議併入 14 或 16,需設計裁決)",
-        "status": "flagged"
+      "Text/14/R14-iOS26": {
+        "family": "PingFang HK",
+        "style": "Regular",
+        "fontSize": "14px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "League list name、unselected segmented tabs"
       },
-      "emphasis": {
-        "value": "16px",
-        "usage": "金額、按鈕文字、盈虧數字"
+      "Text/13/M13-iOS26": {
+        "family": "PingFang HK",
+        "style": "Medium",
+        "fontSize": "13px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "MarketHeader titles"
       },
-      "body-sm": {
-        "value": "13px",
-        "usage": "賽事卡時間、卡內賠率、注單狀態標籤(檔內存在文字樣式 13/R13-iOS26)",
-        "status": "flagged",
-        "note": "與 OddsValue 元件的 14px 賠率衝突,同為賠率數字兩種字級,需設計裁決統一"
+      "Text/13/R13-iOS26": {
+        "family": "PingFang HK",
+        "style": "Regular",
+        "fontSize": "13px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Bet order team vs、league、order status、labels、empty state"
+      },
+      "Text/12/M12-iOS26": {
+        "family": "PingFang HK",
+        "style": "Medium",
+        "fontSize": "12px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Amount keyboard max、team headers、My description"
+      },
+      "Text/12/R12-iOS26": {
+        "family": "PingFang HK",
+        "style": "Regular",
+        "fontSize": "12px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Most bet/order labels、odds title、input limit labels"
+      },
+      "Text/10/M10-iOS26": {
+        "family": "PingFang HK",
+        "style": "Medium",
+        "fontSize": "10px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Match phase label"
+      },
+      "Text/10/R10-iOS26": {
+        "family": "PingFang HK",
+        "style": "Regular",
+        "fontSize": "10px",
+        "lineHeight": "100%",
+        "letterSpacing": "0.25px",
+        "usage": "Input error、version number"
+      },
+      "Number/B12": {
+        "family": "DIN Alternate",
+        "style": "Bold",
+        "fontSize": "12px",
+        "usage": "More market count、bet order id small、year"
+      },
+      "Number/B13": {
+        "family": "DIN Alternate",
+        "style": "Bold",
+        "fontSize": "13px",
+        "usage": "Odds、match start time、match clock、bet order id/date"
+      },
+      "Number/B14": {
+        "family": "DIN Alternate",
+        "style": "Bold",
+        "fontSize": "14px",
+        "usage": "Bet amount、win amount values、P/L value、alphabet group"
+      },
+      "Number/B15": {
+        "family": "DIN Alternate",
+        "style": "Bold",
+        "fontSize": "15px",
+        "usage": "Bet slip handicap and odds"
+      },
+      "Number/B16": {
+        "family": "DIN Alternate",
+        "style": "Bold",
+        "fontSize": "16px",
+        "usage": "Totals、P/L amount、alphabet index"
+      },
+      "Number/B18": {
+        "family": "DIN Alternate",
+        "style": "Bold",
+        "fontSize": "18px",
+        "usage": "Score header、alphabet index header、match odds label"
+      },
+      "Number/B20": {
+        "family": "DIN Alternate",
+        "style": "Bold",
+        "fontSize": "20px",
+        "lineHeight": "16px",
+        "usage": "Amount keyboard numbers"
       }
     },
+    "font-size": {
+      "caption": { "value": "10px", "usage": "錯誤訊息、極小標註" },
+      "label": { "value": "12px", "usage": "欄位標籤、盈虧標題、限額標籤" },
+      "body-sm": { "value": "13px", "usage": "卡內狀態、注單資訊、賠率相關小字" },
+      "body": { "value": "14px", "usage": "列表名稱、tab 文字、下注資訊" },
+      "body-lg": { "value": "15px", "usage": "注單盤口與賠率" },
+      "emphasis": { "value": "16px", "usage": "標題、按鈕文字、總計" },
+      "data-lg": { "value": "18px", "usage": "比分、索引、賽事賠率標籤" },
+      "data-xl": { "value": "20px", "usage": "金額鍵盤數字" }
+    },
     "line-height": {
-      "odds": {
-        "value": "20px",
-        "usage": "賠率數字"
-      },
-      "button": {
-        "value": "22px",
-        "usage": "按鈕文字"
-      },
-      "market-label": {
-        "value": "16.5px",
-        "usage": "盤口欄標題,非整數行高,建議併整",
-        "status": "flagged"
-      }
+      "ios26": { "value": "100%", "usage": "新版 iOS26 Text styles" },
+      "number-keypad": { "value": "16px", "usage": "Number/B20 金額鍵盤數字" }
+    }
+  },
+  "shadow": {
+    "nav": {
+      "type": "DROP_SHADOW",
+      "color": "#121A2180",
+      "opacity": 0.5,
+      "offsetX": 0,
+      "offsetY": 2,
+      "radius": 12,
+      "spread": 0,
+      "figmaEffect": "Nav",
+      "usage": "Top Navigation Bar"
+    },
+    "bottom-bar": {
+      "type": "DROP_SHADOW",
+      "color": "#00000080",
+      "opacity": 0.5,
+      "offsetX": 0,
+      "offsetY": -10,
+      "radius": 50,
+      "spread": 0,
+      "figmaEffect": "shadow/bottom-bar",
+      "usage": "Bottom menu upward shadow"
     }
   },
   "radius": {

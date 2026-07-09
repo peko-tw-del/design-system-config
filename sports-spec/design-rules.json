@@ -1,21 +1,21 @@
 {
   "$meta": {
     "product": "七星體育",
-    "version": "0.3.4-ignore-flags",
-    "generatedAt": "2026-07-08",
+    "version": "0.4.0-foundation-refresh",
+    "generatedAt": "2026-07-09",
     "levels": {
       "error": "違反必須修正",
       "warning": "需設計裁決或建議修正"
     },
-    "source": "Figma node 8177:12795 final Basic_Color + node 6863:293089 component library",
-    "lastUpdated": "2026-07-08"
+    "source": "Figma node 8359:14643 / foundation 8446:24820 plus sports component library",
+    "lastUpdated": "2026-07-09"
   },
   "global": [
     {
       "id": "G-001",
       "level": "error",
-      "rule": "元件內顏色必須使用 8177:12795 最終 Basic_Color / Figma Variables 已登記的 17 個實色,禁止未登記 hex、任意 rgba、paint opacity、layer opacity",
-      "rationale": "左側元件庫與右側設計稿都是被檢查對象;唯一合法顏色來源為 8177:12795 最終色彩規範。新版要求全部使用實色,不能用透明度數值調色。"
+      "rule": "元件內顏色必須使用新版 foundation / Figma Variables 已登記的 18 個實色,禁止未登記 hex、任意 rgba、paint opacity、layer opacity",
+      "rationale": "左側元件庫與右側設計稿都是被檢查對象;唯一合法顏色來源為 8359:14643 foundation 色彩規範。新版新增 Background/Black #000000 用於陰影、遮罩;透明 overlay/scrim/backdrop 等素材依忽略規則排除。"
     },
     {
       "id": "G-002",
@@ -50,8 +50,8 @@
     {
       "id": "G-007",
       "level": "warning",
-      "rule": "字級尺度限定 10 / 12 / 14 / 16。現況存在 15px(可贏標籤)一處,建議併入尺度",
-      "rationale": "孤立字級會讓之後的響應式與國際化調整多一個特例"
+      "rule": "文字樣式以新版 foundation 為準:PingFang HK Regular/Medium 10/12/13/14/16,數字使用 DIN Alternate Bold 12/13/14/15/16/18/20",
+      "rationale": "新版 foundation 已補齊 Text/10~16 與 Number/B12~B20;Roboto、Noto、PingFang SC 或未掛正確文字語意者需修正。"
     },
     {
       "id": "G-008",
@@ -62,7 +62,7 @@
     {
       "id": "G-009",
       "level": "error",
-      "rule": "新增色彩前必須先查新版 17 個 Basic_Color Variables;紫色 #7C4DFF 與粉色 #E8557D 已移除,不得再作為七星體育合規色",
+      "rule": "新增色彩前必須先查新版 18 個 foundation Color Variables;紫色 #7C4DFF 與粉色 #E8557D 已移除,不得再作為七星體育合規色",
       "rationale": "新版規範註記「紫色 #7C4DFF 與粉色 #E8557D 已隨定案移除」,plugin 應以新版 Variables 作為白名單。"
     },
     {
@@ -94,6 +94,12 @@
       "level": "error",
       "rule": "所有 fill、stroke 與圖層 opacity 必須為 100%。若設計需要較淡顏色,應回到 Basic_Color 新增或指定實色變數,不得以 30%/50%/rgba 方式臨時調色",
       "rationale": "本次最終要求為實色規範;透明度會造成同一 token 在不同背景上呈現不一致,也無法與 Variables 實值穩定對齊。"
+    },
+    {
+      "id": "G-015",
+      "level": "warning",
+      "rule": "間距使用 4/6/8/10/12/16/20 與 safe-bottom 34;圓角使用 4/8/16/full;陰影使用 shadow/nav 或 shadow/bottom-bar",
+      "rationale": "新版 foundation 已排除舊版從畫面反推的 spacing/2、spacing/24、radius/12、radius/20。陰影需以正式 shadow token 比對,不可自行調參。"
     }
   ],
   "naming": [
