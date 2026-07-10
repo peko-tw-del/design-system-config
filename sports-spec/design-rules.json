@@ -1,14 +1,14 @@
 {
   "$meta": {
     "product": "七星體育",
-    "version": "0.4.0-foundation-refresh",
+    "version": "0.4.1-owner-arbitration",
     "generatedAt": "2026-07-09",
     "levels": {
       "error": "違反必須修正",
       "warning": "需設計裁決或建議修正"
     },
     "source": "Figma node 8359:14643 / foundation 8446:24820 plus sports component library",
-    "lastUpdated": "2026-07-09"
+    "lastUpdated": "2026-07-10"
   },
   "global": [
     {
@@ -98,8 +98,8 @@
     {
       "id": "G-015",
       "level": "warning",
-      "rule": "間距使用 4/6/8/10/12/16/20 與 safe-bottom 34;圓角使用 4/8/16/full;陰影使用 shadow/nav 或 shadow/bottom-bar",
-      "rationale": "新版 foundation 已排除舊版從畫面反推的 spacing/2、spacing/24、radius/12、radius/20。陰影需以正式 shadow token 比對,不可自行調參。"
+      "rule": "間距使用 4/6/8/10/12/16/20 與 safe-bottom 34;圓角僅 4/8/16/full;陰影僅 shadow/nav(121A21 65%) 或 shadow/pop-up window(000000 50%,舊名 shadow/bottom-bar)",
+      "rationale": "2026-07-10 依規範頁定案:圓角縮減為四種,陰影僅保留兩種參數;舊版 radius/6、radius/12、spacing/3 命中一律報建議修正。"
     }
   ],
   "naming": [
