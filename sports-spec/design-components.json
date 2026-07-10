@@ -1,1773 +1,1855 @@
 {
-  "$meta": {
-    "product": "七星體育",
-    "version": "0.3.0-component-library",
-    "generatedAt": "2026-07-08",
-    "note": "更新 01 共用基礎 Common / 02 導航 Navigation / 03 投注 Betting / 04 注单 Bet Orders 元件庫樣式; spacing/radius 另由 spacing-radius.tokens.json 管理。",
-    "source": "Figma node 6863:293089 / section 0629 component library scan"
-  },
-  "inventory": {
-    "section:component (7870:34367)": [
-      {
-        "name": "SlideBetButton",
-        "id": "7867:254145",
-        "variants": [
-          "State=Default",
-          "State=Dragging",
-          "State=Success",
-          "State=Disabled"
-        ],
-        "detailed": true
-      },
-      {
-        "name": "Checkbox",
-        "id": "7867:254272",
-        "variants": [
-          "State=Checked",
-          "State=Unchecked"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "BetAmountInput",
-        "id": "7867:254370",
-        "variants": [
-          "State=Empty",
-          "State=Filled",
-          "State=Error"
-        ],
-        "detailed": true
-      },
-      {
-        "name": "注单",
-        "id": "7870:260432",
-        "variants": [
-          "play=三种玩法",
-          "play=独赢"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "赛况",
-        "id": "7870:260569",
-        "variants": [
-          "未开赛",
-          "即将开赛",
-          "中场休息",
-          "上半场",
-          "上半场补时",
-          "下半场",
-          "点球大战",
-          "下半场补时"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "OddsValue",
-        "id": "7867:254578",
-        "variants": [
-          "Trend=Up",
-          "Trend=Down",
-          "Trend=None",
-          "Trend=locked"
-        ],
-        "detailed": true
-      },
-      {
-        "name": "btn_bet_S",
-        "id": "7870:263287",
-        "variants": [
-          "Property 1=focus/df",
-          "Property 1=focus/up",
-          "Property 1=focus/down",
-          "Property 1=default"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "btn_bet_L",
-        "id": "7870:263288",
-        "variants": [
-          "Property 1=focus/df",
-          "Property 1=focus/up",
-          "Property 1=focus/down",
-          "Property 1=default"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "BetOption",
-        "id": "7867:254622",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "Card / Notification Center",
-        "id": "7888:256224",
-        "variants": [
-          "已讀=off",
-          "已讀=on"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "amount",
-        "id": "7870:264600",
-        "variants": [
-          "数值=down",
-          "数值=up",
-          "数值=Default"
-        ],
-        "detailed": false,
-        "duplicate": "與 7870:264631 同名"
-      },
-      {
-        "name": "amount",
-        "id": "7870:264631",
-        "variants": [
-          "数值=Default",
-          "数值=down",
-          "数值=up"
-        ],
-        "detailed": false,
-        "duplicate": "與 7870:264600 同名"
-      },
-      {
-        "name": "MatchScoreHeader",
-        "id": "7867:261428",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "MarketHeader",
-        "id": "7867:264182",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "tab_btn",
-        "id": "7909:36356",
-        "variants": [
-          "Property 1=Focus",
-          "Property 1=default"
-        ],
-        "detailed": true,
-        "duplicate": "與 7909:40601 同名"
-      },
-      {
-        "name": "tab_btn",
-        "id": "7909:40601",
-        "variants": [
-          "Property 1=default",
-          "Property 1=focus"
-        ],
-        "detailed": false,
-        "duplicate": "與 7909:36356 同名,且 variant 值大小寫不一致"
-      },
-      {
-        "name": "MarketTabs",
-        "id": "7867:273989",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "Tabs",
-        "id": "7867:272348",
-        "variants": [
-          "State=Default",
-          "State=Selected"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Bottom Action Bar",
-        "id": "7888:278114",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "漂字",
-        "id": "7892:41286",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "注单状态",
-        "id": "7892:38196",
-        "variants": [
-          "投注成功",
-          "处理中",
-          "已结算",
-          "走盘"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "已结算注单总计状态",
-        "id": "7892:38500",
-        "variants": [
-          "赢",
-          "输",
-          "平"
-        ],
-        "detailed": true
-      },
-      {
-        "name": "已结算注单状态",
-        "id": "7892:38504",
-        "variants": [
-          "输赢金额_赢",
-          "输赢金额_输",
-          "输赢金额_平"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "注单总计",
-        "id": "7892:38820",
-        "variants": [
-          "已结算",
-          "未结算"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "注单 (list)",
-        "id": "7892:38821",
-        "variants": [
-          "已结算",
-          "未结算"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "tab",
-        "id": "7909:40594",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "HomeTab",
-        "id": "7944:273620",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "VideoPlayer",
-        "id": "7867:268753",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "top",
-        "id": "7870:34412",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "Home Indicator",
-        "id": "7870:268719",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "Button / Delete Notification's Message",
-        "id": "7888:259527",
-        "variants": [],
-        "detailed": false
-      }
+ "$meta": {
+  "product": "七星體育",
+  "version": "0.4.0-notification-matchstatus",
+  "generatedAt": "2026-07-10",
+  "note": "更新 01 共用基礎 Common / 02 導航 Navigation / 03 投注 Betting / 04 注单 Bet Orders 元件庫樣式; spacing/radius 另由 spacing-radius.tokens.json 管理。 2026-07-10:新增 05 通知中心彈窗、赛况/賽事狀態卡片、amount 盤口線 spec;彈窗底色 B70/B80 不一致由設計側修正中,暫不納入檢查。",
+  "source": "Figma node 6863:293089 / section 0629 component library scan"
+ },
+ "inventory": {
+  "section:component (7870:34367)": [
+   {
+    "name": "SlideBetButton",
+    "id": "7867:254145",
+    "variants": [
+     "State=Default",
+     "State=Dragging",
+     "State=Success",
+     "State=Disabled"
     ],
-    "section:icon (7870:260319)": [
-      {
-        "name": "arrow",
-        "id": "7870:260310",
-        "variants": [
-          "up",
-          "down",
-          "L",
-          "R"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Icon/Pin",
-        "id": "7867:254469",
-        "variants": [
-          "Pinned=True",
-          "Pinned=False"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "赛事",
-        "id": "7870:260299",
-        "variants": [
-          "世界杯",
-          "英格兰超级联赛",
-          "其他"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "icon / 搜索",
-        "id": "7944:269700",
-        "variants": [
-          "世界杯",
-          "英格兰超级联赛",
-          "澳大利亚维多利亚洲国家超级联赛"
-        ],
-        "detailed": false,
-        "issue": "命名為搜索但內容為聯賽 icon 24px"
-      },
-      {
-        "name": "icon 16px",
-        "id": "7888:259432",
-        "variants": [
-          "Delete Message",
-          "Check"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Icon_12px",
-        "id": "7925:262054",
-        "variants": [
-          "copy_dark",
-          "copy_light"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "popup_close",
-        "id": "8018:41953",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "notice",
-        "id": "7909:51109",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "icon_reset",
-        "id": "7909:51146",
-        "variants": [],
-        "detailed": false
-      }
+    "detailed": true
+   },
+   {
+    "name": "Checkbox",
+    "id": "7867:254272",
+    "variants": [
+     "State=Checked",
+     "State=Unchecked"
     ],
-    "section:Navigation Bar (7894:258083)": [
-      {
-        "name": "Navigation Bar",
-        "id": "7894:255365",
-        "variants": [
-          "標題＋返回",
-          "標題＋Action",
-          "Home",
-          "搜索",
-          "無標題",
-          "筛选"
-        ],
-        "detailed": false,
-        "issue": "同一元件集內繁簡混用"
-      },
-      {
-        "name": "Navigation Bar / RightActions",
-        "id": "7894:258010",
-        "variants": [
-          "Search",
-          "Wallet",
-          "Profile"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Navigation Bar / Tab",
-        "id": "7894:255760",
-        "variants": [
-          "搜索",
-          "筛选"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Navigation Bar / Search",
-        "id": "7894:257280",
-        "variants": [
-          "搜索default",
-          "筛选default",
-          "Typing",
-          "Submitted"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Navigation Bar / arrow / Left",
-        "id": "7894:257932",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "Navigation Bar / icon",
-        "id": "7894:258082",
-        "variants": [
-          "Clear",
-          "Search"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Navigation Bar / BetOrder",
-        "id": "7884:34189",
-        "variants": [
-          "Unsettled",
-          "Settled"
-        ],
-        "detailed": false
-      },
-      {
-        "name": "Logo",
-        "id": "7894:258742",
-        "variants": [],
-        "detailed": false
-      },
-      {
-        "name": "Status bar",
-        "id": "7894:258357",
-        "variants": [],
-        "detailed": false
-      }
+    "detailed": false
+   },
+   {
+    "name": "BetAmountInput",
+    "id": "7867:254370",
+    "variants": [
+     "State=Empty",
+     "State=Filled",
+     "State=Error"
     ],
-    "section:赛事状态 (7548:373316)": [
-      {
-        "name": "賽事卡",
-        "id": "7781:76888 等 8 組",
-        "variants": [
-          "未開賽",
-          "上半场",
-          "上半场补时",
-          "下半场",
-          "下半场补时",
-          "点球大战",
-          "即将开赛",
-          "中场休息"
-        ],
-        "detailed": "僅未開賽已讀",
-        "issue": "8 種狀態全為普通 frame 非 component,內部圖層全為 Frame 159788xxxx 佔位名,整卡零變數引用"
-      }
+    "detailed": true
+   },
+   {
+    "name": "注单",
+    "id": "7870:260432",
+    "variants": [
+     "play=三种玩法",
+     "play=独赢"
     ],
-    "section:页面状态 (7925:262192)": [
-      {
-        "name": "Empty",
-        "id": "7925:262193",
-        "variants": [
-          "Property 1=NoRecord",
-          "Property 1=失效"
-        ],
-        "detailed": "NoRecord 已讀(110px 插圖,無 token)",
-        "issue": "Property 1 佔位名"
-      }
+    "detailed": false
+   },
+   {
+    "name": "赛况",
+    "id": "7870:260569",
+    "variants": [
+     "未开赛",
+     "即将开赛",
+     "中场休息",
+     "上半场",
+     "上半场补时",
+     "下半场",
+     "点球大战",
+     "下半场补时"
     ],
-    "section:Thumb (7944:274818)": [
-      {
-        "name": "scroll bar",
-        "id": "7944:274819",
-        "variants": [],
-        "detailed": false
-      }
-    ]
-  },
-  "detailedSpecs": {
-    "OddsValue": {
-      "nodeId": "7867:254578",
-      "typography": "DIN Alternate Bold 14px / line-height 20px",
-      "states": {
-        "None": {
-          "textColor": "#45A6FF (Main/B80)",
-          "shouldBind": "color/odds/none",
-          "width": "50px"
-        },
-        "Up": {
-          "textColor": "#FF6954 (Secondary/Error;用途含赔率上升)",
-          "shouldBind": "color/odds/up",
-          "arrow": "上箭頭 SVG 6x10px"
-        },
-        "Down": {
-          "textColor": "#62D643 (Secondary/Success;用途含赔率下降)",
-          "shouldBind": "color/odds/down",
-          "arrow": "下箭頭 SVG 6x10px"
-        },
-        "locked": {
-          "icon": "鎖 SVG 色值未在新版 Basic_Color 表中獨立定義",
-          "shouldBind": "color/odds/locked"
-        }
-      }
-    },
-    "已结算注单总计状态": {
-      "nodeId": "7892:38500",
-      "typography": "標籤 PingFang HK Regular 12px Text/T60 #61819E;金額 DIN Alternate Bold 16px",
-      "states": {
-        "赢": {
-          "amountColor": "#FF6954 (Secondary/Error;用途含盈亏「赢」金额)",
-          "shouldBind": "color/result/win",
-          "sample": "+3,640"
-        },
-        "输": {
-          "amountColor": "#62D643 (Secondary/Success;用途含盈亏「输」金额)",
-          "shouldBind": "color/result/loss",
-          "sample": "-3,640"
-        },
-        "平": {
-          "amountColor": "#45A6FF (Main/B80)",
-          "shouldBind": "color/result/draw",
-          "sample": "0"
-        }
-      }
-    },
-    "BetAmountInput": {
-      "nodeId": "7867:254370",
-      "frame": "327x36px,radius 6px,padding 12px/10px",
-      "background": "#1E2935 (Background/B80=Input,弹窗Bg)",
-      "states": {
-        "Empty": {
-          "border": "#384C5E (Background/B20)",
-          "hint": "限额 PingFang 12px + 範圍 DIN 14px,色 #384C5E (Background/B20 提示词)"
-        },
-        "Filled": {
-          "border": "#384C5E (Background/B20)",
-          "text": "DIN Alternate Bold 14px 白 (text/wt)"
-        },
-        "Error": {
-          "border": "#FF6954 (Secondary/Error)",
-          "errorMsg": "PingFang HK Regular 10px #FF6954 (Secondary/Error),定位輸入框上方 -17px"
-        }
-      },
-      "trigger": {
-        "Error": "輸入值低於最低限額 2.00 或高於 30,000.00"
-      }
-    },
-    "SlideBetButton": {
-      "nodeId": "7867:254145",
-      "frame": "351x42px,padding 8/16/10",
-      "states": {
-        "Default": {
-          "bg": "#2D8CE5 (Main/B60=投注按钮);舊 CTA 漸層已不作為 Basic_Color 變數",
-          "radius": "500px",
-          "knob": "28px 白圓,邊框待回元件核對(Header/CTA 疊層未建變數)",
-          "text": "投注 PingFang HK Semibold 16px Text/WT #FFFFFF;可赢 15px Text/T30 #96C5F2 + 金額 DIN 16px"
-        },
-        "Dragging": {
-          "bg": "同 Default;Pressed 可用 Main/B50 #3C8BD4",
-          "radius": "500px",
-          "knob": "拖曳狀態邊框待回元件核對"
-        },
-        "Success": {
-          "bg": "#2D8CE5 (Main/B60) / #3C8BD4 (Main/B50 Pressed) 依互動狀態裁決",
-          "radius": "500px",
-          "content": "置中勾選 icon"
-        },
-        "Disabled": {
-          "bg": "#2A3A47 (Background/B50=Disable下注按鈕)",
-          "radius": "40px(不一致,規則 C-001)",
-          "knob": "底/邊框改用新版 Background/Text Variables 待元件回核",
-          "text": "投注 PingFang HK Semibold 16px #61819E (Text/T60)"
-        }
-      },
-      "trigger": {
-        "Dragging": "使用者按住滑塊拖曳中",
-        "Success": "拖曳達終點且投注請求成功",
-        "Disabled": "未選注項、金額為空或盤口封盤"
-      }
-    },
-    "tab_btn": {
-      "nodeId": "7909:36356",
-      "frame": "74x40px,radius 12px",
-      "states": {
-        "default": {
-          "text": "PingFang HK Regular 14px #61819E (Text/T60),計數 DIN Bold 14px"
-        },
-        "Focus": {
-          "text": "PingFang HK Semibold 14px 白 (text/wt)",
-          "indicator": "22x3px,radius 100px,#45A6FF (Main/B80),置中貼底"
-        }
-      }
-    },
-    "賽事卡_未開賽": {
-      "nodeId": "7781:76888",
-      "frame": "radius 4px,padding 8px,底 #212E39 (Background/B70=Card),資訊區↔盤口區 gap 20px",
-      "infoArea": {
-        "time": "DIN Alternate Bold 13px #45A6FF (Main/B80)",
-        "team": "PingFang HK Semibold 12px 白(寫死),隊徽 17px 圓形",
-        "moreBadge": "膠囊 radius 100px,底 #17212A (Background/B100),文字 DIN 12px #506D87 (Text/T70=Badge)"
-      },
-      "marketArea": {
-        "column": "寬 58px,欄標題 PingFang HK Regular 12px #61819E (Text/T60),行高 16.5px(非整數)",
-        "option": "底/分隔/選中弱色依 Background/B20 #384C5E 核對;標籤 PingFang HK Regular 12px #7497B7 (Text/T50=Label);賠率 DIN Bold 13px #45A6FF (Main/B80)"
-      },
-      "issues": [
-        "整卡需全面綁定新版 Variables",
-        "非 component",
-        "佔位圖層名",
-        "字級 13 vs 14 衝突",
-        "PingFang SC/HK 混用;已決議統一 PingFang HK",
-        "行高 16.5px",
-        "Basic_Color 紅旗:部分場景/疊層色待核"
-      ]
-    },
-    "注单状态": {
-      "nodeId": "7892:38196",
-      "typography": "PingFang HK Regular 13px(檔內文字樣式 13/R13-iOS26)",
-      "states": {
-        "投注成功": {
-          "color": "#45A6FF,綁 Main/B80",
-          "issue": "main/b80 與 brand/primary 同值雙包"
-        },
-        "已结算": {
-          "color": "#45A6FF,綁 Main/B80"
-        },
-        "处理中": {
-          "color": "#61819E,綁 Text/T60"
-        },
-        "走盘": {
-          "color": "#61819E,綁 Text/T60"
-        }
-      },
-      "shouldBind": "建議獨立 color/order-status 族(active / settled / pending / void),alias 至新版 Main/Text Variables"
-    },
-    "button": {
-      "nodeId": "7888:277427",
-      "chapter": "01 共用基礎 Common",
-      "frame": "134x40px,radius 4px",
-      "background": "#45A6FF (Main/B80)",
-      "text": "確定 PingFang HK Semibold 14px,#17212A (Background/B100)"
-    },
-    "Button/Confirm": {
-      "nodeId": "8024:262907",
-      "chapter": "01 共用基礎 Common",
-      "frame": "351x50px,radius 8px,padding 8/16/10,itemSpacing 12",
-      "states": {
-        "Default": {
-          "bg": "#45A6FF (Main/B80)",
-          "text": "PingFang HK Semibold 16px #FFFFFF"
-        },
-        "Pressed": {
-          "bg": "#3C8BD4 (Main/B50)",
-          "text": "PingFang HK Semibold 16px #FFFFFF"
-        },
-        "Disabled": {
-          "bg": "#384C5E (Background/B20)",
-          "text": "#61819E (Text/T60)"
-        }
-      }
-    },
-    "Navigation Bar": {
-      "nodeId": "7894:255365",
-      "chapter": "02 導航 Navigation",
-      "frame": "375px wide; 96px default / 130px search-filter / 62px no-title",
-      "background": "#212E39 (Background/B70=AppBar/Card)",
-      "typography": "title PingFang HK Medium 15px #FFFFFF; action PingFang HK Regular 14px Main/B80; status bar SF Pro Display 15px"
-    },
-    "Navigation Bar / Search ": {
-      "nodeId": "7894:257280",
-      "chapter": "02 導航 Navigation",
-      "frame": "319x36px,radius 100px,padding 12px,itemSpacing 10",
-      "background": "#17212A (Background/B100)",
-      "text": "placeholder PingFang HK Regular 13px Text/T60; typing/submitted #FFFFFF"
-    },
-    "Navigation Bar / BetOrder": {
-      "nodeId": "7884:34189",
-      "chapter": "04 注单 Bet Orders",
-      "frame": "375x36px,padding 12px,itemSpacing 4",
-      "background": "#1E2935 (Background/B80)",
-      "text": "active PingFang HK Medium 14px #FFFFFF; inactive PingFang HK Regular 14px Text/T60"
-    },
-    "Checkbox": {
-      "nodeId": "7867:254272",
-      "chapter": "03 投注 Betting",
-      "frame": "16x16px,radius 4px",
-      "states": {
-        "Checked": {
-          "fill": "#45A6FF (Main/B80)",
-          "stroke": "#45A6FF"
-        },
-        "Unchecked": {
-          "fill": "none",
-          "stroke": "#61819E (Text/T60)"
-        }
-      }
-    },
-    "btn_bet_S": {
-      "nodeId": "7870:263287",
-      "chapter": "03 投注 Betting",
-      "frame": "58x30px,radius 4px,padding L/R 10,itemSpacing 4",
-      "states": {
-        "focus": {
-          "bg": "#45A6FF",
-          "text": "#17212A"
-        },
-        "default": {
-          "bg": "#28343F (Background/B60)",
-          "label": "#7497B7",
-          "odds": "#45A6FF"
-        }
-      }
-    },
-    "btn_bet_L": {
-      "nodeId": "7870:263288",
-      "chapter": "03 投注 Betting",
-      "frame": "58x46.5px,radius 4px,itemSpacing 2",
-      "states": {
-        "focus": {
-          "bg": "#45A6FF",
-          "text": "#17212A"
-        },
-        "default": {
-          "bg": "#212E39 (Background/B70)",
-          "label": "#7497B7",
-          "odds": "#45A6FF"
-        }
-      }
-    },
-    "BetOption": {
-      "nodeId": "7867:254622",
-      "chapter": "03 投注 Betting",
-      "frame": "166.5x42px,radius 4px,itemSpacing 2",
-      "background": "#28343F (Background/B60)",
-      "text": "玩法 PingFang HK Regular 12px #7497B7;賠率 DIN Alternate Bold 14px odds color"
-    },
-    "注单总计": {
-      "nodeId": "7892:38820",
-      "chapter": "04 注单 Bet Orders",
-      "frame": "351x60px,radius 4px,padding 8/12,itemSpacing 8",
-      "background": "#212E39 (Background/B70)",
-      "text": "label PingFang HK Regular 12px Text/T60;數字 DIN Alternate Bold 16px"
-    },
-    "注单": {
-      "nodeId": "7892:38821",
-      "chapter": "04 注单 Bet Orders",
-      "frame": "351x159px",
-      "text": "隊伍/聯賽 PingFang HK 13-14px;盤口/賠率 DIN 15px;狀態 PingFang HK 13px",
-      "issue": "存在 15px 特例,由 G-007 warning 跟進"
-    }
-  },
-  "chapters": {
-    "01 共用基礎 Common": {
-      "sectionId": "8018:42058",
-      "components": [
-        "button",
-        "Button/Confirm",
-        "Radio buttons",
-        "switch",
-        "Overlay"
-      ],
-      "notes": [
-        "Button/Confirm 為主要確認按鈕規範來源",
-        "Radio buttons / switch 圖形目前仍使用 Property 1 佔位 variant 命名"
-      ]
-    },
-    "02 導航 Navigation": {
-      "sectionId": "7894:258083",
-      "components": [
-        "Navigation Bar",
-        "Status bar",
-        "Logo",
-        "Navigation Bar / RightActions",
-        "Navigation Bar / Tab",
-        "Navigation Bar / Search",
-        "Navigation Bar / arrow / Left",
-        "Navigation Bar / icon",
-        "Navigation Bar / BetOrder"
-      ],
-      "notes": [
-        "Navigation Bar 主底色 Background/B70",
-        "Search 為 Background/B100 pill r100",
-        "BetOrder 分頁屬注單流程,但元件位於 Navigation section"
-      ]
-    },
-    "03 投注 Betting": {
-      "sectionId": "7870:34367 + betting flow screens",
-      "components": [
-        "SlideBetButton",
-        "Checkbox",
-        "BetAmountInput",
-        "OddsValue",
-        "btn_bet_S",
-        "btn_bet_L",
-        "BetOption",
-        "Key Button",
-        "Button/Confirm"
-      ],
-      "notes": [
-        "SlideBetButton Disabled r40 需遷移 radius/full",
-        "Dragging 仍有 PingFang SC 與 #FDFEFF,plugin 會由字體/色彩規則報告"
-      ]
-    },
-    "04 注单 Bet Orders": {
-      "sectionId": "Bet order flow + Navigation Bar / BetOrder",
-      "components": [
-        "Navigation Bar / BetOrder",
-        "注单状态",
-        "已结算注单总计状态",
-        "已结算注单状态",
-        "注单总计",
-        "注单",
-        "Empty"
-      ],
-      "notes": [
-        "輸贏金額色需用 result 語意 alias 到新版 Variables",
-        "注单卡片內文字/數字字級有 15px 特例,暫由字級規則 warning"
-      ]
-    }
-  },
-  "componentSets": [
-    {
-      "name": "Button/Confirm",
-      "nodeId": "8024:262907",
-      "chapter": "01 共用基礎 Common",
-      "variantProperties": {
-        "Property 1": [
-          "Default",
-          "Pressed",
-          "Disabled"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Property 1=Default",
-          "size": {
-            "width": "351px",
-            "height": "50px"
-          },
-          "radius": "8px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "16px",
-            "paddingBottom": "10px",
-            "paddingLeft": "8px",
-            "itemSpacing": "12px"
-          }
-        },
-        {
-          "name": "Property 1=Pressed",
-          "size": {
-            "width": "351px",
-            "height": "50px"
-          },
-          "radius": "8px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "16px",
-            "paddingBottom": "10px",
-            "paddingLeft": "8px",
-            "itemSpacing": "12px"
-          }
-        },
-        {
-          "name": "Property 1=Disabled",
-          "size": {
-            "width": "351px",
-            "height": "50px"
-          },
-          "radius": "8px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "16px",
-            "paddingBottom": "10px",
-            "paddingLeft": "8px",
-            "itemSpacing": "12px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Navigation Bar",
-      "nodeId": "7894:255365",
-      "chapter": "02 導航 Navigation",
-      "variantProperties": {
-        "State": [
-          "標題＋返回",
-          "標題＋Action",
-          "Home",
-          "搜索",
-          "無標題",
-          "筛选"
-        ]
-      },
-      "variants": [
-        {
-          "name": "State=標題＋返回",
-          "size": {
-            "width": "375px",
-            "height": "96px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        },
-        {
-          "name": "State=標題＋Action",
-          "size": {
-            "width": "375px",
-            "height": "96px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        },
-        {
-          "name": "State=Home",
-          "size": {
-            "width": "375px",
-            "height": "96px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        },
-        {
-          "name": "State=搜索",
-          "size": {
-            "width": "375px",
-            "height": "130px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        },
-        {
-          "name": "State=無標題",
-          "size": {
-            "width": "375px",
-            "height": "62px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        },
-        {
-          "name": "State=筛选",
-          "size": {
-            "width": "375px",
-            "height": "130px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Navigation Bar / RightActions",
-      "nodeId": "7894:258010",
-      "chapter": "02 導航 Navigation",
-      "variantProperties": {
-        "icon": [
-          "Search",
-          "Wallet",
-          "Profile"
-        ]
-      },
-      "variants": [
-        {
-          "name": "icon=Search",
-          "size": {
-            "width": "32px",
-            "height": "32px"
-          },
-          "radius": "100px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "icon=Wallet",
-          "size": {
-            "width": "32px",
-            "height": "32px"
-          },
-          "radius": "100px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "icon=Profile",
-          "size": {
-            "width": "32px",
-            "height": "32px"
-          },
-          "radius": "100px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "4px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Navigation Bar / Tab",
-      "nodeId": "7894:255760",
-      "chapter": "02 導航 Navigation",
-      "variantProperties": {
-        "Tab State": [
-          "搜索",
-          "筛选"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Tab State=搜索",
-          "size": {
-            "width": "351px",
-            "height": "25px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "40px"
-          }
-        },
-        {
-          "name": "Tab State=筛选",
-          "size": {
-            "width": "351px",
-            "height": "25px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "40px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Navigation Bar / Search ",
-      "nodeId": "7894:257280",
-      "chapter": "02 導航 Navigation",
-      "variantProperties": {
-        "Search State": [
-          "搜索default",
-          "筛选default",
-          "Typing",
-          "Submitted"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Search State=搜索default",
-          "size": {
-            "width": "319px",
-            "height": "36px"
-          },
-          "radius": "100px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "12px",
-            "paddingBottom": "0px",
-            "paddingLeft": "12px",
-            "itemSpacing": "10px"
-          }
-        },
-        {
-          "name": "Search State=筛选default",
-          "size": {
-            "width": "319px",
-            "height": "36px"
-          },
-          "radius": "100px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "12px",
-            "paddingBottom": "0px",
-            "paddingLeft": "12px",
-            "itemSpacing": "10px"
-          }
-        },
-        {
-          "name": "Search State=Typing",
-          "size": {
-            "width": "319px",
-            "height": "36px"
-          },
-          "radius": "100px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "12px",
-            "paddingBottom": "0px",
-            "paddingLeft": "12px",
-            "itemSpacing": "10px"
-          }
-        },
-        {
-          "name": "Search State=Submitted",
-          "size": {
-            "width": "319px",
-            "height": "36px"
-          },
-          "radius": "100px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "12px",
-            "paddingBottom": "0px",
-            "paddingLeft": "12px",
-            "itemSpacing": "10px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Navigation Bar / BetOrder",
-      "nodeId": "7884:34189",
-      "chapter": "04 注单 Bet Orders",
-      "variantProperties": {
-        "Property 1": [
-          "未结算",
-          "已结算"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Property 1=未结算",
-          "size": {
-            "width": "375px",
-            "height": "36px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "12px",
-            "paddingBottom": "0px",
-            "paddingLeft": "12px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "Property 1=已结算",
-          "size": {
-            "width": "375px",
-            "height": "36px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "12px",
-            "paddingBottom": "0px",
-            "paddingLeft": "12px",
-            "itemSpacing": "4px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "SlideBetButton",
-      "nodeId": "7867:254145",
-      "chapter": "03 投注 Betting",
-      "variantProperties": {
-        "State": [
-          "Default",
-          "Dragging",
-          "Success",
-          "Disabled"
-        ]
-      },
-      "variants": [
-        {
-          "name": "State=Default",
-          "size": {
-            "width": "351px",
-            "height": "42px"
-          },
-          "radius": "500px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "16px",
-            "paddingBottom": "10px",
-            "paddingLeft": "8px",
-            "itemSpacing": "12px"
-          }
-        },
-        {
-          "name": "State=Dragging",
-          "size": {
-            "width": "351px",
-            "height": "42px"
-          },
-          "radius": "500px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "16px",
-            "paddingBottom": "10px",
-            "paddingLeft": "8px",
-            "itemSpacing": "12px"
-          }
-        },
-        {
-          "name": "State=Success",
-          "size": {
-            "width": "351px",
-            "height": "42px"
-          },
-          "radius": "500px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "16px",
-            "paddingBottom": "10px",
-            "paddingLeft": "8px",
-            "itemSpacing": "12px"
-          }
-        },
-        {
-          "name": "State=Disabled",
-          "size": {
-            "width": "351px",
-            "height": "42px"
-          },
-          "radius": "40px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "16px",
-            "paddingBottom": "10px",
-            "paddingLeft": "8px",
-            "itemSpacing": "12px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Checkbox",
-      "nodeId": "7867:254272",
-      "chapter": "03 投注 Betting",
-      "variantProperties": {
-        "State": [
-          "Checked",
-          "Unchecked"
-        ]
-      },
-      "variants": [
-        {
-          "name": "State=Checked",
-          "size": {
-            "width": "16px",
-            "height": "16px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "10px",
-            "paddingBottom": "10px",
-            "paddingLeft": "10px",
-            "itemSpacing": "10px"
-          }
-        },
-        {
-          "name": "State=Unchecked",
-          "size": {
-            "width": "16px",
-            "height": "16px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "10px",
-            "paddingBottom": "10px",
-            "paddingLeft": "10px",
-            "itemSpacing": "10px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "BetAmountInput",
-      "nodeId": "7867:254370",
-      "chapter": "03 投注 Betting",
-      "variantProperties": {
-        "State": [
-          "Empty",
-          "Filled",
-          "Error"
-        ]
-      },
-      "variants": [
-        {
-          "name": "State=Empty",
-          "size": {
-            "width": "327px",
-            "height": "36px"
-          },
-          "radius": "6px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "12px",
-            "paddingBottom": "10px",
-            "paddingLeft": "12px",
-            "itemSpacing": "127px"
-          }
-        },
-        {
-          "name": "State=Filled",
-          "size": {
-            "width": "327px",
-            "height": "36px"
-          },
-          "radius": "6px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "12px",
-            "paddingBottom": "10px",
-            "paddingLeft": "12px",
-            "itemSpacing": "127px"
-          }
-        },
-        {
-          "name": "State=Error",
-          "size": {
-            "width": "327px",
-            "height": "36px"
-          },
-          "radius": "6px",
-          "spacing": {
-            "paddingTop": "10px",
-            "paddingRight": "12px",
-            "paddingBottom": "10px",
-            "paddingLeft": "12px",
-            "itemSpacing": "127px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "OddsValue",
-      "nodeId": "7867:254578",
-      "chapter": "03 投注 Betting",
-      "variantProperties": {
-        "Trend": [
-          "Up",
-          "Down",
-          "None",
-          "locked"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Trend=Up",
-          "size": {
-            "width": "34px",
-            "height": "14px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "2px"
-          }
-        },
-        {
-          "name": "Trend=Down",
-          "size": {
-            "width": "34px",
-            "height": "14px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "2px"
-          }
-        },
-        {
-          "name": "Trend=None",
-          "size": {
-            "width": "50px",
-            "height": "14px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        },
-        {
-          "name": "Trend=locked",
-          "size": {
-            "width": "12px",
-            "height": "14px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "2px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "btn_bet_S",
-      "nodeId": "7870:263287",
-      "chapter": "03 投注 Betting",
-      "variantProperties": {
-        "Property 1": [
-          "focus/df",
-          "focus/up",
-          "focus/down",
-          "default"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Property 1=focus/df",
-          "size": {
-            "width": "58px",
-            "height": "30px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "10px",
-            "paddingBottom": "0px",
-            "paddingLeft": "10px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "Property 1=focus/up",
-          "size": {
-            "width": "58px",
-            "height": "30px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "10px",
-            "paddingBottom": "0px",
-            "paddingLeft": "10px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "Property 1=focus/down",
-          "size": {
-            "width": "58px",
-            "height": "30px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "10px",
-            "paddingBottom": "0px",
-            "paddingLeft": "10px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "Property 1=default",
-          "size": {
-            "width": "58px",
-            "height": "30px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "10px",
-            "paddingBottom": "0px",
-            "paddingLeft": "10px",
-            "itemSpacing": "4px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "btn_bet_L",
-      "nodeId": "7870:263288",
-      "chapter": "03 投注 Betting",
-      "variantProperties": {
-        "Property 1": [
-          "focus/df",
-          "focus/up",
-          "focus/down",
-          "default"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Property 1=focus/df",
-          "size": {
-            "width": "58px",
-            "height": "46.5px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "2px"
-          }
-        },
-        {
-          "name": "Property 1=focus/up",
-          "size": {
-            "width": "58px",
-            "height": "46.5px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "2px"
-          }
-        },
-        {
-          "name": "Property 1=focus/down",
-          "size": {
-            "width": "58px",
-            "height": "46.5px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "2px"
-          }
-        },
-        {
-          "name": "Property 1=default",
-          "size": {
-            "width": "58px",
-            "height": "46.5px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "2px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "注单状态",
-      "nodeId": "7892:38196",
-      "chapter": "04 注单 Bet Orders",
-      "variantProperties": {
-        "Property 1": [
-          "投注成功",
-          "处理中",
-          "已结算",
-          "走盘"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Property 1=投注成功",
-          "size": {
-            "width": "89px",
-            "height": "18px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "Property 1=处理中",
-          "size": {
-            "width": "89px",
-            "height": "18px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "Property 1=已结算",
-          "size": {
-            "width": "89px",
-            "height": "18px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "4px"
-          }
-        },
-        {
-          "name": "Property 1=走盘",
-          "size": {
-            "width": "89px",
-            "height": "18px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "4px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "注单总计",
-      "nodeId": "7892:38820",
-      "chapter": "04 注单 Bet Orders",
-      "variantProperties": {
-        "Property 1": [
-          "已结算",
-          "未结算"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Property 1=已结算",
-          "size": {
-            "width": "351px",
-            "height": "60px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "12px",
-            "paddingRight": "8px",
-            "paddingBottom": "12px",
-            "paddingLeft": "8px",
-            "itemSpacing": "8px"
-          }
-        },
-        {
-          "name": "Property 1=未结算",
-          "size": {
-            "width": "351px",
-            "height": "60px"
-          },
-          "radius": "4px",
-          "spacing": {
-            "paddingTop": "12px",
-            "paddingRight": "8px",
-            "paddingBottom": "12px",
-            "paddingLeft": "8px",
-            "itemSpacing": "8px"
-          }
-        }
-      ]
-    },
-    {
-      "name": "注单",
-      "nodeId": "7892:38821",
-      "chapter": "04 注单 Bet Orders",
-      "variantProperties": {
-        "Property 1": [
-          "已结算",
-          "未结算"
-        ]
-      },
-      "variants": [
-        {
-          "name": "Property 1=已结算",
-          "size": {
-            "width": "351px",
-            "height": "159px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        },
-        {
-          "name": "Property 1=未结算",
-          "size": {
-            "width": "351px",
-            "height": "159px"
-          },
-          "radius": "0px",
-          "spacing": {
-            "paddingTop": "0px",
-            "paddingRight": "0px",
-            "paddingBottom": "0px",
-            "paddingLeft": "0px",
-            "itemSpacing": "0px"
-          }
-        }
-      ]
-    }
+    "detailed": false
+   },
+   {
+    "name": "OddsValue",
+    "id": "7867:254578",
+    "variants": [
+     "Trend=Up",
+     "Trend=Down",
+     "Trend=None",
+     "Trend=locked"
+    ],
+    "detailed": true
+   },
+   {
+    "name": "btn_bet_S",
+    "id": "7870:263287",
+    "variants": [
+     "Property 1=focus/df",
+     "Property 1=focus/up",
+     "Property 1=focus/down",
+     "Property 1=default"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "btn_bet_L",
+    "id": "7870:263288",
+    "variants": [
+     "Property 1=focus/df",
+     "Property 1=focus/up",
+     "Property 1=focus/down",
+     "Property 1=default"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "BetOption",
+    "id": "7867:254622",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "Card / Notification Center",
+    "id": "7888:256224",
+    "variants": [
+     "已讀=off",
+     "已讀=on"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "amount",
+    "id": "7870:264600",
+    "variants": [
+     "数值=down",
+     "数值=up",
+     "数值=Default"
+    ],
+    "detailed": false,
+    "duplicate": "與 7870:264631 同名"
+   },
+   {
+    "name": "amount",
+    "id": "7870:264631",
+    "variants": [
+     "数值=Default",
+     "数值=down",
+     "数值=up"
+    ],
+    "detailed": false,
+    "duplicate": "與 7870:264600 同名"
+   },
+   {
+    "name": "MatchScoreHeader",
+    "id": "7867:261428",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "MarketHeader",
+    "id": "7867:264182",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "tab_btn",
+    "id": "7909:36356",
+    "variants": [
+     "Property 1=Focus",
+     "Property 1=default"
+    ],
+    "detailed": true,
+    "duplicate": "與 7909:40601 同名"
+   },
+   {
+    "name": "tab_btn",
+    "id": "7909:40601",
+    "variants": [
+     "Property 1=default",
+     "Property 1=focus"
+    ],
+    "detailed": false,
+    "duplicate": "與 7909:36356 同名,且 variant 值大小寫不一致"
+   },
+   {
+    "name": "MarketTabs",
+    "id": "7867:273989",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "Tabs",
+    "id": "7867:272348",
+    "variants": [
+     "State=Default",
+     "State=Selected"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Bottom Action Bar",
+    "id": "7888:278114",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "漂字",
+    "id": "7892:41286",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "注单状态",
+    "id": "7892:38196",
+    "variants": [
+     "投注成功",
+     "处理中",
+     "已结算",
+     "走盘"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "已结算注单总计状态",
+    "id": "7892:38500",
+    "variants": [
+     "赢",
+     "输",
+     "平"
+    ],
+    "detailed": true
+   },
+   {
+    "name": "已结算注单状态",
+    "id": "7892:38504",
+    "variants": [
+     "输赢金额_赢",
+     "输赢金额_输",
+     "输赢金额_平"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "注单总计",
+    "id": "7892:38820",
+    "variants": [
+     "已结算",
+     "未结算"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "注单 (list)",
+    "id": "7892:38821",
+    "variants": [
+     "已结算",
+     "未结算"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "tab",
+    "id": "7909:40594",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "HomeTab",
+    "id": "7944:273620",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "VideoPlayer",
+    "id": "7867:268753",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "top",
+    "id": "7870:34412",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "Home Indicator",
+    "id": "7870:268719",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "Button / Delete Notification's Message",
+    "id": "7888:259527",
+    "variants": [],
+    "detailed": false
+   }
+  ],
+  "section:icon (7870:260319)": [
+   {
+    "name": "arrow",
+    "id": "7870:260310",
+    "variants": [
+     "up",
+     "down",
+     "L",
+     "R"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Icon/Pin",
+    "id": "7867:254469",
+    "variants": [
+     "Pinned=True",
+     "Pinned=False"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "赛事",
+    "id": "7870:260299",
+    "variants": [
+     "世界杯",
+     "英格兰超级联赛",
+     "其他"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "icon / 搜索",
+    "id": "7944:269700",
+    "variants": [
+     "世界杯",
+     "英格兰超级联赛",
+     "澳大利亚维多利亚洲国家超级联赛"
+    ],
+    "detailed": false,
+    "issue": "命名為搜索但內容為聯賽 icon 24px"
+   },
+   {
+    "name": "icon 16px",
+    "id": "7888:259432",
+    "variants": [
+     "Delete Message",
+     "Check"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Icon_12px",
+    "id": "7925:262054",
+    "variants": [
+     "copy_dark",
+     "copy_light"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "popup_close",
+    "id": "8018:41953",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "notice",
+    "id": "7909:51109",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "icon_reset",
+    "id": "7909:51146",
+    "variants": [],
+    "detailed": false
+   }
+  ],
+  "section:Navigation Bar (7894:258083)": [
+   {
+    "name": "Navigation Bar",
+    "id": "7894:255365",
+    "variants": [
+     "標題＋返回",
+     "標題＋Action",
+     "Home",
+     "搜索",
+     "無標題",
+     "筛选"
+    ],
+    "detailed": false,
+    "issue": "同一元件集內繁簡混用"
+   },
+   {
+    "name": "Navigation Bar / RightActions",
+    "id": "7894:258010",
+    "variants": [
+     "Search",
+     "Wallet",
+     "Profile"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Navigation Bar / Tab",
+    "id": "7894:255760",
+    "variants": [
+     "搜索",
+     "筛选"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Navigation Bar / Search",
+    "id": "7894:257280",
+    "variants": [
+     "搜索default",
+     "筛选default",
+     "Typing",
+     "Submitted"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Navigation Bar / arrow / Left",
+    "id": "7894:257932",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "Navigation Bar / icon",
+    "id": "7894:258082",
+    "variants": [
+     "Clear",
+     "Search"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Navigation Bar / BetOrder",
+    "id": "7884:34189",
+    "variants": [
+     "Unsettled",
+     "Settled"
+    ],
+    "detailed": false
+   },
+   {
+    "name": "Logo",
+    "id": "7894:258742",
+    "variants": [],
+    "detailed": false
+   },
+   {
+    "name": "Status bar",
+    "id": "7894:258357",
+    "variants": [],
+    "detailed": false
+   }
+  ],
+  "section:赛事状态 (7548:373316)": [
+   {
+    "name": "賽事卡",
+    "id": "7781:76888 等 8 組",
+    "variants": [
+     "未開賽",
+     "上半场",
+     "上半场补时",
+     "下半场",
+     "下半场补时",
+     "点球大战",
+     "即将开赛",
+     "中场休息"
+    ],
+    "detailed": "僅未開賽已讀",
+    "issue": "8 種狀態全為普通 frame 非 component,內部圖層全為 Frame 159788xxxx 佔位名,整卡零變數引用"
+   }
+  ],
+  "section:页面状态 (7925:262192)": [
+   {
+    "name": "Empty",
+    "id": "7925:262193",
+    "variants": [
+     "Property 1=NoRecord",
+     "Property 1=失效"
+    ],
+    "detailed": "NoRecord 已讀(110px 插圖,無 token)",
+    "issue": "Property 1 佔位名"
+   }
+  ],
+  "section:Thumb (7944:274818)": [
+   {
+    "name": "scroll bar",
+    "id": "7944:274819",
+    "variants": [],
+    "detailed": false
+   }
   ]
+ },
+ "detailedSpecs": {
+  "OddsValue": {
+   "nodeId": "7867:254578",
+   "typography": "DIN Alternate Bold 14px / line-height 20px",
+   "states": {
+    "None": {
+     "textColor": "#45A6FF (Main/B80)",
+     "shouldBind": "color/odds/none",
+     "width": "50px"
+    },
+    "Up": {
+     "textColor": "#FF6954 (Secondary/Error;用途含赔率上升)",
+     "shouldBind": "color/odds/up",
+     "arrow": "上箭頭 SVG 6x10px"
+    },
+    "Down": {
+     "textColor": "#62D643 (Secondary/Success;用途含赔率下降)",
+     "shouldBind": "color/odds/down",
+     "arrow": "下箭頭 SVG 6x10px"
+    },
+    "locked": {
+     "icon": "鎖 SVG 色值未在新版 Basic_Color 表中獨立定義",
+     "shouldBind": "color/odds/locked"
+    }
+   }
+  },
+  "已结算注单总计状态": {
+   "nodeId": "7892:38500",
+   "typography": "標籤 PingFang HK Regular 12px Text/T60 #61819E;金額 DIN Alternate Bold 16px",
+   "states": {
+    "赢": {
+     "amountColor": "#FF6954 (Secondary/Error;用途含盈亏「赢」金额)",
+     "shouldBind": "color/result/win",
+     "sample": "+3,640"
+    },
+    "输": {
+     "amountColor": "#62D643 (Secondary/Success;用途含盈亏「输」金额)",
+     "shouldBind": "color/result/loss",
+     "sample": "-3,640"
+    },
+    "平": {
+     "amountColor": "#45A6FF (Main/B80)",
+     "shouldBind": "color/result/draw",
+     "sample": "0"
+    }
+   }
+  },
+  "BetAmountInput": {
+   "nodeId": "7867:254370",
+   "frame": "327x36px,radius 6px,padding 12px/10px",
+   "background": "#1E2935 (Background/B80=Input,弹窗Bg)",
+   "states": {
+    "Empty": {
+     "border": "#384C5E (Background/B20)",
+     "hint": "限额 PingFang 12px + 範圍 DIN 14px,色 #384C5E (Background/B20 提示词)"
+    },
+    "Filled": {
+     "border": "#384C5E (Background/B20)",
+     "text": "DIN Alternate Bold 14px 白 (text/wt)"
+    },
+    "Error": {
+     "border": "#FF6954 (Secondary/Error)",
+     "errorMsg": "PingFang HK Regular 10px #FF6954 (Secondary/Error),定位輸入框上方 -17px"
+    }
+   },
+   "trigger": {
+    "Error": "輸入值低於最低限額 2.00 或高於 30,000.00"
+   }
+  },
+  "SlideBetButton": {
+   "nodeId": "7867:254145",
+   "frame": "351x42px,padding 8/16/10",
+   "states": {
+    "Default": {
+     "bg": "#2D8CE5 (Main/B60=投注按钮);舊 CTA 漸層已不作為 Basic_Color 變數",
+     "radius": "500px",
+     "knob": "28px 白圓,邊框待回元件核對(Header/CTA 疊層未建變數)",
+     "text": "投注 PingFang HK Semibold 16px Text/WT #FFFFFF;可赢 15px Text/T30 #96C5F2 + 金額 DIN 16px"
+    },
+    "Dragging": {
+     "bg": "同 Default;Pressed 可用 Main/B50 #3C8BD4",
+     "radius": "500px",
+     "knob": "拖曳狀態邊框待回元件核對"
+    },
+    "Success": {
+     "bg": "#2D8CE5 (Main/B60) / #3C8BD4 (Main/B50 Pressed) 依互動狀態裁決",
+     "radius": "500px",
+     "content": "置中勾選 icon"
+    },
+    "Disabled": {
+     "bg": "#2A3A47 (Background/B50=Disable下注按鈕)",
+     "radius": "40px(不一致,規則 C-001)",
+     "knob": "底/邊框改用新版 Background/Text Variables 待元件回核",
+     "text": "投注 PingFang HK Semibold 16px #61819E (Text/T60)"
+    }
+   },
+   "trigger": {
+    "Dragging": "使用者按住滑塊拖曳中",
+    "Success": "拖曳達終點且投注請求成功",
+    "Disabled": "未選注項、金額為空或盤口封盤"
+   }
+  },
+  "tab_btn": {
+   "nodeId": "7909:36356",
+   "frame": "74x40px,radius 12px",
+   "states": {
+    "default": {
+     "text": "PingFang HK Regular 14px #61819E (Text/T60),計數 DIN Bold 14px"
+    },
+    "Focus": {
+     "text": "PingFang HK Semibold 14px 白 (text/wt)",
+     "indicator": "22x3px,radius 100px,#45A6FF (Main/B80),置中貼底"
+    }
+   }
+  },
+  "賽事卡_未開賽": {
+   "nodeId": "7781:76888",
+   "frame": "radius 4px,padding 8px,底 #212E39 (Background/B70=Card),資訊區↔盤口區 gap 20px",
+   "infoArea": {
+    "time": "DIN Alternate Bold 13px #45A6FF (Main/B80)",
+    "team": "PingFang HK Semibold 12px 白(寫死),隊徽 17px 圓形",
+    "moreBadge": "膠囊 radius 100px,底 #17212A (Background/B100),文字 DIN 12px #506D87 (Text/T70=Badge)"
+   },
+   "marketArea": {
+    "column": "寬 58px,欄標題 PingFang HK Regular 12px #61819E (Text/T60),行高 16.5px(非整數)",
+    "option": "底/分隔/選中弱色依 Background/B20 #384C5E 核對;標籤 PingFang HK Regular 12px #7497B7 (Text/T50=Label);賠率 DIN Bold 13px #45A6FF (Main/B80)"
+   },
+   "issues": [
+    "整卡需全面綁定新版 Variables",
+    "非 component",
+    "佔位圖層名",
+    "字級 13 vs 14 衝突",
+    "PingFang SC/HK 混用;已決議統一 PingFang HK",
+    "行高 16.5px",
+    "Basic_Color 紅旗:部分場景/疊層色待核"
+   ]
+  },
+  "注单状态": {
+   "nodeId": "7892:38196",
+   "typography": "PingFang HK Regular 13px(檔內文字樣式 13/R13-iOS26)",
+   "states": {
+    "投注成功": {
+     "color": "#45A6FF,綁 Main/B80",
+     "issue": "main/b80 與 brand/primary 同值雙包"
+    },
+    "已结算": {
+     "color": "#45A6FF,綁 Main/B80"
+    },
+    "处理中": {
+     "color": "#61819E,綁 Text/T60"
+    },
+    "走盘": {
+     "color": "#61819E,綁 Text/T60"
+    }
+   },
+   "shouldBind": "建議獨立 color/order-status 族(active / settled / pending / void),alias 至新版 Main/Text Variables"
+  },
+  "button": {
+   "nodeId": "7888:277427",
+   "chapter": "01 共用基礎 Common",
+   "frame": "134x40px,radius 4px",
+   "background": "#45A6FF (Main/B80)",
+   "text": "確定 PingFang HK Semibold 14px,#17212A (Background/B100)"
+  },
+  "Button/Confirm": {
+   "nodeId": "8024:262907",
+   "chapter": "01 共用基礎 Common",
+   "frame": "351x50px,radius 8px,padding 8/16/10,itemSpacing 12",
+   "states": {
+    "Default": {
+     "bg": "#45A6FF (Main/B80)",
+     "text": "PingFang HK Semibold 16px #FFFFFF"
+    },
+    "Pressed": {
+     "bg": "#3C8BD4 (Main/B50)",
+     "text": "PingFang HK Semibold 16px #FFFFFF"
+    },
+    "Disabled": {
+     "bg": "#384C5E (Background/B20)",
+     "text": "#61819E (Text/T60)"
+    }
+   }
+  },
+  "Navigation Bar": {
+   "nodeId": "7894:255365",
+   "chapter": "02 導航 Navigation",
+   "frame": "375px wide; 96px default / 130px search-filter / 62px no-title",
+   "background": "#212E39 (Background/B70=AppBar/Card)",
+   "typography": "title PingFang HK Medium 15px #FFFFFF; action PingFang HK Regular 14px Main/B80; status bar SF Pro Display 15px"
+  },
+  "Navigation Bar / Search ": {
+   "nodeId": "7894:257280",
+   "chapter": "02 導航 Navigation",
+   "frame": "319x36px,radius 100px,padding 12px,itemSpacing 10",
+   "background": "#17212A (Background/B100)",
+   "text": "placeholder PingFang HK Regular 13px Text/T60; typing/submitted #FFFFFF"
+  },
+  "Navigation Bar / BetOrder": {
+   "nodeId": "7884:34189",
+   "chapter": "04 注单 Bet Orders",
+   "frame": "375x36px,padding 12px,itemSpacing 4",
+   "background": "#1E2935 (Background/B80)",
+   "text": "active PingFang HK Medium 14px #FFFFFF; inactive PingFang HK Regular 14px Text/T60"
+  },
+  "Checkbox": {
+   "nodeId": "7867:254272",
+   "chapter": "03 投注 Betting",
+   "frame": "16x16px,radius 4px",
+   "states": {
+    "Checked": {
+     "fill": "#45A6FF (Main/B80)",
+     "stroke": "#45A6FF"
+    },
+    "Unchecked": {
+     "fill": "none",
+     "stroke": "#61819E (Text/T60)"
+    }
+   }
+  },
+  "btn_bet_S": {
+   "nodeId": "7870:263287",
+   "chapter": "03 投注 Betting",
+   "frame": "58x30px,radius 4px,padding L/R 10,itemSpacing 4",
+   "states": {
+    "focus": {
+     "bg": "#45A6FF",
+     "text": "#17212A"
+    },
+    "default": {
+     "bg": "#28343F (Background/B60)",
+     "label": "#7497B7",
+     "odds": "#45A6FF"
+    }
+   }
+  },
+  "btn_bet_L": {
+   "nodeId": "7870:263288",
+   "chapter": "03 投注 Betting",
+   "frame": "58x46.5px,radius 4px,itemSpacing 2",
+   "states": {
+    "focus": {
+     "bg": "#45A6FF",
+     "text": "#17212A"
+    },
+    "default": {
+     "bg": "#212E39 (Background/B70)",
+     "label": "#7497B7",
+     "odds": "#45A6FF"
+    }
+   }
+  },
+  "BetOption": {
+   "nodeId": "7867:254622",
+   "chapter": "03 投注 Betting",
+   "frame": "166.5x42px,radius 4px,itemSpacing 2",
+   "background": "#28343F (Background/B60)",
+   "text": "玩法 PingFang HK Regular 12px #7497B7;賠率 DIN Alternate Bold 14px odds color"
+  },
+  "注单总计": {
+   "nodeId": "7892:38820",
+   "chapter": "04 注单 Bet Orders",
+   "frame": "351x60px,radius 4px,padding 8/12,itemSpacing 8",
+   "background": "#212E39 (Background/B70)",
+   "text": "label PingFang HK Regular 12px Text/T60;數字 DIN Alternate Bold 16px"
+  },
+  "注单": {
+   "nodeId": "7892:38821",
+   "chapter": "04 注单 Bet Orders",
+   "frame": "351x159px",
+   "text": "隊伍/聯賽 PingFang HK 13-14px;盤口/賠率 DIN 15px;狀態 PingFang HK 13px",
+   "issue": "存在 15px 特例,由 G-007 warning 跟進"
+  },
+  "赛况 / 賽事狀態": {
+   "nodeId": "7870:260569",
+   "specCard": "8628:14299",
+   "chapter": "03 投注 Betting",
+   "desc": "同一張賽事卡片的 8 個賽況變體;左上賽況標籤為獨立元件(赛况 variants),本表定義整卡層級差異",
+   "parts": {
+    "賽況標籤": "PingFang HK Regular 12px Text/T60 #61819E",
+    "計時/日期數字": "DIN Alternate Bold 13px Main/B80 #45A6FF (Number/B13)",
+    "分隔短線": "1x9px Background/B20 #384C5E radius full"
+   },
+   "states": {
+    "未開賽": "左上顯示日期＋開賽時間(藍色),無比分;賽事未開始且未進入即將開賽窗口",
+    "即将开赛": "「即將開賽」標籤 PingFang HK Medium 12px Main/B80,無比分;距開賽 N 分鐘內",
+    "上半场": "賽況＋計時＋比分;上半場進行中",
+    "上半场补时": "顯示 45+X';上半場補時",
+    "中场休息": "顯示 HT;中場休息",
+    "下半场": "賽況＋計時＋比分;下半場進行中",
+    "下半场补时": "顯示 90+X';下半場補時",
+    "点球大战": "顯示 PK;進入點球大戰"
+   }
+  },
+  "popup": {
+   "specCard": "8628:21290",
+   "chapter": "05 通知中心 Notification",
+   "desc": "首頁資訊提示/錯誤通知彈窗,例如盤口關閉、頁面已超時",
+   "frame": "標準版 343px 寬,radius 16px(radius/lg),padding 12,border Background/B20 1px;icon 版 300px 寬,radius 16px,padding 上12/下24/左右12,itemSpacing 16",
+   "parts": {
+    "標題": "PingFang HK Regular 16px Text/WT #FFFFFF",
+    "內文": "PingFang HK Regular 14px Text/T50 #7497B7",
+    "Button/Confirm(彈窗內)": "高 40px,radius 8px,padding 8/16/10,bg Main/B80 #45A6FF(color/cta.confirm),文字 PingFang HK Medium 16px Text/WT",
+    "notice icon": "48x48px",
+    "close": "24x24px,右上角 11,11"
+   },
+   "states": {
+    "無法投注(含按鈕)": "标题 无法投注/内文 当前盘口已关闭,暂时无法进行投注/按鈕 查看其他玩法或赛事",
+    "頁面超時(含按鈕)": "标题 页面已超时/内文 登录状态已过期,请重新进入游戏以继续/按鈕 重新登录",
+    "無法投注+icon": "icon 版,無按鈕",
+    "頁面超時+icon": "icon 版,無按鈕"
+   },
+   "pendingReview": "底色現況 Background/B70(Card),與 tokens 弹窗Bg=B80 不一致,設計側修正中,bg 不檢查"
+  },
+  "popup / 我的": {
+   "specCard": "8651:16954",
+   "chapter": "05 通知中心 Notification",
+   "desc": "我的頁面/賠率顯示提示彈窗",
+   "frame": "343px 寬,radius 16px(radius/lg),padding 12,bg Background/B80(Input,弹窗Bg),border Background/B20 1px",
+   "parts": {
+    "標題": "PingFang HK Medium 14px Text/WT",
+    "段落標題(亚洲/欧洲)": "PingFang HK Medium 12px,前綴詞 Main/B80、正文 Text/WT",
+    "說明文字": "PingFang HK Regular 14px Text/T60",
+    "舉例區塊": "bg Background/B60,radius 4px(radius/xs),padding 8,標籤 PingFang HK Regular 12px Text/T60,數字 DIN Alternate Bold 16px Main/B80 (Number/B16)",
+    "注解": "PingFang HK Regular 12px Text/T60;1X2 勝負玩法固定顯示歐洲賠率"
+   }
+  },
+  "amount": {
+   "nodeId": "7870:264597",
+   "specCard": "8359:15711",
+   "chapter": "03 投注 Betting",
+   "desc": "讓球線、大小球線等盤口數字顯示元件,兩個尺寸共用同一套狀態;盤口顏色受全局顯示設定卡(8603:12910)賠率升降顏色設定切換",
+   "frame": "高 14px;定寬版 58px(market-column),自適應版依內容",
+   "parts": {
+    "數字": "DIN Alternate Bold 13px (Number/B13)",
+    "方向箭頭": "4x14px,up/down svg"
+   },
+   "states": {
+    "Default": "Main/B80 #45A6FF 一般色數字;盤口線無變化",
+    "up": "Odds/上调(涨红默认 #FF6954)+上箭頭;盤口線上調",
+    "down": "Odds/下调(跌绿默认 #62D643)+下箭頭;盤口線下調"
+   }
+  }
+ },
+ "chapters": {
+  "01 共用基礎 Common": {
+   "sectionId": "8018:42058",
+   "components": [
+    "button",
+    "Button/Confirm",
+    "Radio buttons",
+    "switch",
+    "Overlay"
+   ],
+   "notes": [
+    "Button/Confirm 為主要確認按鈕規範來源",
+    "Radio buttons / switch 圖形目前仍使用 Property 1 佔位 variant 命名"
+   ]
+  },
+  "02 導航 Navigation": {
+   "sectionId": "7894:258083",
+   "components": [
+    "Navigation Bar",
+    "Status bar",
+    "Logo",
+    "Navigation Bar / RightActions",
+    "Navigation Bar / Tab",
+    "Navigation Bar / Search",
+    "Navigation Bar / arrow / Left",
+    "Navigation Bar / icon",
+    "Navigation Bar / BetOrder"
+   ],
+   "notes": [
+    "Navigation Bar 主底色 Background/B70",
+    "Search 為 Background/B100 pill r100",
+    "BetOrder 分頁屬注單流程,但元件位於 Navigation section"
+   ]
+  },
+  "03 投注 Betting": {
+   "sectionId": "7870:34367 + betting flow screens",
+   "components": [
+    "SlideBetButton",
+    "Checkbox",
+    "BetAmountInput",
+    "OddsValue",
+    "btn_bet_S",
+    "btn_bet_L",
+    "BetOption",
+    "Key Button",
+    "Button/Confirm"
+   ],
+   "notes": [
+    "SlideBetButton Disabled r40 需遷移 radius/full",
+    "Dragging 仍有 PingFang SC 與 #FDFEFF,plugin 會由字體/色彩規則報告"
+   ]
+  },
+  "04 注单 Bet Orders": {
+   "sectionId": "Bet order flow + Navigation Bar / BetOrder",
+   "components": [
+    "Navigation Bar / BetOrder",
+    "注单状态",
+    "已结算注单总计状态",
+    "已结算注单状态",
+    "注单总计",
+    "注单",
+    "Empty"
+   ],
+   "notes": [
+    "輸贏金額色需用 result 語意 alias 到新版 Variables",
+    "注单卡片內文字/數字字級有 15px 特例,暫由字級規則 warning"
+   ]
+  },
+  "05 通知中心 Notification": {
+   "sectionId": "8628:19554",
+   "components": [
+    "popup",
+    "popup / 我的",
+    "popup icon 版"
+   ],
+   "notes": [
+    "規範頁存在兩個 通知中心 category:舊 8359:16158(含舊卡 8359:16191)與新 8628:19554(顯示文字「彈窗 Pupop」,Popup 拼字待修),舊 category 是否 retire 待 Peko 確認",
+    "首頁 popup 底色 B70、我的頁 popup 底色 B80 不一致,設計側修正中,bg 暫不設檢查規則"
+   ]
+  }
+ },
+ "componentSets": [
+  {
+   "name": "Button/Confirm",
+   "nodeId": "8024:262907",
+   "chapter": "01 共用基礎 Common",
+   "variantProperties": {
+    "Property 1": [
+     "Default",
+     "Pressed",
+     "Disabled"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Property 1=Default",
+     "size": {
+      "width": "351px",
+      "height": "50px"
+     },
+     "radius": "8px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "16px",
+      "paddingBottom": "10px",
+      "paddingLeft": "8px",
+      "itemSpacing": "12px"
+     }
+    },
+    {
+     "name": "Property 1=Pressed",
+     "size": {
+      "width": "351px",
+      "height": "50px"
+     },
+     "radius": "8px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "16px",
+      "paddingBottom": "10px",
+      "paddingLeft": "8px",
+      "itemSpacing": "12px"
+     }
+    },
+    {
+     "name": "Property 1=Disabled",
+     "size": {
+      "width": "351px",
+      "height": "50px"
+     },
+     "radius": "8px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "16px",
+      "paddingBottom": "10px",
+      "paddingLeft": "8px",
+      "itemSpacing": "12px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Navigation Bar",
+   "nodeId": "7894:255365",
+   "chapter": "02 導航 Navigation",
+   "variantProperties": {
+    "State": [
+     "標題＋返回",
+     "標題＋Action",
+     "Home",
+     "搜索",
+     "無標題",
+     "筛选"
+    ]
+   },
+   "variants": [
+    {
+     "name": "State=標題＋返回",
+     "size": {
+      "width": "375px",
+      "height": "96px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "State=標題＋Action",
+     "size": {
+      "width": "375px",
+      "height": "96px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "State=Home",
+     "size": {
+      "width": "375px",
+      "height": "96px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "State=搜索",
+     "size": {
+      "width": "375px",
+      "height": "130px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "State=無標題",
+     "size": {
+      "width": "375px",
+      "height": "62px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "State=筛选",
+     "size": {
+      "width": "375px",
+      "height": "130px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Navigation Bar / RightActions",
+   "nodeId": "7894:258010",
+   "chapter": "02 導航 Navigation",
+   "variantProperties": {
+    "icon": [
+     "Search",
+     "Wallet",
+     "Profile"
+    ]
+   },
+   "variants": [
+    {
+     "name": "icon=Search",
+     "size": {
+      "width": "32px",
+      "height": "32px"
+     },
+     "radius": "100px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "icon=Wallet",
+     "size": {
+      "width": "32px",
+      "height": "32px"
+     },
+     "radius": "100px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "icon=Profile",
+     "size": {
+      "width": "32px",
+      "height": "32px"
+     },
+     "radius": "100px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "4px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Navigation Bar / Tab",
+   "nodeId": "7894:255760",
+   "chapter": "02 導航 Navigation",
+   "variantProperties": {
+    "Tab State": [
+     "搜索",
+     "筛选"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Tab State=搜索",
+     "size": {
+      "width": "351px",
+      "height": "25px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "40px"
+     }
+    },
+    {
+     "name": "Tab State=筛选",
+     "size": {
+      "width": "351px",
+      "height": "25px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "40px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Navigation Bar / Search ",
+   "nodeId": "7894:257280",
+   "chapter": "02 導航 Navigation",
+   "variantProperties": {
+    "Search State": [
+     "搜索default",
+     "筛选default",
+     "Typing",
+     "Submitted"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Search State=搜索default",
+     "size": {
+      "width": "319px",
+      "height": "36px"
+     },
+     "radius": "100px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "12px",
+      "paddingBottom": "0px",
+      "paddingLeft": "12px",
+      "itemSpacing": "10px"
+     }
+    },
+    {
+     "name": "Search State=筛选default",
+     "size": {
+      "width": "319px",
+      "height": "36px"
+     },
+     "radius": "100px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "12px",
+      "paddingBottom": "0px",
+      "paddingLeft": "12px",
+      "itemSpacing": "10px"
+     }
+    },
+    {
+     "name": "Search State=Typing",
+     "size": {
+      "width": "319px",
+      "height": "36px"
+     },
+     "radius": "100px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "12px",
+      "paddingBottom": "0px",
+      "paddingLeft": "12px",
+      "itemSpacing": "10px"
+     }
+    },
+    {
+     "name": "Search State=Submitted",
+     "size": {
+      "width": "319px",
+      "height": "36px"
+     },
+     "radius": "100px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "12px",
+      "paddingBottom": "0px",
+      "paddingLeft": "12px",
+      "itemSpacing": "10px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Navigation Bar / BetOrder",
+   "nodeId": "7884:34189",
+   "chapter": "04 注单 Bet Orders",
+   "variantProperties": {
+    "Property 1": [
+     "未结算",
+     "已结算"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Property 1=未结算",
+     "size": {
+      "width": "375px",
+      "height": "36px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "12px",
+      "paddingBottom": "0px",
+      "paddingLeft": "12px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "Property 1=已结算",
+     "size": {
+      "width": "375px",
+      "height": "36px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "12px",
+      "paddingBottom": "0px",
+      "paddingLeft": "12px",
+      "itemSpacing": "4px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "SlideBetButton",
+   "nodeId": "7867:254145",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "State": [
+     "Default",
+     "Dragging",
+     "Success",
+     "Disabled"
+    ]
+   },
+   "variants": [
+    {
+     "name": "State=Default",
+     "size": {
+      "width": "351px",
+      "height": "42px"
+     },
+     "radius": "500px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "16px",
+      "paddingBottom": "10px",
+      "paddingLeft": "8px",
+      "itemSpacing": "12px"
+     }
+    },
+    {
+     "name": "State=Dragging",
+     "size": {
+      "width": "351px",
+      "height": "42px"
+     },
+     "radius": "500px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "16px",
+      "paddingBottom": "10px",
+      "paddingLeft": "8px",
+      "itemSpacing": "12px"
+     }
+    },
+    {
+     "name": "State=Success",
+     "size": {
+      "width": "351px",
+      "height": "42px"
+     },
+     "radius": "500px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "16px",
+      "paddingBottom": "10px",
+      "paddingLeft": "8px",
+      "itemSpacing": "12px"
+     }
+    },
+    {
+     "name": "State=Disabled",
+     "size": {
+      "width": "351px",
+      "height": "42px"
+     },
+     "radius": "40px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "16px",
+      "paddingBottom": "10px",
+      "paddingLeft": "8px",
+      "itemSpacing": "12px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Checkbox",
+   "nodeId": "7867:254272",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "State": [
+     "Checked",
+     "Unchecked"
+    ]
+   },
+   "variants": [
+    {
+     "name": "State=Checked",
+     "size": {
+      "width": "16px",
+      "height": "16px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "10px",
+      "paddingBottom": "10px",
+      "paddingLeft": "10px",
+      "itemSpacing": "10px"
+     }
+    },
+    {
+     "name": "State=Unchecked",
+     "size": {
+      "width": "16px",
+      "height": "16px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "10px",
+      "paddingBottom": "10px",
+      "paddingLeft": "10px",
+      "itemSpacing": "10px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "BetAmountInput",
+   "nodeId": "7867:254370",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "State": [
+     "Empty",
+     "Filled",
+     "Error"
+    ]
+   },
+   "variants": [
+    {
+     "name": "State=Empty",
+     "size": {
+      "width": "327px",
+      "height": "36px"
+     },
+     "radius": "6px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "12px",
+      "paddingBottom": "10px",
+      "paddingLeft": "12px",
+      "itemSpacing": "127px"
+     }
+    },
+    {
+     "name": "State=Filled",
+     "size": {
+      "width": "327px",
+      "height": "36px"
+     },
+     "radius": "6px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "12px",
+      "paddingBottom": "10px",
+      "paddingLeft": "12px",
+      "itemSpacing": "127px"
+     }
+    },
+    {
+     "name": "State=Error",
+     "size": {
+      "width": "327px",
+      "height": "36px"
+     },
+     "radius": "6px",
+     "spacing": {
+      "paddingTop": "10px",
+      "paddingRight": "12px",
+      "paddingBottom": "10px",
+      "paddingLeft": "12px",
+      "itemSpacing": "127px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "OddsValue",
+   "nodeId": "7867:254578",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "Trend": [
+     "Up",
+     "Down",
+     "None",
+     "locked"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Trend=Up",
+     "size": {
+      "width": "34px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "2px"
+     }
+    },
+    {
+     "name": "Trend=Down",
+     "size": {
+      "width": "34px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "2px"
+     }
+    },
+    {
+     "name": "Trend=None",
+     "size": {
+      "width": "50px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "Trend=locked",
+     "size": {
+      "width": "12px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "2px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "btn_bet_S",
+   "nodeId": "7870:263287",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "Property 1": [
+     "focus/df",
+     "focus/up",
+     "focus/down",
+     "default"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Property 1=focus/df",
+     "size": {
+      "width": "58px",
+      "height": "30px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "10px",
+      "paddingBottom": "0px",
+      "paddingLeft": "10px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "Property 1=focus/up",
+     "size": {
+      "width": "58px",
+      "height": "30px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "10px",
+      "paddingBottom": "0px",
+      "paddingLeft": "10px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "Property 1=focus/down",
+     "size": {
+      "width": "58px",
+      "height": "30px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "10px",
+      "paddingBottom": "0px",
+      "paddingLeft": "10px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "Property 1=default",
+     "size": {
+      "width": "58px",
+      "height": "30px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "10px",
+      "paddingBottom": "0px",
+      "paddingLeft": "10px",
+      "itemSpacing": "4px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "btn_bet_L",
+   "nodeId": "7870:263288",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "Property 1": [
+     "focus/df",
+     "focus/up",
+     "focus/down",
+     "default"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Property 1=focus/df",
+     "size": {
+      "width": "58px",
+      "height": "46.5px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "2px"
+     }
+    },
+    {
+     "name": "Property 1=focus/up",
+     "size": {
+      "width": "58px",
+      "height": "46.5px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "2px"
+     }
+    },
+    {
+     "name": "Property 1=focus/down",
+     "size": {
+      "width": "58px",
+      "height": "46.5px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "2px"
+     }
+    },
+    {
+     "name": "Property 1=default",
+     "size": {
+      "width": "58px",
+      "height": "46.5px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "2px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "注单状态",
+   "nodeId": "7892:38196",
+   "chapter": "04 注单 Bet Orders",
+   "variantProperties": {
+    "Property 1": [
+     "投注成功",
+     "处理中",
+     "已结算",
+     "走盘"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Property 1=投注成功",
+     "size": {
+      "width": "89px",
+      "height": "18px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "Property 1=处理中",
+     "size": {
+      "width": "89px",
+      "height": "18px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "Property 1=已结算",
+     "size": {
+      "width": "89px",
+      "height": "18px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "4px"
+     }
+    },
+    {
+     "name": "Property 1=走盘",
+     "size": {
+      "width": "89px",
+      "height": "18px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "4px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "注单总计",
+   "nodeId": "7892:38820",
+   "chapter": "04 注单 Bet Orders",
+   "variantProperties": {
+    "Property 1": [
+     "已结算",
+     "未结算"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Property 1=已结算",
+     "size": {
+      "width": "351px",
+      "height": "60px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "12px",
+      "paddingRight": "8px",
+      "paddingBottom": "12px",
+      "paddingLeft": "8px",
+      "itemSpacing": "8px"
+     }
+    },
+    {
+     "name": "Property 1=未结算",
+     "size": {
+      "width": "351px",
+      "height": "60px"
+     },
+     "radius": "4px",
+     "spacing": {
+      "paddingTop": "12px",
+      "paddingRight": "8px",
+      "paddingBottom": "12px",
+      "paddingLeft": "8px",
+      "itemSpacing": "8px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "注单",
+   "nodeId": "7892:38821",
+   "chapter": "04 注单 Bet Orders",
+   "variantProperties": {
+    "Property 1": [
+     "已结算",
+     "未结算"
+    ]
+   },
+   "variants": [
+    {
+     "name": "Property 1=已结算",
+     "size": {
+      "width": "351px",
+      "height": "159px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "Property 1=未结算",
+     "size": {
+      "width": "351px",
+      "height": "159px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  }
+ ]
 }

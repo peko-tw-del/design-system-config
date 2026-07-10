@@ -1,1126 +1,1318 @@
 {
-  "$meta": {
-    "product": "七星體育",
-    "version": "0.4.1-owner-arbitration",
-    "generatedAt": "2026-07-09",
-    "levels": {
-      "error": "違反必須修正",
-      "warning": "需設計裁決或建議修正"
-    },
-    "source": "Figma node 8359:14643 / foundation 8446:24820 plus sports component library",
-    "lastUpdated": "2026-07-10"
+ "$meta": {
+  "product": "七星體育",
+  "version": "0.5.0-notification-matchstatus",
+  "generatedAt": "2026-07-09",
+  "levels": {
+   "error": "違反必須修正",
+   "warning": "需設計裁決或建議修正",
+   "doc": "文件層約束,插件不檢查"
   },
-  "global": [
-    {
-      "id": "G-001",
-      "level": "error",
-      "rule": "元件內顏色必須使用新版 foundation / Figma Variables 已登記的 18 個實色,禁止未登記 hex、任意 rgba、paint opacity、layer opacity",
-      "rationale": "左側元件庫與右側設計稿都是被檢查對象;唯一合法顏色來源為 8359:14643 foundation 色彩規範。新版新增 Background/Black #000000 用於陰影、遮罩;透明 overlay/scrim/backdrop 等素材依忽略規則排除。"
-    },
-    {
-      "id": "G-002",
-      "level": "error",
-      "rule": "同色值可在 Figma Variables 中一色一列,但產品語意仍需在規範層拆分:Secondary/Error 可同時對應 status/error、odds/up、result/win,不得在文案或修正建議中混稱",
-      "rationale": "新版 Basic_Color 明確採「一個顏色一條,同色不重複列」;揪錯貓需接受色值去重,但仍保留 live-data 與 system-feedback 的情境分流。"
-    },
-    {
-      "id": "G-003",
-      "level": "error",
-      "rule": "新版 Figma Variables 可用 Secondary/Error 承載輸入錯誤、賠率上升、盈虧贏,但 plugin 與文件不得把 live-data 情境直接稱為系統錯誤;必須透過 color/odds/up、color/result/win 等 semantic alias 表達",
-      "rationale": "Basic_Color 已採一色一列與 Variables 面板命名,因此舊式「贏不得綁 error 命名」會誤報;真正要避免的是在產品語意與修正建議中混用 status / odds / result。"
-    },
-    {
-      "id": "G-004",
-      "level": "error",
-      "rule": "變數命名以 Figma Variables 面板現況為準(Main / Secondary / Text / Background),本地 semantic 層用英文斜線別名對應,禁止再新增中英雙套平行色",
-      "rationale": "新版色彩規範欄位已指定 Variables 面板名稱為準,舊 main/b80、brand/primary 之類重複命名需收斂到同一來源。"
-    },
-    {
-      "id": "G-005",
-      "level": "error",
-      "rule": "賠率、盤口、比分、盈虧等即時資料色一律掛 live-data 語意,可 alias 至新版 Secondary/Main Variables,但禁止用一般 UI 狀態文案解釋",
-      "rationale": "新版 Variables 將相同色值收斂為一條,但即時資料的紅綠邏輯與系統回饋邏輯仍不同,plugin 訊息必須保留情境。"
-    },
-    {
-      "id": "G-006",
-      "level": "error",
-      "rule": "中文、英文介面文案、玩法名稱、盤口小標與日期篩選 tab 使用 PingFang HK;純數字資料(賠率、比分、金額、限額、比賽時間、百分比、計數、統計)使用 DIN Alternate Bold",
-      "rationale": "小標內的數字屬文案,例如「主」「-1」「大4/4.5」整串使用 PingFang HK;「全部」那一行的日期 06/22、06/23、0622、0623 也使用 PingFang HK。其他純數字資料才使用 DIN。"
-    },
-    {
-      "id": "G-007",
-      "level": "warning",
-      "rule": "文字樣式以新版 foundation 為準:PingFang HK Regular/Medium 10/12/13/14/16,數字使用 DIN Alternate Bold 12/13/14/15/16/18/20",
-      "rationale": "新版 foundation 已補齊 Text/10~16 與 Number/B12~B20;Roboto、Noto、PingFang SC 或未掛正確文字語意者需修正。"
-    },
-    {
-      "id": "G-008",
-      "level": "error",
-      "rule": "高頻重複的畫面單元(賽事卡、注單卡)必須做成 component,禁止以散裝 frame 複製貼上維護多狀態",
-      "rationale": "現況賽事卡有 8 種狀態(未開賽~點球大戰)全是普通 frame,內部圖層全為 Frame 159788xxxx 佔位名,且整卡零變數引用"
-    },
-    {
-      "id": "G-009",
-      "level": "error",
-      "rule": "新增色彩前必須先查新版 18 個 foundation Color Variables;紫色 #7C4DFF 與粉色 #E8557D 已移除,不得再作為七星體育合規色",
-      "rationale": "新版規範註記「紫色 #7C4DFF 與粉色 #E8557D 已隨定案移除」,plugin 應以新版 Variables 作為白名單。"
-    },
-    {
-      "id": "G-010",
-      "level": "error",
-      "rule": "禁止 PingFang HK / PingFang SC 混用。所有非數字文案統一使用 PingFang HK",
-      "rationale": "設計 owner 已指定 PingFang HK 為文字標準。現況同一張賽事卡內主/客/和標籤用 PingFang SC,其餘用 PingFang HK,需修正。"
-    },
-    {
-      "id": "G-011",
-      "level": "warning",
-      "rule": "賠率數字字級統一(OddsValue 元件 14px vs 賽事卡 13px,擇一),行高使用整數",
-      "rationale": "同一種資料(賠率)在不同容器字級不同,且存在 16.5px 非整數行高"
-    },
-    {
-      "id": "G-012",
-      "level": "warning",
-      "rule": "同一文字圖層含文案與數字時先依語意判斷:玩法名稱、盤口小標、日期 tab 整串用 PingFang HK;純數字資料才用 DIN Alternate Bold",
-      "rationale": "體育產品常出現「大4/4.5」「小4/4.5」「-1」「+1」等小標,數字是標籤的一部分,不應拆成 DIN。賠率 1.51、比分、金額、比賽時間 46'00” 等仍使用 DIN。"
-    },
-    {
-      "id": "G-013",
-      "level": "warning",
-      "rule": "新版 Basic_Color 表格存在待核紅旗時,以 Figma Variables API 實值作為機器檢查來源,表格顯示文字僅作人工參考",
-      "rationale": "2026-07-07 Basic_Color 註記紅旗共 7 項;本次 Text/T60、Text/T50 依 Variables / 色票實值修正,避免 plugin 因表格文字誤值放行錯色。"
-    },
-    {
-      "id": "G-014",
-      "level": "error",
-      "rule": "所有 fill、stroke 與圖層 opacity 必須為 100%。若設計需要較淡顏色,應回到 Basic_Color 新增或指定實色變數,不得以 30%/50%/rgba 方式臨時調色",
-      "rationale": "本次最終要求為實色規範;透明度會造成同一 token 在不同背景上呈現不一致,也無法與 Variables 實值穩定對齊。"
-    },
-    {
-      "id": "G-015",
-      "level": "warning",
-      "rule": "間距使用 4/6/8/10/12/16/20 與 safe-bottom 34;圓角僅 4/8/16/full;陰影僅 shadow/nav(121A21 65%) 或 shadow/pop-up window(000000 50%,舊名 shadow/bottom-bar)",
-      "rationale": "2026-07-10 依規範頁定案:圓角縮減為四種,陰影僅保留兩種參數;舊版 radius/6、radius/12、spacing/3 命中一律報建議修正。"
-    }
-  ],
-  "naming": [
-    {
-      "id": "N-001",
-      "level": "error",
-      "rule": "元件命名統一英文 PascalCase,可加斜線分類前綴(如 Icon/Pin)。同類元件禁止多種格式",
-      "rationale": "現況 icon 一類就有 Icon/Pin、icon 16px、Icon_12px、icon / 搜索 四種格式並存"
-    },
-    {
-      "id": "N-002",
-      "level": "error",
-      "rule": "Variant 屬性名限定 State / Type / Size / Trend 等語意名,禁止 Property 1 佔位名",
-      "rationale": "現況至少 9 種屬性名並存:State、Property 1、play、赛况、数值、已讀、分类、Tab State、Search State。Property 1 佔位名即為揪錯貓既有偵測項"
-    },
-    {
-      "id": "N-003",
-      "level": "error",
-      "rule": "同一檔案內文案與命名的繁簡體必須統一(產品文案依產品慣例用簡體,圖層命名建議英文迴避此問題)",
-      "rationale": "現況同一個 Navigation Bar 元件集內 State=標題＋返回(繁)與 State=筛选(簡)混用"
-    },
-    {
-      "id": "N-004",
-      "level": "error",
-      "rule": "Variant 值大小寫統一(Focus 或 focus 擇一,建議小寫)",
-      "rationale": "現況兩個 tab_btn 元件集分別使用 Focus 與 focus"
-    },
-    {
-      "id": "N-005",
-      "level": "error",
-      "rule": "元件集名稱在同一檔案內必須唯一",
-      "rationale": "現況 tab_btn 有兩組(7909:36356、7909:40601)、amount 有兩組(7870:264600、7870:264631),引用時無法辨識"
-    },
-    {
-      "id": "N-006",
-      "level": "warning",
-      "rule": "頂部標題列(375寬×96高,篩選態130;狀態列+返回/標題)為同一畫面單元,必須統一為 Navigation Bar component 之變體實例;禁止各畫面散裝 frame 且命名為 Menu",
-      "rationale": "現況頂列同物異名:多數畫面用 Navigation Bar 元件,但 首页/我的(4)、通知中心_读取信件2(2)、注单_已取消(1) 共 7 處為獨立 frame 且命名 Menu,非元件實例。同物異名使靠名稱聚合的統計失真,且改導航列需逐畫面手改。建議收斂為 Navigation Bar 元件變體(如 State=標題＋返回),名稱不再用 Menu",
-      "suggestion": "將 7 個 Menu 頂列 frame 替換為 Navigation Bar 對應變體實例;過渡期至少統一命名為 Navigation Bar"
-    }
-  ],
-  "component": [
-    {
-      "id": "C-001",
-      "level": "error",
-      "component": "SlideBetButton",
-      "rule": "四個狀態(Default/Dragging/Success/Disabled)圓角必須一致為 pill(500px)",
-      "rationale": "新版 Basic_Color 將 Disable下注按鈕底歸為 Background/B50 #2A3A47;圓角仍需維持 pill 一致。"
-    },
-    {
-      "id": "C-002",
-      "level": "error",
-      "component": "BetAmountInput",
-      "rule": "邊框:預設/提示線色綁 color/input/border(Background/B20),錯誤態綁 color/input/borderError(Secondary/Error),禁止直接沿用舊 text 系 token",
-      "rationale": "新版 Variables 將 Input 背景收斂為 Background/B80,分隔線/提示詞類弱色收斂為 Background/B20。"
-    },
-    {
-      "id": "C-003",
-      "level": "error",
-      "component": "OddsValue",
-      "rule": "Trend=Up 綁 color/odds/up(Secondary/Error)、Down 綁 color/odds/down(Secondary/Success)、None 綁 color/odds/none(Main/B80),禁止只用 status 文案描述 live-data",
-      "rationale": "新版 Basic_Color 一色一列,但用途列仍明示 Secondary/Error=赔率上升、Secondary/Success=赔率下降。"
-    },
-    {
-      "id": "C-004",
-      "level": "error",
-      "component": "已结算注单(結算狀態系列)",
-      "rule": "贏綁 color/result/win(Secondary/Error)、輸綁 color/result/loss(Secondary/Success)、平綁 color/result/draw(Main/B80);允許 alias 至新版 Variables,但禁止在元件規格中只寫 status/error 或 status/success",
-      "rationale": "新版 Basic_Color 用途列明示 Secondary/Error=盈亏「赢」金额、Secondary/Success=盈亏「输」金额;本地規範需用 result 語意包住 Variables 命名。"
-    },
-    {
-      "id": "C-005",
-      "level": "warning",
-      "component": "OddsValue",
-      "rule": "Trend=locked 的鎖定 icon 色需定義 token(color/odds/locked),現況為 SVG 內嵌色未驗證",
-      "rationale": "未綁變數的 icon 色在換膚或深淺色模式時會漏改"
-    },
-    {
-      "id": "C-006",
-      "level": "warning",
-      "component": "互動狀態完整性",
-      "rule": "可互動元件至少定義 default / focus(selected) / disabled 三態;現況多數元件僅 default / focus 兩態",
-      "rationale": "缺 disabled 態的元件上線後遇到停盤、封盤場景會臨時湊色"
-    },
-    {
-      "id": "C-007",
-      "level": "error",
-      "component": "賽事卡(赛事状态系列)",
-      "rule": "卡底綁 color/surface/appBarCard(Background/B70)、盘口数膠囊底綁 color/surface/deepest(Background/B100)、選項/分隔/提示類綁 Background/B20、標籤綁 Text/T50;全卡禁止未登記色",
-      "rationale": "新版 Basic_Color 新增 Background/B100/B80/B70/B60/B50/B20 分層,取代舊 rgba 黑白透明臨時色。"
-    },
-    {
-      "id": "C-008",
-      "level": "error",
-      "component": "Button/Confirm",
-      "rule": "確認按鈕三態尺寸固定 351x50,radius 8;Default 使用 Main/B80,Pressed 使用 Main/B50,Disabled 使用 Background/B20/Text/T60",
-      "rationale": "新版共用區已新增 Button/Confirm,不可再沿用舊投注 CTA 或臨時按鈕樣式。"
-    },
-    {
-      "id": "C-009",
-      "level": "error",
-      "component": "Navigation Bar",
-      "rule": "導覽列主底色使用 Background/B70;標題 PingFang HK Medium 15px 白;Search/Filter 型高度 130,一般標題型 96,無標題型 62",
-      "rationale": "Navigation Bar section 已更新多狀態規格,需與畫面引用一致。"
-    },
-    {
-      "id": "C-010",
-      "level": "warning",
-      "component": "Navigation Bar / Search",
-      "rule": "搜尋輸入框 319x36,radius/full,Background/B100,padding 12,itemSpacing 10;placeholder Text/T60,輸入後白字",
-      "rationale": "搜尋與篩選共用同一顆 pill input,需避免各畫面自行重畫。"
-    },
-    {
-      "id": "C-011",
-      "level": "error",
-      "component": "Betting buttons",
-      "rule": "btn_bet_S 為 58x30,radius 4,padding LR10;btn_bet_L 為 58x46.5,radius 4;focus 底 Main/B80,default 底 Background/B60/B70",
-      "rationale": "投注元件庫新版已定義 S/L 兩套投注按鈕,尺寸與狀態色需一致。"
-    },
-    {
-      "id": "C-012",
-      "level": "error",
-      "component": "Navigation Bar / BetOrder",
-      "rule": "注單分頁 375x36,Background/B80,padding LR12,itemSpacing 4;active Medium 14px 白,inactive Regular 14px Text/T60",
-      "rationale": "注單分頁元件位於 Navigation section,但屬 04 注单流程,需同步納入規範。"
-    },
-    {
-      "id": "C-013",
-      "level": "error",
-      "component": "注单总计 / 注单",
-      "rule": "注单总计 351x60,radius 4,Background/B70,padding 8/12;注单卡 351x159,數字資料用 DIN,文案用 PingFang HK",
-      "rationale": "04 注单 Bet Orders 的總計與列表卡已有元件規格,不可再用散裝 frame 規格。"
-    },
-    {
-      "id": "C-014",
-      "level": "warning",
-      "component": "SlideBetButton",
-      "rule": "Dragging 狀態仍含 PingFang SC 與 #FDFEFF;Disabled radius 40 應遷移 radius/full",
-      "rationale": "新版元件庫仍有兩個可被插件抓出的殘留問題:字體混用、full round 綁定未統一。"
-    }
-  ],
-  "componentRules": [
-    {
-      "id": "sports.Button/Confirm.Property 1=Default.size",
-      "severity": "warning",
-      "component": "Button/Confirm",
-      "variant": "Property 1=Default",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "50px"
-      },
-      "tolerance": "±1px",
-      "rationale": "01 共用基礎 Common 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Button/Confirm.Property 1=Default.cornerRadius",
-      "severity": "warning",
-      "component": "Button/Confirm",
-      "variant": "Property 1=Default",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "8px",
-      "expectedToken": "radius/sm",
-      "tolerance": "0px",
-      "rationale": "01 共用基礎 Common 元件庫圓角規格"
-    },
-    {
-      "id": "sports.Button/Confirm.Property 1=Pressed.size",
-      "severity": "warning",
-      "component": "Button/Confirm",
-      "variant": "Property 1=Pressed",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "50px"
-      },
-      "tolerance": "±1px",
-      "rationale": "01 共用基礎 Common 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Button/Confirm.Property 1=Pressed.cornerRadius",
-      "severity": "warning",
-      "component": "Button/Confirm",
-      "variant": "Property 1=Pressed",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "8px",
-      "expectedToken": "radius/sm",
-      "tolerance": "0px",
-      "rationale": "01 共用基礎 Common 元件庫圓角規格"
-    },
-    {
-      "id": "sports.Button/Confirm.Property 1=Disabled.size",
-      "severity": "warning",
-      "component": "Button/Confirm",
-      "variant": "Property 1=Disabled",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "50px"
-      },
-      "tolerance": "±1px",
-      "rationale": "01 共用基礎 Common 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Button/Confirm.Property 1=Disabled.cornerRadius",
-      "severity": "warning",
-      "component": "Button/Confirm",
-      "variant": "Property 1=Disabled",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "8px",
-      "expectedToken": "radius/sm",
-      "tolerance": "0px",
-      "rationale": "01 共用基礎 Common 元件庫圓角規格"
-    },
-    {
-      "id": "sports.Navigation Bar.State=標題＋返回.size",
-      "severity": "warning",
-      "component": "Navigation Bar",
-      "variant": "State=標題＋返回",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "96px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar.State=標題＋Action.size",
-      "severity": "warning",
-      "component": "Navigation Bar",
-      "variant": "State=標題＋Action",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "96px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar.State=Home.size",
-      "severity": "warning",
-      "component": "Navigation Bar",
-      "variant": "State=Home",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "96px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar.State=搜索.size",
-      "severity": "warning",
-      "component": "Navigation Bar",
-      "variant": "State=搜索",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "130px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar.State=無標題.size",
-      "severity": "warning",
-      "component": "Navigation Bar",
-      "variant": "State=無標題",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "62px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar.State=筛选.size",
-      "severity": "warning",
-      "component": "Navigation Bar",
-      "variant": "State=筛选",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "130px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / RightActions.icon=Search.size",
-      "severity": "warning",
-      "component": "Navigation Bar / RightActions",
-      "variant": "icon=Search",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "32px",
-        "height": "32px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / RightActions.icon=Wallet.size",
-      "severity": "warning",
-      "component": "Navigation Bar / RightActions",
-      "variant": "icon=Wallet",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "32px",
-        "height": "32px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / RightActions.icon=Profile.size",
-      "severity": "warning",
-      "component": "Navigation Bar / RightActions",
-      "variant": "icon=Profile",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "32px",
-        "height": "32px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / Tab.Tab State=搜索.size",
-      "severity": "warning",
-      "component": "Navigation Bar / Tab",
-      "variant": "Tab State=搜索",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "25px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / Tab.Tab State=筛选.size",
-      "severity": "warning",
-      "component": "Navigation Bar / Tab",
-      "variant": "Tab State=筛选",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "25px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / Search .Search State=搜索default.size",
-      "severity": "warning",
-      "component": "Navigation Bar / Search ",
-      "variant": "Search State=搜索default",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "319px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / Search .Search State=筛选default.size",
-      "severity": "warning",
-      "component": "Navigation Bar / Search ",
-      "variant": "Search State=筛选default",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "319px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / Search .Search State=Typing.size",
-      "severity": "warning",
-      "component": "Navigation Bar / Search ",
-      "variant": "Search State=Typing",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "319px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / Search .Search State=Submitted.size",
-      "severity": "warning",
-      "component": "Navigation Bar / Search ",
-      "variant": "Search State=Submitted",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "319px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "02 導航 Navigation 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / BetOrder.Property 1=未结算.size",
-      "severity": "warning",
-      "component": "Navigation Bar / BetOrder",
-      "variant": "Property 1=未结算",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Navigation Bar / BetOrder.Property 1=已结算.size",
-      "severity": "warning",
-      "component": "Navigation Bar / BetOrder",
-      "variant": "Property 1=已结算",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "375px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.SlideBetButton.State=Default.size",
-      "severity": "warning",
-      "component": "SlideBetButton",
-      "variant": "State=Default",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "42px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.SlideBetButton.State=Dragging.size",
-      "severity": "warning",
-      "component": "SlideBetButton",
-      "variant": "State=Dragging",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "42px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.SlideBetButton.State=Success.size",
-      "severity": "warning",
-      "component": "SlideBetButton",
-      "variant": "State=Success",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "42px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.SlideBetButton.State=Disabled.size",
-      "severity": "warning",
-      "component": "SlideBetButton",
-      "variant": "State=Disabled",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "42px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Checkbox.State=Checked.size",
-      "severity": "warning",
-      "component": "Checkbox",
-      "variant": "State=Checked",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "16px",
-        "height": "16px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Checkbox.State=Checked.cornerRadius",
-      "severity": "warning",
-      "component": "Checkbox",
-      "variant": "State=Checked",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.Checkbox.State=Unchecked.size",
-      "severity": "warning",
-      "component": "Checkbox",
-      "variant": "State=Unchecked",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "16px",
-        "height": "16px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.Checkbox.State=Unchecked.cornerRadius",
-      "severity": "warning",
-      "component": "Checkbox",
-      "variant": "State=Unchecked",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.BetAmountInput.State=Empty.size",
-      "severity": "warning",
-      "component": "BetAmountInput",
-      "variant": "State=Empty",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "327px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.BetAmountInput.State=Filled.size",
-      "severity": "warning",
-      "component": "BetAmountInput",
-      "variant": "State=Filled",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "327px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.BetAmountInput.State=Error.size",
-      "severity": "warning",
-      "component": "BetAmountInput",
-      "variant": "State=Error",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "327px",
-        "height": "36px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.OddsValue.Trend=Up.size",
-      "severity": "warning",
-      "component": "OddsValue",
-      "variant": "Trend=Up",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "34px",
-        "height": "14px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.OddsValue.Trend=Down.size",
-      "severity": "warning",
-      "component": "OddsValue",
-      "variant": "Trend=Down",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "34px",
-        "height": "14px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.OddsValue.Trend=None.size",
-      "severity": "warning",
-      "component": "OddsValue",
-      "variant": "Trend=None",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "50px",
-        "height": "14px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.OddsValue.Trend=locked.size",
-      "severity": "warning",
-      "component": "OddsValue",
-      "variant": "Trend=locked",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "12px",
-        "height": "14px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=focus/df.size",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=focus/df",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "30px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=focus/df.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=focus/df",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=focus/up.size",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=focus/up",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "30px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=focus/up.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=focus/up",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=focus/down.size",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=focus/down",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "30px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=focus/down.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=focus/down",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=default.size",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=default",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "30px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_S.Property 1=default.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_S",
-      "variant": "Property 1=default",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=focus/df.size",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=focus/df",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "46.5px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=focus/df.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=focus/df",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=focus/up.size",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=focus/up",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "46.5px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=focus/up.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=focus/up",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=focus/down.size",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=focus/down",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "46.5px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=focus/down.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=focus/down",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=default.size",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=default",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "58px",
-        "height": "46.5px"
-      },
-      "tolerance": "±1px",
-      "rationale": "03 投注 Betting 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.btn_bet_L.Property 1=default.cornerRadius",
-      "severity": "warning",
-      "component": "btn_bet_L",
-      "variant": "Property 1=default",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "03 投注 Betting 元件庫圓角規格"
-    },
-    {
-      "id": "sports.注单状态.Property 1=投注成功.size",
-      "severity": "warning",
-      "component": "注单状态",
-      "variant": "Property 1=投注成功",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "89px",
-        "height": "18px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.注单状态.Property 1=处理中.size",
-      "severity": "warning",
-      "component": "注单状态",
-      "variant": "Property 1=处理中",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "89px",
-        "height": "18px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.注单状态.Property 1=已结算.size",
-      "severity": "warning",
-      "component": "注单状态",
-      "variant": "Property 1=已结算",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "89px",
-        "height": "18px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.注单状态.Property 1=走盘.size",
-      "severity": "warning",
-      "component": "注单状态",
-      "variant": "Property 1=走盘",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "89px",
-        "height": "18px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.注单总计.Property 1=已结算.size",
-      "severity": "warning",
-      "component": "注单总计",
-      "variant": "Property 1=已结算",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "60px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.注单总计.Property 1=已结算.cornerRadius",
-      "severity": "warning",
-      "component": "注单总计",
-      "variant": "Property 1=已结算",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "04 注单 Bet Orders 元件庫圓角規格"
-    },
-    {
-      "id": "sports.注单总计.Property 1=未结算.size",
-      "severity": "warning",
-      "component": "注单总计",
-      "variant": "Property 1=未结算",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "60px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.注单总计.Property 1=未结算.cornerRadius",
-      "severity": "warning",
-      "component": "注单总计",
-      "variant": "Property 1=未结算",
-      "part": "container",
-      "property": "cornerRadius",
-      "expectedValue": "4px",
-      "expectedToken": "radius/xs",
-      "tolerance": "0px",
-      "rationale": "04 注单 Bet Orders 元件庫圓角規格"
-    },
-    {
-      "id": "sports.注单.Property 1=已结算.size",
-      "severity": "warning",
-      "component": "注单",
-      "variant": "Property 1=已结算",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "159px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    },
-    {
-      "id": "sports.注单.Property 1=未结算.size",
-      "severity": "warning",
-      "component": "注单",
-      "variant": "Property 1=未结算",
-      "part": "container",
-      "property": "size",
-      "expectedValue": {
-        "width": "351px",
-        "height": "159px"
-      },
-      "tolerance": "±1px",
-      "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-    }
-  ],
-  "ignore": {
-    "componentSets": [
-      "国旗"
-    ],
-    "scope": "instance-and-subtree",
-    "appliesTo": "all-rules",
-    "rule": "国旗/隊徽類 icon 一律不審查:命中的 component set 之 INSTANCE 及其整棵子樹跳過所有規則(色彩/圓角/間距/命名皆不報)",
-    "rationale": "国旗 為外部圖像資產(國旗、俱樂部徽),色彩與形狀由圖像本身決定,不套 17 色白名單或圓角尺度;逐面報未註冊色只會製造雜訊。比對主元件 set 名(非圖層名)精準命中",
-    "candidatesNotYetIgnored": [
-      "赛事",
-      "icon / 搜索"
-    ],
-    "candidatesNote": "赛事(賽事 logo)與 icon / 搜索 為同類外部圖像 logo;如需一併忽略,加入 componentSets 即可"
+  "source": "Figma node 8359:14643 / foundation 8446:24820 plus sports component library",
+  "lastUpdated": "2026-07-10"
+ },
+ "global": [
+  {
+   "id": "G-001",
+   "level": "error",
+   "rule": "元件內顏色必須使用新版 foundation / Figma Variables 已登記的 18 個實色,禁止未登記 hex、任意 rgba、paint opacity、layer opacity",
+   "rationale": "左側元件庫與右側設計稿都是被檢查對象;唯一合法顏色來源為 8359:14643 foundation 色彩規範。新版新增 Background/Black #000000 用於陰影、遮罩;透明 overlay/scrim/backdrop 等素材依忽略規則排除。"
+  },
+  {
+   "id": "G-002",
+   "level": "error",
+   "rule": "同色值可在 Figma Variables 中一色一列,但產品語意仍需在規範層拆分:Secondary/Error 可同時對應 status/error、odds/up、result/win,不得在文案或修正建議中混稱",
+   "rationale": "新版 Basic_Color 明確採「一個顏色一條,同色不重複列」;揪錯貓需接受色值去重,但仍保留 live-data 與 system-feedback 的情境分流。"
+  },
+  {
+   "id": "G-003",
+   "level": "error",
+   "rule": "新版 Figma Variables 可用 Secondary/Error 承載輸入錯誤、賠率上升、盈虧贏,但 plugin 與文件不得把 live-data 情境直接稱為系統錯誤;必須透過 color/odds/up、color/result/win 等 semantic alias 表達",
+   "rationale": "Basic_Color 已採一色一列與 Variables 面板命名,因此舊式「贏不得綁 error 命名」會誤報;真正要避免的是在產品語意與修正建議中混用 status / odds / result。"
+  },
+  {
+   "id": "G-004",
+   "level": "error",
+   "rule": "變數命名以 Figma Variables 面板現況為準(Main / Secondary / Text / Background),本地 semantic 層用英文斜線別名對應,禁止再新增中英雙套平行色",
+   "rationale": "新版色彩規範欄位已指定 Variables 面板名稱為準,舊 main/b80、brand/primary 之類重複命名需收斂到同一來源。"
+  },
+  {
+   "id": "G-005",
+   "level": "error",
+   "rule": "賠率、盤口、比分、盈虧等即時資料色一律掛 live-data 語意,可 alias 至新版 Secondary/Main Variables,但禁止用一般 UI 狀態文案解釋",
+   "rationale": "新版 Variables 將相同色值收斂為一條,但即時資料的紅綠邏輯與系統回饋邏輯仍不同,plugin 訊息必須保留情境。"
+  },
+  {
+   "id": "G-006",
+   "level": "error",
+   "rule": "中文、英文介面文案、玩法名稱、盤口小標與日期篩選 tab 使用 PingFang HK;純數字資料(賠率、比分、金額、限額、比賽時間、百分比、計數、統計)使用 DIN Alternate Bold",
+   "rationale": "小標內的數字屬文案,例如「主」「-1」「大4/4.5」整串使用 PingFang HK;「全部」那一行的日期 06/22、06/23、0622、0623 也使用 PingFang HK。其他純數字資料才使用 DIN。"
+  },
+  {
+   "id": "G-007",
+   "level": "warning",
+   "rule": "文字樣式以新版 foundation 為準:PingFang HK Regular/Medium 10/12/13/14/16,數字使用 DIN Alternate Bold 12/13/14/15/16/18/20",
+   "rationale": "新版 foundation 已補齊 Text/10~16 與 Number/B12~B20;Roboto、Noto、PingFang SC 或未掛正確文字語意者需修正。"
+  },
+  {
+   "id": "G-008",
+   "level": "error",
+   "rule": "高頻重複的畫面單元(賽事卡、注單卡)必須做成 component,禁止以散裝 frame 複製貼上維護多狀態",
+   "rationale": "現況賽事卡有 8 種狀態(未開賽~點球大戰)全是普通 frame,內部圖層全為 Frame 159788xxxx 佔位名,且整卡零變數引用"
+  },
+  {
+   "id": "G-009",
+   "level": "error",
+   "rule": "新增色彩前必須先查新版 18 個 foundation Color Variables;紫色 #7C4DFF 與粉色 #E8557D 已移除,不得再作為七星體育合規色",
+   "rationale": "新版規範註記「紫色 #7C4DFF 與粉色 #E8557D 已隨定案移除」,plugin 應以新版 Variables 作為白名單。"
+  },
+  {
+   "id": "G-010",
+   "level": "error",
+   "rule": "禁止 PingFang HK / PingFang SC 混用。所有非數字文案統一使用 PingFang HK",
+   "rationale": "設計 owner 已指定 PingFang HK 為文字標準。現況同一張賽事卡內主/客/和標籤用 PingFang SC,其餘用 PingFang HK,需修正。"
+  },
+  {
+   "id": "G-011",
+   "level": "warning",
+   "rule": "賠率數字字級統一(OddsValue 元件 14px vs 賽事卡 13px,擇一),行高使用整數",
+   "rationale": "同一種資料(賠率)在不同容器字級不同,且存在 16.5px 非整數行高"
+  },
+  {
+   "id": "G-012",
+   "level": "warning",
+   "rule": "同一文字圖層含文案與數字時先依語意判斷:玩法名稱、盤口小標、日期 tab 整串用 PingFang HK;純數字資料才用 DIN Alternate Bold",
+   "rationale": "體育產品常出現「大4/4.5」「小4/4.5」「-1」「+1」等小標,數字是標籤的一部分,不應拆成 DIN。賠率 1.51、比分、金額、比賽時間 46'00” 等仍使用 DIN。"
+  },
+  {
+   "id": "G-013",
+   "level": "warning",
+   "rule": "新版 Basic_Color 表格存在待核紅旗時,以 Figma Variables API 實值作為機器檢查來源,表格顯示文字僅作人工參考",
+   "rationale": "2026-07-07 Basic_Color 註記紅旗共 7 項;本次 Text/T60、Text/T50 依 Variables / 色票實值修正,避免 plugin 因表格文字誤值放行錯色。"
+  },
+  {
+   "id": "G-014",
+   "level": "error",
+   "rule": "所有 fill、stroke 與圖層 opacity 必須為 100%。若設計需要較淡顏色,應回到 Basic_Color 新增或指定實色變數,不得以 30%/50%/rgba 方式臨時調色",
+   "rationale": "本次最終要求為實色規範;透明度會造成同一 token 在不同背景上呈現不一致,也無法與 Variables 實值穩定對齊。"
+  },
+  {
+   "id": "G-015",
+   "level": "warning",
+   "rule": "間距使用 4/6/8/10/12/16/20 與 safe-bottom 34;圓角僅 4/8/16/full;陰影僅 shadow/nav(121A21 65%) 或 shadow/pop-up window(000000 50%,舊名 shadow/bottom-bar)",
+   "rationale": "2026-07-10 依規範頁定案:圓角縮減為四種,陰影僅保留兩種參數;舊版 radius/6、radius/12、spacing/3 命中一律報建議修正。"
+  },
+  {
+   "id": "G-016",
+   "level": "doc",
+   "rule": "全局顯示設定(8603:12910)三項為全局模式而非元件狀態:賠率升降顏色只翻 Odds/上调、Odds/下调 方向色,方向提示一律綁「賠率方向色」collection 變數,禁止綁 Secondary/* 或裸色值;賠率顯示 亚洲(默认,僅盈利)/欧洲(含本金),1X2 固定歐洲賠率;語言切換 简中(默认)/English,定寬元件需驗證最小寬度與截斷",
+   "rationale": "來自規範頁 全局顯示設定卡。賠率顯示與語言切換為文件層約束不可機器檢查;方向色綁定由 C-017 承接為可檢規則"
   }
+ ],
+ "naming": [
+  {
+   "id": "N-001",
+   "level": "error",
+   "rule": "元件命名統一英文 PascalCase,可加斜線分類前綴(如 Icon/Pin)。同類元件禁止多種格式",
+   "rationale": "現況 icon 一類就有 Icon/Pin、icon 16px、Icon_12px、icon / 搜索 四種格式並存"
+  },
+  {
+   "id": "N-002",
+   "level": "error",
+   "rule": "Variant 屬性名限定 State / Type / Size / Trend 等語意名,禁止 Property 1 佔位名",
+   "rationale": "現況至少 9 種屬性名並存:State、Property 1、play、赛况、数值、已讀、分类、Tab State、Search State。Property 1 佔位名即為揪錯貓既有偵測項"
+  },
+  {
+   "id": "N-003",
+   "level": "error",
+   "rule": "同一檔案內文案與命名的繁簡體必須統一(產品文案依產品慣例用簡體,圖層命名建議英文迴避此問題)",
+   "rationale": "現況同一個 Navigation Bar 元件集內 State=標題＋返回(繁)與 State=筛选(簡)混用"
+  },
+  {
+   "id": "N-004",
+   "level": "error",
+   "rule": "Variant 值大小寫統一(Focus 或 focus 擇一,建議小寫)",
+   "rationale": "現況兩個 tab_btn 元件集分別使用 Focus 與 focus"
+  },
+  {
+   "id": "N-005",
+   "level": "error",
+   "rule": "元件集名稱在同一檔案內必須唯一",
+   "rationale": "現況 tab_btn 有兩組(7909:36356、7909:40601)、amount 有兩組(7870:264600、7870:264631),引用時無法辨識"
+  },
+  {
+   "id": "N-006",
+   "level": "warning",
+   "rule": "頂部標題列(375寬×96高,篩選態130;狀態列+返回/標題)為同一畫面單元,必須統一為 Navigation Bar component 之變體實例;禁止各畫面散裝 frame 且命名為 Menu",
+   "rationale": "現況頂列同物異名:多數畫面用 Navigation Bar 元件,但 首页/我的(4)、通知中心_读取信件2(2)、注单_已取消(1) 共 7 處為獨立 frame 且命名 Menu,非元件實例。同物異名使靠名稱聚合的統計失真,且改導航列需逐畫面手改。建議收斂為 Navigation Bar 元件變體(如 State=標題＋返回),名稱不再用 Menu",
+   "suggestion": "將 7 個 Menu 頂列 frame 替換為 Navigation Bar 對應變體實例;過渡期至少統一命名為 Navigation Bar"
+  }
+ ],
+ "component": [
+  {
+   "id": "C-001",
+   "level": "error",
+   "component": "SlideBetButton",
+   "rule": "四個狀態(Default/Dragging/Success/Disabled)圓角必須一致為 pill(500px)",
+   "rationale": "新版 Basic_Color 將 Disable下注按鈕底歸為 Background/B50 #2A3A47;圓角仍需維持 pill 一致。"
+  },
+  {
+   "id": "C-002",
+   "level": "error",
+   "component": "BetAmountInput",
+   "rule": "邊框:預設/提示線色綁 color/input/border(Background/B20),錯誤態綁 color/input/borderError(Secondary/Error),禁止直接沿用舊 text 系 token",
+   "rationale": "新版 Variables 將 Input 背景收斂為 Background/B80,分隔線/提示詞類弱色收斂為 Background/B20。"
+  },
+  {
+   "id": "C-003",
+   "level": "error",
+   "component": "OddsValue",
+   "rule": "Trend=Up 綁 color/odds/up(Secondary/Error)、Down 綁 color/odds/down(Secondary/Success)、None 綁 color/odds/none(Main/B80),禁止只用 status 文案描述 live-data",
+   "rationale": "新版 Basic_Color 一色一列,但用途列仍明示 Secondary/Error=赔率上升、Secondary/Success=赔率下降。"
+  },
+  {
+   "id": "C-004",
+   "level": "error",
+   "component": "已结算注单(結算狀態系列)",
+   "rule": "贏綁 color/result/win(Secondary/Error)、輸綁 color/result/loss(Secondary/Success)、平綁 color/result/draw(Main/B80);允許 alias 至新版 Variables,但禁止在元件規格中只寫 status/error 或 status/success",
+   "rationale": "新版 Basic_Color 用途列明示 Secondary/Error=盈亏「赢」金额、Secondary/Success=盈亏「输」金额;本地規範需用 result 語意包住 Variables 命名。"
+  },
+  {
+   "id": "C-005",
+   "level": "warning",
+   "component": "OddsValue",
+   "rule": "Trend=locked 的鎖定 icon 色需定義 token(color/odds/locked),現況為 SVG 內嵌色未驗證",
+   "rationale": "未綁變數的 icon 色在換膚或深淺色模式時會漏改"
+  },
+  {
+   "id": "C-006",
+   "level": "warning",
+   "component": "互動狀態完整性",
+   "rule": "可互動元件至少定義 default / focus(selected) / disabled 三態;現況多數元件僅 default / focus 兩態",
+   "rationale": "缺 disabled 態的元件上線後遇到停盤、封盤場景會臨時湊色"
+  },
+  {
+   "id": "C-007",
+   "level": "error",
+   "component": "賽事卡(赛事状态系列)",
+   "rule": "卡底綁 color/surface/appBarCard(Background/B70)、盘口数膠囊底綁 color/surface/deepest(Background/B100)、選項/分隔/提示類綁 Background/B20、標籤綁 Text/T50;全卡禁止未登記色",
+   "rationale": "新版 Basic_Color 新增 Background/B100/B80/B70/B60/B50/B20 分層,取代舊 rgba 黑白透明臨時色。"
+  },
+  {
+   "id": "C-008",
+   "level": "error",
+   "component": "Button/Confirm",
+   "rule": "確認按鈕三態尺寸固定 351x50,radius 8;Default 使用 Main/B80,Pressed 使用 Main/B50,Disabled 使用 Background/B20/Text/T60",
+   "rationale": "新版共用區已新增 Button/Confirm,不可再沿用舊投注 CTA 或臨時按鈕樣式。"
+  },
+  {
+   "id": "C-009",
+   "level": "error",
+   "component": "Navigation Bar",
+   "rule": "導覽列主底色使用 Background/B70;標題 PingFang HK Medium 15px 白;Search/Filter 型高度 130,一般標題型 96,無標題型 62",
+   "rationale": "Navigation Bar section 已更新多狀態規格,需與畫面引用一致。"
+  },
+  {
+   "id": "C-010",
+   "level": "warning",
+   "component": "Navigation Bar / Search",
+   "rule": "搜尋輸入框 319x36,radius/full,Background/B100,padding 12,itemSpacing 10;placeholder Text/T60,輸入後白字",
+   "rationale": "搜尋與篩選共用同一顆 pill input,需避免各畫面自行重畫。"
+  },
+  {
+   "id": "C-011",
+   "level": "error",
+   "component": "Betting buttons",
+   "rule": "btn_bet_S 為 58x30,radius 4,padding LR10;btn_bet_L 為 58x46.5,radius 4;focus 底 Main/B80,default 底 Background/B60/B70",
+   "rationale": "投注元件庫新版已定義 S/L 兩套投注按鈕,尺寸與狀態色需一致。"
+  },
+  {
+   "id": "C-012",
+   "level": "error",
+   "component": "Navigation Bar / BetOrder",
+   "rule": "注單分頁 375x36,Background/B80,padding LR12,itemSpacing 4;active Medium 14px 白,inactive Regular 14px Text/T60",
+   "rationale": "注單分頁元件位於 Navigation section,但屬 04 注单流程,需同步納入規範。"
+  },
+  {
+   "id": "C-013",
+   "level": "error",
+   "component": "注单总计 / 注单",
+   "rule": "注单总计 351x60,radius 4,Background/B70,padding 8/12;注单卡 351x159,數字資料用 DIN,文案用 PingFang HK",
+   "rationale": "04 注单 Bet Orders 的總計與列表卡已有元件規格,不可再用散裝 frame 規格。"
+  },
+  {
+   "id": "C-014",
+   "level": "warning",
+   "component": "SlideBetButton",
+   "rule": "Dragging 狀態仍含 PingFang SC 與 #FDFEFF;Disabled radius 40 應遷移 radius/full",
+   "rationale": "新版元件庫仍有兩個可被插件抓出的殘留問題:字體混用、full round 綁定未統一。"
+  },
+  {
+   "id": "C-015",
+   "level": "warning",
+   "component": "赛况",
+   "rule": "賽況標籤 PingFang HK Regular 12px Text/T60;計時/日期數字 DIN Alternate Bold 13px Main/B80;分隔短線 1x9px Background/B20 radius full;即将开赛標籤 PingFang HK Medium 12px Main/B80",
+   "rationale": "規範頁 賽事狀態卡片(8628:14299)2026-07-10 新增,8 個賽況變體共用同一套文字與線條規格"
+  },
+  {
+   "id": "C-016",
+   "level": "warning",
+   "component": "popup",
+   "rule": "彈窗 radius 16px(radius/lg);標準版寬 343px、icon 版寬 300px;border Background/B20 1px;標題 16px Text/WT、內文 14px Text/T50;彈窗內 Button/Confirm 高 40px、radius 8px、bg Main/B80(color/cta.confirm)。底色暫不檢查(B70/B80 不一致,設計側修正中)",
+   "rationale": "規範頁 05 通知中心(8628:21290/8651:16954)2026-07-10 新增。彈窗確認鈕(B80)與投注按鈕(B60)為不同語意,依 2026-07-10 Peko 裁決並存皆合規"
+  },
+  {
+   "id": "C-017",
+   "level": "error",
+   "component": "amount",
+   "rule": "Default 綁 Main/B80;up 綁 Odds/上调、down 綁 Odds/下调(賠率方向色 collection);方向提示禁止綁 Secondary/Error、Secondary/Success 或裸色值;數字一律 DIN Alternate Bold 13px",
+   "rationale": "盤口線受全局顯示設定「賠率升降顏色」切換,綁方向色變數才能隨 mode 翻轉;綁 Secondary/* 會在涨绿跌红模式下顯示錯誤方向色。與 C-003 OddsValue 同一原則"
+  }
+ ],
+ "componentRules": [
+  {
+   "id": "sports.Button/Confirm.Property 1=Default.size",
+   "severity": "warning",
+   "component": "Button/Confirm",
+   "variant": "Property 1=Default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "50px"
+   },
+   "tolerance": "±1px",
+   "rationale": "01 共用基礎 Common 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Button/Confirm.Property 1=Default.cornerRadius",
+   "severity": "warning",
+   "component": "Button/Confirm",
+   "variant": "Property 1=Default",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "8px",
+   "expectedToken": "radius/sm",
+   "tolerance": "0px",
+   "rationale": "01 共用基礎 Common 元件庫圓角規格"
+  },
+  {
+   "id": "sports.Button/Confirm.Property 1=Pressed.size",
+   "severity": "warning",
+   "component": "Button/Confirm",
+   "variant": "Property 1=Pressed",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "50px"
+   },
+   "tolerance": "±1px",
+   "rationale": "01 共用基礎 Common 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Button/Confirm.Property 1=Pressed.cornerRadius",
+   "severity": "warning",
+   "component": "Button/Confirm",
+   "variant": "Property 1=Pressed",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "8px",
+   "expectedToken": "radius/sm",
+   "tolerance": "0px",
+   "rationale": "01 共用基礎 Common 元件庫圓角規格"
+  },
+  {
+   "id": "sports.Button/Confirm.Property 1=Disabled.size",
+   "severity": "warning",
+   "component": "Button/Confirm",
+   "variant": "Property 1=Disabled",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "50px"
+   },
+   "tolerance": "±1px",
+   "rationale": "01 共用基礎 Common 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Button/Confirm.Property 1=Disabled.cornerRadius",
+   "severity": "warning",
+   "component": "Button/Confirm",
+   "variant": "Property 1=Disabled",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "8px",
+   "expectedToken": "radius/sm",
+   "tolerance": "0px",
+   "rationale": "01 共用基礎 Common 元件庫圓角規格"
+  },
+  {
+   "id": "sports.Navigation Bar.State=標題＋返回.size",
+   "severity": "warning",
+   "component": "Navigation Bar",
+   "variant": "State=標題＋返回",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "96px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar.State=標題＋Action.size",
+   "severity": "warning",
+   "component": "Navigation Bar",
+   "variant": "State=標題＋Action",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "96px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar.State=Home.size",
+   "severity": "warning",
+   "component": "Navigation Bar",
+   "variant": "State=Home",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "96px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar.State=搜索.size",
+   "severity": "warning",
+   "component": "Navigation Bar",
+   "variant": "State=搜索",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "130px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar.State=無標題.size",
+   "severity": "warning",
+   "component": "Navigation Bar",
+   "variant": "State=無標題",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "62px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar.State=筛选.size",
+   "severity": "warning",
+   "component": "Navigation Bar",
+   "variant": "State=筛选",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "130px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / RightActions.icon=Search.size",
+   "severity": "warning",
+   "component": "Navigation Bar / RightActions",
+   "variant": "icon=Search",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "32px",
+    "height": "32px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / RightActions.icon=Wallet.size",
+   "severity": "warning",
+   "component": "Navigation Bar / RightActions",
+   "variant": "icon=Wallet",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "32px",
+    "height": "32px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / RightActions.icon=Profile.size",
+   "severity": "warning",
+   "component": "Navigation Bar / RightActions",
+   "variant": "icon=Profile",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "32px",
+    "height": "32px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / Tab.Tab State=搜索.size",
+   "severity": "warning",
+   "component": "Navigation Bar / Tab",
+   "variant": "Tab State=搜索",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "25px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / Tab.Tab State=筛选.size",
+   "severity": "warning",
+   "component": "Navigation Bar / Tab",
+   "variant": "Tab State=筛选",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "25px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / Search .Search State=搜索default.size",
+   "severity": "warning",
+   "component": "Navigation Bar / Search ",
+   "variant": "Search State=搜索default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "319px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / Search .Search State=筛选default.size",
+   "severity": "warning",
+   "component": "Navigation Bar / Search ",
+   "variant": "Search State=筛选default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "319px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / Search .Search State=Typing.size",
+   "severity": "warning",
+   "component": "Navigation Bar / Search ",
+   "variant": "Search State=Typing",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "319px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / Search .Search State=Submitted.size",
+   "severity": "warning",
+   "component": "Navigation Bar / Search ",
+   "variant": "Search State=Submitted",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "319px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "02 導航 Navigation 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / BetOrder.Property 1=未结算.size",
+   "severity": "warning",
+   "component": "Navigation Bar / BetOrder",
+   "variant": "Property 1=未结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Navigation Bar / BetOrder.Property 1=已结算.size",
+   "severity": "warning",
+   "component": "Navigation Bar / BetOrder",
+   "variant": "Property 1=已结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.SlideBetButton.State=Default.size",
+   "severity": "warning",
+   "component": "SlideBetButton",
+   "variant": "State=Default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "42px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.SlideBetButton.State=Dragging.size",
+   "severity": "warning",
+   "component": "SlideBetButton",
+   "variant": "State=Dragging",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "42px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.SlideBetButton.State=Success.size",
+   "severity": "warning",
+   "component": "SlideBetButton",
+   "variant": "State=Success",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "42px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.SlideBetButton.State=Disabled.size",
+   "severity": "warning",
+   "component": "SlideBetButton",
+   "variant": "State=Disabled",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "42px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Checkbox.State=Checked.size",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=Checked",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "16px",
+    "height": "16px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Checkbox.State=Checked.cornerRadius",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=Checked",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.Checkbox.State=Unchecked.size",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=Unchecked",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "16px",
+    "height": "16px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Checkbox.State=Unchecked.cornerRadius",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=Unchecked",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.BetAmountInput.State=Empty.size",
+   "severity": "warning",
+   "component": "BetAmountInput",
+   "variant": "State=Empty",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "327px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.BetAmountInput.State=Filled.size",
+   "severity": "warning",
+   "component": "BetAmountInput",
+   "variant": "State=Filled",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "327px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.BetAmountInput.State=Error.size",
+   "severity": "warning",
+   "component": "BetAmountInput",
+   "variant": "State=Error",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "327px",
+    "height": "36px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=Up.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=Up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "34px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=Down.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=Down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "34px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=None.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=None",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "50px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=locked.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=locked",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "12px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=focus/df.size",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=focus/df",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "30px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=focus/df.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=focus/df",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=focus/up.size",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=focus/up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "30px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=focus/up.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=focus/up",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=focus/down.size",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=focus/down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "30px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=focus/down.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=focus/down",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=default.size",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "30px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_S.Property 1=default.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_S",
+   "variant": "Property 1=default",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=focus/df.size",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=focus/df",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "46.5px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=focus/df.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=focus/df",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=focus/up.size",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=focus/up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "46.5px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=focus/up.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=focus/up",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=focus/down.size",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=focus/down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "46.5px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=focus/down.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=focus/down",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=default.size",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "46.5px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.btn_bet_L.Property 1=default.cornerRadius",
+   "severity": "warning",
+   "component": "btn_bet_L",
+   "variant": "Property 1=default",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.注单状态.Property 1=投注成功.size",
+   "severity": "warning",
+   "component": "注单状态",
+   "variant": "Property 1=投注成功",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "89px",
+    "height": "18px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单状态.Property 1=处理中.size",
+   "severity": "warning",
+   "component": "注单状态",
+   "variant": "Property 1=处理中",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "89px",
+    "height": "18px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单状态.Property 1=已结算.size",
+   "severity": "warning",
+   "component": "注单状态",
+   "variant": "Property 1=已结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "89px",
+    "height": "18px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单状态.Property 1=走盘.size",
+   "severity": "warning",
+   "component": "注单状态",
+   "variant": "Property 1=走盘",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "89px",
+    "height": "18px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单总计.Property 1=已结算.size",
+   "severity": "warning",
+   "component": "注单总计",
+   "variant": "Property 1=已结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "60px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单总计.Property 1=已结算.cornerRadius",
+   "severity": "warning",
+   "component": "注单总计",
+   "variant": "Property 1=已结算",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "04 注单 Bet Orders 元件庫圓角規格"
+  },
+  {
+   "id": "sports.注单总计.Property 1=未结算.size",
+   "severity": "warning",
+   "component": "注单总计",
+   "variant": "Property 1=未结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "60px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单总计.Property 1=未结算.cornerRadius",
+   "severity": "warning",
+   "component": "注单总计",
+   "variant": "Property 1=未结算",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "04 注单 Bet Orders 元件庫圓角規格"
+  },
+  {
+   "id": "sports.注单.Property 1=已结算.size",
+   "severity": "warning",
+   "component": "注单",
+   "variant": "Property 1=已结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "159px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单.Property 1=未结算.size",
+   "severity": "warning",
+   "component": "注单",
+   "variant": "Property 1=未结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "159px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.popup.Property 1=无法投注.size",
+   "severity": "warning",
+   "component": "popup",
+   "variant": "Property 1=无法投注",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "343px"
+   },
+   "tolerance": "±1px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup.Property 1=无法投注.cornerRadius",
+   "severity": "warning",
+   "component": "popup",
+   "variant": "Property 1=无法投注",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "16px",
+   "expectedToken": "radius/lg",
+   "tolerance": "0px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup.Property 1=页面已超时.size",
+   "severity": "warning",
+   "component": "popup",
+   "variant": "Property 1=页面已超时",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "343px"
+   },
+   "tolerance": "±1px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup.Property 1=页面已超时.cornerRadius",
+   "severity": "warning",
+   "component": "popup",
+   "variant": "Property 1=页面已超时",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "16px",
+   "expectedToken": "radius/lg",
+   "tolerance": "0px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup icon 版.Property 1=无法投注.size",
+   "severity": "warning",
+   "component": "popup icon 版",
+   "variant": "Property 1=无法投注",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "300px"
+   },
+   "tolerance": "±1px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup icon 版.Property 1=无法投注.cornerRadius",
+   "severity": "warning",
+   "component": "popup icon 版",
+   "variant": "Property 1=无法投注",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "16px",
+   "expectedToken": "radius/lg",
+   "tolerance": "0px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup icon 版.Property 1=页面已超时.size",
+   "severity": "warning",
+   "component": "popup icon 版",
+   "variant": "Property 1=页面已超时",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "300px"
+   },
+   "tolerance": "±1px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup icon 版.Property 1=页面已超时.cornerRadius",
+   "severity": "warning",
+   "component": "popup icon 版",
+   "variant": "Property 1=页面已超时",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "16px",
+   "expectedToken": "radius/lg",
+   "tolerance": "0px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup / 我的.Property 1=Default.size",
+   "severity": "warning",
+   "component": "popup / 我的",
+   "variant": "Property 1=Default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "343px"
+   },
+   "tolerance": "±1px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.popup / 我的.Property 1=Default.cornerRadius",
+   "severity": "warning",
+   "component": "popup / 我的",
+   "variant": "Property 1=Default",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "16px",
+   "expectedToken": "radius/lg",
+   "tolerance": "0px",
+   "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
+  },
+  {
+   "id": "sports.amount.数值=Default.size",
+   "severity": "warning",
+   "component": "amount",
+   "variant": "数值=Default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 賽事狀態卡片 2026-07-10"
+  },
+  {
+   "id": "sports.amount.数值=up.size",
+   "severity": "warning",
+   "component": "amount",
+   "variant": "数值=up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 賽事狀態卡片 2026-07-10"
+  },
+  {
+   "id": "sports.amount.数值=down.size",
+   "severity": "warning",
+   "component": "amount",
+   "variant": "数值=down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 賽事狀態卡片 2026-07-10"
+  }
+ ],
+ "ignore": {
+  "componentSets": [
+   "国旗"
+  ],
+  "scope": "instance-and-subtree",
+  "appliesTo": "all-rules",
+  "rule": "国旗/隊徽類 icon 一律不審查:命中的 component set 之 INSTANCE 及其整棵子樹跳過所有規則(色彩/圓角/間距/命名皆不報)",
+  "rationale": "国旗 為外部圖像資產(國旗、俱樂部徽),色彩與形狀由圖像本身決定,不套 17 色白名單或圓角尺度;逐面報未註冊色只會製造雜訊。比對主元件 set 名(非圖層名)精準命中",
+  "candidatesNotYetIgnored": [
+   "赛事",
+   "icon / 搜索"
+  ],
+  "candidatesNote": "赛事(賽事 logo)與 icon / 搜索 為同類外部圖像 logo;如需一併忽略,加入 componentSets 即可"
+ }
 }
