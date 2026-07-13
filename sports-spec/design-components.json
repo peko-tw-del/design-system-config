@@ -1,9 +1,9 @@
 {
  "$meta": {
   "product": "七星體育",
-  "version": "0.4.2-component-refresh-assets",
+  "version": "0.4.3-notification-actions",
   "generatedAt": "2026-07-13",
-  "note": "更新 01 共用基礎 Common / 02 導航 Navigation / 03 投注 Betting / 04 注单 Bet Orders 元件庫樣式; spacing/radius 另由 spacing-radius.tokens.json 管理。 2026-07-10:新增 05 通知中心彈窗、赛况/賽事狀態卡片、amount 盤口線 spec;彈窗底色 B70/B80 不一致由設計側修正中,暫不納入檢查。 2026-07-13:新增 Balance Display / 結餘狀態卡與元件規格。 2026-07-13:同步 0629 新增/改名元件,包含队伍名/赛事素材尺寸、OddsValue focus 狀態、注单 / Odds、投注底部菜单;外部素材只檢查外層尺寸,不讀取內部圖像色彩。",
+  "note": "更新 01 共用基礎 Common / 02 導航 Navigation / 03 投注 Betting / 04 注单 Bet Orders 元件庫樣式; spacing/radius 另由 spacing-radius.tokens.json 管理。 2026-07-10:新增 05 通知中心彈窗、赛况/賽事狀態卡片、amount 盤口線 spec;彈窗底色 B70/B80 不一致由設計側修正中,暫不納入檢查。 2026-07-13:新增 Balance Display / 結餘狀態卡與元件規格。 2026-07-13:同步 0629 新增/改名元件,包含队伍名/赛事素材尺寸、OddsValue focus 狀態、注单 / Odds、投注底部菜单;外部素材只檢查外層尺寸,不讀取內部圖像色彩。 2026-07-13:補充通知中心卡片左滑刪除互動,以及二級頁標題＋Action 的 enabled / disabled 使用時機。",
   "source": "Figma node 6863:293089 / section 0629 component library scan"
  },
  "inventory": {
@@ -109,9 +109,11 @@
     "id": "7888:256224",
     "variants": [
      "已讀=off",
-     "已讀=on"
+     "已讀=on",
+     "左滑刪除",
+     "左滑刪除 / pressed"
     ],
-    "detailed": false
+    "detailed": true
    },
    {
     "name": "amount_L",
@@ -774,7 +776,16 @@
    "chapter": "02 導航 Navigation",
    "frame": "375px wide; 96px default / 130px search-filter / 62px no-title",
    "background": "#212E39 (Background/B70=AppBar/Card)",
-   "typography": "title PingFang HK Medium 15px #FFFFFF; action PingFang HK Regular 14px Main/B80; status bar SF Pro Display 15px"
+   "typography": "title PingFang HK Medium 15px #FFFFFF; action PingFang HK Regular 14px Main/B80; status bar SF Pro Display 15px",
+   "usage": {
+    "State=標題＋Action": "用於二級頁且右側有全域文字動作的頁面;左側返回箭頭,中間頁面標題,右側放文字 Action。",
+    "example": "通知中心:右側 Action 為 全部已讀。"
+   },
+   "actionStates": {
+    "enabled": "當頁面仍有可執行的全域動作時顯示 enabled;例如存在未讀通知時,「全部已讀」可點擊,點擊後所有通知標記為已讀。",
+    "disabled": "當全域動作已無可執行對象時顯示 disabled;例如通知已全部讀取時,「全部已讀」不可點擊,避免無效操作。"
+   },
+   "actionText": "PingFang HK Regular 14px;enabled 使用 Main/B80;disabled 使用 disabled text token(Text/T60 或設計定義的 disabled token)。"
   },
   "Navigation Bar / Search ": {
    "nodeId": "7894:257280",
@@ -1001,6 +1012,23 @@
     "数值=focus up",
     "数值=focus down"
    ]
+  },
+  "Card / Notification Center": {
+   "nodeId": "7888:256224",
+   "chapter": "05 通知中心 Notification",
+   "desc": "通知中心列表卡片,支援已讀/未讀與左滑刪除互動。",
+   "states": {
+    "unread": "未讀通知狀態;可搭配右側「全部已讀」全域 Action。",
+    "read": "已讀通知狀態;當全部通知皆為已讀時,頁面右側「全部已讀」Action 轉為 disabled。",
+    "swipeRevealDelete": "使用者左滑卡片時,卡片左滑露出刪除鈕;刪除 action 區寬 88pt。",
+    "swipeDeletePressed": "使用者在左滑露出狀態點擊刪除時的 pressed/click 狀態;點擊後刪除該通知卡片。"
+   },
+   "interaction": {
+    "trigger": "使用者對通知卡片左滑。",
+    "exposedAction": "露出刪除鈕,寬 88pt,含刪除 icon 與「刪除」文字。",
+    "result": "點擊刪除後移除該通知;若列表狀態改變,同步更新頁面右側 Action 可用狀態。"
+   },
+   "visualNotes": "刪除 action 為卡片左滑後露出,不是常駐按鈕;刪除 icon 與文字需維持在 action 區內置中。"
   }
  },
  "chapters": {
@@ -1250,7 +1278,15 @@
       "itemSpacing": "0px"
      }
     }
-   ]
+   ],
+   "usage": {
+    "State=標題＋Action": "用於二級頁且右側有全域文字動作的頁面;左側返回箭頭,中間頁面標題,右側放文字 Action。",
+    "example": "通知中心:右側 Action 為 全部已讀。"
+   },
+   "actionStates": {
+    "enabled": "當頁面仍有可執行的全域動作時顯示 enabled;例如存在未讀通知時,「全部已讀」可點擊,點擊後所有通知標記為已讀。",
+    "disabled": "當全域動作已無可執行對象時顯示 disabled;例如通知已全部讀取時,「全部已讀」不可點擊,避免無效操作。"
+   }
   },
   {
    "name": "Navigation Bar / RightActions",

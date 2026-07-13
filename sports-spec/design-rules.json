@@ -1,7 +1,7 @@
 {
  "$meta": {
   "product": "七星體育",
-  "version": "0.5.2-component-refresh-assets",
+  "version": "0.5.3-notification-actions",
   "generatedAt": "2026-07-13",
   "levels": {
    "error": "違反必須修正",
@@ -274,6 +274,20 @@
    "component": "Balance Display",
    "rule": "結餘金額膠囊高度 32px,radius/full,padding LR8,itemSpacing 4,底色 Background/B100;金額使用 DIN Alternate Bold 16px/24px 並綁 color/balance/amount(Secondary/score),不得使用 odds/result/status 語意色",
    "rationale": "2026-07-13 規範頁新增 Balance Display / 結餘狀態卡(8691:25722):最小值 0、最大值 238,114.00。餘額屬 wallet numeric-data,顏色與比分/錢包/預計派彩同源,但插件訊息需使用 balance 語意。"
+  },
+  {
+   "id": "C-019",
+   "level": "warning",
+   "component": "Card / Notification Center",
+   "rule": "通知卡片支援左滑刪除:使用者左滑時露出刪除 action,刪除 action 區寬 88pt,含刪除 icon 與「刪除」文字;點擊後移除該通知卡片。此 action 不應常駐顯示。",
+   "rationale": "2026-07-13 最後規範新增:卡片左滑露出刪除鈕(88pt),並補充使用者左滑點擊時的 pressed/click 狀態。"
+  },
+  {
+   "id": "C-020",
+   "level": "warning",
+   "component": "Navigation Bar / State=標題＋Action",
+   "rule": "二級頁若有全域文字動作,使用 Navigation Bar 的 State=標題＋Action:左側返回箭頭,中間標題,右側文字 Action。以通知中心為例,存在未讀通知時「全部已讀」為 enabled 可點擊;通知已全部讀取時 Action 轉為 disabled 不可點擊。",
+   "rationale": "2026-07-13 最後規範新增:標題＋Action 用於二級頁全域動作,需定義 enabled / disabled 使用時機,避免無效操作。"
   }
  ],
  "componentRules": [
@@ -1683,6 +1697,27 @@
    },
    "tolerance": "±1px",
    "rationale": "icon assets 外部賽事 logo 尺寸規格;只檢外層 instance,不讀內部圖像色彩"
+  },
+  {
+   "id": "sports.Card / Notification Center.swipeDeleteAction.width",
+   "severity": "warning",
+   "component": "Card / Notification Center",
+   "variant": "左滑刪除",
+   "part": "deleteAction",
+   "property": "width",
+   "expectedValue": "88pt",
+   "tolerance": "±1pt",
+   "rationale": "通知中心卡片左滑刪除 action 區寬度規格 2026-07-13"
+  },
+  {
+   "id": "sports.Navigation Bar.State=標題＋Action.actionState",
+   "severity": "warning",
+   "component": "Navigation Bar",
+   "variant": "State=標題＋Action",
+   "part": "rightAction",
+   "property": "interactionState",
+   "expectedValue": "enabled when action has valid target; disabled when no valid target, e.g. all notifications already read",
+   "rationale": "二級頁全域 Action 需依資料狀態切換 enabled / disabled 2026-07-13"
   }
  ],
  "ignore": {
