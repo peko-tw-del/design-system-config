@@ -1,0 +1,1842 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>直播助手 PC 端 Design Guideline</title>
+<style>
+:root {
+  --brand: #CB8FE9;
+  --bg: #0B080D;
+  --surface: #16111C;
+  --surface-2: #211C29;
+  --panel: rgba(138,138,138,.10);
+  --panel-hover: rgba(138,138,138,.18);
+  --text: #FFFFFF;
+  --muted: #B8ACBE;
+  --weak: #757575;
+  --icon: #E0D8F1;
+  --border: rgba(255,255,255,.10);
+  --cyan: #7BE6F0;
+  --warning: #B5423A;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "PingFang HK", "PingFang TC", sans-serif;
+  line-height: 1.55;
+}
+main { max-width: 1240px; margin: 0 auto; padding: 52px 32px 110px; }
+header { border-bottom: 1px solid var(--border); padding-bottom: 36px; margin-bottom: 36px; }
+.eyebrow { color: var(--brand); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+h1 { font-size: 38px; line-height: 1.14; margin: 0 0 14px; letter-spacing: 0; }
+h1 span { color: var(--brand); }
+h2 { display: flex; align-items: center; gap: 12px; font-size: 20px; margin: 64px 0 20px; }
+h2::after { content: ""; height: 1px; flex: 1; background: var(--border); }
+h3 { font-size: 16px; margin: 8px 0; }
+p { color: var(--muted); margin: 0; }
+a { color: inherit; }
+code { color: var(--cyan); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.meta, nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill, nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  text-decoration: none;
+}
+nav { margin-bottom: 48px; }
+nav a:hover { border-color: rgba(203,143,233,.5); color: var(--text); background: var(--panel-hover); }
+.summary-grid, .component-gallery, .gradient-grid, .radius-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+.summary-card, .component-card, .gradient-card, .radius-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.summary-card strong { display: block; font-size: 26px; margin-bottom: 4px; }
+.summary-card span, td span { color: var(--muted); font-size: 12px; }
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.swatch-card { overflow: hidden; border-radius: 8px; background: var(--panel); border: 1px solid var(--border); }
+.swatch-preview { position: relative; height: 72px; overflow: hidden; }
+.checker { background-image: linear-gradient(45deg,#2B2632 25%,transparent 25%),linear-gradient(-45deg,#2B2632 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#2B2632 75%),linear-gradient(-45deg,transparent 75%,#2B2632 75%); background-size: 12px 12px; background-position: 0 0,0 6px,6px -6px,-6px 0; }
+.swatch-preview span { position: absolute; inset: 0; }
+.swatch-info, .gradient-info { padding: 13px 14px 15px; }
+.token-name { color: var(--text); font-weight: 700; font-size: 12px; margin-bottom: 4px; word-break: break-all; }
+.token-value, .token-meta { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+.swatch-info p, .gradient-info p { font-size: 12px; }
+table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+th, td { border-bottom: 1px solid var(--border); padding: 11px 12px; vertical-align: top; text-align: left; font-size: 13px; }
+th { color: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+tr:last-child td { border-bottom: none; }
+.mini-swatch { display: inline-block; width: 20px; height: 20px; border-radius: 5px; border: 1px solid var(--border); vertical-align: middle; margin-right: 8px; }
+.type-sample { color: var(--text); min-width: 180px; }
+.metric-panel { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 18px; }
+.metric-row { display: grid; grid-template-columns: 120px 52px minmax(120px, 1fr) 110px minmax(220px, 1.2fr); gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.metric-row:last-child { border-bottom: none; }
+.bar-track { height: 8px; background: rgba(255,255,255,.06); border-radius: 999px; overflow: hidden; }
+.bar { height: 100%; background: linear-gradient(180deg, #754585 0%, #4B348D 100%); border-radius: 999px; }
+.metric-row p { font-size: 12px; }
+.radius-demo { width: 58px; height: 38px; border: 1px solid #86539B; background: rgba(143,105,207,.15); margin-bottom: 10px; }
+.radius-item strong { display: block; color: var(--muted); font-size: 12px; margin: 4px 0; }
+.radius-item p { font-size: 12px; min-height: 38px; }
+.gradient-card { padding: 0; overflow: hidden; }
+.gradient-preview { height: 82px; }
+.component-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.component-card p { font-size: 12px; margin-bottom: 12px; }
+.variant-chip-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.variant-chip-list span { border: 1px solid var(--border); background: rgba(255,255,255,.04); border-radius: 6px; padding: 6px 8px; color: var(--text); font-size: 12px; }
+.variant-chip-list small { display: block; color: var(--muted); margin-top: 2px; }
+em { display: inline-flex; font-style: normal; border-radius: 999px; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); font-size: 11px; white-space: nowrap; }
+em.approved, em.draft-approved { color: #7BE6F0; border-color: rgba(123,230,240,.35); }
+em.warning, em.needs-review, em.needs-design-review, em.raw-exception { color: #F2C879; border-color: rgba(242,200,121,.35); }
+em.error { color: #FF8E86; border-color: rgba(255,142,134,.35); }
+em.deprecated { color: var(--weak); border-color: rgba(117,117,117,.35); text-decoration: line-through; }
+.note { background: var(--panel); border-left: 3px solid var(--brand); padding: 13px 15px; border-radius: 0 6px 6px 0; color: var(--muted); margin: 16px 0; }
+@media (max-width: 760px) {
+  main { padding: 32px 18px 80px; }
+  h1 { font-size: 28px; }
+  .metric-row { grid-template-columns: 1fr; gap: 6px; }
+  table { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Design System · PC Collection · Normalized Spec</div>
+    <h1>直播助手 PC 端<br><span>Design Guideline</span></h1>
+    <div class="meta">
+      <span class="pill">Generated 2026-06-29</span>
+      <span class="pill">Updated 2026-07-02</span>
+      <span class="pill">Figma node 13:8209</span>
+      <span class="pill">41 component sets</span>
+      <span class="pill">283 AI rules</span>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#colors">Color</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#radius">Radius</a>
+    <a href="#gradients">Gradient</a>
+    <a href="#components">Components</a>
+    <a href="#recent-findings">Recent Findings</a>
+    <a href="#rules">AI Rules</a>
+  </nav>
+
+  <section id="overview">
+    <h2>01 Overview</h2>
+    <div class="summary-grid">
+      <article class="summary-card"><strong>53</strong><span>color tokens, including primitive and semantic layers</span></article>
+      <article class="summary-card"><strong>14</strong><span>typography styles extracted from node data</span></article>
+      <article class="summary-card"><strong>41</strong><span>component sets with variants and states</span></article>
+      <article class="summary-card"><strong>283</strong><span>rules for future automated design review</span></article>
+    </div>
+    <p class="note">這份 HTML 是視覺化 guideline；真正給 AI 自動檢查時，請使用同資料夾內的 <code>design-rules.json</code>、<code>design-components.json</code> 和 <code>design-tokens.normalized.json</code>。</p>
+  </section>
+
+  <section id="colors">
+    <h2>02 Semantic Color</h2>
+    <div class="swatch-grid">
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#CB8FE9"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.brand.primary</div>
+                <div class="token-value">#CB8FE9</div>
+                <div class="token-meta">primary/Main</div>
+                <p>Brand accents and important highlights</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#FFFFFF"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.text.primary</div>
+                <div class="token-value">#FFFFFF</div>
+                <div class="token-meta">Text/WT</div>
+                <p>Primary text on dark surfaces</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#B8ACBE"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.text.secondary</div>
+                <div class="token-value">#B8ACBE</div>
+                <div class="token-meta">Text/Secondary text</div>
+                <p>Secondary body text and labels</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(184, 172, 190, 0.50)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.text.secondary.muted</div>
+                <div class="token-value">rgba(184, 172, 190, 0.50)</div>
+                <div class="token-meta">Text/Secondary text 50%</div>
+                <p>Muted secondary text</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(255, 255, 255, 0.60)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.text.placeholder</div>
+                <div class="token-value">rgba(255, 255, 255, 0.60)</div>
+                <div class="token-meta">Text/WT60%</div>
+                <p>Input placeholder and temporary labels</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#E0D8F1"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.icon.default</div>
+                <div class="token-value">#E0D8F1</div>
+                <div class="token-meta">Text/icon</div>
+                <p>Default icon color</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(224, 216, 241, 0.50)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.icon.muted</div>
+                <div class="token-value">rgba(224, 216, 241, 0.50)</div>
+                <div class="token-meta">Text/icon 50%</div>
+                <p>Muted or off icon state</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#ADAAAA"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.text.default</div>
+                <div class="token-value">#ADAAAA</div>
+                <div class="token-meta">Text/Default text</div>
+                <p>Default input value text</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#DADEEA"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.text.helper</div>
+                <div class="token-value">#DADEEA</div>
+                <div class="token-meta">Text/輔助</div>
+                <p>Helper text</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#757575"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.text.weak</div>
+                <div class="token-value">#757575</div>
+                <div class="token-meta">Text/x</div>
+                <p>Lowest-emphasis readable text</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#0B080D"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.bg.canvas</div>
+                <div class="token-value">#0B080D</div>
+                <div class="token-meta">background/Primary</div>
+                <p>Application canvas background</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(138, 138, 138, 0.10)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.surface.panel</div>
+                <div class="token-value">rgba(138, 138, 138, 0.10)</div>
+                <div class="token-meta">background/板塊</div>
+                <p>Default glass panel surface</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(138, 138, 138, 0.20)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.surface.panel.hover</div>
+                <div class="token-value">rgba(138, 138, 138, 0.20)</div>
+                <div class="token-meta">background/板塊 Hover</div>
+                <p>Panel hover surface</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(138, 138, 138, 0.05)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.surface.panel.active</div>
+                <div class="token-value">rgba(138, 138, 138, 0.05)</div>
+                <div class="token-meta">background/板塊 Active</div>
+                <p>Panel active/pressed surface</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#211C29"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.surface.tertiary</div>
+                <div class="token-value">#211C29</div>
+                <div class="token-meta">background/Tertiary</div>
+                <p>Tertiary surface</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(3, 3, 3, 0.80)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.surface.toast</div>
+                <div class="token-value">rgba(3, 3, 3, 0.80)</div>
+                <div class="token-meta">background/Toast</div>
+                <p>Toast background overlay</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(75, 52, 141, 0.50)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.scrollbar.thumb</div>
+                <div class="token-value">rgba(75, 52, 141, 0.50)</div>
+                <div class="token-meta">background/scroll bar</div>
+                <p>Scrollbar thumb</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#1B1721"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.dialog.background</div>
+                <div class="token-value">#1B1721</div>
+                <div class="token-meta">彈窗/Background</div>
+                <p>Dialog base surface</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#28252D"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.dialog.top</div>
+                <div class="token-value">#28252D</div>
+                <div class="token-meta">彈窗/Top</div>
+                <p>Dialog header/top surface</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#86539B"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.dialog.label</div>
+                <div class="token-value">#86539B</div>
+                <div class="token-meta">彈窗/Label</div>
+                <p>Dialog label accent</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#483C4E"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.dialog.border</div>
+                <div class="token-value">#483C4E</div>
+                <div class="token-meta">彈窗/Border</div>
+                <p>Dialog frame border</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(143, 105, 207, 0.15)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.action.brand.subtle</div>
+                <div class="token-value">rgba(143, 105, 207, 0.15)</div>
+                <div class="token-meta">Button/Button01</div>
+                <p>Brand-tinted secondary action background</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(184, 172, 190, 0.20)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.action.neutral.subtle</div>
+                <div class="token-value">rgba(184, 172, 190, 0.20)</div>
+                <div class="token-meta">Button/Button02</div>
+                <p>Neutral secondary action background</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(184, 172, 190, 0.15)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.action.neutral.hover</div>
+                <div class="token-value">rgba(184, 172, 190, 0.15)</div>
+                <div class="token-meta">Button/Hover</div>
+                <p>Neutral hover overlay</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#3F3649"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.action.dark.default</div>
+                <div class="token-value">#3F3649</div>
+                <div class="token-meta">Button/Button03</div>
+                <p>Dark solid button</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#2C233B"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.action.dark.active</div>
+                <div class="token-value">#2C233B</div>
+                <div class="token-meta">Button/Button04</div>
+                <p>Dark active button</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#86539B"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.border.action</div>
+                <div class="token-value">#86539B</div>
+                <div class="token-meta">Border/Button</div>
+                <p>Action border</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(184, 172, 190, 0.10)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.border.subtle</div>
+                <div class="token-value">rgba(184, 172, 190, 0.10)</div>
+                <div class="token-meta">Border/Card</div>
+                <p>Card and panel border</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(255, 255, 255, 0.10)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.border.inverse.subtle</div>
+                <div class="token-value">rgba(255, 255, 255, 0.10)</div>
+                <div class="token-meta">Border/WT10%</div>
+                <p>Hairline border on dark surfaces</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#B5423A"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.border.warning</div>
+                <div class="token-value">#B5423A</div>
+                <div class="token-meta">Border/Warning</div>
+                <p>Warning/error border</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:rgba(203, 143, 233, 0.50)"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.border.dropdown</div>
+                <div class="token-value">rgba(203, 143, 233, 0.50)</div>
+                <div class="token-meta">Border/Drop-down menu</div>
+                <p>Dropdown focus/active border</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#312744"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.input.background</div>
+                <div class="token-value">#312744</div>
+                <div class="token-meta">Input/input</div>
+                <p>Input field background</p>
+              </div>
+            </article>
+            
+
+            <article class="swatch-card">
+              <div class="swatch-preview checker"><span style="background:#36373C"></span></div>
+              <div class="swatch-info">
+                <div class="token-name">color.bg.browserTop <em class="needs-review">2026-07-02</em></div>
+                <div class="token-value">#36373C</div>
+                <div class="token-meta">background/Browser Top</div>
+                <p>Browser Top (window titlebar) background, Windows and Mac variants</p>
+              </div>
+            </article>
+            </div>
+    <h2>02-1 Primitive Color</h2>
+    <table>
+      <thead><tr><th>Token</th><th>Figma Name</th><th>Value</th><th>Usage</th></tr></thead>
+      <tbody>
+            <tr>
+              <td><code>color.primitive.purple.500</code></td>
+              <td>primary/Main</td>
+              <td><span class="mini-swatch" style="background:#CB8FE9"></span><code>#CB8FE9</code></td>
+              <td>Brand primary hue</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.white</code></td>
+              <td>Text/WT</td>
+              <td><span class="mini-swatch" style="background:#FFFFFF"></span><code>#FFFFFF</code></td>
+              <td>White base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.gray.400</code></td>
+              <td>Text/Secondary text</td>
+              <td><span class="mini-swatch" style="background:#B8ACBE"></span><code>#B8ACBE</code></td>
+              <td>Secondary gray-lavender base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.lavender.100</code></td>
+              <td>Text/icon</td>
+              <td><span class="mini-swatch" style="background:#E0D8F1"></span><code>#E0D8F1</code></td>
+              <td>Icon lavender base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.gray.500</code></td>
+              <td>Text/Default text</td>
+              <td><span class="mini-swatch" style="background:#ADAAAA"></span><code>#ADAAAA</code></td>
+              <td>Default input text base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.gray.200</code></td>
+              <td>Text/輔助</td>
+              <td><span class="mini-swatch" style="background:#DADEEA"></span><code>#DADEEA</code></td>
+              <td>Helper text base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.gray.700</code></td>
+              <td>Text/x</td>
+              <td><span class="mini-swatch" style="background:#757575"></span><code>#757575</code></td>
+              <td>Muted text base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.black.950</code></td>
+              <td>background/Primary</td>
+              <td><span class="mini-swatch" style="background:#0B080D"></span><code>#0B080D</code></td>
+              <td>Application base background</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.gray.600</code></td>
+              <td>background/板塊</td>
+              <td><span class="mini-swatch" style="background:#8A8A8A"></span><code>#8A8A8A</code></td>
+              <td>Panel overlay base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.surface.800</code></td>
+              <td>background/Tertiary</td>
+              <td><span class="mini-swatch" style="background:#211C29"></span><code>#211C29</code></td>
+              <td>Tertiary surface base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.purple.700</code></td>
+              <td>background/scroll bar</td>
+              <td><span class="mini-swatch" style="background:#4B348D"></span><code>#4B348D</code></td>
+              <td>Scrollbar purple base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.black.990</code></td>
+              <td>background/Toast</td>
+              <td><span class="mini-swatch" style="background:#030303"></span><code>#030303</code></td>
+              <td>Toast overlay base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.dialog.900</code></td>
+              <td>彈窗/Background</td>
+              <td><span class="mini-swatch" style="background:#1B1721"></span><code>#1B1721</code></td>
+              <td>Dialog base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.dialog.800</code></td>
+              <td>彈窗/Top</td>
+              <td><span class="mini-swatch" style="background:#28252D"></span><code>#28252D</code></td>
+              <td>Dialog top surface</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.purple.600</code></td>
+              <td>彈窗/Label / Border/Button</td>
+              <td><span class="mini-swatch" style="background:#86539B"></span><code>#86539B</code></td>
+              <td>Dialog label and button border</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.dialog.border</code></td>
+              <td>彈窗/Border</td>
+              <td><span class="mini-swatch" style="background:#483C4E"></span><code>#483C4E</code></td>
+              <td>Dialog border</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.purple.550</code></td>
+              <td>Button/Button01</td>
+              <td><span class="mini-swatch" style="background:#8F69CF"></span><code>#8F69CF</code></td>
+              <td>Subtle brand button base</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.button.700</code></td>
+              <td>Button/Button03</td>
+              <td><span class="mini-swatch" style="background:#3F3649"></span><code>#3F3649</code></td>
+              <td>Solid dark button</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.button.800</code></td>
+              <td>Button/Button04</td>
+              <td><span class="mini-swatch" style="background:#2C233B"></span><code>#2C233B</code></td>
+              <td>Pressed dark button</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.red.600</code></td>
+              <td>Border/Warning</td>
+              <td><span class="mini-swatch" style="background:#B5423A"></span><code>#B5423A</code></td>
+              <td>Warning border</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>color.primitive.input.800</code></td>
+              <td>Input/input</td>
+              <td><span class="mini-swatch" style="background:#312744"></span><code>#312744</code></td>
+              <td>Input background</td>
+            </tr>
+            </tbody>
+    </table>
+  </section>
+
+  <section id="typography">
+    <h2>03 Typography</h2>
+    <table>
+      <thead><tr><th>Token</th><th>Preview</th><th>Family</th><th>Weight</th><th>Size</th><th>Line Height</th><th>Usage</th></tr></thead>
+      <tbody>
+            <tr>
+              <td><code>typography.label.md</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:600;font-size:14px;line-height:15px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>600</td>
+              <td>14px</td>
+              <td>15px</td>
+              <td>Primary labels; avoid long body copy</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.label.sm</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:600;font-size:12px;line-height:15px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>600</td>
+              <td>12px</td>
+              <td>15px</td>
+              <td>Compact labels</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.label.list</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:600;font-size:14px;line-height:19.6px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>600</td>
+              <td>14px</td>
+              <td>19.6px</td>
+              <td>List labels</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.body.lg</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:400;font-size:16px;line-height:22.4px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>400</td>
+              <td>16px</td>
+              <td>22.4px</td>
+              <td>Large body or form text</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.body.md</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:400;font-size:14px;line-height:19.6px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>400</td>
+              <td>14px</td>
+              <td>19.6px</td>
+              <td>Default body text</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.body.md.medium</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:500;font-size:14px;line-height:19.6px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>500</td>
+              <td>14px</td>
+              <td>19.6px</td>
+              <td>Medium emphasis body</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.body.sm</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:400;font-size:12px;line-height:16.8px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>400</td>
+              <td>12px</td>
+              <td>16.8px</td>
+              <td>Secondary labels and compact content</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.body.sm.medium</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:500;font-size:12px;line-height:16.8px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>500</td>
+              <td>12px</td>
+              <td>16.8px</td>
+              <td>Compact medium labels</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.caption</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:400;font-size:10px;line-height:14px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>400</td>
+              <td>10px</td>
+              <td>14px</td>
+              <td>Meta text; not for primary actions</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.micro</code></td>
+              <td class="type-sample" style="font-family:'PingFang HK', sans-serif;font-weight:400;font-size:8px;line-height:11.2px;">直播助手文字 Aa 123</td>
+              <td>PingFang HK</td>
+              <td>400</td>
+              <td>8px</td>
+              <td>11.2px</td>
+              <td>Badges only; needs review for accessibility</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.sc.heading</code></td>
+              <td class="type-sample" style="font-family:'PingFang SC', sans-serif;font-weight:600;font-size:16px;line-height:22.4px;">直播助手文字 Aa 123</td>
+              <td>PingFang SC</td>
+              <td>600</td>
+              <td>16px</td>
+              <td>22.4px</td>
+              <td>Simplified Chinese headings</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.sc.label.sm</code></td>
+              <td class="type-sample" style="font-family:'PingFang SC', sans-serif;font-weight:600;font-size:12px;line-height:16.8px;">直播助手文字 Aa 123</td>
+              <td>PingFang SC</td>
+              <td>600</td>
+              <td>12px</td>
+              <td>16.8px</td>
+              <td>Simplified Chinese compact label</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.en.micro</code></td>
+              <td class="type-sample" style="font-family:'Inter', sans-serif;font-weight:600;font-size:10px;line-height:15px;">直播助手文字 Aa 123</td>
+              <td>Inter</td>
+              <td>600</td>
+              <td>10px</td>
+              <td>15px</td>
+              <td>English/numeric micro labels</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>typography.en.body</code></td>
+              <td class="type-sample" style="font-family:'Inter', sans-serif;font-weight:400;font-size:14px;line-height:16.94px;">直播助手文字 Aa 123</td>
+              <td>Inter</td>
+              <td>400</td>
+              <td>14px</td>
+              <td>16.94px</td>
+              <td>English/numeric body</td>
+            </tr>
+            </tbody>
+    </table>
+  </section>
+
+  <section id="spacing">
+    <h2>04 Spacing</h2>
+    <div class="metric-panel">
+            <div class="metric-row">
+              <code>space.2</code>
+              <span>2px</span>
+              <div class="bar-track"><div class="bar" style="width:16.0px"></div></div>
+              <em class="approved">approved</em>
+              <p>Tiny inner gap, icon/text tight pairing</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.4</code>
+              <span>4px</span>
+              <div class="bar-track"><div class="bar" style="width:32.0px"></div></div>
+              <em class="approved">approved</em>
+              <p>Compact padding and tag gap</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.6</code>
+              <span>6px</span>
+              <div class="bar-track"><div class="bar" style="width:48.0px"></div></div>
+              <em class="approved">approved</em>
+              <p>Small component padding</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.8</code>
+              <span>8px</span>
+              <div class="bar-track"><div class="bar" style="width:64.0px"></div></div>
+              <em class="approved">approved</em>
+              <p>Default component padding/gap</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.12</code>
+              <span>12px</span>
+              <div class="bar-track"><div class="bar" style="width:96.0px"></div></div>
+              <em class="approved">approved</em>
+              <p>Medium padding/gap</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.16</code>
+              <span>16px</span>
+              <div class="bar-track"><div class="bar" style="width:128.0px"></div></div>
+              <em class="approved">approved</em>
+              <p>Large inline padding</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.20</code>
+              <span>20px</span>
+              <div class="bar-track"><div class="bar" style="width:160.0px"></div></div>
+              <em class="approved">approved</em>
+              <p>Section or large component gap</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.raw.1</code>
+              <span>1px</span>
+              <div class="bar-track"><div class="bar" style="width:8.0px"></div></div>
+              <em class="raw-exception">raw-exception</em>
+              <p>Switch internal inset only</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.raw.3</code>
+              <span>3px</span>
+              <div class="bar-track"><div class="bar" style="width:24.0px"></div></div>
+              <em class="raw-exception">raw-exception</em>
+              <p>Icon/vector optical adjustment only</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.raw.7</code>
+              <span>7px</span>
+              <div class="bar-track"><div class="bar" style="width:56.0px"></div></div>
+              <em class="raw-exception">raw-exception</em>
+              <p>Audio bar vertical padding from Figma; do not reuse globally</p>
+            </div>
+            
+
+            <div class="metric-row">
+              <code>space.raw.10</code>
+              <span>10px</span>
+              <div class="bar-track"><div class="bar" style="width:80.0px"></div></div>
+              <em class="needs-review">needs-review</em>
+              <p>Input horizontal padding; consider component token</p>
+            </div>
+            </div>
+  </section>
+
+  <section id="radius">
+    <h2>05 Radius</h2>
+    <div class="radius-grid">
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:2px"></div>
+              <code>radius.xs</code>
+              <strong>2px</strong>
+              <p>Small icon chip or accent</p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:4px"></div>
+              <code>radius.sm</code>
+              <strong>4px</strong>
+              <p>Small icon block</p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:5px"></div>
+              <code>radius.md</code>
+              <strong>5px</strong>
+              <p>Legacy small button; consider migrating to radius.lg</p>
+              <em class="needs-review">needs-review</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:8px"></div>
+              <code>radius.lg</code>
+              <strong>8px</strong>
+              <p>Default controls, input, cards</p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:12px"></div>
+              <code>radius.xl</code>
+              <strong>12px</strong>
+              <p>Large controls, sidebar panels, popups</p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:16px"></div>
+              <code>radius.xl2</code>
+              <strong>16px</strong>
+              <p>確認出現在 Default/文字 variant，介於 radius.xl 與 radius.2xl 之間 <em class="needs-review" style="margin-left:4px;">2026-07-02</em></p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:20px"></div>
+              <code>radius.2xl</code>
+              <strong>20px</strong>
+              <p>Floating surfaces</p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:999px"></div>
+              <code>radius.pill</code>
+              <strong>999px</strong>
+              <p>Badges, switches, pill tags</p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:9999px"></div>
+              <code>radius.circle</code>
+              <strong>9999px</strong>
+              <p>Avatar/circle end caps</p>
+              <em class="approved">approved</em>
+            </div>
+            
+
+            <div class="radius-item">
+              <div class="radius-demo" style="border-radius:40px"></div>
+              <code>radius.raw.40</code>
+              <strong>40px</strong>
+              <p>Image status play button only</p>
+              <em class="raw-exception">raw-exception</em>
+            </div>
+            </div>
+  </section>
+
+  <section id="gradients">
+    <h2>06 Gradients</h2>
+    <div class="gradient-grid">
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(180deg, #754585 0%, #4B348D 100%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.action.primary</div>
+                <code>linear-gradient(180deg, #754585 0%, #4B348D 100%)</code>
+                <p>Primary buttons and active CTAs</p>
+              </div>
+            </article>
+            
+
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(180deg, #493252 0%, #352956 100%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.live.default</div>
+                <code>linear-gradient(180deg, #493252 0%, #352956 100%)</code>
+                <p>Live type tag default</p>
+              </div>
+            </article>
+            
+
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(180deg, #513C5B 0%, #3F345E 100%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.live.hover</div>
+                <code>linear-gradient(180deg, #513C5B 0%, #3F345E 100%)</code>
+                <p>Live type tag hover</p>
+              </div>
+            </article>
+            
+
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(180deg, #3A2842 0%, #2A2145 100%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.live.active</div>
+                <code>linear-gradient(180deg, #3A2842 0%, #2A2145 100%)</code>
+                <p>Live type tag active</p>
+              </div>
+            </article>
+            
+
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(180deg, rgba(143,105,207,0.54) 0%, #8F69CF 100%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.input.focus.border</div>
+                <code>linear-gradient(180deg, rgba(143,105,207,0.54) 0%, #8F69CF 100%)</code>
+                <p>Input focus stroke</p>
+              </div>
+            </article>
+            
+
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(180deg, rgba(19,22,32,0.5) 0%, rgba(19,22,32,0) 100%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.image.overlay</div>
+                <code>linear-gradient(180deg, rgba(19,22,32,0.5) 0%, rgba(19,22,32,0) 100%)</code>
+                <p>Image cover overlay</p>
+              </div>
+            </article>
+            
+
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(90deg, #E180EF 0%, #677AEE 42%, #7BE6F0 100%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.icon.special</div>
+                <code>linear-gradient(90deg, #E180EF 0%, #677AEE 42%, #7BE6F0 100%)</code>
+                <p>Special icons only</p>
+              </div>
+            </article>
+            
+
+            <article class="gradient-card">
+              <div class="gradient-preview" style="background:linear-gradient(138.445deg, rgba(117,69,133,0.9) 6.202%, rgba(75,52,141,0.9) 92.615%)"></div>
+              <div class="gradient-info">
+                <div class="token-name">gradient.card.hover.subtle <em class="needs-review">needs-review</em></div>
+                <code>linear-gradient(138.445deg, rgba(117,69,133,0.35) 6.202%, rgba(75,52,141,0.35) 92.615%)</code>
+                <p>Material-option card hover overlay. Same base colors as gradient.action.primary, but at 35% opacity and 138.445deg instead of 180deg — currently a literal value in Figma, not bound to a variable.</p>
+              </div>
+            </article>
+            </div>
+  </section>
+
+  <section id="components">
+    <h2>07 Featured Components</h2>
+    <div class="component-gallery">
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:8212</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>Primary Button - Large</h3>
+              <p>container, label, optionalIcon</p>
+              <div class="variant-chip-list"><span>Type=Default<small>350px x 48px</small></span><span>Type=Hover<small>350px x 48px</small></span><span>Type=Active<small>350px x 48px</small></span><span>Type=Disabled<small>350px x 48px</small></span></div>
+            </article>
+            
+
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:8222</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>Secondary Button - Large</h3>
+              <p>container, label, optionalIcon</p>
+              <div class="variant-chip-list"><span>Type=Default<small>350px x 48px</small></span><span>Type=Active<small>350px x 48px</small></span><span>Type=Hover<small>350px x 48px</small></span><span>Type=Disabled<small>350px x 48px</small></span></div>
+            </article>
+            
+
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:8893</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>常態資訊 Input</h3>
+              <p>container, field, placeholder, value, helperText, suffixIcon</p>
+              <div class="variant-chip-list"><span>State=Default, 類型=文字<small>171px x 33px</small></span><span>State=Active, 類型=文字<small>171px x 33px</small></span><span>State=Fill, 類型=文字<small>171px x 33px</small></span><span>State=Disabled, 類型=文字<small>171px x 33px</small></span><span>State=Error, 類型=文字<small>171px x 49px</small></span><span>State=Fill, 類型=下拉式<small>171px x 33px</small></span><span>State=Fill, 類型=下拉式-日期<small>171px x 33px</small></span></div>
+            </article>
+            
+
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:8927</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>主播回覆用 Input</h3>
+              <p>container, field, placeholder, value, helperText, suffixIcon</p>
+              <div class="variant-chip-list"><span>State=Default<small>278px x 41px</small></span><span>State=Active<small>278px x 41px</small></span></div>
+            </article>
+            
+
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:9642</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>直播信息</h3>
+              <p>container, coverUpload, titleField, editOrSaveAction, tagRow, liveTypeTag</p>
+              <div class="variant-chip-list"><span>标题=Default<small>277px x 126px</small></span><span>标题=Typing<small>277px x 126px</small></span><span>标题=Fill<small>277px x 126px</small></span></div>
+            </article>
+            
+
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:9395</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>直播画面管理</h3>
+              <p>container, mediaPreview, materialSlots, statusInfo</p>
+              <div class="variant-chip-list"><span>有無資訊=off<small>277px x 234px</small></span><span>有無資訊=on<small>277px x 234px</small></span></div>
+            </article>
+            
+
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:9711</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>icon</h3>
+              <p>vector, boundingBox</p>
+              <div class="variant-chip-list"><span>分类=直播工具, 功能=游戏设置<small>26px x 26px</small></span><span>分类=直播工具, 功能=收费设置<small>26px x 26px</small></span><span>分类=直播工具, 功能=欲望之轮<small>26px x 26px</small></span><span>分类=直播工具, 功能=心愿单<small>26px x 26px</small></span><span>分类=直播工具, 功能=跳蛋设置<small>26px x 26px</small></span><span>分类=我的, 功能=主播任务<small>26px x 26px</small></span><span>分类=直播工具, 功能=本场收益<small>26px x 26px</small></span><span>分类=我的, 功能=个人展馆<small>26px x 26px</small></span></div>
+            </article>
+            
+
+            <article class="component-card">
+              <div class="component-head">
+                <code>13:10519</code>
+                <em class="draft-approved">draft-approved</em>
+              </div>
+              <h3>上传的素材</h3>
+              <p>container, content</p>
+              <div class="variant-chip-list"><span>状态=电脑摄像头, 選取=on<small>259px x 36px</small></span><span>状态=电脑摄像头, 選取=off<small>259px x 36px</small></span><span>状态=手机設攝像頭, 選取=on<small>259px x 36px</small></span><span>状态=手机录屏, 選取=off<small>259px x 36px</small></span><span>状态=七星百家乐, 選取=on<small>259px x 36px</small></span><span>状态=七星百家乐, 選取=off<small>259px x 36px</small></span><span>状态=影片, 選取=on<small>259px x 36px</small></span><span>状态=影片, 選取=off<small>259px x 36px</small></span></div>
+            </article>
+            </div>
+    <h2>07-1 Component Inventory</h2>
+    <table>
+      <thead><tr><th>Node</th><th>Component / Anatomy</th><th>Variants</th><th>States</th><th>Size</th><th>Radius</th><th>Typography</th><th>Status</th></tr></thead>
+      <tbody>
+            <tr>
+              <td><code>13:8212</code></td>
+              <td><strong>Primary Button - Large</strong><span>container / label / optionalIcon</span></td>
+              <td>4</td>
+              <td>Type: Default, Active, Disabled, Hover</td>
+              <td>350px<br><span>48px</span></td>
+              <td>12px</td>
+              <td>typography.body.lg</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8222</code></td>
+              <td><strong>Secondary Button - Large</strong><span>container / label / optionalIcon</span></td>
+              <td>4</td>
+              <td>Type: Disabled, Default, Hover, Active</td>
+              <td>350px<br><span>48px</span></td>
+              <td>12px</td>
+              <td>typography.body.lg</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8231</code></td>
+              <td><strong>Primary Button - Medium</strong><span>container / label / optionalIcon</span></td>
+              <td>5</td>
+              <td>狀態: Clicked, Disabled, Hover, default, 结束直播</td>
+              <td>88px<br><span>31px</span></td>
+              <td>8px</td>
+              <td>typography.label.md</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8242</code></td>
+              <td><strong>Button - Small</strong><span>container / label / optionalIcon</span></td>
+              <td>3</td>
+              <td>Property 1: def, hov, active</td>
+              <td>48px<br><span>31px</span></td>
+              <td>8px</td>
+              <td>typography.label.sm</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8254</code></td>
+              <td><strong>登入按鈕 BTN</strong><span>container / label / optionalIcon</span></td>
+              <td>2</td>
+              <td>Property 1: 手机号登录, 扫码登录</td>
+              <td>218px<br><span>36px</span></td>
+              <td>12px</td>
+              <td>typography.body.md</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8269</code></td>
+              <td><strong>Game BTN</strong><span>container / label / optionalIcon</span></td>
+              <td>4</td>
+              <td>狀態: Clicked, Default, Hover, Selected</td>
+              <td>128px<br><span>36px</span></td>
+              <td>8px</td>
+              <td>typography.body.sm</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8288</code></td>
+              <td><strong>Switch BTN</strong><span>container / label / optionalIcon</span></td>
+              <td>2</td>
+              <td>開關: off, on</td>
+              <td>100px<br><span>42px</span></td>
+              <td>12px</td>
+              <td>typography.body.md</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8301</code></td>
+              <td><strong>button / 主播任務</strong><span>container / label / optionalIcon</span></td>
+              <td>5</td>
+              <td>type: Disabled1(未完成), Disabled2(已完成), Default(待领取), Hover, Clicked</td>
+              <td>60px<br><span>25px</span></td>
+              <td>8px</td>
+              <td>typography.label.sm</td>
+              <td><em class="needs-review">needs-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8306</code></td>
+              <td><strong>Switch</strong><span>track / thumb / label</span></td>
+              <td>2</td>
+              <td>Property 1: off, on</td>
+              <td>34px<br><span>18px</span></td>
+              <td>100px</td>
+              <td>None detected</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8311</code></td>
+              <td><strong>card_btn</strong><span>container / label / optionalIcon</span></td>
+              <td>2</td>
+              <td>Property 1: 取下, 佩戴</td>
+              <td>48px<br><span>17px</span></td>
+              <td>8px</td>
+              <td>None detected</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8316</code></td>
+              <td><strong>Radio BTN</strong><span>container / label / optionalIcon</span></td>
+              <td>2</td>
+              <td>開關: off, on</td>
+              <td>14px<br><span>14px</span></td>
+              <td>100px</td>
+              <td>None detected</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8322</code></td>
+              <td><strong>直播類型 - 地点 Button</strong><span>container / label / optionalIcon</span></td>
+              <td>3</td>
+              <td>State: Default, Hover, Clicked</td>
+              <td>91px<br><span>28px</span></td>
+              <td>8px</td>
+              <td>typography.body.md</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8332</code></td>
+              <td><strong>直播類型 - 演艺类型 BTN</strong><span>container / label / optionalIcon</span></td>
+              <td>3</td>
+              <td>State: Default, Hover, Clicked</td>
+              <td>66px<br><span>28px</span></td>
+              <td>8px</td>
+              <td>typography.body.md</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8351</code></td>
+              <td><strong>添加素材 BTN</strong><span>container / label / optionalIcon</span></td>
+              <td>3</td>
+              <td>State: Default, Hover, Clicked</td>
+              <td>259px<br><span>36px</span></td>
+              <td>8px</td>
+              <td>typography.body.md</td>
+              <td><em class="deprecated">deprecated-superseded</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>64:333111</code><br><span style="color:var(--muted);font-size:11px;">實例節點，master 待確認</span></td>
+              <td><strong>添加素材 - 選項卡</strong><span>container / icon / label / description</span></td>
+              <td>16</td>
+              <td>Hover: off, on</td>
+              <td>169px<br><span>55px</span></td>
+              <td>8px</td>
+              <td>typography.body.sm / typography.caption</td>
+              <td><em class="needs-review">needs-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>74:333670</code></td>
+              <td><strong>Browser Top</strong><span>container / logo / versionLabel / userInfo / notification / settings / windowControls / accountMenu</span></td>
+              <td>4</td>
+              <td>propValue1: 未登入, Default; showMenu: false, true</td>
+              <td>1200px<br><span>40px</span></td>
+              <td>-</td>
+              <td>typography.body.md, typography.label.sm</td>
+              <td><em class="needs-review">needs-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>74:333174</code></td>
+              <td><strong>Menu / 双击编辑弹窗</strong><span>container / icon / 麥克風bar / percentageLabel</span></td>
+              <td>1</td>
+              <td>-</td>
+              <td>165px<br><span>36px</span></td>
+              <td>8px</td>
+              <td>typography.en.micro</td>
+              <td><em class="needs-review">needs-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>64:333497</code> 一節的 7 組</td>
+              <td><strong>下拉选单 (Dropdown Family, 不含日期)</strong><span>container / optionRow / scrollIndicator</span></td>
+              <td>14</td>
+              <td>hover: false, true</td>
+              <td>132–626px<br><span>66–207px</span></td>
+              <td>8px</td>
+              <td>typography.body.sm</td>
+              <td><em class="needs-review">needs-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>74:333717</code><br><span style="color:var(--muted);font-size:11px;">原「下拉选单_日期」，內部圖層名「日历」</span></td>
+              <td><strong>日曆 (Calendar)</strong><span>container / monthNav / monthLabel / weekdayHeader / dateGrid / selectedDateMarker</span></td>
+              <td>2</td>
+              <td>hover: false, true</td>
+              <td>300px<br><span>249px</span></td>
+              <td>8px</td>
+              <td>typography.body.md, Noto Sans SC 14px (新字體)</td>
+              <td><em class="needs-review">needs-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8381</code></td>
+              <td><strong>麥克風bar</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>Property 1: 0%, 50%</td>
+              <td>141px<br><span>34px</span></td>
+              <td></td>
+              <td>typography.en.micro</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8398</code></td>
+              <td><strong>音量bar</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>Property 1: 0%, 100%</td>
+              <td>141px<br><span>34px</span></td>
+              <td></td>
+              <td>typography.en.micro</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8893</code></td>
+              <td><strong>常態資訊 Input</strong><span>container / field / placeholder / value / helperText / suffixIcon</span></td>
+              <td>7</td>
+              <td>State: Default, Active, Fill, Disabled, Error; 類型: 文字, 下拉式, 下拉式-日期</td>
+              <td>171px<br><span>33px, 49px</span></td>
+              <td>8px</td>
+              <td>typography.body.sm</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8927</code></td>
+              <td><strong>主播回覆用 Input</strong><span>container / field / placeholder / value / helperText / suffixIcon</span></td>
+              <td>2</td>
+              <td>State: Active, Default</td>
+              <td>278px<br><span>42px</span></td>
+              <td>12px</td>
+              <td>typography.label.sm, typography.body.sm</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8952</code></td>
+              <td><strong>豎橫 Tab</strong><span>tabContainer / tabItem / activeIndicator / label</span></td>
+              <td>2</td>
+              <td>竖屏: off, on</td>
+              <td>104px<br><span>40px</span></td>
+              <td>12px</td>
+              <td>typography.body.md</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8963</code></td>
+              <td><strong>個人展館</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>類型: d, f</td>
+              <td>80px<br><span>26px</span></td>
+              <td></td>
+              <td>typography.body.md</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:8971</code></td>
+              <td><strong>tab</strong><span>tabContainer / tabItem / activeIndicator / label</span></td>
+              <td>4</td>
+              <td>Property 1: 在线贵族(0), 在线用户(0), 在线用户selected, 在线贵族selected</td>
+              <td>134px<br><span>26px</span></td>
+              <td></td>
+              <td>typography.label.md, typography.body.md</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9395</code></td>
+              <td><strong>直播画面管理</strong><span>container / mediaPreview / materialSlots / statusInfo</span></td>
+              <td>2</td>
+              <td>有無資訊: off, on</td>
+              <td>277px<br><span>234px</span></td>
+              <td>12px</td>
+              <td>typography.body.md, typography.en.body</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9412</code></td>
+              <td><strong>photo</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>上传封面: off, on</td>
+              <td>80px<br><span>80px</span></td>
+              <td>8px</td>
+              <td>typography.body.sm, typography.caption</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9443</code></td>
+              <td><strong>心愿单</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>Property 1: off, on</td>
+              <td>50px<br><span>45px</span></td>
+              <td></td>
+              <td>typography.body.sm</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9458</code></td>
+              <td><strong>欲望之轮</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>Property 1: off, on</td>
+              <td>50px<br><span>45px</span></td>
+              <td></td>
+              <td>typography.body.sm</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9474</code></td>
+              <td><strong>跳蛋</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>狀態: off, on</td>
+              <td>50px<br><span>45px</span></td>
+              <td></td>
+              <td>typography.body.sm</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9622</code></td>
+              <td><strong>收费设置</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>Property 1: on, off</td>
+              <td>50px<br><span>45px</span></td>
+              <td></td>
+              <td>typography.body.sm</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9642</code></td>
+              <td><strong>直播信息</strong><span>container / coverUpload / titleField / editOrSaveAction / tagRow / liveTypeTag</span></td>
+              <td>3</td>
+              <td>标题: Default, Typing, Fill</td>
+              <td>277px<br><span>126px</span></td>
+              <td>12px</td>
+              <td>typography.body.md, typography.body.sm, typography.label.sm</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9711</code></td>
+              <td><strong>icon</strong><span>vector / boundingBox</span></td>
+              <td>39</td>
+              <td>分类: 互动聊天, 我的, 用户, 直播信息, 直播工具, 音量, 其他, 素材, other, 專屬客服; 功能: 个人展馆, 主播任务, 守护, 心愿单, 我的装扮, 排行榜, 收支明细, 收费设置, 星星, 本场收益, 欲望之轮, 游戏设置, 粉丝团, 编辑, 表情, 设定, 跳蛋设置, 输入, 输出, 铃铛, 新增, 清晰度, 专属客服, 推广赚钱, 收益提现, 支付密码, 直播活动, 更多, 成功設置支付密碼, arrow, 游戏投注, 暫停, 音量2, 下載, 播放, 输出x, 输入x, 地点</td>
+              <td>12px, 17px, 20px, 26px<br><span>12px, 17px, 20px, 26px</span></td>
+              <td>10px</td>
+              <td>None detected</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9888</code></td>
+              <td><strong>素材icon</strong><span>vector / boundingBox</span></td>
+              <td>10</td>
+              <td>类型: 文字, 截屏, 窗口, 视频, 图片, 多屏助手, 七星体育, 七星百家乐, 电脑摄像头, 萤幕</td>
+              <td>20px<br><span>20px</span></td>
+              <td></td>
+              <td>None detected</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9946</code></td>
+              <td><strong>开播信息_icon</strong><span>vector / boundingBox</span></td>
+              <td>7</td>
+              <td>Property 1: 游戏, 女神, 颜值, 音乐, 舞蹈, 星秀, 交友</td>
+              <td>20px<br><span>20px</span></td>
+              <td></td>
+              <td>None detected</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:9993</code></td>
+              <td><strong>eye</strong><span>container / content</span></td>
+              <td>2</td>
+              <td>顯示: off, on</td>
+              <td>17px<br><span>17px</span></td>
+              <td></td>
+              <td>None detected</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:10519</code></td>
+              <td><strong>上传的素材</strong><span>container / content</span></td>
+              <td>22</td>
+              <td>状态: 电脑摄像头, 七星百家乐, 手机录屏, 影片, 七星体育, 视窗, 文字, 圖片, 手机設攝像頭, 手機录屏, 萤幕, 截屏; 選取: on, off</td>
+              <td>259px<br><span>36px</span></td>
+              <td>8px</td>
+              <td>typography.en.body</td>
+              <td><em class="draft-approved">draft-approved</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:10631</code></td>
+              <td><strong>传影片</strong><span>container / content</span></td>
+              <td>4</td>
+              <td>Property 1: 客服, 用户, 客服 2, 用户 2</td>
+              <td>136px, 236px<br><span>136px, 236px</span></td>
+              <td></td>
+              <td>typography.caption</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:10659</code></td>
+              <td><strong>客服tag</strong><span>container / content</span></td>
+              <td>8</td>
+              <td>Property 1: 影片时间, 初始化, 处理中, 档案大小, 上传失败, 等待中, 发送中, 上传时间</td>
+              <td>50px, 51px, 56px, 66px, 81px<br><span>18px</span></td>
+              <td>999px</td>
+              <td>typography.caption</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            
+
+            <tr>
+              <td><code>13:10703</code></td>
+              <td><strong>影像状态</strong><span>container / content</span></td>
+              <td>3</td>
+              <td>Property 1: 上传, 播放, 读取</td>
+              <td>30px<br><span>30px</span></td>
+              <td>40px</td>
+              <td>None detected</td>
+              <td><em class="needs-design-review">needs-design-review</em></td>
+            </tr>
+            </tbody>
+    </table>
+  </section>
+
+  <section id="recent-findings">
+    <h2>07-2 Recent Findings — 2026-07-02</h2>
+    <p style="margin-bottom:16px;">來源：Figma node <code>64:333111</code>（popup 頁面「添加素材」新元件）。以下是本次稽核發現、尚未解決的問題，供 dev 與設計 owner 對齊，不影響上方規格表的既有資料。</p>
+    <div class="note">
+      <strong style="color:var(--text);">Hover 背景漸層未綁 token</strong><br>
+      新元件 hover 狀態的背景是字面值 <code>linear-gradient(138.445deg, rgba(117,69,133,.35), rgba(75,52,141,.35))</code>，未綁定任何 variable。色值與 <code>gradient.action.primary</code>（#754585 / #4B348D）相同，只是角度與透明度不同，判斷是同源但未收斂成正式 token。已在 <code>design-tokens.normalized.json</code> 新增草稿 <code>gradient.card.hover.subtle</code>，狀態 needs-review，待確認角度是否統一為 180deg。
+    </div>
+    <div class="note">
+      <strong style="color:var(--text);">Brand/hover 變數解析為空值</strong><br>
+      節點子樹內有引用到 <code>Brand/hover</code>，但透過 <code>get_variable_defs</code> 讀出來是空值，也不在既有 token 表任何 figmaName 底下，可能是未設定或壞掉的 alias。未用猜測方式補值，待 Peko 到 Figma 點選對應圖層確認實際 Fill。
+    </div>
+    <div class="note">
+      <strong style="color:var(--text);">舊 Component 310 / 311 / 312 尚未替換</strong><br>
+      popup 頁面（如 node 64:332912、64:332916、64:332924 等）仍在用未語意化命名的 <code>Component 310</code> / <code>311</code> / <code>312</code> 承載這組卡片內容，尚未替換成新版「添加素材 - 選項卡」的正式 instance——與先前記錄過的「發起PK」標籤跨模組亂用屬同一類系統性問題：主元件更新了，頁面實例沒同步。
+    </div>
+    <div class="note">
+      <strong style="color:var(--text);">缺少 active / focus / disabled 狀態</strong><br>
+      新元件目前僅定義 Hover: off / on，沒有 active（選中中）、focus-visible（鍵盤操作）、disabled。依本文件 08 節規則 <code>state.interactive-required</code> 與 <code>state.focus-required-for-dev</code>，互動元件缺狀態應標記為 error。
+    </div>
+
+    <h3 style="margin-top:32px;">07/01 組件修改項目（node 74:333669）</h3>
+    <p style="margin-bottom:16px;">這批是五個各自獨立的更新，不是「添加素材選項卡」的重複——上传的素材是「已上傳素材列表項目」，跟前面的「選擇要加入的素材選項卡」是同一流程的不同階段。</p>
+    <div class="note">
+      <strong style="color:var(--text);">Brand/* 狀態色變數系統性壞掉，不是單一個案</strong><br>
+      <code>Brand/hover</code>、<code>Brand/Disable</code>、<code>Brand/Brand(active)</code> 三個變數，在 button/主播任務 跟 上传的素材 兩個不相關元件裡都被引用，但全部解析為空值；另外 <code>板块线框</code> 變數本身回傳畸形字串 <code>","</code>。已寫成新的 global rule <code>token.variable.no-broken-reference</code>，建議 Peko 直接稽核這組變數而非逐一元件修。
+    </div>
+    <div class="note">
+      <strong style="color:var(--text);">品牌紫漸層 35% 透明度被重複發明三次、角度都不同</strong><br>
+      添加素材選項卡 hover（138.445°）、button/主播任務 disabled（131.384°）、上传的素材選中列（159.263°）——三個不相關元件各自獨立寫出同一種底色的漸層變體，角度沒有一致，代表這是真實存在的視覺模式，值得收斂成正式 token 並統一角度。
+    </div>
+    <div class="note">
+      <strong style="color:var(--text);">button / 主播任務 完成語意化改名</strong><br>
+      variant 屬性從無語意的「Property 1」改成「type」，狀態從已完成/未完成兩態擴充為 Disabled1/Disabled2/Default/Hover/Clicked 五態，回應了本文件最初就記錄的待補事項。這是好消息，不是問題。
+    </div>
+    <div class="note" style="border-left-color:#F2C879;">
+      <strong style="color:var(--text);">更正：下拉選單與日曆先前記錄有誤</strong><br>
+      先前這裡誤寫「下拉選單新增 Hover 狀態、先前未收錄」——這是不準確的。Hover 狀態在這批更新之前就已存在（對話一開始掃描時已見過），是我自己沒寫進規範庫，不是 Figma 新功能。另外「下拉选单_日期」內部圖層名稱其實是「日历」，anatomy 是月曆網格而非列表，已拆成獨立的「日曆」元件，並發現其月份標籤使用了新字體 Noto Sans SC（現有三種字體家族之外）。
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2>08 AI Review Rules</h2>
+    <table>
+      <thead><tr><th>Rule</th><th>Property</th><th>Severity</th><th>Message</th><th>Autofix Suggestion</th></tr></thead>
+      <tbody>
+            <tr>
+              <td><code>token.color.no-unregistered-color</code></td>
+              <td>fills/strokes</td>
+              <td><em class="warning">warning</em></td>
+              <td>Use approved semantic color tokens. Unregistered colors require needs-review or raw-exception status.</td>
+              <td>Map to the closest semantic token by usage, not only by visual similarity.</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>token.opacity.keep-base-and-alpha</code></td>
+              <td>color</td>
+              <td><em class="warning">warning</em></td>
+              <td>Transparent variables must preserve base color and opacity separately.</td>
+              <td>Represent as base + opacity + css rgba.</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>layout.spacing.use-approved-scale</code></td>
+              <td>padding/itemSpacing</td>
+              <td><em class="warning">warning</em></td>
+              <td>Use approved spacing scale: 2, 4, 6, 8, 12, 16, 20. Values 1, 3, 7, 9, 10 are component exceptions.</td>
+              <td>Promote only repeated cross-component values after review.</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>shape.radius.use-approved-scale</code></td>
+              <td>cornerRadius</td>
+              <td><em class="warning">warning</em></td>
+              <td>Use approved radius scale: 2, 4, 5, 8, 12, 16, 20, 999, 9999. 16px 於 2026-07-02 經 Peko 確認新增。</td>
+              <td>Default controls should use radius.lg 8px; radius.xl2 16px is approved for cases like Default/文字, unless component spec says otherwise.</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>type.micro.accessibility-review</code></td>
+              <td>fontSize</td>
+              <td><em class="warning">warning</em></td>
+              <td>8px text is allowed only for non-critical badges and needs accessibility review.</td>
+              <td>Prefer typography.caption 10px for readable meta text.</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>state.interactive-required</code></td>
+              <td>component states</td>
+              <td><em class="error">error</em></td>
+              <td>Interactive components must define default, hover, active/pressed, disabled when applicable.</td>
+              <td>Add missing variant states before handoff.</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>state.focus-required-for-dev</code></td>
+              <td>focus</td>
+              <td><em class="error">error</em></td>
+              <td>Keyboard-focusable controls need a documented focus-visible style, even if Figma currently lacks one.</td>
+              <td>Use gradient.input.focus.border or define color.border.focus.</td>
+            </tr>
+            
+
+            <tr>
+              <td><code>token.variable.no-broken-reference</code></td>
+              <td>any bound variable</td>
+              <td><em class="error">error</em></td>
+              <td>A bound variable must resolve to a real value. Confirmed broken/unresolved bindings so far: Brand/hover, Brand/Disable, Brand/Brand(active) (all resolve empty across 3+ components), 板块线框 (resolves to a malformed string ","). This is now a recurring pattern, not an isolated incident.</td>
+              <td>Design owner should audit the 'Brand/*' state-color variable group in Figma directly — likely an unpublished or deleted library reference. Do not let AI/automation guess replacement values.</td>
+            </tr>
+            </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>
