@@ -1,15 +1,15 @@
 {
  "$meta": {
   "product": "七星體育",
-  "version": "0.5.0-notification-matchstatus",
-  "generatedAt": "2026-07-09",
+  "version": "0.5.2-component-refresh-assets",
+  "generatedAt": "2026-07-13",
   "levels": {
    "error": "違反必須修正",
    "warning": "需設計裁決或建議修正",
    "doc": "文件層約束,插件不檢查"
   },
   "source": "Figma node 8359:14643 / foundation 8446:24820 plus sports component library",
-  "lastUpdated": "2026-07-10"
+  "lastUpdated": "2026-07-13"
  },
  "global": [
   {
@@ -237,8 +237,8 @@
    "id": "C-013",
    "level": "error",
    "component": "注单总计 / 注单",
-   "rule": "注单总计 351x60,radius 4,Background/B70,padding 8/12;注单卡 351x159,數字資料用 DIN,文案用 PingFang HK",
-   "rationale": "04 注单 Bet Orders 的總計與列表卡已有元件規格,不可再用散裝 frame 規格。"
+   "rule": "注单总计 351x65,radius 4,Background/B70,padding 8/12;注单卡 351x161,數字資料用 DIN,文案用 PingFang HK",
+   "rationale": "04 注单 Bet Orders 的總計與列表卡已依 2026-07-13 Figma 更新同步尺寸,不可再用散裝 frame 規格。"
   },
   {
    "id": "C-014",
@@ -264,9 +264,16 @@
   {
    "id": "C-017",
    "level": "error",
-   "component": "amount",
-   "rule": "Default 綁 Main/B80;up 綁 Odds/上调、down 綁 Odds/下调(賠率方向色 collection);方向提示禁止綁 Secondary/Error、Secondary/Success 或裸色值;數字一律 DIN Alternate Bold 13px",
+   "component": "amount_L / amount_S",
+   "rule": "amount_L 為 58x14,amount_S 為 27x14;Default 綁 Main/B80;up 綁 Odds/上调、down 綁 Odds/下调(賠率方向色 collection);鎖頭與 focus 系列需使用對應 live-data/focus 語意;數字一律 DIN Alternate Bold 13px",
    "rationale": "盤口線受全局顯示設定「賠率升降顏色」切換,綁方向色變數才能隨 mode 翻轉;綁 Secondary/* 會在涨绿跌红模式下顯示錯誤方向色。與 C-003 OddsValue 同一原則"
+  },
+  {
+   "id": "C-018",
+   "level": "warning",
+   "component": "Balance Display",
+   "rule": "結餘金額膠囊高度 32px,radius/full,padding LR8,itemSpacing 4,底色 Background/B100;金額使用 DIN Alternate Bold 16px/24px 並綁 color/balance/amount(Secondary/score),不得使用 odds/result/status 語意色",
+   "rationale": "2026-07-13 規範頁新增 Balance Display / 結餘狀態卡(8691:25722):最小值 0、最大值 238,114.00。餘額屬 wallet numeric-data,顏色與比分/錢包/預計派彩同源,但插件訊息需使用 balance 語意。"
   }
  ],
  "componentRules": [
@@ -643,58 +650,6 @@
    "rationale": "03 投注 Betting 元件庫尺寸規格"
   },
   {
-   "id": "sports.Checkbox.State=Checked.size",
-   "severity": "warning",
-   "component": "Checkbox",
-   "variant": "State=Checked",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "16px",
-    "height": "16px"
-   },
-   "tolerance": "±1px",
-   "rationale": "03 投注 Betting 元件庫尺寸規格"
-  },
-  {
-   "id": "sports.Checkbox.State=Checked.cornerRadius",
-   "severity": "warning",
-   "component": "Checkbox",
-   "variant": "State=Checked",
-   "part": "container",
-   "property": "cornerRadius",
-   "expectedValue": "4px",
-   "expectedToken": "radius/xs",
-   "tolerance": "0px",
-   "rationale": "03 投注 Betting 元件庫圓角規格"
-  },
-  {
-   "id": "sports.Checkbox.State=Unchecked.size",
-   "severity": "warning",
-   "component": "Checkbox",
-   "variant": "State=Unchecked",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "16px",
-    "height": "16px"
-   },
-   "tolerance": "±1px",
-   "rationale": "03 投注 Betting 元件庫尺寸規格"
-  },
-  {
-   "id": "sports.Checkbox.State=Unchecked.cornerRadius",
-   "severity": "warning",
-   "component": "Checkbox",
-   "variant": "State=Unchecked",
-   "part": "container",
-   "property": "cornerRadius",
-   "expectedValue": "4px",
-   "expectedToken": "radius/xs",
-   "tolerance": "0px",
-   "rationale": "03 投注 Betting 元件庫圓角規格"
-  },
-  {
    "id": "sports.BetAmountInput.State=Empty.size",
    "severity": "warning",
    "component": "BetAmountInput",
@@ -732,62 +687,6 @@
    "expectedValue": {
     "width": "327px",
     "height": "36px"
-   },
-   "tolerance": "±1px",
-   "rationale": "03 投注 Betting 元件庫尺寸規格"
-  },
-  {
-   "id": "sports.OddsValue.Trend=Up.size",
-   "severity": "warning",
-   "component": "OddsValue",
-   "variant": "Trend=Up",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "34px",
-    "height": "14px"
-   },
-   "tolerance": "±1px",
-   "rationale": "03 投注 Betting 元件庫尺寸規格"
-  },
-  {
-   "id": "sports.OddsValue.Trend=Down.size",
-   "severity": "warning",
-   "component": "OddsValue",
-   "variant": "Trend=Down",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "34px",
-    "height": "14px"
-   },
-   "tolerance": "±1px",
-   "rationale": "03 投注 Betting 元件庫尺寸規格"
-  },
-  {
-   "id": "sports.OddsValue.Trend=None.size",
-   "severity": "warning",
-   "component": "OddsValue",
-   "variant": "Trend=None",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "50px",
-    "height": "14px"
-   },
-   "tolerance": "±1px",
-   "rationale": "03 投注 Betting 元件庫尺寸規格"
-  },
-  {
-   "id": "sports.OddsValue.Trend=locked.size",
-   "severity": "warning",
-   "component": "OddsValue",
-   "variant": "Trend=locked",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "12px",
-    "height": "14px"
    },
    "tolerance": "±1px",
    "rationale": "03 投注 Betting 元件庫尺寸規格"
@@ -1057,20 +956,6 @@
    "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
   },
   {
-   "id": "sports.注单总计.Property 1=已结算.size",
-   "severity": "warning",
-   "component": "注单总计",
-   "variant": "Property 1=已结算",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "351px",
-    "height": "60px"
-   },
-   "tolerance": "±1px",
-   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-  },
-  {
    "id": "sports.注单总计.Property 1=已结算.cornerRadius",
    "severity": "warning",
    "component": "注单总计",
@@ -1083,20 +968,6 @@
    "rationale": "04 注单 Bet Orders 元件庫圓角規格"
   },
   {
-   "id": "sports.注单总计.Property 1=未结算.size",
-   "severity": "warning",
-   "component": "注单总计",
-   "variant": "Property 1=未结算",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "351px",
-    "height": "60px"
-   },
-   "tolerance": "±1px",
-   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-  },
-  {
    "id": "sports.注单总计.Property 1=未结算.cornerRadius",
    "severity": "warning",
    "component": "注单总计",
@@ -1107,34 +978,6 @@
    "expectedToken": "radius/xs",
    "tolerance": "0px",
    "rationale": "04 注单 Bet Orders 元件庫圓角規格"
-  },
-  {
-   "id": "sports.注单.Property 1=已结算.size",
-   "severity": "warning",
-   "component": "注单",
-   "variant": "Property 1=已结算",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "351px",
-    "height": "159px"
-   },
-   "tolerance": "±1px",
-   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
-  },
-  {
-   "id": "sports.注单.Property 1=未结算.size",
-   "severity": "warning",
-   "component": "注单",
-   "variant": "Property 1=未结算",
-   "part": "container",
-   "property": "size",
-   "expectedValue": {
-    "width": "351px",
-    "height": "159px"
-   },
-   "tolerance": "±1px",
-   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
   },
   {
    "id": "sports.popup.Property 1=无法投注.size",
@@ -1262,57 +1105,599 @@
    "rationale": "05 通知中心 Notification 規範卡 2026-07-10"
   },
   {
-   "id": "sports.amount.数值=Default.size",
+   "id": "sports.Balance Display.金額最小值.size",
    "severity": "warning",
-   "component": "amount",
-   "variant": "数值=Default",
+   "component": "Balance Display",
+   "variant": "金額最小值",
    "part": "container",
    "property": "size",
    "expectedValue": {
-    "height": "14px"
+    "width": "44px",
+    "height": "32px"
    },
    "tolerance": "±1px",
-   "rationale": "03 投注 Betting 賽事狀態卡片 2026-07-10"
+   "rationale": "01 共用基礎 Common / Balance Display 結餘規範卡 2026-07-13"
   },
   {
-   "id": "sports.amount.数值=up.size",
+   "id": "sports.Balance Display.金額最小值.cornerRadius",
    "severity": "warning",
-   "component": "amount",
-   "variant": "数值=up",
+   "component": "Balance Display",
+   "variant": "金額最小值",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "100px",
+   "expectedToken": "radius/full",
+   "tolerance": "0px",
+   "rationale": "01 共用基礎 Common / Balance Display 結餘規範卡 2026-07-13"
+  },
+  {
+   "id": "sports.Balance Display.金額最大值.size",
+   "severity": "warning",
+   "component": "Balance Display",
+   "variant": "金額最大值",
    "part": "container",
    "property": "size",
    "expectedValue": {
+    "width": "106px",
+    "height": "32px"
+   },
+   "tolerance": "±1px",
+   "rationale": "01 共用基礎 Common / Balance Display 結餘規範卡 2026-07-13"
+  },
+  {
+   "id": "sports.Balance Display.金額最大值.cornerRadius",
+   "severity": "warning",
+   "component": "Balance Display",
+   "variant": "金額最大值",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "100px",
+   "expectedToken": "radius/full",
+   "tolerance": "0px",
+   "rationale": "01 共用基礎 Common / Balance Display 結餘規範卡 2026-07-13"
+  },
+  {
+   "id": "sports.Checkbox.State=on.size",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=on",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "16px",
+    "height": "16px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Checkbox.State=on.cornerRadius",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=on",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.Checkbox.State=off.size",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=off",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "16px",
+    "height": "16px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.Checkbox.State=off.cornerRadius",
+   "severity": "warning",
+   "component": "Checkbox",
+   "variant": "State=off",
+   "part": "container",
+   "property": "cornerRadius",
+   "expectedValue": "4px",
+   "expectedToken": "radius/xs",
+   "tolerance": "0px",
+   "rationale": "03 投注 Betting 元件庫圓角規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=Up.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=Up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "34px",
     "height": "14px"
    },
    "tolerance": "±1px",
-   "rationale": "03 投注 Betting 賽事狀態卡片 2026-07-10"
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
   },
   {
-   "id": "sports.amount.数值=down.size",
+   "id": "sports.OddsValue.Trend=Down.size",
    "severity": "warning",
-   "component": "amount",
+   "component": "OddsValue",
+   "variant": "Trend=Down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "34px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=locked.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=locked",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "12px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=None.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=None",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "24px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=focus down.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=focus down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "34px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=focus.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=focus",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "24px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.OddsValue.Trend=focus up.size",
+   "severity": "warning",
+   "component": "OddsValue",
+   "variant": "Trend=focus up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "34px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_L.数值=down.size",
+   "severity": "warning",
+   "component": "amount_L",
    "variant": "数值=down",
    "part": "container",
    "property": "size",
    "expectedValue": {
+    "width": "58px",
     "height": "14px"
    },
    "tolerance": "±1px",
-   "rationale": "03 投注 Betting 賽事狀態卡片 2026-07-10"
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_L.数值=up.size",
+   "severity": "warning",
+   "component": "amount_L",
+   "variant": "数值=up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_L.数值=Default.size",
+   "severity": "warning",
+   "component": "amount_L",
+   "variant": "数值=Default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_L.数值=鎖頭.size",
+   "severity": "warning",
+   "component": "amount_L",
+   "variant": "数值=鎖頭",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_L.数值=focus down.size",
+   "severity": "warning",
+   "component": "amount_L",
+   "variant": "数值=focus down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_L.数值=focus.size",
+   "severity": "warning",
+   "component": "amount_L",
+   "variant": "数值=focus",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_L.数值=focus up.size",
+   "severity": "warning",
+   "component": "amount_L",
+   "variant": "数值=focus up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "58px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_S.数值=Default.size",
+   "severity": "warning",
+   "component": "amount_S",
+   "variant": "数值=Default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "27px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_S.数值=down.size",
+   "severity": "warning",
+   "component": "amount_S",
+   "variant": "数值=down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "27px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_S.数值=up.size",
+   "severity": "warning",
+   "component": "amount_S",
+   "variant": "数值=up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "27px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_S.数值=鎖頭.size",
+   "severity": "warning",
+   "component": "amount_S",
+   "variant": "数值=鎖頭",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "27px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_S.数值=focus down.size",
+   "severity": "warning",
+   "component": "amount_S",
+   "variant": "数值=focus down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "27px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_S.数值=focus.size",
+   "severity": "warning",
+   "component": "amount_S",
+   "variant": "数值=focus",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "27px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.amount_S.数值=focus up.size",
+   "severity": "warning",
+   "component": "amount_S",
+   "variant": "数值=focus up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "27px",
+    "height": "14px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单总计.Property 1=已结算.size",
+   "severity": "warning",
+   "component": "注单总计",
+   "variant": "Property 1=已结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "65px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单总计.Property 1=未结算.size",
+   "severity": "warning",
+   "component": "注单总计",
+   "variant": "Property 1=未结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "65px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单.Property 1=已结算.size",
+   "severity": "warning",
+   "component": "注单",
+   "variant": "Property 1=已结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "161px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单.Property 1=未结算.size",
+   "severity": "warning",
+   "component": "注单",
+   "variant": "Property 1=未结算",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "351px",
+    "height": "161px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单 / Odds.State=Down.size",
+   "severity": "warning",
+   "component": "注单 / Odds",
+   "variant": "State=Down",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "70px",
+    "height": "42px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单 / Odds.State=Up.size",
+   "severity": "warning",
+   "component": "注单 / Odds",
+   "variant": "State=Up",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "70px",
+    "height": "42px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.注单 / Odds.State=None.size",
+   "severity": "warning",
+   "component": "注单 / Odds",
+   "variant": "State=None",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "70px",
+    "height": "42px"
+   },
+   "tolerance": "±1px",
+   "rationale": "04 注单 Bet Orders 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.投注底部菜单.狀態=Default.size",
+   "severity": "warning",
+   "component": "投注底部菜单",
+   "variant": "狀態=Default",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "523px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.投注底部菜单.狀態=盤口失效.size",
+   "severity": "warning",
+   "component": "投注底部菜单",
+   "variant": "狀態=盤口失效",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "315px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.投注底部菜单.狀態=確認下注.size",
+   "severity": "warning",
+   "component": "投注底部菜单",
+   "variant": "狀態=確認下注",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "407px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.投注底部菜单.狀態=已輸入金額.size",
+   "severity": "warning",
+   "component": "投注底部菜单",
+   "variant": "狀態=已輸入金額",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "375px",
+    "height": "314px"
+   },
+   "tolerance": "±1px",
+   "rationale": "03 投注 Betting 元件庫尺寸規格"
+  },
+  {
+   "id": "sports.队伍名.*.size",
+   "severity": "warning",
+   "component": "队伍名",
+   "variant": "*",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "17px",
+    "height": "17px"
+   },
+   "tolerance": "±1px",
+   "rationale": "icon assets 外部國家/聯賽隊徽尺寸規格;只檢外層 instance,不讀內部圖像色彩"
+  },
+  {
+   "id": "sports.icon /  赛事.*.size",
+   "severity": "warning",
+   "component": "icon /  赛事",
+   "variant": "*",
+   "part": "container",
+   "property": "size",
+   "expectedValue": {
+    "width": "22px",
+    "height": "22px"
+   },
+   "tolerance": "±1px",
+   "rationale": "icon assets 外部賽事 logo 尺寸規格;只檢外層 instance,不讀內部圖像色彩"
   }
  ],
  "ignore": {
   "componentSets": [
-   "国旗"
+   "国旗",
+   "队伍名",
+   "icon /  赛事"
   ],
-  "scope": "instance-and-subtree",
-  "appliesTo": "all-rules",
-  "rule": "国旗/隊徽類 icon 一律不審查:命中的 component set 之 INSTANCE 及其整棵子樹跳過所有規則(色彩/圓角/間距/命名皆不報)",
-  "rationale": "国旗 為外部圖像資產(國旗、俱樂部徽),色彩與形狀由圖像本身決定,不套 17 色白名單或圓角尺度;逐面報未註冊色只會製造雜訊。比對主元件 set 名(非圖層名)精準命中",
-  "candidatesNotYetIgnored": [
-   "赛事",
-   "icon / 搜索"
-  ],
-  "candidatesNote": "赛事(賽事 logo)與 icon / 搜索 為同類外部圖像 logo;如需一併忽略,加入 componentSets 即可"
+  "scope": "asset-internals-and-global-rules",
+  "appliesTo": "global-color-radius-shadow-opacity-and-descendants; component outer size still checked",
+  "rule": "国旗/隊徽/隊伍名/賽事 logo 等外部圖像資產不審查內部圖像色彩與形狀;命中的 INSTANCE 本體仍會套用 component size 規則,其子層不讀取色彩/圓角/陰影/透明度。",
+  "rationale": "外部國家旗、聯賽隊徽與賽事 logo 的色彩由品牌/圖像本身決定,不套 18 色白名單;但 2026-07-13 已指定隊伍名(國家/聯賽)外層尺寸 17x17、賽事外層尺寸 22x22,因此保留外層尺寸檢查。",
+  "confirmedAssetSizes": {
+   "队伍名": "17x17px (國家與聯賽隊徽)",
+   "icon /  赛事": "22x22px (賽事 logo)"
+  }
  }
 }

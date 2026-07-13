@@ -62,9 +62,9 @@
       "CTA/Header 疊層、邊框與半透明效果需補正式 variables 或場景裁決",
       "Basic_Color 紅旗 7 項仍需逐項回核",
       "賽事卡與部分注單狀態仍需元件化與補狀態",
-      "國旗 / 隊徽屬素材管理,不納入揪錯貓規範檢查",
-      "BetAmountInput radius 6px 是否新增 input 專用 token 需設計確認",
-      "BetAmountInput radius 6px 是否改 radius/xs 或新增 input 專用 token需設計確認"
+      "國旗 / 隊徽 / 賽事 logo 屬素材管理,色彩不納入檢查;隊伍名 17x17、賽事 22x22 外層尺寸仍檢查",
+      "BetAmountInput radius 已依 2026-07-13 Figma 更新為 4px",
+      "BetAmountInput radius 已依 2026-07-13 Figma 更新為 4px"
     ]
   }
 }

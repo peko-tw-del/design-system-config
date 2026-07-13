@@ -1,9 +1,9 @@
 {
  "$meta": {
   "product": "七星體育",
-  "version": "0.4.0-notification-matchstatus",
-  "generatedAt": "2026-07-10",
-  "note": "更新 01 共用基礎 Common / 02 導航 Navigation / 03 投注 Betting / 04 注单 Bet Orders 元件庫樣式; spacing/radius 另由 spacing-radius.tokens.json 管理。 2026-07-10:新增 05 通知中心彈窗、赛况/賽事狀態卡片、amount 盤口線 spec;彈窗底色 B70/B80 不一致由設計側修正中,暫不納入檢查。",
+  "version": "0.4.2-component-refresh-assets",
+  "generatedAt": "2026-07-13",
+  "note": "更新 01 共用基礎 Common / 02 導航 Navigation / 03 投注 Betting / 04 注单 Bet Orders 元件庫樣式; spacing/radius 另由 spacing-radius.tokens.json 管理。 2026-07-10:新增 05 通知中心彈窗、赛况/賽事狀態卡片、amount 盤口線 spec;彈窗底色 B70/B80 不一致由設計側修正中,暫不納入檢查。 2026-07-13:新增 Balance Display / 結餘狀態卡與元件規格。 2026-07-13:同步 0629 新增/改名元件,包含队伍名/赛事素材尺寸、OddsValue focus 狀態、注单 / Odds、投注底部菜单;外部素材只檢查外層尺寸,不讀取內部圖像色彩。",
   "source": "Figma node 6863:293089 / section 0629 component library scan"
  },
  "inventory": {
@@ -23,8 +23,8 @@
     "name": "Checkbox",
     "id": "7867:254272",
     "variants": [
-     "State=Checked",
-     "State=Unchecked"
+     "State=on",
+     "State=off"
     ],
     "detailed": false
    },
@@ -39,7 +39,7 @@
     "detailed": true
    },
    {
-    "name": "注单",
+    "name": "bet_slip",
     "id": "7870:260432",
     "variants": [
      "play=三种玩法",
@@ -48,17 +48,17 @@
     "detailed": false
    },
    {
-    "name": "赛况",
+    "name": "match_status",
     "id": "7870:260569",
     "variants": [
-     "未开赛",
-     "即将开赛",
-     "中场休息",
-     "上半场",
-     "上半场补时",
-     "下半场",
-     "点球大战",
-     "下半场补时"
+     "赛况=未开赛",
+     "赛况=即将开赛",
+     "赛况=中场休息",
+     "赛况=上半场",
+     "赛况=上半场补时",
+     "赛况=下半场",
+     "赛况=点球大战",
+     "赛况=下半场补时"
     ],
     "detailed": false
    },
@@ -68,8 +68,11 @@
     "variants": [
      "Trend=Up",
      "Trend=Down",
+     "Trend=locked",
      "Trend=None",
-     "Trend=locked"
+     "Trend=focus down",
+     "Trend=focus",
+     "Trend=focus up"
     ],
     "detailed": true
    },
@@ -111,26 +114,32 @@
     "detailed": false
    },
    {
-    "name": "amount",
+    "name": "amount_L",
     "id": "7870:264600",
     "variants": [
      "数值=down",
      "数值=up",
-     "数值=Default"
+     "数值=Default",
+     "数值=鎖頭",
+     "数值=focus down",
+     "数值=focus",
+     "数值=focus up"
     ],
-    "detailed": false,
-    "duplicate": "與 7870:264631 同名"
+    "detailed": false
    },
    {
-    "name": "amount",
+    "name": "amount_S",
     "id": "7870:264631",
     "variants": [
      "数值=Default",
      "数值=down",
-     "数值=up"
+     "数值=up",
+     "数值=鎖頭",
+     "数值=focus down",
+     "数值=focus",
+     "数值=focus up"
     ],
-    "detailed": false,
-    "duplicate": "與 7870:264600 同名"
+    "detailed": false
    },
    {
     "name": "MatchScoreHeader",
@@ -206,9 +215,10 @@
     "name": "已结算注单总计状态",
     "id": "7892:38500",
     "variants": [
-     "赢",
-     "输",
-     "平"
+     "Property 1=赢",
+     "Property 1=输",
+     "Property 1=Variant4",
+     "Property 1=平"
     ],
     "detailed": true
    },
@@ -229,7 +239,7 @@
      "已结算",
      "未结算"
     ],
-    "detailed": false
+    "detailed": true
    },
    {
     "name": "注单 (list)",
@@ -275,6 +285,36 @@
     "id": "7888:259527",
     "variants": [],
     "detailed": false
+   },
+   {
+    "name": "Balance Display",
+    "id": "8056:12745",
+    "variants": [
+     "金額最小值",
+     "金額最大值"
+    ],
+    "detailed": true
+   },
+   {
+    "name": "注单 / Odds",
+    "id": "8047:11431",
+    "variants": [
+     "State=Down",
+     "State=Up",
+     "State=None"
+    ],
+    "detailed": true
+   },
+   {
+    "name": "投注底部菜单",
+    "id": "8292:15826",
+    "variants": [
+     "狀態=Default",
+     "狀態=盤口失效",
+     "狀態=確認下注",
+     "狀態=已輸入金額"
+    ],
+    "detailed": true
    }
   ],
   "section:icon (7870:260319)": [
@@ -299,14 +339,17 @@
     "detailed": false
    },
    {
-    "name": "赛事",
+    "name": "icon /  赛事",
     "id": "7870:260299",
     "variants": [
-     "世界杯",
-     "英格兰超级联赛",
-     "其他"
+     "赛事=世界杯",
+     "赛事=英超 Premier League",
+     "赛事=意甲 Serie A",
+     "赛事=德甲 Bundesliga",
+     "赛事=法甲 Ligue 1",
+     "赛事=西甲LaLiga"
     ],
-    "detailed": false
+    "detailed": true
    },
    {
     "name": "icon / 搜索",
@@ -475,6 +518,35 @@
     "variants": [],
     "detailed": false
    }
+  ],
+  "section:icon assets (7870:260249)": [
+   {
+    "name": "队伍名",
+    "id": "7870:260249",
+    "variants": [
+     "類別=國家",
+     "類別=英超",
+     "類別=意甲",
+     "類別=德甲",
+     "類別=法甲",
+     "類別=西甲",
+     "類別=缺省图"
+    ],
+    "detailed": true
+   },
+   {
+    "name": "icon /  赛事",
+    "id": "7870:260299",
+    "variants": [
+     "赛事=世界杯",
+     "赛事=英超 Premier League",
+     "赛事=意甲 Serie A",
+     "赛事=德甲 Bundesliga",
+     "赛事=法甲 Ligue 1",
+     "赛事=西甲LaLiga"
+    ],
+    "detailed": true
+   }
   ]
  },
  "detailedSpecs": {
@@ -485,7 +557,7 @@
     "None": {
      "textColor": "#45A6FF (Main/B80)",
      "shouldBind": "color/odds/none",
-     "width": "50px"
+     "width": "24px"
     },
     "Up": {
      "textColor": "#FF6954 (Secondary/Error;用途含赔率上升)",
@@ -500,6 +572,23 @@
     "locked": {
      "icon": "鎖 SVG 色值未在新版 Basic_Color 表中獨立定義",
      "shouldBind": "color/odds/locked"
+    },
+    "focus": {
+     "textColor": "#FFFFFF (text/wt)",
+     "shouldBind": "color/odds/focus",
+     "width": "24px"
+    },
+    "focus up": {
+     "textColor": "#FF6954 (Secondary/Error)",
+     "shouldBind": "color/odds/up",
+     "arrow": "上箭頭 SVG 6x10px",
+     "width": "34px"
+    },
+    "focus down": {
+     "textColor": "#62D643 (Secondary/Success)",
+     "shouldBind": "color/odds/down",
+     "arrow": "下箭頭 SVG 6x10px",
+     "width": "34px"
     }
    }
   },
@@ -526,7 +615,7 @@
   },
   "BetAmountInput": {
    "nodeId": "7867:254370",
-   "frame": "327x36px,radius 6px,padding 12px/10px",
+   "frame": "327x36px,radius 4px,padding 12px/10px",
    "background": "#1E2935 (Background/B80=Input,弹窗Bg)",
    "states": {
     "Empty": {
@@ -660,6 +749,26 @@
     }
    }
   },
+  "Balance Display": {
+   "nodeId": "8056:12745",
+   "specCard": "8691:25722",
+   "chapter": "01 共用基礎 Common",
+   "desc": "結餘金額顯示膠囊,用於顯示錢包餘額/可用餘額等金額資料。",
+   "frame": "auto-layout horizontal,height 32px,radius full(100px),padding left/right 8px,itemSpacing 4px,bg Background/B100 #17212A",
+   "parts": {
+    "金額": "DIN Alternate Bold 16px,line-height 24px,Secondary/score #FFB83D,semantic color/balance/amount",
+    "icon": "左右 16x16px 圖示,視覺素材色需由 icon 規範另行管理"
+   },
+   "states": {
+    "金額最小值": "寬 44px,文字 0,trigger 金額=0",
+    "金額最大值": "寬 106px,文字 238,114.00,最大值仍待設計/產品確認"
+   },
+   "rules": [
+    "數字資料一律使用 DIN Alternate Bold",
+    "底色使用 color/balance/surface(Background/B100)",
+    "金額色使用 color/balance/amount(Secondary/score),不得改用 odds/result/status 語意"
+   ]
+  },
   "Navigation Bar": {
    "nodeId": "7894:255365",
    "chapter": "02 導航 Navigation",
@@ -738,14 +847,14 @@
   "注单总计": {
    "nodeId": "7892:38820",
    "chapter": "04 注单 Bet Orders",
-   "frame": "351x60px,radius 4px,padding 8/12,itemSpacing 8",
+   "frame": "351x65px,radius 4px,padding 8/12,itemSpacing 8",
    "background": "#212E39 (Background/B70)",
    "text": "label PingFang HK Regular 12px Text/T60;數字 DIN Alternate Bold 16px"
   },
   "注单": {
    "nodeId": "7892:38821",
    "chapter": "04 注单 Bet Orders",
-   "frame": "351x159px",
+   "frame": "351x161px",
    "text": "隊伍/聯賽 PingFang HK 13-14px;盤口/賠率 DIN 15px;狀態 PingFang HK 13px",
    "issue": "存在 15px 特例,由 G-007 warning 跟進"
   },
@@ -818,6 +927,80 @@
     "up": "Odds/上调(涨红默认 #FF6954)+上箭頭;盤口線上調",
     "down": "Odds/下调(跌绿默认 #62D643)+下箭頭;盤口線下調"
    }
+  },
+  "注单 / Odds": {
+   "nodeId": "8047:11431",
+   "frame": "70x42px",
+   "states": {
+    "Down": {
+     "size": "70x42px",
+     "shouldBind": "color/odds/down"
+    },
+    "Up": {
+     "size": "70x42px",
+     "shouldBind": "color/odds/up"
+    },
+    "None": {
+     "size": "70x42px",
+     "shouldBind": "color/odds/none"
+    }
+   },
+   "note": "注单內賠率區塊,僅同步外框尺寸與狀態命名。"
+  },
+  "投注底部菜单": {
+   "nodeId": "8292:15826",
+   "variants": {
+    "Default": "375x523px",
+    "盤口失效": "375x315px",
+    "確認下注": "375x407px",
+    "已輸入金額": "375x314px"
+   },
+   "note": "底部投注面板容器尺寸依狀態不同。"
+  },
+  "队伍名": {
+   "nodeId": "7870:260249",
+   "frame": "17x17px",
+   "variants": "類別=國家/英超/意甲/德甲/法甲/西甲/缺省图,名稱依球隊或國家",
+   "note": "外部國家與聯賽隊徽素材。插件不讀取內部圖像色彩,只檢查外層 instance 尺寸 17x17。"
+  },
+  "icon /  赛事": {
+   "nodeId": "7870:260299",
+   "frame": "22x22px",
+   "variants": [
+    "赛事=世界杯",
+    "赛事=英超 Premier League",
+    "赛事=意甲 Serie A",
+    "赛事=德甲 Bundesliga",
+    "赛事=法甲 Ligue 1",
+    "赛事=西甲LaLiga"
+   ],
+   "note": "外部賽事 logo 素材。插件不讀取內部圖像色彩,只檢查外層 instance 尺寸 22x22。"
+  },
+  "amount_L": {
+   "nodeId": "7870:264600",
+   "frame": "58x14px",
+   "variants": [
+    "数值=Default",
+    "数值=up",
+    "数值=down",
+    "数值=鎖頭",
+    "数值=focus",
+    "数值=focus up",
+    "数值=focus down"
+   ]
+  },
+  "amount_S": {
+   "nodeId": "7870:264631",
+   "frame": "27x14px",
+   "variants": [
+    "数值=Default",
+    "数值=up",
+    "数值=down",
+    "数值=鎖頭",
+    "数值=focus",
+    "数值=focus up",
+    "数值=focus down"
+   ]
   }
  },
  "chapters": {
@@ -826,6 +1009,7 @@
    "components": [
     "button",
     "Button/Confirm",
+    "Balance Display",
     "Radio buttons",
     "switch",
     "Overlay"
@@ -1369,39 +1553,39 @@
    "chapter": "03 投注 Betting",
    "variantProperties": {
     "State": [
-     "Checked",
-     "Unchecked"
+     "on",
+     "off"
     ]
    },
    "variants": [
     {
-     "name": "State=Checked",
+     "name": "State=on",
      "size": {
       "width": "16px",
       "height": "16px"
      },
      "radius": "4px",
      "spacing": {
-      "paddingTop": "10px",
-      "paddingRight": "10px",
-      "paddingBottom": "10px",
-      "paddingLeft": "10px",
-      "itemSpacing": "10px"
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
      }
     },
     {
-     "name": "State=Unchecked",
+     "name": "State=off",
      "size": {
       "width": "16px",
       "height": "16px"
      },
      "radius": "4px",
      "spacing": {
-      "paddingTop": "10px",
-      "paddingRight": "10px",
-      "paddingBottom": "10px",
-      "paddingLeft": "10px",
-      "itemSpacing": "10px"
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
      }
     }
    ]
@@ -1424,7 +1608,7 @@
       "width": "327px",
       "height": "36px"
      },
-     "radius": "6px",
+     "radius": "4px",
      "spacing": {
       "paddingTop": "10px",
       "paddingRight": "12px",
@@ -1439,7 +1623,7 @@
       "width": "327px",
       "height": "36px"
      },
-     "radius": "6px",
+     "radius": "4px",
      "spacing": {
       "paddingTop": "10px",
       "paddingRight": "12px",
@@ -1454,7 +1638,7 @@
       "width": "327px",
       "height": "36px"
      },
-     "radius": "6px",
+     "radius": "4px",
      "spacing": {
       "paddingTop": "10px",
       "paddingRight": "12px",
@@ -1473,8 +1657,11 @@
     "Trend": [
      "Up",
      "Down",
+     "locked",
      "None",
-     "locked"
+     "focus down",
+     "focus",
+     "focus up"
     ]
    },
    "variants": [
@@ -1490,28 +1677,13 @@
       "paddingRight": "0px",
       "paddingBottom": "0px",
       "paddingLeft": "0px",
-      "itemSpacing": "2px"
+      "itemSpacing": "0px"
      }
     },
     {
      "name": "Trend=Down",
      "size": {
       "width": "34px",
-      "height": "14px"
-     },
-     "radius": "0px",
-     "spacing": {
-      "paddingTop": "0px",
-      "paddingRight": "0px",
-      "paddingBottom": "0px",
-      "paddingLeft": "0px",
-      "itemSpacing": "2px"
-     }
-    },
-    {
-     "name": "Trend=None",
-     "size": {
-      "width": "50px",
       "height": "14px"
      },
      "radius": "0px",
@@ -1535,7 +1707,67 @@
       "paddingRight": "0px",
       "paddingBottom": "0px",
       "paddingLeft": "0px",
-      "itemSpacing": "2px"
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "Trend=None",
+     "size": {
+      "width": "24px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "Trend=focus down",
+     "size": {
+      "width": "34px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "Trend=focus",
+     "size": {
+      "width": "24px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "Trend=focus up",
+     "size": {
+      "width": "34px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
      }
     }
    ]
@@ -1780,7 +2012,7 @@
      "name": "Property 1=已结算",
      "size": {
       "width": "351px",
-      "height": "60px"
+      "height": "65px"
      },
      "radius": "4px",
      "spacing": {
@@ -1795,7 +2027,7 @@
      "name": "Property 1=未结算",
      "size": {
       "width": "351px",
-      "height": "60px"
+      "height": "65px"
      },
      "radius": "4px",
      "spacing": {
@@ -1823,7 +2055,7 @@
      "name": "Property 1=已结算",
      "size": {
       "width": "351px",
-      "height": "159px"
+      "height": "161px"
      },
      "radius": "0px",
      "spacing": {
@@ -1838,7 +2070,455 @@
      "name": "Property 1=未结算",
      "size": {
       "width": "351px",
-      "height": "159px"
+      "height": "161px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "amount_L",
+   "nodeId": "7870:264600",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "数值": [
+     "down",
+     "up",
+     "Default",
+     "鎖頭",
+     "focus down",
+     "focus",
+     "focus up"
+    ]
+   },
+   "variants": [
+    {
+     "name": "数值=down",
+     "size": {
+      "width": "58px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=up",
+     "size": {
+      "width": "58px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=Default",
+     "size": {
+      "width": "58px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=鎖頭",
+     "size": {
+      "width": "58px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=focus down",
+     "size": {
+      "width": "58px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=focus",
+     "size": {
+      "width": "58px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=focus up",
+     "size": {
+      "width": "58px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "amount_S",
+   "nodeId": "7870:264631",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "数值": [
+     "Default",
+     "down",
+     "up",
+     "鎖頭",
+     "focus down",
+     "focus",
+     "focus up"
+    ]
+   },
+   "variants": [
+    {
+     "name": "数值=Default",
+     "size": {
+      "width": "27px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=down",
+     "size": {
+      "width": "27px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=up",
+     "size": {
+      "width": "27px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=鎖頭",
+     "size": {
+      "width": "27px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=focus down",
+     "size": {
+      "width": "27px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=focus",
+     "size": {
+      "width": "27px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "数值=focus up",
+     "size": {
+      "width": "27px",
+      "height": "14px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "注单 / Odds",
+   "nodeId": "8047:11431",
+   "chapter": "04 注单 Bet Orders",
+   "variantProperties": {
+    "State": [
+     "Down",
+     "Up",
+     "None"
+    ]
+   },
+   "variants": [
+    {
+     "name": "State=Down",
+     "size": {
+      "width": "70px",
+      "height": "42px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "State=Up",
+     "size": {
+      "width": "70px",
+      "height": "42px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "State=None",
+     "size": {
+      "width": "70px",
+      "height": "42px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "投注底部菜单",
+   "nodeId": "8292:15826",
+   "chapter": "03 投注 Betting",
+   "variantProperties": {
+    "狀態": [
+     "Default",
+     "盤口失效",
+     "確認下注",
+     "已輸入金額"
+    ]
+   },
+   "variants": [
+    {
+     "name": "狀態=Default",
+     "size": {
+      "width": "375px",
+      "height": "523px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "狀態=盤口失效",
+     "size": {
+      "width": "375px",
+      "height": "315px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "狀態=確認下注",
+     "size": {
+      "width": "375px",
+      "height": "407px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    },
+    {
+     "name": "狀態=已輸入金額",
+     "size": {
+      "width": "375px",
+      "height": "314px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "队伍名",
+   "nodeId": "7870:260249",
+   "chapter": "icon assets",
+   "variantProperties": {
+    "類別": [
+     "國家",
+     "英超",
+     "意甲",
+     "德甲",
+     "法甲",
+     "西甲",
+     "缺省图"
+    ],
+    "名稱": [
+     "*"
+    ]
+   },
+   "variants": [
+    {
+     "name": "*",
+     "size": {
+      "width": "17px",
+      "height": "17px"
+     },
+     "radius": "0px",
+     "spacing": {
+      "paddingTop": "0px",
+      "paddingRight": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "itemSpacing": "0px"
+     }
+    }
+   ]
+  },
+  {
+   "name": "icon /  赛事",
+   "nodeId": "7870:260299",
+   "chapter": "icon assets",
+   "variantProperties": {
+    "赛事": [
+     "世界杯",
+     "英超 Premier League",
+     "意甲 Serie A",
+     "德甲 Bundesliga",
+     "法甲 Ligue 1",
+     "西甲LaLiga"
+    ]
+   },
+   "variants": [
+    {
+     "name": "*",
+     "size": {
+      "width": "22px",
+      "height": "22px"
      },
      "radius": "0px",
      "spacing": {

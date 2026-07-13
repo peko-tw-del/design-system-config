@@ -1,15 +1,15 @@
 {
  "$meta": {
   "product": "七星體育",
-  "version": "0.5.0-odds-binding-popup",
-  "generatedAt": "2026-07-10",
+  "version": "0.5.1-balance-display",
+  "generatedAt": "2026-07-13",
   "source": "Figma ZOHnVejsbiI7BbU8YIsm0j — node 8359:14643 / foundation 8446:24820 + 8491:23827(radius) + 8491:23848(shadow), re-read 2026-07-10",
   "coverage": "新版 foundation 色彩共 18 個 Variables: Main/Secondary/Text/Background。新增 Background/Black #000000 用於陰影、遮罩。依 Figma Variables / foundation 實值更新;紫色 #7C4DFF 與粉色 #E8557D 不屬七星體育合規色。",
   "architecture": "兩層:primitive(對齊 Figma Variables 原始色)→ semantic(產品語意層)。元件檢查以已登記 primitive 色為準;語意使用仍需透過 semantic 命名與規則約束。",
   "opacityPolicy": "sports mode: only 100% solid fill/stroke/layer opacity is allowed; transparent colors and rgba are violations even when base color exists.",
   "shadowPolicy": "正式陰影僅兩種:shadow/nav 與 shadow/pop-up window。其他陰影參數一律報違規。",
   "radiusPolicy": "核可圓角尺度僅 4/8/16/full(2026-07-10 定案);6px、12px 為現況殘留,命中報建議修正",
-  "lastUpdated": "2026-07-10"
+  "lastUpdated": "2026-07-13"
  },
  "primitive": {
   "color": {
@@ -203,6 +203,22 @@
     "tags": [
      "live-data"
     ]
+   }
+  },
+  "color/balance": {
+   "amount": {
+    "aliasOf": "primitive.color.secondary/score",
+    "figmaVariable": "Secondary/score",
+    "usage": "Balance Display / 結餘金額數字,含最小值 0 與最大值 238,114.00",
+    "tags": [
+     "wallet",
+     "numeric-data"
+    ]
+   },
+   "surface": {
+    "aliasOf": "primitive.color.background/b100",
+    "figmaVariable": "Background/B100",
+    "usage": "Balance Display / 結餘膠囊底"
    }
   },
   "color/text": {
